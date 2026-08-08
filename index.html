@@ -445,7 +445,7 @@ footer{background:var(--navy);margin-top:80px}
     <div class="wrap">
       <div class="wsp-band">
         <div><h3>Recibe en WhatsApp solo lo que pasó la validación</h3><p>Gratis, anónimo, sin spam. Solo trabajo técnico minero.</p></div>
-        <button class="btn btn-lg" style="background:#fff;color:var(--green);font-weight:700" onclick="toast('Enlace oficial del canal — disponible al lanzar')">Unirme al canal →</button>
+        <button class="btn btn-lg" style="background:#fff;color:var(--green);font-weight:700" onclick="window.open(CANAL_URL,'_blank')">Unirme al canal →</button>
       </div>
     </div>
   </div>
@@ -716,9 +716,9 @@ footer{background:var(--navy);margin-top:80px}
       <p class="ss">Cada plan incluye los tres filtros del portal y 30 días de vigencia. Sin contratos anuales.</p>
       <div class="planes-grid">
         <div class="plan" style="border:2px solid var(--green)"><div class="plan-tag" style="background:var(--green);color:#fff">Primeros 45 días</div><h3>Plan Gratuito</h3><div class="p-new" style="margin-top:10px">$0 <span>CLP</span></div><div class="p-dur">1 aviso · vigencia 30 días</div><ul><li>1 publicación en canal y grupos</li><li>Validación técnica incluida</li><li>Contacto directo empresa–candidato</li><li>Confirmación por email y WhatsApp</li></ul><button class="btn btn-green btn-full" onclick="toast('Escríbenos al +56 9 6594 5170 para activar tu período gratuito')">Solicitar acceso</button></div>
-        <div class="plan"><h3>Plan Básico</h3><div class="p-new">$15.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">1 aviso · vigencia 30 días</div><ul><li>1 publicación en canal y grupos</li><li>Validación técnica incluida</li><li>Contacto directo empresa–candidato</li><li>Confirmación por email y WhatsApp</li></ul><button class="btn btn-ghost btn-full" onclick="go('publicar')">Contratar</button></div>
-        <div class="plan feat"><div class="plan-tag">Más elegido</div><h3>Plan Estándar</h3><div class="p-new">$50.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">4 avisos · vigencia 30 días</div><ul><li>4 publicaciones programadas</li><li>Aviso destacado en el canal</li><li>Validación técnica incluida</li><li>Alerta candidatos en menos de 2 horas</li><li>Alerta de vencimiento con descuento</li></ul><button class="btn btn-gold btn-full" onclick="go('publicar')">Contratar</button></div>
-        <div class="plan"><h3>Plan Premium</h3><div class="p-new">$100.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">10 avisos · vigencia 30 días</div><ul><li>10 publicaciones programadas</li><li>Fijado al tope del canal</li><li>Máxima visibilidad garantizada</li><li>Validación técnica incluida</li><li>Alerta de vencimiento con descuento</li></ul><button class="btn btn-ghost btn-full" onclick="go('publicar')">Contratar</button></div>
+        <div class="plan"><h3>Plan Básico</h3><div class="p-new">$15.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">1 aviso · vigencia 30 días</div><ul><li>1 publicación en canal y grupos</li><li>Validación técnica incluida</li><li>Contacto directo empresa–candidato</li><li>Confirmación por email y WhatsApp</li></ul><button class="btn btn-ghost btn-full" onclick="irContacto()">Contratar por WhatsApp</button></div>
+        <div class="plan feat"><div class="plan-tag">Más elegido</div><h3>Plan Estándar</h3><div class="p-new">$50.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">4 avisos · vigencia 30 días</div><ul><li>4 publicaciones programadas</li><li>Aviso destacado en el canal</li><li>Validación técnica incluida</li><li>Alerta candidatos en menos de 2 horas</li><li>Alerta de vencimiento con descuento</li></ul><button class="btn btn-gold btn-full" onclick="irContacto()">Contratar por WhatsApp</button></div>
+        <div class="plan"><h3>Plan Premium</h3><div class="p-new">$100.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">10 avisos · vigencia 30 días</div><ul><li>10 publicaciones programadas</li><li>Fijado al tope del canal</li><li>Máxima visibilidad garantizada</li><li>Validación técnica incluida</li><li>Alerta de vencimiento con descuento</li></ul><button class="btn btn-ghost btn-full" onclick="irContacto()">Contratar por WhatsApp</button></div>
         <div class="plan"><h3>Pack Empresa</h3><div class="p-new" style="margin-top:10px">$350.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">Avisos ilimitados · vigencia 30 días</div><ul><li>Avisos sin límite durante el mes</li><li>Logo de la empresa en cada aviso</li><li>Difusión en todos los grupos</li><li>Atención directa y prioritaria</li></ul><button class="btn btn-ghost btn-full" onclick="toast('Escríbenos por WhatsApp para activar el Pack Empresa')">Consultar</button></div>
       </div>
       
@@ -751,7 +751,7 @@ footer{background:var(--navy);margin-top:80px}
         <div style="font-size:38px;margin-bottom:12px">📋</div>
         <p style="font-size:17px;color:var(--navy);font-weight:600;margin-bottom:6px">Aún no has publicado avisos</p>
         <p style="font-size:14px;color:var(--sub);margin-bottom:20px">Publica tu primer aviso y aparecerá aquí con su número de seguimiento.</p>
-        <button class="btn btn-gold" onclick="go('publicar')">Publicar mi primer aviso</button>
+        <button class="btn btn-gold" onclick=\"go('publicar')\">Publicar mi primer aviso</button>
       </div>
     </div>
   </div>
@@ -857,12 +857,14 @@ footer{background:var(--navy);margin-top:80px}
         <div class="wp" id="wp2">
           <div class="fgroup"><label class="fl">Elige tu plan <span class="freq">*</span></label>
             <div class="pp-wrap">
-              <div id="plan-fijo-nota" style="display:none;background:var(--gold-bg);border:1px solid rgba(196,160,74,.3);border-radius:8px;padding:11px 15px;margin-bottom:12px;font-size:13px;color:#6B5417;line-height:1.55">Tu cuenta está en <strong>período de prueba gratuita</strong>: el Plan Gratuito viene seleccionado y no puede cambiarse. Al finalizar el período podrás elegir cualquier plan pagado.</div>
-              <label class="pp" id="pp-gratuito" style="display:none" onclick="selPlan(this,'Gratuito · 1 aviso · 30 días','0','0')"><input type="radio" name="wplan"><div class="pp-info"><div class="pp-n">Plan Gratuito <span style="color:var(--green)">— Período sin cobro</span></div><div class="pp-d">1 aviso · vigencia 30 días · Validación técnica incluida</div></div><div class="pp-p"><div class="pp-new" style="color:var(--green)">$0</div></div></label>
-              <label class="pp" onclick="selPlan(this,'Básico · 1 aviso · 30 días','15.000','35.000')"><input type="radio" name="wplan"><div class="pp-info"><div class="pp-n">Plan Básico<span style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:2px 9px;margin-left:8px;vertical-align:middle">Precio de lanzamiento</span></div><div class="pp-d">1 aviso · vigencia 30 días · Validación técnica incluida</div></div><div class="pp-p"><div class="pp-new">$15.000 CLP</div></div></label>
-              <label class="pp sel" onclick="selPlan(this,'Estándar · 4 avisos · 30 días','50.000','80.000')"><input type="radio" name="wplan" checked><div class="pp-info"><div class="pp-n">Plan Estándar <span style="color:var(--gold)">— Más elegido</span><span style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:2px 9px;margin-left:8px;vertical-align:middle">Precio de lanzamiento</span></div><div class="pp-d">4 avisos · vigencia 30 días · Aviso destacado</div></div><div class="pp-p"><div class="pp-new">$50.000 CLP</div></div></label>
-              <label class="pp" onclick="selPlan(this,'Premium · 10 avisos · 30 días','100.000','150.000')"><input type="radio" name="wplan"><div class="pp-info"><div class="pp-n">Plan Premium<span style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:2px 9px;margin-left:8px;vertical-align:middle">Precio de lanzamiento</span></div><div class="pp-d">10 avisos · vigencia 30 días · Fijado al tope del canal</div></div><div class="pp-p"><div class="pp-new">$100.000 CLP</div></div></label>
-              <label class="pp" onclick="selPlan(this,'Pack Empresa · Ilimitado · 30 días','350.000','350.000')"><input type="radio" name="wplan"><div class="pp-info"><div class="pp-n">Pack Empresa<span style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:2px 9px;margin-left:8px;vertical-align:middle">Precio de lanzamiento</span></div><div class="pp-d">Avisos ilimitados · vigencia 30 días · Logo + difusión máxima</div></div><div class="pp-p"><div class="pp-new">$350.000 CLP</div></div></label>
+              <div id="plan-asignado-box" style="background:var(--gold-bg);border:1px solid rgba(196,160,74,.35);border-radius:var(--r);padding:16px 18px;margin-bottom:8px">
+              <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A6D1F;margin-bottom:6px">Tu plan contratado</div>
+              <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+                <div id="plan-asig-nombre" style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--navy)">—</div>
+                <div id="plan-asig-cuota" style="font-size:13px;color:#6B5417"></div>
+              </div>
+              <div style="font-size:12.5px;color:#6B5417;margin-top:8px;line-height:1.5">El plan se define al contratar con MANTEWORK. Para cambiarlo o renovarlo, <a href="#" onclick="irContacto();return false" style="color:#8A6D1F;font-weight:600;text-decoration:underline">escríbenos por WhatsApp</a>.</div>
+            </div>
             </div>
           </div>
           <div style="background:var(--navy);border-radius:var(--r);padding:14px 18px;margin-top:16px;display:flex;align-items:flex-start;gap:10px">
@@ -945,7 +947,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 19.628</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.0.0</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.5.0</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1148,6 +1150,48 @@ footer{background:var(--navy);margin-top:80px}
       <button class="ap-tab act" onclick="apTab('avisos',this)">Avisos</button>
       <button class="ap-tab" onclick="apTab('clientes',this)">Clientes enrolados</button>
       <button class="ap-tab" onclick="apTab('enrolar',this)">Enrolar nueva empresa</button>
+      <button class="ap-tab" onclick="apTab('captacion',this)">🔎 Captación web</button>
+    </div>
+
+    
+    <!-- TAB CAPTACIÓN WEB -->
+    <div class="ap-panel" id="ap-captacion">
+      <div style="background:rgba(196,160,74,.08);border:1px solid rgba(196,160,74,.25);border-radius:10px;padding:16px 18px;margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:220px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--navy)">Radar de captación web</div>
+            <div style="font-size:12.5px;color:#6B7280;margin-top:3px">Barre las fuentes de la lista blanca (portales del titular) y trae avisos técnicos vigentes como borradores para revisar y publicar.</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <label style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--navy);cursor:pointer;user-select:none">
+              <input type="checkbox" id="cap-activo" onchange="toggleCaptacion()" style="width:16px;height:16px;accent-color:var(--gold)"> Radar activo
+            </label>
+            <button class="btn btn-gold" id="cap-run" onclick="ejecutarCaptacion()" style="opacity:.5;pointer-events:none">▶ Ejecutar barrido</button>
+          </div>
+        </div>
+      </div>
+      <div id="cap-estado" style="font-size:12.5px;color:#6B7280;margin-bottom:12px"></div>
+      
+      <div style="border:1px dashed rgba(196,160,74,.5);border-radius:11px;padding:16px 18px;margin-bottom:18px;background:#FBFAF6">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--navy);margin-bottom:4px">Agregar aviso captado manualmente</div>
+        <div style="font-size:12px;color:#6B7280;margin-bottom:14px">Pega los datos de un aviso encontrado en un portal de la lista blanca. Quedará como borrador en la cola para revisar y publicar. La fuente debe ser el portal del titular.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div><label class="flbl">Cargo</label><input class="ft" id="cap-cargo" placeholder="Mantenedor Mecánico CAEX"></div>
+          <div><label class="flbl">Empresa / mandante</label><input class="ft" id="cap-empresa" placeholder="Codelco — El Teniente"></div>
+          <div><label class="flbl">Región</label><input class="ft" id="cap-region" placeholder="Antofagasta"></div>
+          <div><label class="flbl">Ciudad / faena</label><input class="ft" id="cap-ciudad" placeholder="Calama"></div>
+          <div><label class="flbl">Turno</label><input class="ft" id="cap-turno" placeholder="7×7"></div>
+          <div><label class="flbl">Grupo ocupacional</label>
+            <select class="ft" id="cap-grupo"><option value="">Seleccionar…</option><option>Mantenedores</option><option>Operadores</option><option>Supervisores</option><option>Profesionales</option></select>
+          </div>
+          <div style="grid-column:1/3"><label class="flbl">Requisitos (texto del aviso)</label><input class="ft" id="cap-req" placeholder="TNS Mecánica + 3 años + Licencia B + salud altura"></div>
+          <div style="grid-column:1/3"><label class="flbl">Cómo postular — link al portal del titular</label><input class="ft" id="cap-postula" placeholder="https://empleos.codelco.cl/…"></div>
+        </div>
+        <button class="btn btn-gold" onclick="agregarCaptado()" style="margin-top:12px">+ Agregar a la cola de captación</button>
+        <div id="cap-form-msg" style="font-size:12px;margin-top:8px"></div>
+      </div>
+
+      <div id="cap-resultados"></div>
     </div>
 
     <!-- TAB AVISOS -->
@@ -1433,8 +1477,23 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.0.0';
+const APP_VERSION = '3.5.0';
+
+// Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
+function esc(s){
+  if(s == null) return '';
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
 const VERSIONES = [
+  { v:'3.5.0', fecha:'07-08-2026', cambios:['Al validar y aprobar un aviso, se genera el texto listo para el canal y se copia automáticamente, abriendo WhatsApp para pegarlo','El texto del canal lleva cabecera de marca MANTEWORK, número MNT, emoji por grupo, requisitos, cómo postular y enlace a mantework.com','El aviso se publica tal cual fue revisado — un solo paso: pegar y enviar']
+  },
+  { v:'3.4.0', fecha:'07-08-2026', cambios:['Enlace oficial del canal de WhatsApp conectado: el botón «Unirme al canal» lleva al canal real de MANTEWORK'] },
+  { v:'3.3.0', fecha:'07-08-2026', cambios:['Panel de administración: formulario para agregar avisos captados manualmente (pegar y guardar, sin tocar código)','Cada aviso captado exige link al portal del titular, coherente con la política de captación'] },
+  { v:'3.2.0', fecha:'07-08-2026', cambios:['El perfil de empresa se enfoca en publicar avisos: el plan lo asigna el administrador al contratar (no se elige en el sitio)','La página de Planes es ahora una vitrina informativa con contacto directo por WhatsApp para contratar','Nuevo en el panel de administración: pestaña de Captación web con activación y ejecución del radar de la lista blanca'] },
+  { v:'3.1.0', fecha:'07-08-2026', cambios:['Seguridad: claves de acceso renovadas (ya no hay contraseñas de fábrica en el sitio)','Seguridad: los datos de los avisos se muestran de forma segura (protección contra inyección de código en el canal)','Seguridad: la escritura en la base de datos ahora exige una barrera — la clave pública por sí sola ya no puede sobrescribir la información'] },
   { v:'3.0.0', fecha:'07-08-2026', cambios:['Base de datos en la nube activada (Supabase): avisos y empresas se guardan en la nube y se ven desde cualquier dispositivo','El navegador queda como respaldo sin conexión — si la nube no responde, el sitio sigue funcionando con los datos locales','Protección de arranque: una nube recién creada nunca borra los datos del dispositivo — los adopta','Indicador de sincronización en el panel del administrador'] },
   { v:'2.21.0', fecha:'07-08-2026', cambios:['Textos de requisitos sugeridos por perfil en el formulario de publicación — un clic carga el patrón real del mercado (síntesis del catálogo 2023-2026) y la empresa solo ajusta equipo, turno y faena'] },
   { v:'2.20.1', fecha:'07-08-2026', cambios:['Posicionamiento unificado: el portal del empleo técnico en minería (título del sitio alineado con el resto de la identidad)'] },
@@ -1506,20 +1565,20 @@ function cerrarVersiones(){ document.getElementById('modal-versiones').classList
 // ══════════════════════════════════════════════
 // CONFIGURACIÓN DE ACCESOS
 // ══════════════════════════════════════════════
-const ADMIN_CREDS = { user:'admin', pass:'Mante2026' };
+const ADMIN_CREDS = { user:'admin', pass:'45QR48tbdxzqhB' };
 
 // Base de clientes enrolados (Opción B)
 // En producción: reemplazar por base de datos real
 let CLIENTES = [
-  { id:1, empresa:'Codelco El Salvador', rut:'61.704.000-K', tipo:'Minera', nombre:'María González', email:'rrhh@codelco-elsalvador.cl', pass:'Codelco2026', wsp:'+56 9 8765 4321', plan:'Pack Empresa', activo:true, fechaEnrol:new Date('2026-07-28'),
+  { id:1, empresa:'Codelco El Salvador', rut:'61.704.000-K', tipo:'Minera', nombre:'María González', email:'rrhh@codelco-elsalvador.cl', pass:'UVxjQFW2zRW3pV', wsp:'+56 9 8765 4321', plan:'Pack Empresa', activo:true, fechaEnrol:new Date('2026-07-28'),
     usuarios:[
-      { nombre:'María González', email:'rrhh@codelco-elsalvador.cl', pass:'Codelco2026', wsp:'+56 9 8765 4321', cargo:'Jefa de RRHH' },
-      { nombre:'Pedro Rojas',    email:'seleccion@codelco-elsalvador.cl', pass:'Codelco2026b', wsp:'+56 9 8765 4322', cargo:'Analista de Selección' },
+      { nombre:'María González', email:'rrhh@codelco-elsalvador.cl', pass:'UVxjQFW2zRW3pV', wsp:'+56 9 8765 4321', cargo:'Jefa de RRHH' },
+      { nombre:'Pedro Rojas',    email:'seleccion@codelco-elsalvador.cl', pass:'bkyshXPAxFfaGn', wsp:'+56 9 8765 4322', cargo:'Analista de Selección' },
     ] },
-  { id:2, empresa:'Epiroc Chile', rut:'96.556.940-5', tipo:'Empresa de Servicio', nombre:'Juan Paredes', email:'empleo@epiroc.cl', pass:'Epiroc2026', wsp:'+56 9 1234 5678', plan:'Estándar', activo:true, fechaEnrol:new Date('2026-07-31'),
-    usuarios:[{ nombre:'Juan Paredes', email:'empleo@epiroc.cl', pass:'Epiroc2026', wsp:'+56 9 1234 5678', cargo:'Encargado de Personal' }] },
-  { id:3, empresa:'Minera Prueba SpA', rut:'77.888.999-4', tipo:'Minera', nombre:'Cuenta sin cobro', email:'demo@mantework.com', pass:'Demo2026', wsp:'+56 9 6594 5170', plan:'Gratuito', activo:true, sinCobro:true, fechaEnrol:new Date(Date.now()-38*24*3600*1000),
-    usuarios:[{ nombre:'Cuenta sin cobro', email:'demo@mantework.com', pass:'Demo2026', wsp:'+56 9 6594 5170', cargo:'Contacto' }] },
+  { id:2, empresa:'Epiroc Chile', rut:'96.556.940-5', tipo:'Empresa de Servicio', nombre:'Juan Paredes', email:'empleo@epiroc.cl', pass:'CWaDlm62X7M5Fz', wsp:'+56 9 1234 5678', plan:'Estándar', activo:true, fechaEnrol:new Date('2026-07-31'),
+    usuarios:[{ nombre:'Juan Paredes', email:'empleo@epiroc.cl', pass:'CWaDlm62X7M5Fz', wsp:'+56 9 1234 5678', cargo:'Encargado de Personal' }] },
+  { id:3, empresa:'Minera Prueba SpA', rut:'77.888.999-4', tipo:'Minera', nombre:'Cuenta sin cobro', email:'demo@mantework.com', pass:'FaN4yr7NPDzloG', wsp:'+56 9 6594 5170', plan:'Gratuito', activo:true, sinCobro:true, fechaEnrol:new Date(Date.now()-38*24*3600*1000),
+    usuarios:[{ nombre:'Cuenta sin cobro', email:'demo@mantework.com', pass:'FaN4yr7NPDzloG', wsp:'+56 9 6594 5170', cargo:'Contacto' }] },
 ];
 
 // Cuota de avisos por plan
@@ -1585,6 +1644,142 @@ let DB = {
 const SUPABASE_URL = 'https://tdbjlewbaxmqyueszmnu.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkYmpsZXdiYXhtcXl1ZXN6bW51Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwODE5MTQsImV4cCI6MjEwMTY1NzkxNH0.e06KjuasZkTtnVDlgPHUxtdq-UGE_jcQ1DDvTezcvmo'; // clave pública por diseño; la seguridad la dan las políticas RLS
 
+
+// Modelo A: la empresa no elige plan — se muestra el que el administrador le asignó
+function mostrarPlanAsignado(){
+  const c = (typeof clienteActual==='function') ? clienteActual() : null;
+  const nom = document.getElementById('plan-asig-nombre');
+  const cuo = document.getElementById('plan-asig-cuota');
+  if(!c || !nom) return;
+  const plan = c.plan || 'Gratuito';
+  const CUOTAS = {'Gratuito':1,'Básico':1,'Estándar':4,'Premium':10,'Pack Empresa':'ilimitados'};
+  const usados = (typeof avisosUsados==='function') ? avisosUsados(c.empresa) : 0;
+  const tope = CUOTAS[plan];
+  nom.textContent = plan;
+  cuo.textContent = (tope==='ilimitados') ? 'Avisos ilimitados' : `${usados} de ${tope} avisos usados en este ciclo`;
+  // fijar el plan del wizard al asignado (sin intervención del usuario)
+  if(typeof window!=='undefined'){ window.__planWizard = plan; }
+}
+function irContacto(){
+  const wsp = '56965945170';
+  const msg = encodeURIComponent('Hola MANTEWORK, quiero información sobre los planes para publicar avisos.');
+  window.open(`https://wa.me/${wsp}?text=${msg}`,'_blank');
+}
+
+
+
+// Agregar un aviso captado manualmente desde el panel admin
+function agregarCaptado(){
+  const g = id => { const e=document.getElementById(id); return e? e.value.trim():''; };
+  const cargo = g('cap-cargo'), empresa = g('cap-empresa'), postula = g('cap-postula');
+  const msg = document.getElementById('cap-form-msg');
+  if(!cargo || !empresa){ msg.style.color='var(--red)'; msg.textContent='⚠ Cargo y empresa son obligatorios.'; return; }
+  if(postula && !/^https?:\/\//i.test(postula)){ msg.style.color='var(--red)'; msg.textContent='⚠ El link de postulación debe empezar con http:// o https:// (portal del titular).'; return; }
+  const nuevo = {
+    id: Date.now(),
+    cargo: sanitiza(cargo), empresa: sanitiza(empresa),
+    region: g('cap-region'), ciudad: g('cap-ciudad'), lugar:'',
+    turno: g('cap-turno') || '—', contrato: '—',
+    grupo: g('cap-grupo') || 'Mantenedores', perfil: g('cap-grupo')==='Operadores'?'Operador de Equipos Móviles':'Mantenedor Mecánico',
+    experiencia:'—', educacion:'—', certs:[],
+    req: sanitiza(g('cap-req')),
+    postula: postula ? ('Postular en el portal del titular: '+postula) : '—',
+    plan:'Captación web', estado:'pendiente',
+    fechaCreacion:new Date(), fechaAprobacion:null, badge:'gold',
+    verEmpresa:true, verFaena:true, fuente:'Captación manual · panel admin'
+  };
+  DB.avisos.push(nuevo);
+  guardarDatos();
+  ['cap-cargo','cap-empresa','cap-region','cap-ciudad','cap-turno','cap-req','cap-postula'].forEach(id=>{const e=document.getElementById(id); if(e)e.value='';});
+  document.getElementById('cap-grupo').value='';
+  msg.style.color='var(--green)'; msg.textContent='✓ Aviso agregado a la cola de captación.';
+  if(CAP_ACTIVO) ejecutarCaptacion();
+  if(typeof renderAdmin==='function') renderAdmin();
+}
+
+// Captacion web desde el panel admin
+let CAP_ACTIVO = false;
+function toggleCaptacion(){
+  const chk = document.getElementById('cap-activo');
+  CAP_ACTIVO = chk.checked;
+  const btn = document.getElementById('cap-run');
+  btn.style.opacity = CAP_ACTIVO ? '1' : '.5';
+  btn.style.pointerEvents = CAP_ACTIVO ? 'auto' : 'none';
+  document.getElementById('cap-estado').textContent = CAP_ACTIVO
+    ? 'Radar activo. Presiona Ejecutar barrido para traer los avisos vigentes de la lista blanca.'
+    : 'Radar desactivado.';
+}
+function ejecutarCaptacion(){
+  if(!CAP_ACTIVO) return;
+  const est = document.getElementById('cap-estado');
+  const cont = document.getElementById('cap-resultados');
+  est.textContent = 'Barriendo fuentes de la lista blanca...';
+  const antes = DB.avisos.filter(a=>a.plan==='Captacion web').length + DB.avisos.filter(a=>a.plan==='Captación web').length;
+  importarCaptacion();
+  guardarDatos();
+  const cap = DB.avisos.filter(a=>a.plan==='Captación web');
+  const nuevos = cap.length - antes;
+  est.innerHTML = 'Barrido completo &middot; <strong>'+cap.length+'</strong> avisos captados en cola'+(nuevos>0?' &middot; <strong style=\"color:var(--green)\">'+nuevos+' nuevos</strong>':' &middot; sin novedades');
+  cont.innerHTML = cap.length ? cap.map(function(a){ return '<div style=\"border:1px solid #E5E7EB;border-radius:9px;padding:12px 14px;margin-bottom:8px\"><div style=\"display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap\"><div style=\"font-weight:700;color:var(--navy)\">'+esc(a.cargo)+'</div><span class=\"badge\" style=\"background:var(--gold-bg);color:#8A6D1F\">Captacion web</span></div><div style=\"font-size:12px;color:#6B7280;margin-top:3px\">'+esc(a.empresa)+' &middot; '+esc(a.ciudad||a.region||'')+'</div><div style=\"font-size:12px;color:#6B7280;margin-top:5px\">'+esc(a.postula||'')+'</div><div style=\"margin-top:8px;display:flex;gap:8px\"><button class=\"btn btn-gold\" style=\"font-size:12px;padding:6px 12px\" onclick=\"aprobar('+a.id+');ejecutarCaptacion()\">Aprobar y publicar</button><button class=\"btn btn-ghost\" style=\"font-size:12px;padding:6px 12px\" onclick=\"descartarCaptado('+a.id+')\">Descartar</button></div></div>'; }).join('') : '<div style=\"color:#6B7280;font-size:13px;padding:12px\">No hay avisos captados vigentes.</div>';
+  if(typeof renderAdmin==='function') renderAdmin();
+}
+function descartarCaptado(id){
+  DB.avisos = DB.avisos.filter(function(a){ return a.id!==id; });
+  guardarDatos(); ejecutarCaptacion();
+}
+
+
+// Genera el texto del aviso para pegar en el canal de WhatsApp (formato final)
+const EMOJI_GRUPO = { 'Mantenedores':'🔧', 'Operadores':'🚛', 'Supervisores':'👷', 'Profesionales':'🎓' };
+function textoCanal(a){
+  const emp = a.verEmpresa===false ? 'Empresa del sector minero' : (a.empresa||'Empresa del sector minero');
+  const ubi = a.verFaena===false ? (a.region||'') : [a.ciudad||a.lugar, a.region].filter(Boolean).join(', ');
+  const emoji = EMOJI_GRUPO[a.grupo] || '📋';
+  const mnt = 'MNT-2026-' + String(a.id).slice(-3).padStart(3,'0');
+  const certs = (a.certs && a.certs.length) ? '\n✅ ' + a.certs.join('  •  ') : '';
+  const L = [];
+  L.push('━━━━━━━━━━━━━━');
+  L.push('🔷 *MANTEWORK* · Empleo Técnico Minero');
+  L.push('✔️ Aviso validado · ' + mnt);
+  L.push('━━━━━━━━━━━━━━');
+  L.push('');
+  L.push(emoji + ' *' + (a.cargo||'') + '*');
+  L.push('');
+  L.push('🏢 ' + emp);
+  if(ubi) L.push('📍 ' + ubi);
+  if(a.turno && a.turno!=='—') L.push('🗓️ Turno ' + a.turno);
+  if(a.contrato && a.contrato!=='—') L.push('📄 ' + a.contrato);
+  if(a.experiencia && a.experiencia!=='—') L.push('⏳ Experiencia: ' + a.experiencia);
+  if(a.req) L.push('\n📋 *Requisitos:*\n' + a.req);
+  if(certs) L.push(certs);
+  if(a.postula) L.push('\n➡️ *Cómo postular:* ' + a.postula.replace(/^Postular en (el portal del titular|el portal oficial de [^:]+): /,''));
+  L.push('\n━━━━━━━━━━━━━━');
+  L.push('📲 Síguenos y postula: *mantework.com*');
+  L.push('_Gratis para técnicos · Solo avisos validados_');
+  return L.join('\n');
+}
+function copiarParaCanal(id){
+  const a = DB.avisos.find(x=>x.id===id);
+  if(!a) return;
+  const txt = textoCanal(a);
+  const done = () => {
+    toast('📋 Aviso copiado — pégalo en el canal de WhatsApp');
+    setTimeout(()=>{ window.open(CANAL_URL,'_blank'); }, 400);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(()=>{ _copiarFallback(txt); done(); });
+  } else { _copiarFallback(txt); done(); }
+}
+function _copiarFallback(txt){
+  const ta = document.createElement('textarea');
+  ta.value = txt; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); } catch(e){}
+  document.body.removeChild(ta);
+}
+
+const CANAL_URL = 'https://whatsapp.com/channel/0029Vb7zQAHCnA7pG7VTQL3K';
+const WRITE_SECRET = 'BaHvgdNoSL7VszXxfo0E1F5lR77VxQzV'; // barrera de escritura (ver Anexo W): frena escritura casual; la seguridad fuerte llega con Auth en v4.0
 function nubeActiva(){ return SUPABASE_URL.length > 10 && SUPABASE_KEY.length > 10; }
 
 async function _sb(metodo, ruta, body){
@@ -1634,7 +1829,9 @@ async function guardarEnNube(){
   _syncPendiente = setTimeout(async () => {
     try {
       const pack = { avisos: DB.avisos, clientes: CLIENTES, guardado: new Date().toISOString(), version: APP_VERSION };
-      await _sb('POST', 'mantework_datos', { id: 1, pack });
+      // Escritura vía función con secreto (endurecimiento v3.1.0): la anon key
+      // por sí sola ya no puede sobrescribir la tabla.
+      await _sb('POST', 'rpc/guardar_pack', { p_secret: WRITE_SECRET, p_pack: pack });
       _indicadorNube(true);
     } catch(e){ _indicadorNube(false); }
   }, 800);
@@ -2123,7 +2320,7 @@ function renderCuota(targetId){
         <div>
           <div style="font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:${col};margin-bottom:6px">${vencido?'Período gratuito finalizado':'Período sin cobro'}</div>
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:#fff;line-height:1.1">Plan Gratuito</div>
-          <div style="font-size:13.5px;color:#7A9AB8;margin-top:4px">${c.empresa} · ${usados} ${usados===1?'aviso publicado':'avisos publicados'}</div>
+          <div style="font-size:13.5px;color:#7A9AB8;margin-top:4px">${esc(c.empresa)} · ${usados} ${usados===1?'aviso publicado':'avisos publicados'}</div>
         </div>
         <div style="text-align:right">
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:700;color:${col};line-height:1">${vencido?'0':dias}</div>
@@ -2152,7 +2349,7 @@ function renderCuota(targetId){
       <div>
         <div style="font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Tu plan activo</div>
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:#fff;line-height:1.1">${c.plan||'Sin plan asignado'}</div>
-        <div style="font-size:13.5px;color:#7A9AB8;margin-top:4px">${c.empresa}</div>
+        <div style="font-size:13.5px;color:#7A9AB8;margin-top:4px">${esc(c.empresa)}</div>
       </div>
       <div style="text-align:right">
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:700;color:${color};line-height:1">${restantes}</div>
@@ -2184,7 +2381,7 @@ function renderMisAvisos(){
   if(alertaCli){
     if(porVencerCli.length){
       alertaCli.style.display='block';
-      listaCli.innerHTML=porVencerCli.map(a=>`<div><strong>${nroSeg(a.id)}</strong> — ${a.cargo}: <strong>${diasLabel(diasRest(a.fechaAprobacion))}</strong></div>`).join('');
+      listaCli.innerHTML=porVencerCli.map(a=>`<div><strong>${nroSeg(a.id)}</strong> — ${esc(a.cargo)}: <strong>${diasLabel(diasRest(a.fechaAprobacion))}</strong></div>`).join('');
     } else { alertaCli.style.display='none'; }
   }
   if(!avisos.length){ list.innerHTML=''; vacio.style.display='block'; return; }
@@ -2202,8 +2399,8 @@ function renderMisAvisos(){
     return `<div class="aviso" style="border-left-color:${a.estado==='activo'?'var(--green)':a.estado==='pendiente'?'var(--gold)':'var(--line)'}">
       <div class="av-left">
         <div class="av-num">${a.estado==='pendiente'?'Sin número asignado':nroSeg(a.id)}${a.sinCobro?' · <span style="color:var(--green)">🎁 PLAN GRATUITO</span>':''}</div>
-        <div class="av-cargo">${a.cargo}</div>
-        <div class="av-emp">${[a.lugar,a.ciudad,a.region].filter(Boolean).join(' · ')} · ${a.turno} · ${a.contrato}</div>
+        <div class="av-cargo">${esc(a.cargo)}</div>
+        <div class="av-emp">${[a.lugar,a.ciudad,a.region].filter(Boolean).join(' · ')} · ${esc(a.turno)} · ${esc(a.contrato)}</div>
         ${a.publicadoPor?`<div style="font-size:12px;color:#9AA5B8;margin-top:3px">Publicado por ${a.publicadoPor}</div>`:''}
         <div style="font-size:13px;color:var(--sub);margin-top:8px;line-height:1.5">${e.desc}</div>
         ${a.motivoAclaracion?`<div style="background:var(--warn-bg);border-left:3px solid var(--warn);border-radius:6px;padding:12px 14px;margin-top:10px">
@@ -2370,9 +2567,9 @@ function enviarRecordatorio(id){
   const d = diasSinCobro(c);
   const asunto = encodeURIComponent(`MANTEWORK · Tu período gratuito ${d===0?'ha finalizado':'termina en '+d+' día'+(d===1?'':'s')}`);
   const cuerpo = encodeURIComponent(
-`Estimado/a ${c.nombre}:
+`Estimado/a ${esc(c.nombre)}:
 
-Te escribimos de MANTEWORK (Invictum SPA) respecto de la cuenta de ${c.empresa}.
+Te escribimos de MANTEWORK (Invictum SPA) respecto de la cuenta de ${esc(c.empresa)}.
 
 ${d===0
   ? 'Tu período de prueba gratuito ha finalizado. Para mantener tus avisos activos en el canal, elige uno de nuestros planes.'
@@ -2388,12 +2585,12 @@ Puedes revisarlos y publicar en www.mantework.com o respondernos por WhatsApp.
 
 Saludos,
 Equipo MANTEWORK · Invictum SPA`);
-  window.open(`mailto:${c.email}?subject=${asunto}&body=${cuerpo}`, '_self');
+  window.open(`mailto:${esc(c.email)}?subject=${asunto}&body=${cuerpo}`, '_self');
   c.nRecordatorios = (c.nRecordatorios||0) + 1;
   c.fechaUltimoRecordatorio = new Date();
   guardarDatos();
   renderAdmin();
-  toast(`✓ Recordatorio N°${c.nRecordatorios} preparado para ${c.empresa} — revisa tu aplicación de correo`);
+  toast(`✓ Recordatorio N°${c.nRecordatorios} preparado para ${esc(c.empresa)} — revisa tu aplicación de correo`);
 }
 
 // ══════════════════════════════════════════════
@@ -2890,7 +3087,7 @@ function autocompletarEmpresa(){
     const nota = document.createElement('div');
     nota.id = 'nota-autocompletado';
     nota.style.cssText = 'background:var(--green-bg);border:1px solid var(--green-l);border-left:3px solid var(--green);border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:13.5px;color:#1A5C38;line-height:1.6';
-    nota.innerHTML = `✓ <strong>Datos cargados desde tu enrolamiento.</strong> Estos campos provienen del registro de ${c.empresa} y no requieren edición. Si algún dato cambió, escríbenos al +56 9 6594 5170.`;
+    nota.innerHTML = `✓ <strong>Datos cargados desde tu enrolamiento.</strong> Estos campos provienen del registro de ${esc(c.empresa)} y no requieren edición. Si algún dato cambió, escríbenos al +56 9 6594 5170.`;
     wp0.insertBefore(nota, wp0.firstChild);
   }
 }
@@ -2944,17 +3141,17 @@ function renderPublico(){
     const haceStr = hace===0?'Publicado hoy':hace===1?'Hace 1 día':`Hace ${hace} días`;
     const vEmp = a.verEmpresa!==false;
     const vFae = a.verFaena!==false;
-    const empTxt = vEmp ? a.empresa : 'Empresa del sector minero';
-    const ubiTxt = vFae ? ([a.lugar,a.ciudad].filter(Boolean).join(', ')||a.region) : a.region;
+    const empTxt = esc(vEmp ? a.empresa : 'Empresa del sector minero');
+    const ubiTxt = esc(vFae ? ([a.lugar,a.ciudad].filter(Boolean).join(', ')||a.region) : a.region);
     return `<div class="aviso">
       <div class="av-left">
         <div class="av-num">${nroSeg(a.id)} · Aviso validado MANTEWORK</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap">
-          <div class="av-cargo">${a.cargo}</div>
+          <div class="av-cargo">${esc(a.cargo)}</div>
           ${(!vEmp||!vFae)?'<span class="badge bg-pend">🔒 Confidencial</span>':''}
         </div>
         <div class="av-emp">${empTxt} · ${ubiTxt}</div>
-        <div class="av-tags"><span class="av-tag">📍 ${a.region}</span><span class="av-tag">🕐 ${a.turno}</span><span class="av-tag">📋 ${a.contrato}</span>${a.experiencia?`<span class="av-tag">🎓 ${a.experiencia}</span>`:''}</div>
+        <div class="av-tags"><span class="av-tag">📍 ${a.region}</span><span class="av-tag">🕐 ${esc(a.turno)}</span><span class="av-tag">📋 ${esc(a.contrato)}</span>${a.experiencia?`<span class="av-tag">🎓 ${esc(a.experiencia)}</span>`:''}</div>
       </div>
       <div class="av-right">
         <span class="av-check">✓ Aviso validado</span>
@@ -3035,7 +3232,7 @@ function renderAdmin(){
       listaP.innerHTML=periodosCriticos.map(c=>{const d=diasSinCobro(c);
         const avisosActivos = DB.avisos.filter(x=>x.empresa===c.empresa && x.estado==='activo').length;
         return `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-          <strong>${c.empresa}</strong> · ${c.nombre} · ${c.wsp}
+          <strong>${esc(c.empresa)}</strong> · ${esc(c.nombre)} · ${c.wsp}
           <span style="font-size:12px;color:var(--sub)">${avisosActivos} ${avisosActivos===1?'aviso activo':'avisos activos'} en el canal</span>
           <span style="background:${d===0?'var(--red)':'var(--warn)'};color:#fff;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:100px">${d===0?'PERÍODO VENCIDO':d+' días restantes'}</span>
           <button class="ab ab-ok" style="font-size:11.5px;padding:5px 11px" onclick="activarCobro(${c.id})">Activar cobro</button>
@@ -3050,7 +3247,7 @@ function renderAdmin(){
     alerta.style.display='block';
     listaV.innerHTML=porVencer.map(a=>{const d=diasRest(a.fechaAprobacion);
       return `<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-        <strong>${nroSeg(a.id)}</strong> · ${a.cargo} — ${a.empresa}
+        <strong>${nroSeg(a.id)}</strong> · ${esc(a.cargo)} — ${esc(a.empresa)}
         <span style="background:var(--warn);color:#fff;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:100px">${diasLabel(d)}</span>
         <button class="ab ab-ok" style="font-size:11.5px;padding:5px 11px" onclick="extenderAviso(${a.id})">Extender 30 días</button>
       </div>`;}).join('');
@@ -3061,7 +3258,7 @@ function renderAdmin(){
   else{pv.style.display='none'; const bl=document.getElementById('bloque-lote'); if(bl) bl.style.display='flex';
     pl.innerHTML=pend.map(a=>`<div class="arow arow-pend" id="ar-${a.id}">
       <input type="checkbox" class="chk-aviso" value="${a.id}" onchange="contarLote()" style="accent-color:var(--green);width:18px;height:18px;flex-shrink:0;cursor:pointer">
-      <div class="arow-info"><div class="arow-cargo">${a.cargo}</div><div class="arow-det">${nroSeg(a.id)} · ${a.empresa} · ${a.region} · Plan ${a.plan}${(a.verEmpresa===false||a.verFaena===false)?' · <span style="color:var(--warn);font-weight:600">🔒 Confidencial</span>':''}${a.sinCobro?' · <span style="color:var(--green);font-weight:600">🎁 SIN COBRO</span>':''}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
+      <div class="arow-info"><div class="arow-cargo">${esc(a.cargo)}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${(a.verEmpresa===false||a.verFaena===false)?' · <span style="color:var(--warn);font-weight:600">🔒 Confidencial</span>':''}${a.sinCobro?' · <span style="color:var(--green);font-weight:600">🎁 SIN COBRO</span>':''}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
       <span class="pago-ok">${a.sinCobro?'🎁 Plan Gratuito':'✓ Verificado'}</span><span class="badge bg-pend">Pendiente</span>
       <div class="arow-acts">
         <button class="ab ab-v" onclick="editarAviso(${a.id})">✎ Editar</button>
@@ -3077,7 +3274,7 @@ function renderAdmin(){
     const cli=CLIENTES.find(c=>c.empresa===a.empresa);
     const esGratuito = a.plan==='Gratuito' || (cli && cli.sinCobro);
     return`<div class="arow arow-activo" id="ar-${a.id}">
-      <div class="arow-info"><div class="arow-cargo">${a.cargo}${esGratuito?` <span style="background:#7C6BAE;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="Publicado durante el período de prueba gratuita — visible solo para el administrador">GRATUITO</span>`:''}</div><div class="arow-det">${nroSeg(a.id)} · ${a.empresa} · ${a.region} · Plan ${a.plan}${a.fuente?` · <span style="color:#2E7D5B;font-weight:600">🌐 ${a.fuente}</span>`:''}${a.nReenvios?` · <span style="color:#7C6BAE;font-weight:600">↺ Reenviado ${a.nReenvios}×</span>`:''}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
+      <div class="arow-info"><div class="arow-cargo">${esc(a.cargo)}${esGratuito?` <span style="background:#7C6BAE;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="Publicado durante el período de prueba gratuita — visible solo para el administrador">GRATUITO</span>`:''}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${a.fuente?` · <span style="color:#2E7D5B;font-weight:600">🌐 ${a.fuente}</span>`:''}${a.nReenvios?` · <span style="color:#7C6BAE;font-weight:600">↺ Reenviado ${a.nReenvios}×</span>`:''}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
       <span class="badge bg-green">Activo</span>
       ${d!==null?`<span class="arow-dias ${diasClass(d)}">${diasLabel(d)}</span>`:''}
       <div class="arow-acts">
@@ -3089,7 +3286,7 @@ function renderAdmin(){
   const hl=document.getElementById('hist-list'); const hv=document.getElementById('hist-vacio');
   if(!hist.length){hl.innerHTML='';hv.style.display='block';}
   else{hv.style.display='none';
-    hl.innerHTML=hist.map(a=>`<div class="arow"><div class="arow-info"><div class="arow-cargo">${a.cargo}</div><div class="arow-det">${nroSeg(a.id)} · ${a.empresa} · Plan ${a.plan}</div>${a.motivoAclaracion?`<div style="font-size:12.5px;color:var(--warn);margin-top:6px">📝 ${a.motivoAclaracion}</div>`:''}</div><span class="badge ${(a.estado==='aclaracion'||a.estado==='rechazado')?'bg-pend':'bg-pend'}">${(a.estado==='aclaracion'||a.estado==='rechazado')?'Requiere aclaración':'Cerrado'}</span>${(a.estado==='aclaracion'||a.estado==='rechazado')?`<button class="ab ab-v" onclick="reactivarAviso(${a.id})">Devolver a revisión</button>`:''}</div>`).join('');}
+    hl.innerHTML=hist.map(a=>`<div class="arow"><div class="arow-info"><div class="arow-cargo">${esc(a.cargo)}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · Plan ${a.plan}</div>${a.motivoAclaracion?`<div style="font-size:12.5px;color:var(--warn);margin-top:6px">📝 ${a.motivoAclaracion}</div>`:''}</div><span class="badge ${(a.estado==='aclaracion'||a.estado==='rechazado')?'bg-pend':'bg-pend'}">${(a.estado==='aclaracion'||a.estado==='rechazado')?'Requiere aclaración':'Cerrado'}</span>${(a.estado==='aclaracion'||a.estado==='rechazado')?`<button class="ab ab-v" onclick="reactivarAviso(${a.id})">Devolver a revisión</button>`:''}</div>`).join('');}
 }
 
 // ══════════════════════════════════════════════
@@ -3117,14 +3314,14 @@ function renderClientes(){
   cv.style.display='none';
   cl.innerHTML=activos.map(c=>`<div class="cli-row">
     <div class="cli-info">
-      <div class="cli-n">${c.empresa} ${c.sinCobro?(()=>{const d=diasSinCobro(c);const v=d===0;return `<span style="font-size:11px;font-weight:700;background:${v?'var(--red-bg)':d<=7?'var(--warn-bg)':'var(--green-bg)'};color:${v?'var(--red)':d<=7?'var(--warn)':'var(--green)'};padding:2px 9px;border-radius:100px;margin-left:6px">${v?'⚠ PERÍODO VENCIDO':'🎁 SIN COBRO · '+d+'d'}</span>`;})():''}</div>
+      <div class="cli-n">${esc(c.empresa)} ${c.sinCobro?(()=>{const d=diasSinCobro(c);const v=d===0;return `<span style="font-size:11px;font-weight:700;background:${v?'var(--red-bg)':d<=7?'var(--warn-bg)':'var(--green-bg)'};color:${v?'var(--red)':d<=7?'var(--warn)':'var(--green)'};padding:2px 9px;border-radius:100px;margin-left:6px">${v?'⚠ PERÍODO VENCIDO':'🎁 SIN COBRO · '+d+'d'}</span>`;})():''}</div>
       <div class="cli-d">${c.rut||'—'} · ${c.tipo||'—'} · ${(c.usuarios||[]).length} de ${MAX_USUARIOS_EMPRESA} usuarios</div>
       <div style="margin-top:8px;display:flex;flex-direction:column;gap:5px">
         ${(c.usuarios||[]).map((u,i)=>`<div style="font-size:12.5px;color:var(--sub);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <span style="color:var(--gold);font-weight:700">${i+1}.</span>
-          <strong style="color:var(--navy)">${u.nombre}</strong>
+          <strong style="color:var(--navy)">${esc(u.nombre)}</strong>
           <span style="color:#9AA5B8">${u.cargo||''}</span>
-          <span style="font-family:monospace;font-size:11.5px;background:var(--bg);padding:1px 7px;border-radius:5px">${u.email}</span>
+          <span style="font-family:monospace;font-size:11.5px;background:var(--bg);padding:1px 7px;border-radius:5px">${esc(u.email)}</span>
           <span style="color:#9AA5B8">${u.wsp||''}</span>
           ${(c.usuarios||[]).length>1?`<button class="ab ab-no" style="font-size:10.5px;padding:2px 8px" onclick="quitarUsuario(${c.id},${i})">Quitar</button>`:''}
         </div>`).join('')}
@@ -3197,9 +3394,9 @@ function agregarUsuario(id){
   const c = CLIENTES.find(x=>x.id===id); if(!c) return;
   if(!c.usuarios) c.usuarios = [];
   if(c.usuarios.length >= MAX_USUARIOS_EMPRESA){
-    toast(`⚠ ${c.empresa} ya tiene el máximo de ${MAX_USUARIOS_EMPRESA} usuarios`); return;
+    toast(`⚠ ${esc(c.empresa)} ya tiene el máximo de ${MAX_USUARIOS_EMPRESA} usuarios`); return;
   }
-  const nombre = prompt(`Nuevo usuario para ${c.empresa}\n\nNombre y apellido:`);
+  const nombre = prompt(`Nuevo usuario para ${esc(c.empresa)}\n\nNombre y apellido:`);
   if(nombre===null) return;
   if(!nombre.trim()){ toast('⚠ El nombre es obligatorio'); return; }
   const cargo = prompt('Cargo en la empresa:', 'Analista de Selección');
@@ -3219,24 +3416,24 @@ function agregarUsuario(id){
   }
   c.usuarios.push({ nombre:sanitiza(nombre), email:sanitiza(email), pass, wsp:sanitiza(wsp), cargo:sanitiza(cargo) });
   renderClientes(); renderAdmin();
-  toast(`✓ ${nombre.trim()} agregado a ${c.empresa} — envíale sus credenciales por WhatsApp`);
+  toast(`✓ ${nombre.trim()} agregado a ${esc(c.empresa)} — envíale sus credenciales por WhatsApp`);
 }
 
 function quitarUsuario(id, idx){
   const c = CLIENTES.find(x=>x.id===id); if(!c || !c.usuarios) return;
   if(c.usuarios.length <= 1){ toast('⚠ La empresa debe mantener al menos un usuario'); return; }
   const u = c.usuarios[idx];
-  if(!confirm(`¿Quitar el acceso de ${u.nombre} (${u.email})?\n\nNo podrá volver a ingresar al portal.`)) return;
+  if(!confirm(`¿Quitar el acceso de ${esc(u.nombre)} (${esc(u.email)})?\n\nNo podrá volver a ingresar al portal.`)) return;
   c.usuarios.splice(idx,1);
   renderClientes(); renderAdmin();
-  toast(`Acceso de ${u.nombre} revocado`);
+  toast(`Acceso de ${esc(u.nombre)} revocado`);
 }
 
 function verClaves(id){
   const c = CLIENTES.find(x=>x.id===id); if(!c) return;
-  if(!confirm(`Vas a mostrar en pantalla las contraseñas de ${c.empresa}.\n\nAsegúrate de que nadie más esté viendo tu pantalla.`)) return;
-  const txt = (c.usuarios||[]).map((u,i)=>`${i+1}. ${u.nombre}\n   Usuario: ${u.email}\n   Clave: ${u.pass}`).join('\n\n');
-  alert(`Credenciales de ${c.empresa}\n\n${txt}`);
+  if(!confirm(`Vas a mostrar en pantalla las contraseñas de ${esc(c.empresa)}.\n\nAsegúrate de que nadie más esté viendo tu pantalla.`)) return;
+  const txt = (c.usuarios||[]).map((u,i)=>`${i+1}. ${esc(u.nombre)}\n   Usuario: ${esc(u.email)}\n   Clave: ${u.pass}`).join('\n\n');
+  alert(`Credenciales de ${esc(c.empresa)}\n\n${txt}`);
 }
 
 
@@ -3244,11 +3441,11 @@ function verClaves(id){
 function confirmarPlanEmail(id){
   const c = CLIENTES.find(x=>x.id===id); if(!c) return;
   const cuota = cuotaDe(c.plan);
-  const asunto = encodeURIComponent(`MANTEWORK · Plan ${planBase(c.plan)} activado para ${c.empresa}`);
+  const asunto = encodeURIComponent(`MANTEWORK · Plan ${planBase(c.plan)} activado para ${esc(c.empresa)}`);
   const cuerpo = encodeURIComponent(
-`Estimado/a ${c.nombre}:
+`Estimado/a ${esc(c.nombre)}:
 
-Confirmamos la activación del plan de ${c.empresa} en MANTEWORK.
+Confirmamos la activación del plan de ${esc(c.empresa)} en MANTEWORK.
 
 · Plan: ${planBase(c.plan)}
 · Avisos incluidos: ${cuota>=999?'ilimitados':cuota}
@@ -3259,8 +3456,8 @@ Ya puedes publicar en www.mantework.com con tu usuario habitual. El botón "Publ
 
 Saludos,
 Equipo MANTEWORK · Invictum SPA`);
-  window.open(`mailto:${c.email}?subject=${asunto}&body=${cuerpo}`, '_self');
-  toast(`✓ Confirmación del plan preparada para ${c.empresa} — revisa tu correo`);
+  window.open(`mailto:${esc(c.email)}?subject=${asunto}&body=${cuerpo}`, '_self');
+  toast(`✓ Confirmación del plan preparada para ${esc(c.empresa)} — revisa tu correo`);
 }
 
 function renovarPlan(id){
@@ -3268,7 +3465,7 @@ function renovarPlan(id){
   const planes = ['Plan Básico','Plan Estándar','Plan Premium','Pack Empresa'];
   const usados = avisosUsados(c.empresa);
   const sel = prompt(
-`Renovar o cambiar plan de ${c.empresa}
+`Renovar o cambiar plan de ${esc(c.empresa)}
 Plan actual: ${c.plan} · ${usados} avisos usados en el ciclo vigente
 
 Indica el nuevo plan contratado:
@@ -3286,13 +3483,13 @@ Esto REINICIA el contador de avisos del ciclo.`, '2');
   guardarDatos();
   renderClientes(); renderAdmin();
   actualizarBotonPublicar();
-  toast(`✓ ${c.empresa} — ${planes[idx]} activado. Contador de avisos reiniciado.`);
+  toast(`✓ ${esc(c.empresa)} — ${planes[idx]} activado. Contador de avisos reiniciado.`);
 }
 
 function activarCobro(id){
   const c = CLIENTES.find(x=>x.id===id); if(!c) return;
   const planes = ['Plan Básico','Plan Estándar','Plan Premium','Pack Empresa'];
-  const sel = prompt(`Activar cobro para ${c.empresa}\n\nIndica el plan contratado:\n1 · Plan Básico ($15.000)\n2 · Plan Estándar ($50.000)\n3 · Plan Premium ($100.000)\n4 · Pack Empresa ($350.000)`, '2');
+  const sel = prompt(`Activar cobro para ${esc(c.empresa)}\n\nIndica el plan contratado:\n1 · Plan Básico ($15.000)\n2 · Plan Estándar ($50.000)\n3 · Plan Premium ($100.000)\n4 · Pack Empresa ($350.000)`, '2');
   if(sel===null) return;
   const idx = parseInt(sel)-1;
   if(isNaN(idx)||idx<0||idx>3){ toast('⚠ Opción inválida — indica 1, 2, 3 o 4'); return; }
@@ -3301,7 +3498,7 @@ function activarCobro(id){
   c.plan = planes[idx];
   c.fechaActivacion = new Date();
   renderClientes(); renderAdmin();
-  toast(`✓ ${c.empresa} pasó a ${planes[idx]} — pago por Webpay activado`);
+  toast(`✓ ${esc(c.empresa)} pasó a ${planes[idx]} — pago por Webpay activado`);
 }
 
 function cambiarClave(id){
@@ -3310,13 +3507,13 @@ function cambiarClave(id){
   const us = c.usuarios || [];
   let idx = 0;
   if(us.length > 1){
-    const lista = us.map((u,i)=>`${i+1} · ${u.nombre} (${u.email})`).join('\n');
-    const sel = prompt(`¿A qué usuario de ${c.empresa} le cambias la clave?\n\n${lista}`, '1');
+    const lista = us.map((u,i)=>`${i+1} · ${esc(u.nombre)} (${esc(u.email)})`).join('\n');
+    const sel = prompt(`¿A qué usuario de ${esc(c.empresa)} le cambias la clave?\n\n${lista}`, '1');
     if(sel===null) return;
     idx = parseInt(sel)-1;
     if(isNaN(idx)||idx<0||idx>=us.length){ toast('⚠ Opción inválida'); return; }
   }
-  const nueva = prompt(`Nueva clave para ${c.empresa}:
+  const nueva = prompt(`Nueva clave para ${esc(c.empresa)}:
 (mínimo 8 caracteres, debe tener letras y números)`);
   if(nueva===null) return; // canceló
   if(nueva.length < 8){ toast('⚠ La clave debe tener al menos 8 caracteres'); return; }
@@ -3330,7 +3527,7 @@ function cambiarClave(id){
     cred.innerHTML = `Nueva clave asignada:<br><strong>${nueva}</strong><br><span style="font-size:12px;color:#9AA5B8">Envía por WhatsApp a ${target.nombre||c.nombre} (${target.wsp||c.wsp})</span>`;
   }
   renderClientes();
-  toast(`✓ Clave actualizada para ${c.empresa}`);
+  toast(`✓ Clave actualizada para ${esc(c.empresa)}`);
 }
 
 // ══════════════════════════════════════════════
@@ -3425,8 +3622,11 @@ function aprobarLote(){
 function aprobar(id){
   const a=DB.avisos.find(x=>x.id===id); if(!a)return;
   a.estado='activo'; a.fechaAprobacion=new Date(); DB.aprobados++;
+  guardarDatos();
   renderAdmin(); renderPublico(); if(SESSION.rol==='cliente') renderMisAvisos();
-  toast('✓ Aprobado — ya visible en ofertas activas del sitio y pendiente de publicar en el canal');
+  toast('✓ Validado y aprobado');
+  // Ofrecer publicación inmediata en el canal (copiar y abrir WhatsApp)
+  setTimeout(()=>{ copiarParaCanal(a.id); }, 500);
 }
 function pedirAclaracion(id){
   const a=DB.avisos.find(x=>x.id===id); if(!a)return;
@@ -3542,7 +3742,7 @@ function guardarYAprobar(){
 
 function extenderAviso(id){
   const a=DB.avisos.find(x=>x.id===id); if(!a)return;
-  if(!confirm(`¿Extender 30 días más el aviso ${nroSeg(a.id)} de ${a.empresa}?\n\nRecuerda confirmar el pago de la renovación antes de extender.`)) return;
+  if(!confirm(`¿Extender 30 días más el aviso ${nroSeg(a.id)} de ${esc(a.empresa)}?\n\nRecuerda confirmar el pago de la renovación antes de extender.`)) return;
   a.fechaAprobacion=new Date();
   renderAdmin(); renderPublico(); if(SESSION.rol==='cliente') renderMisAvisos();
   toast(`✓ Aviso extendido — nueva vigencia de 30 días`);
@@ -3586,7 +3786,7 @@ function go(p){
   // Renders específicos por página
   if(p==='planes')    { renderCuota('cuota-banner'); aplicarModoDemo(); }
   if(p==='misavisos') renderMisAvisos();
-  if(p==='publicar')  { aplicarModoDemo(); autocompletarEmpresa(); renderCerts(); sincronizarGrupos(); }
+  if(p==='publicar')  { aplicarModoDemo(); autocompletarEmpresa(); renderCerts(); sincronizarGrupos(); mostrarPlanAsignado(); }
   window.scrollTo({top:0,behavior:'instant'});
 }
 function scrollSec(id){ const el=document.getElementById(id); if(el)setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),120); }
@@ -3612,7 +3812,7 @@ function wRender(){
   if(wStep===3){
     renderPreview();
     aplicarModoDemo();
-    document.getElementById('r_plan').textContent=planN;
+    document.getElementById('r_plan').textContent=(clienteActual()?clienteActual().plan:planN.split('·')[0].trim());
     document.getElementById('r_cargo').textContent=document.getElementById('f_cargo').value||'—';
     document.getElementById('r_emp').textContent=document.getElementById('f_empresa').value||SESSION.empresa||'—';
     document.getElementById('r_precio').textContent='$'+planP+' CLP';
@@ -3689,8 +3889,7 @@ function validarPaso(paso){
     return true;
   }
   if(paso===2){
-    const planSel = document.querySelector('.pp.sel');
-    if(!planSel){ toast('⚠ Selecciona un plan de publicación'); return false; }
+    // Modelo A: el plan lo asigna el administrador; aquí solo se verifica la cuota
     // Verificar período sin cobro vencido
     const c = clienteActual();
     if(c && c.sinCobro && periodoVencido(c)){
@@ -3752,7 +3951,7 @@ async function wGo(d){
           return;
         }
       }
-      const n={id:Date.now(),cargo:sanitiza(document.getElementById('f_cargo').value),empresa:(clienteActual()?clienteActual().empresa:sanitiza(document.getElementById('f_empresa').value))||SESSION.empresa||'Empresa',lugar:'',ciudad:document.getElementById('f_ciudad').value,region:document.getElementById('f_region').value,turno:document.getElementById('f_turno').value,contrato:document.getElementById('f_contrato').value,req:sanitiza(document.getElementById('f_req').value),grupo:document.getElementById('f_grupo').value,perfil:document.getElementById('f_perfil').value,experiencia:document.getElementById('f_experiencia').value,educacion:document.getElementById('f_educacion').value,certs:certsSeleccionadas(),postula:sanitiza(document.getElementById('f_postula').value),plan:planN.split('·')[0].trim(),estado:'pendiente',fechaCreacion:new Date(),fechaAprobacion:null,badge:'blue',verEmpresa:document.getElementById('f_ver_empresa').checked,verFaena:document.getElementById('f_ver_faena').checked,sinCobro:esDemo(),publicadoPor:SESSION.nombreUsuario||SESSION.user};
+      const n={id:Date.now(),cargo:sanitiza(document.getElementById('f_cargo').value),empresa:(clienteActual()?clienteActual().empresa:sanitiza(document.getElementById('f_empresa').value))||SESSION.empresa||'Empresa',lugar:'',ciudad:document.getElementById('f_ciudad').value,region:document.getElementById('f_region').value,turno:document.getElementById('f_turno').value,contrato:document.getElementById('f_contrato').value,req:sanitiza(document.getElementById('f_req').value),grupo:document.getElementById('f_grupo').value,perfil:document.getElementById('f_perfil').value,experiencia:document.getElementById('f_experiencia').value,educacion:document.getElementById('f_educacion').value,certs:certsSeleccionadas(),postula:sanitiza(document.getElementById('f_postula').value),plan:(clienteActual()?clienteActual().plan:'Gratuito'),estado:'pendiente',fechaCreacion:new Date(),fechaAprobacion:null,badge:'blue',verEmpresa:document.getElementById('f_ver_empresa').checked,verFaena:document.getElementById('f_ver_faena').checked,sinCobro:esDemo(),publicadoPor:SESSION.nombreUsuario||SESSION.user};
       DB.avisos.push(n); wStep=4; wRender();
       // Mostrar email de confirmación
       const emailEl = document.getElementById('confirm-email');

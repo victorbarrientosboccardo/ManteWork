@@ -1,6 +1,6 @@
 // MANTEWORK Service Worker · v2.0.0
 // Al publicar una versión nueva, cambiar el número de CACHE
-const CACHE = 'mantework-v3.0.0';
+const CACHE = 'mantework-v3.5.0';
 const ASSETS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', e => {
