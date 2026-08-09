@@ -948,7 +948,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 19.628</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.12.1</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.12.5</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1547,7 +1547,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.12.1';
+const APP_VERSION = '3.12.5';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1558,6 +1558,10 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.12.5', fecha:'09-08-2026', cambios:['La tarjeta de vista previa que WhatsApp muestra sobre el enlace de postulación ahora dice solo «MANTEWORK» — se quitó el texto «Redirigiendo…» para evitar que alguien piense que debe interactuar ahí en vez de ser llevado al portal real'] },
+  { v:'3.12.4', fecha:'09-08-2026', cambios:['Se quitó del pie del aviso en el canal el llamado a empresas ("¿Eres empresa? Publica en mantework.com") — el mensaje queda enfocado 100% en el técnico que busca trabajo; la captación de empresas sigue por la página de Planes y WhatsApp directo'] },
+  { v:'3.12.3', fecha:'09-08-2026', cambios:['Aprobación en lote (seleccionar varios y aprobar juntos) ya no intenta copiar ni abrir el canal para cada uno — evita que se pisen entre sí. Genera el enlace corto de cada aviso automáticamente; luego publicas cada uno cuando quieras con el botón «Copiar para el canal»'] },
+  { v:'3.12.2', fecha:'09-08-2026', cambios:['Nuevo botón «Copiar para el canal» en cada aviso ya publicado, para volver a copiarlo y pegarlo cuando quieras — soluciona el caso de aprobar varios avisos seguidos, donde el portapapeles solo guarda el último'] },
   { v:'3.12.1', fecha:'09-08-2026', cambios:['Corrección: la política de seguridad del sitio bloqueaba el lector de Excel (CDN no autorizado). Ya se puede cargar avisos por Excel sin errores'] },
   { v:'3.12.0', fecha:'09-08-2026', cambios:['Acortador de enlaces PROPIO: cada aviso publicado usa un enlace mantework.com/ir/… que cuenta cuántas personas van a postular','Sin límite ni costo mensual (usa tu dominio y Supabase); los datos de clics son tuyos','Nueva sección en Estadísticas: clics por aviso, ordenados de mayor a menor'] },
   { v:'3.11.0', fecha:'08-08-2026', cambios:['Detección de avisos repetidos al cargar Excel: nivel 1 por ID de solicitud, nivel 2 por cargo+empresa. Los repetidos se saltan automáticamente','El resumen de carga informa cuántos repetidos se saltaron'] },
@@ -2108,7 +2112,6 @@ function textoCanal(a){
   L.push('\n━━━━━━━━━━━━━━');
   L.push('✔️ *MANTEWORK* · Solo avisos validados');
   L.push('📲 _Comparte este canal con más técnicos_');
-  L.push('_¿Eres empresa? Publica en mantework.com_');
   return L.join('\n');
 }
 function copiarParaCanal(id){
@@ -3631,6 +3634,7 @@ function renderAdmin(){
       <span class="badge bg-green">Activo</span>
       ${d!==null?`<span class="arow-dias ${diasClass(d)}">${diasLabel(d)}</span>`:''}
       <div class="arow-acts">
+        <button class="ab ab-ok" onclick="copiarParaCanal(${a.id})">📋 Copiar para el canal</button>
         <button class="ab ab-v" onclick="editarAviso(${a.id})">✎ Editar publicado</button>
         <button class="ab ab-no" onclick="marcarVencido(${a.id})">Cerrar aviso</button>
       </div>
@@ -3963,13 +3967,18 @@ function aprobarLote(){
       ? 'Estás dentro de la ventana de publicación (09:00–11:00). Los avisos se publican hoy en el canal.'
       : 'Estás fuera de la ventana de publicación (09:00–11:00). Los avisos quedarán aprobados y se publican en el canal mañana entre 09:00 y 11:00.');
   if(!confirm(msg)) return;
+  const aprobados = [];
   ids.forEach(id=>{
     const a=DB.avisos.find(x=>x.id===id);
-    if(a && a.estado==='pendiente'){ a.estado='activo'; a.fechaAprobacion=new Date(); DB.aprobados++; }
+    if(a && a.estado==='pendiente'){ a.estado='activo'; a.fechaAprobacion=new Date(); DB.aprobados++; aprobados.push(a); }
   });
+  // Genera el enlace corto de cada uno (para medir clics), sin copiar ni abrir el canal —
+  // eso lo haces tú, uno a la vez, con el botón «Copiar para el canal» de cada aviso activo.
+  Promise.all(aprobados.map(a=>crearLinkCorto(a))).then(()=>guardarDatos());
+  guardarDatos();
   const chkT=document.getElementById('chk-todos'); if(chkT) chkT.checked=false;
   renderAdmin(); renderPublico();
-  toast(`✓ ${ids.length} ${ids.length===1?'aviso aprobado':'avisos aprobados'} — ${enVentana?'publicación hoy 09:00–11:00':'publicación mañana 09:00–11:00'}`);
+  toast(`✓ ${ids.length} ${ids.length===1?'aviso aprobado':'avisos aprobados'} — usa «📋 Copiar para el canal» en cada uno para publicarlos`);
 }
 
 function aprobar(id){
