@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redirigiendo… · MANTEWORK</title>
+<style>
+  body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:#0D1B2A;color:#fff;
+       display:flex;align-items:center;justify-content:center;height:100vh;text-align:center}
+  .box{padding:24px}
+  .logo{width:56px;height:56px;background:#C4A04A;margin:0 auto 18px;
+        clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+        display:flex;align-items:center;justify-content:center;font-weight:800;color:#0D1B2A;font-size:30px}
+  h1{font-size:20px;margin:0 0 8px}.s{color:#9FB3C8;font-size:14px}
+  a{color:#C4A04A}
+  .sp{margin-top:16px;width:26px;height:26px;border:3px solid rgba(196,160,74,.3);
+      border-top-color:#C4A04A;border-radius:50%;animation:g 1s linear infinite;display:inline-block}
+  @keyframes g{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="logo">M</div>
+    <h1>Te llevamos a la oferta…</h1>
+    <div class="s">MANTEWORK · Empleo Técnico Minero</div>
+    <div class="sp"></div>
+    <div class="s" id="fallback" style="margin-top:18px;display:none">
+      Si no eres redirigido, <a id="manual" href="#">haz clic aquí</a>.
+    </div>
+  </div>
+<script>
+  const SUPABASE_URL = 'https://tdbjlewbaxmqyueszmnu.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkYmpsZXdiYXhtcXl1ZXN6bW51Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwODE5MTQsImV4cCI6MjEwMTY1NzkxNH0.e06KjuasZkTtnVDlgPHUxtdq-UGE_jcQ1DDvTezcvmo';
+
+  function codigo(){
+    const q = new URLSearchParams(location.search).get('c');
+    if(q) return q.trim();
+    const parts = location.pathname.split('/').filter(Boolean);
+    return parts[parts.length-1] !== 'ir.html' ? parts[parts.length-1] : '';
+  }
+  async function go(){
+    const c = codigo();
+    if(!c){ location.replace('https://www.mantework.com/'); return; }
+    let destino = null;
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/rpc/registrar_clic', {
+        method:'POST',
+        headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY},
+        body: JSON.stringify({ p_codigo: c })
+      });
+      destino = await res.json();
+    } catch(e){ destino = null; }
+    if(destino && /^https?:\/\//i.test(destino)){
+      location.replace(destino);
+    } else {
+      document.getElementById('fallback').style.display='block';
+      const m = document.getElementById('manual');
+      m.href = 'https://www.mantework.com/';
+      setTimeout(()=>location.replace('https://www.mantework.com/'), 2500);
+    }
+  }
+  go();
+</script>
+</body>
+</html>
