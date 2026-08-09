@@ -948,7 +948,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 19.628</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.12.8</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.13.0</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1180,11 +1180,10 @@ footer{background:var(--navy);margin-top:80px}
       
       <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:11px;padding:15px 17px;margin-bottom:20px">
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px">📢 Difusión del canal</div>
-        <div style="font-size:12px;color:#6B7280;margin-bottom:11px">Pega aquí tu link Bitly de invitación al canal (creado en bitly.com apuntando a tu canal de WhatsApp). Úsalo en tu grupo, LinkedIn o firma para medir de dónde viene el interés.</div>
+        <div style="font-size:12px;color:#6B7280;margin-bottom:11px">Para invitar gente al canal, usa tu enlace propio <b>mantework.com/ir/?c=canal</b>. Sus clics se cuentan solos y aparecen en «🔗 Clics en los avisos» más abajo, junto a los demás.</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-          <input class="ft" id="dif-bitly" style="flex:1;min-width:200px" placeholder="https://bit.ly/mantework-canal" onchange="guardarDifusion()">
+          <input class="ft" readonly value="https://www.mantework.com/ir/?c=canal" style="flex:1;min-width:200px;background:#fff;color:#6B7280" onclick="this.select()">
           <button class="btn btn-ghost" style="font-size:12px;padding:8px 14px" onclick="copiarDifusion()">📋 Copiar link</button>
-          <button class="btn btn-gold" style="font-size:12px;padding:8px 14px" onclick="verEstadisticasDifusion()">📊 Ver clics en Bitly</button>
         </div>
         <div id="dif-msg" style="font-size:11.5px;margin-top:7px;color:#6B7280"></div>
       </div>
@@ -1255,7 +1254,7 @@ footer{background:var(--navy);margin-top:80px}
           </div>
           <div style="grid-column:1/3"><label class="flbl">Requisitos (texto del aviso)</label><input class="ft" id="cap-req" placeholder="TNS Mecánica + 3 años + Licencia B + salud altura"></div>
           <div style="grid-column:1/3"><label class="flbl">Link del aviso en el portal oficial (Codelco, BHP, Anglo…)</label><input class="ft" id="cap-postula" placeholder="https://empleos.codelco.cl/aviso/12345"></div>
-          <div style="grid-column:1/3"><label class="flbl">Link Bitly de rastreo <span style="font-weight:400;color:#9CA3AF">(opcional — para contar clics)</span></label><input class="ft" id="cap-bitly" placeholder="https://bit.ly/xxxxx"></div>
+          <div style="grid-column:1/3;font-size:11.5px;color:#9CA3AF">El enlace corto propio para contar clics se genera solo al aprobar el aviso — no hace falta configurar nada más.</div>
         </div>
         <button class="btn btn-gold" onclick="agregarCaptado()" style="margin-top:12px">+ Agregar a la cola de captación</button>
         <div id="cap-form-msg" style="font-size:12px;margin-top:8px"></div>
@@ -1285,7 +1284,7 @@ footer{background:var(--navy);margin-top:80px}
       <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
         <div>
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--navy)">💾 Datos y respaldos</div>
-          <div style="font-size:12.5px;color:var(--sub);margin-top:2px">Los datos se guardan automáticamente en este navegador. Descarga un respaldo periódicamente. <span id="nube-estado" style="font-weight:600"></span></div>
+          <div style="font-size:12.5px;color:var(--sub);margin-top:2px">Tus datos se guardan en la nube (Supabase) y se sincronizan en todos tus dispositivos automáticamente. Descarga un respaldo periódico como copia extra de seguridad. <span id="nube-estado-avisos" style="font-weight:600"></span></div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button class="ab ab-ok" style="font-size:12px;padding:7px 13px" onclick="descargarRespaldo()">⬇ Descargar respaldo</button>
@@ -1547,7 +1546,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.12.8';
+const APP_VERSION = '3.13.0';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1558,6 +1557,10 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.13.0', fecha:'09-08-2026', cambios:['Las ofertas activas de la portada ahora tienen botón «Postular →» que lleva a la oferta a través del enlace propio mantework.com/ir/… — mismos clics medidos que en el canal','Avisos con contacto telefónico muestran el número sin link, y el link largo del portal nunca se expone']},
+  { v:'3.12.11', fecha:'09-08-2026', cambios:['Corregido: el mensaje de «Datos y respaldos» en Avisos seguía diciendo que los datos se guardan solo en el navegador — texto desactualizado desde antes de conectar Supabase. Además se corrigió un id duplicado que impedía que el indicador de conexión a la nube se actualizara ahí']},
+  { v:'3.12.10', fecha:'09-08-2026', cambios:['Se quitaron todas las referencias a Bitly del panel (Estadísticas y Captación web) — ahora el sistema usa exclusivamente el acortador propio, mostrando el enlace fijo de difusión mantework.com/ir/?c=canal listo para copiar']},
+  { v:'3.12.9', fecha:'09-08-2026', cambios:['Enlace corto propio y fijo para difundir el canal (mantework.com/ir/?c=canal), en vez del link de Bitly — coherente con el resto del sitio: todos los links de medición usan el acortador propio, sin límite ni costo']},
   { v:'3.12.8', fecha:'09-08-2026', cambios:['Pie del aviso simplificado a una sola línea: se quitó «MANTEWORK · Solo avisos validados» (redundante con la cabecera) y «técnicos» pasó a «profesionales», más inclusivo del público del canal'] },
   { v:'3.12.7', fecha:'09-08-2026', cambios:['Se quitó MANTEWORK de la cabecera del aviso en el canal (quedó solo «Empleo Técnico Minero») para no repetir la marca de más — ya queda identificada en el pie y en el link'] },
   { v:'3.12.6', fecha:'09-08-2026', cambios:['Corrección real: WhatsApp convertía en link clicable el dominio de «Fuente oficial» aunque no tuviera http:// (reconoce cualquier patrón palabra.tld). Ahora se muestra solo el nombre del portal sin puntos (ej. «Laborum», «Codelco»), imposible de convertir en enlace'] },
@@ -1758,28 +1761,14 @@ function irContacto(){
 
 
 
-// Link de difusión del canal (Bitly) — guardado y estadísticas
-function guardarDifusion(){
-  const v = document.getElementById('dif-bitly').value.trim();
-  DB.linkDifusion = v;
-  guardarDatos();
-  const m = document.getElementById('dif-msg');
-  if(v && /^https?:\/\//i.test(v)){ m.style.color='var(--green)'; m.textContent='✓ Link guardado. Úsalo en tu difusión.'; }
-  else if(v){ m.style.color='var(--red)'; m.textContent='⚠ Debe empezar con https://'; }
-  else { m.textContent=''; }
-}
+// Link de difusión del canal (enlace propio, código fijo 'canal')
+const LINK_DIFUSION_CANAL = 'https://www.mantework.com/ir/?c=canal';
 function copiarDifusion(){
-  const v = (DB.linkDifusion||document.getElementById('dif-bitly').value||'').trim();
-  if(!v){ document.getElementById('dif-msg').textContent='⚠ Primero pega tu link de difusión.'; return; }
+  const v = LINK_DIFUSION_CANAL;
   const done = ()=>{ const m=document.getElementById('dif-msg'); m.style.color='var(--green)'; m.textContent='📋 Link copiado — pégalo en tu grupo o redes.'; };
   if(navigator.clipboard) navigator.clipboard.writeText(v).then(done).catch(()=>{_copiarFallback(v);done();});
   else { _copiarFallback(v); done(); }
-}
-function verEstadisticasDifusion(){
-  const v = (DB.linkDifusion||document.getElementById('dif-bitly').value||'').trim();
-  if(!v || !/bit\.ly/i.test(v)){ document.getElementById('dif-msg').style.color='var(--red)'; document.getElementById('dif-msg').textContent='⚠ Pega un link de bit.ly válido para ver sus estadísticas.'; return; }
-  // Bitly muestra estadísticas agregando "+" al final del link corto
-  window.open(v.replace(/\/$/,'')+'+','_blank');
+  asegurarLinkCanal();
 }
 
 // == Estadísticas propias del canal ==
@@ -1790,7 +1779,6 @@ function renderStats(){
   const esteMes = pub.filter(a => { const f=new Date(a.fechaAprobacion); return f.getMonth()===ahora.getMonth() && f.getFullYear()===ahora.getFullYear(); });
   const empresas = new Set(pub.map(a => a.empresa));
   const set = (id,v) => { const e=document.getElementById(id); if(e) e.textContent=v; };
-  const difEl = document.getElementById('dif-bitly'); if(difEl && DB.linkDifusion) difEl.value = DB.linkDifusion;
   set('st-total', pub.length);
   set('st-mes', esteMes.length);
   set('st-activos', activos.length);
@@ -1821,8 +1809,7 @@ function renderStats(){
     const f = new Date(a.fechaAprobacion);
     const fecha = f.toLocaleDateString('es-CL',{day:'2-digit',month:'short',year:'numeric'});
     const estado = a.estado==='activo' ? '<span style="color:var(--green);font-size:10px;font-weight:700">● activo</span>' : '<span style="color:#9CA3AF;font-size:10px">cerrado</span>';
-    const bitly = a.bitly ? ' · <a href="'+esc(a.bitly)+'" target="_blank" style="color:#8A6D1F;font-size:10px">📊 clics</a>' : '';
-    return '<div style="display:flex;justify-content:space-between;gap:10px;font-size:12px;padding:6px 0;border-bottom:1px solid #F0F0F0"><div><strong>'+nroSeg(a.id)+'</strong> '+esc(a.cargo)+' — '+esc(a.empresa)+bitly+'</div><div style="white-space:nowrap;color:#6B7280">'+fecha+' '+estado+'</div></div>';
+    return '<div style="display:flex;justify-content:space-between;gap:10px;font-size:12px;padding:6px 0;border-bottom:1px solid #F0F0F0"><div><strong>'+nroSeg(a.id)+'</strong> '+esc(a.cargo)+' — '+esc(a.empresa)+'</div><div style="white-space:nowrap;color:#6B7280">'+fecha+' '+estado+'</div></div>';
   }).join('') : '<div style="color:#6B7280;font-size:12px;padding:8px">Aún no has publicado avisos. Cuando apruebes el primero, aparecerá aquí.</div>';
 }
 
@@ -1894,6 +1881,17 @@ function _codigoCorto(){
   let s=''; for(let i=0;i<5;i++) s+=abc[Math.floor(Math.random()*abc.length)];
   return 'a'+s;
 }
+
+// Enlace corto propio FIJO para difundir el canal (mismo sistema que los avisos)
+let _linkCanalListo = false;
+async function asegurarLinkCanal(){
+  if(_linkCanalListo || !nubeActiva()) return;
+  try {
+    await _sb('POST','rpc/crear_link', { p_secret: WRITE_SECRET, p_codigo: 'canal', p_destino: CANAL_URL, p_aviso_id: null, p_cargo: 'Difusión del canal MANTEWORK' });
+    _linkCanalListo = true;
+  } catch(e){ /* si ya existe o falla, no pasa nada — se usa igual */ }
+}
+
 async function crearLinkCorto(aviso){
   // Extrae la URL real del portal desde el campo postula
   let url = (aviso.postula||'').replace(/^Postular en (el portal del titular|el portal oficial de [^:]+): /,'').trim();
@@ -2030,14 +2028,13 @@ function agregarCaptado(){
     experiencia:'—', educacion:'—', certs:[],
     req: sanitiza(g('cap-req')),
     postula: postula ? ('Postular en el portal del titular: '+postula) : '—',
-    bitly: (document.getElementById('cap-bitly')? document.getElementById('cap-bitly').value.trim() : ''),
     plan:'Captación web', estado:'pendiente',
     fechaCreacion:new Date(), fechaAprobacion:null, badge:'gold',
     verEmpresa:true, verFaena:true, fuente:'Captación manual · panel admin'
   };
   DB.avisos.push(nuevo);
   guardarDatos();
-  ['cap-cargo','cap-empresa','cap-region','cap-ciudad','cap-turno','cap-req','cap-postula','cap-bitly'].forEach(id=>{const e=document.getElementById(id); if(e)e.value='';});
+  ['cap-cargo','cap-empresa','cap-region','cap-ciudad','cap-turno','cap-req','cap-postula'].forEach(id=>{const e=document.getElementById(id); if(e)e.value='';});
   document.getElementById('cap-grupo').value='';
   msg.style.color='var(--green)'; msg.textContent='✓ Aviso agregado a la cola de captación.';
   if(CAP_ACTIVO) ejecutarCaptacion();
@@ -2104,8 +2101,8 @@ function textoCanal(a){
     let dato = a.postula.replace(/^Postular en (el portal del titular|el portal oficial de [^:]+): /,'').trim();
     const esLink = /^https?:\/\//i.test(dato);
     if(esLink){
-      // Si hay link Bitly de rastreo, se usa ese para postular (cuenta clics y redirige al portal)
-      const linkPostulacion = a.linkCorto && /^https?:\/\//i.test(a.linkCorto) ? a.linkCorto : (a.bitly && /^https?:\/\//i.test(a.bitly) ? a.bitly : dato);
+      // Usa el enlace corto propio si existe (cuenta clics y redirige al portal)
+      const linkPostulacion = a.linkCorto && /^https?:\/\//i.test(a.linkCorto) ? a.linkCorto : dato;
       L.push('\n➡️ *Postula aquí:* ' + linkPostulacion);
       try {
         const host = dato.replace(/^https?:\/\//i,'').split('/')[0].replace(/^www\./,'');
@@ -2121,7 +2118,7 @@ function textoCanal(a){
     }
   }
   L.push('\n━━━━━━━━━━━━━━');
-  L.push('📲 _Comparte este canal con más profesionales_');
+  L.push('📲 _Comparte este canal con más profesionales:_ https://www.mantework.com/ir/?c=canal');
   return L.join('\n');
 }
 function copiarParaCanal(id){
@@ -2211,10 +2208,10 @@ async function sincronizarAntesDePublicar(){
 }
 
 function _indicadorNube(ok){
-  const el = document.getElementById('nube-estado');
-  if(!el) return;
-  el.textContent = ok ? '☁ Sincronizado' : '⚠ Sin conexión con la nube';
-  el.style.color = ok ? 'var(--green)' : 'var(--red)';
+  const txt = ok ? '☁ Sincronizado' : '⚠ Sin conexión con la nube — usando copia local';
+  const color = ok ? 'var(--green)' : 'var(--red)';
+  const el2 = document.getElementById('nube-estado-avisos');
+  if(el2){ el2.textContent = txt; el2.style.color = color; }
 }
 
 // ══════════════════════════════════════════════
@@ -3523,9 +3520,23 @@ function renderPublico(){
         <span class="av-check">✓ Aviso validado</span>
         <span class="av-time">${haceStr}</span>
         ${dias!==null?`<span class="av-dias ${diasClass(dias)}">${diasLabel(dias)}</span>`:''}
+        ${_btnPostular(a)}
       </div>
     </div>`;
   }).join('');
+}
+
+// Botón de postulación pública: siempre a través del enlace propio (mide clics).
+function _btnPostular(a){
+  if(a.linkCorto && /^https?:\/\//i.test(a.linkCorto)){
+    return `<a href="${esc(a.linkCorto)}" target="_blank" rel="noopener" class="btn btn-gold btn-sm" style="margin-top:6px">Postular →</a>`;
+  }
+  // Aviso sin URL (contacto por teléfono/correo): mostrar el dato sin link
+  if(a.postula){
+    const dato = a.postula.replace(/^Postular en (el portal del titular|el portal oficial de [^:]+): /,'').trim();
+    if(!/^https?:\/\//i.test(dato)) return `<span class="av-time" style="font-weight:600">📞 ${esc(dato)}</span>`;
+  }
+  return '';
 }
 
 // ══════════════════════════════════════════════
@@ -3984,7 +3995,7 @@ function aprobarLote(){
   });
   // Genera el enlace corto de cada uno (para medir clics), sin copiar ni abrir el canal —
   // eso lo haces tú, uno a la vez, con el botón «Copiar para el canal» de cada aviso activo.
-  Promise.all(aprobados.map(a=>crearLinkCorto(a))).then(()=>guardarDatos());
+  Promise.all([...aprobados.map(a=>crearLinkCorto(a)), asegurarLinkCanal()]).then(()=>guardarDatos());
   guardarDatos();
   const chkT=document.getElementById('chk-todos'); if(chkT) chkT.checked=false;
   renderAdmin(); renderPublico();
@@ -3995,7 +4006,7 @@ function aprobar(id){
   const a=DB.avisos.find(x=>x.id===id); if(!a)return;
   a.estado='activo'; a.fechaAprobacion=new Date(); DB.aprobados++;
   // Generar el enlace corto propio (cuenta clics) antes de publicar
-  crearLinkCorto(a).then(()=>{ guardarDatos(); setTimeout(()=>{ copiarParaCanal(a.id); }, 400); });
+  Promise.all([crearLinkCorto(a), asegurarLinkCanal()]).then(()=>{ guardarDatos(); setTimeout(()=>{ copiarParaCanal(a.id); }, 400); });
   guardarDatos();
   renderAdmin(); renderPublico(); if(SESSION.rol==='cliente') renderMisAvisos();
   toast('✓ Validado y aprobado');
