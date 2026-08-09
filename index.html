@@ -16,7 +16,7 @@
   <meta name="twitter:title" content="MANTEWORK — Empleos técnicos de minería validados">
   <meta name="twitter:image" content="https://www.mantework.com/icon-512.png">
 <link rel="manifest" href="manifest.json">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.anthropic.com https://*.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.anthropic.com https://*.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'">
 <meta name="theme-color" content="#0D1B2A">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -948,7 +948,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 19.628</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.12.0</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.12.1</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1547,7 +1547,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.12.0';
+const APP_VERSION = '3.12.1';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1558,6 +1558,7 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.12.1', fecha:'09-08-2026', cambios:['Corrección: la política de seguridad del sitio bloqueaba el lector de Excel (CDN no autorizado). Ya se puede cargar avisos por Excel sin errores'] },
   { v:'3.12.0', fecha:'09-08-2026', cambios:['Acortador de enlaces PROPIO: cada aviso publicado usa un enlace mantework.com/ir/… que cuenta cuántas personas van a postular','Sin límite ni costo mensual (usa tu dominio y Supabase); los datos de clics son tuyos','Nueva sección en Estadísticas: clics por aviso, ordenados de mayor a menor'] },
   { v:'3.11.0', fecha:'08-08-2026', cambios:['Detección de avisos repetidos al cargar Excel: nivel 1 por ID de solicitud, nivel 2 por cargo+empresa. Los repetidos se saltan automáticamente','El resumen de carga informa cuántos repetidos se saltaron'] },
   { v:'3.10.1', fecha:'08-08-2026', cambios:['La carga por Excel ahora captura el ID de solicitud del portal (uso interno, para control y anti-duplicados) y lo muestra en la tarjeta de captación'] },
