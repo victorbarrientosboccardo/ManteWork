@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Redirigiendo… · MANTEWORK</title>
+<title>MANTEWORK</title>
+<meta name="description" content="">
 <style>
   body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:#0D1B2A;color:#fff;
        display:flex;align-items:center;justify-content:center;height:100vh;text-align:center}
@@ -33,6 +34,7 @@
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkYmpsZXdiYXhtcXl1ZXN6bW51Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwODE5MTQsImV4cCI6MjEwMTY1NzkxNH0.e06KjuasZkTtnVDlgPHUxtdq-UGE_jcQ1DDvTezcvmo';
 
   function codigo(){
+    // soporta /ir/CODIGO y /ir.html?c=CODIGO
     const q = new URLSearchParams(location.search).get('c');
     if(q) return q.trim();
     const parts = location.pathname.split('/').filter(Boolean);
@@ -48,11 +50,12 @@
         headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY},
         body: JSON.stringify({ p_codigo: c })
       });
-      destino = await res.json();
+      destino = await res.json();  // devuelve la URL destino (o null)
     } catch(e){ destino = null; }
     if(destino && /^https?:\/\//i.test(destino)){
       location.replace(destino);
     } else {
+      // código no encontrado → al sitio principal
       document.getElementById('fallback').style.display='block';
       const m = document.getElementById('manual');
       m.href = 'https://www.mantework.com/';
