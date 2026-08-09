@@ -948,7 +948,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 19.628</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.12.5</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.12.8</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1547,7 +1547,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.12.5';
+const APP_VERSION = '3.12.8';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1558,6 +1558,9 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.12.8', fecha:'09-08-2026', cambios:['Pie del aviso simplificado a una sola línea: se quitó «MANTEWORK · Solo avisos validados» (redundante con la cabecera) y «técnicos» pasó a «profesionales», más inclusivo del público del canal'] },
+  { v:'3.12.7', fecha:'09-08-2026', cambios:['Se quitó MANTEWORK de la cabecera del aviso en el canal (quedó solo «Empleo Técnico Minero») para no repetir la marca de más — ya queda identificada en el pie y en el link'] },
+  { v:'3.12.6', fecha:'09-08-2026', cambios:['Corrección real: WhatsApp convertía en link clicable el dominio de «Fuente oficial» aunque no tuviera http:// (reconoce cualquier patrón palabra.tld). Ahora se muestra solo el nombre del portal sin puntos (ej. «Laborum», «Codelco»), imposible de convertir en enlace'] },
   { v:'3.12.5', fecha:'09-08-2026', cambios:['La tarjeta de vista previa que WhatsApp muestra sobre el enlace de postulación ahora dice solo «MANTEWORK» — se quitó el texto «Redirigiendo…» para evitar que alguien piense que debe interactuar ahí en vez de ser llevado al portal real'] },
   { v:'3.12.4', fecha:'09-08-2026', cambios:['Se quitó del pie del aviso en el canal el llamado a empresas ("¿Eres empresa? Publica en mantework.com") — el mensaje queda enfocado 100% en el técnico que busca trabajo; la captación de empresas sigue por la página de Planes y WhatsApp directo'] },
   { v:'3.12.3', fecha:'09-08-2026', cambios:['Aprobación en lote (seleccionar varios y aprobar juntos) ya no intenta copiar ni abrir el canal para cada uno — evita que se pisen entre sí. Genera el enlace corto de cada aviso automáticamente; luego publicas cada uno cuando quieras con el botón «Copiar para el canal»'] },
@@ -2083,7 +2086,7 @@ function textoCanal(a){
   const certs = (a.certs && a.certs.length) ? '\n✅ ' + a.certs.join('  •  ') : '';
   const L = [];
   L.push('━━━━━━━━━━━━━━');
-  L.push('🔷 *MANTEWORK* · Empleo Técnico Minero');
+  L.push('🔷 Empleo Técnico Minero');
   L.push('✔️ Aviso validado · ' + mnt);
   L.push('━━━━━━━━━━━━━━');
   L.push('');
@@ -2104,14 +2107,21 @@ function textoCanal(a){
       // Si hay link Bitly de rastreo, se usa ese para postular (cuenta clics y redirige al portal)
       const linkPostulacion = a.linkCorto && /^https?:\/\//i.test(a.linkCorto) ? a.linkCorto : (a.bitly && /^https?:\/\//i.test(a.bitly) ? a.bitly : dato);
       L.push('\n➡️ *Postula aquí:* ' + linkPostulacion);
-      try { const host = dato.replace(/^https?:\/\//i,'').split('/')[0].replace(/^www\./,''); L.push('🔗 Fuente oficial: ' + host); } catch(e){}
+      try {
+        const host = dato.replace(/^https?:\/\//i,'').split('/')[0].replace(/^www\./,'');
+        // Nombre del portal SIN punto — así WhatsApp nunca lo detecta como link,
+        // ni aunque no tenga http:// (reconoce cualquier patrón "palabra.tld").
+        const labels = host.split('.').filter(Boolean);
+        let marca = labels.length>=2 ? labels[labels.length-2] : host;
+        marca = marca.charAt(0).toUpperCase() + marca.slice(1);
+        L.push('🔗 Fuente oficial: ' + marca);
+      } catch(e){}
     } else {
       L.push('\n➡️ *Cómo postular:* ' + dato);
     }
   }
   L.push('\n━━━━━━━━━━━━━━');
-  L.push('✔️ *MANTEWORK* · Solo avisos validados');
-  L.push('📲 _Comparte este canal con más técnicos_');
+  L.push('📲 _Comparte este canal con más profesionales_');
   return L.join('\n');
 }
 function copiarParaCanal(id){
