@@ -948,7 +948,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.14.0</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.14.3</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1249,12 +1249,14 @@ footer{background:var(--navy);margin-top:80px}
           <div><label class="flbl">Región</label><input class="ft" id="cap-region" placeholder="Antofagasta"></div>
           <div><label class="flbl">Ciudad / faena</label><input class="ft" id="cap-ciudad" placeholder="Calama"></div>
           <div><label class="flbl">Turno</label><input class="ft" id="cap-turno" placeholder="7×7"></div>
+          <div><label class="flbl">Fecha de cierre <span style="font-weight:400;color:#9CA3AF">(opcional)</span></label><input class="ft" id="cap-fcierre" placeholder="30-08-2026"></div>
           <div><label class="flbl">Grupo ocupacional</label>
             <select class="ft" id="cap-grupo"><option value="">Seleccionar…</option><option>Mantenedores</option><option>Operadores</option><option>Supervisores</option><option>Profesionales</option></select>
           </div>
-          <div style="grid-column:1/3"><label class="flbl">Requisitos (texto del aviso)</label><input class="ft" id="cap-req" placeholder="TNS Mecánica + 3 años + Licencia B + salud altura"></div>
-          <div style="grid-column:1/3"><label class="flbl">Link del aviso en el portal oficial (Codelco, BHP, Anglo…)</label><input class="ft" id="cap-postula" placeholder="https://empleos.codelco.cl/aviso/12345"></div>
-          <div style="grid-column:1/3;font-size:11.5px;color:#9CA3AF">El enlace corto propio para contar clics se genera solo al aprobar el aviso — no hace falta configurar nada más.</div>
+          <div style="grid-column:1/3"><label class="flbl">Requisitos</label><input class="ft" id="cap-req" placeholder="TNS Mecánica + 3 años + Licencia B + salud altura"></div>
+          <div style="grid-column:1/3"><label class="flbl">Link del portal oficial</label><input class="ft" id="cap-postula" placeholder="https://empleos.codelco.cl/aviso/12345"></div>
+          <div><label class="flbl">ID solicitud <span style="font-weight:400;color:#9CA3AF">(opcional — folio del portal)</span></label><input class="ft" id="cap-idsol" placeholder="RQ-2026-4471"></div>
+          <div style="grid-column:1/3;font-size:11.5px;color:#9CA3AF">Si dejas el ID vacío, MANTEWORK le asigna uno propio (M-XXXX). El enlace corto para contar clics se genera solo al aprobar.</div>
         </div>
         <button class="btn btn-gold" onclick="agregarCaptado()" style="margin-top:12px">+ Agregar a la cola de captación</button>
         <div id="cap-form-msg" style="font-size:12px;margin-top:8px"></div>
@@ -1556,7 +1558,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.14.0';
+const APP_VERSION = '3.14.3';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1567,6 +1569,9 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.14.3', fecha:'09-08-2026', cambios:['Nombres de los 9 campos de publicación unificados entre la carga por Excel, el formulario manual y el prompt del agente (Empresa / mandante, Región, Ciudad / faena, Grupo ocupacional, Link del portal oficial…)','El formulario manual ahora tiene campo ID solicitud opcional: si lo dejas vacío, MANTEWORK asigna un ID propio M-XXXX; si pegas el folio del portal, usa ese']},
+  { v:'3.14.2', fecha:'09-08-2026', cambios:['El formulario de captación manual ahora tiene campo «Fecha de cierre» (opcional) — así la línea «Postula hasta:» del canal funciona tanto para avisos cargados por Excel como manualmente']},
+  { v:'3.14.1', fecha:'09-08-2026', cambios:['El aviso del canal ahora muestra «🗓️ Postula hasta: (fecha)» cuando el aviso trae fecha de cierre','«Postula aquí» siempre lleva al link del portal oficial: los avisos que solo traían teléfono o correo ya no exponen ese dato — invitan a postular por el portal oficial de la empresa (nunca se publica contacto de personas)']},
   { v:'3.14.0', fecha:'09-08-2026', cambios:['Base de datos de mercado laboral: la carga por Excel ahora acepta la plantilla de 24 columnas (9 de publicación + 15 de mercado del puesto: renta, título, inglés, faena, equipos, empleador y más) — los datos de mercado se guardan en la nube para análisis y NO se publican en el canal','Nueva línea de negocio documentada: inteligencia del empleo técnico minero (reportes para el canal y estudios para empresas/consultoras)','Regla de oro de la captura: datos del puesto sí, datos de personas no']},
   { v:'3.13.5', fecha:'09-08-2026', cambios:['Seguridad — anti-phishing (open redirect): la página de redirección /ir ahora solo abre destinos de una lista blanca (portales del titular + canal). Un enlace corto que apunte fuera de la lista no redirige solo: muestra un aviso de «enlace externo» para que la persona decida','Seguridad — anti-clickjacking: el sitio rompe el marco si alguien intenta cargarlo dentro de un iframe ajeno']},
   { v:'3.13.4', fecha:'09-08-2026', cambios:['Derecho de supresión (Ley 21.719): nuevo botón «Eliminar datos» en Clientes enrolados que borra definitivamente la cuenta, sus usuarios y sus avisos publicados, con doble confirmación (los avisos captados de portales se conservan: no son datos del cliente)','Corrección Pro Consumidor: el período sin cobro ya no menciona un pago que «se activa automáticamente» — el cobro siempre requiere aceptación expresa de la empresa']},
@@ -1946,7 +1951,7 @@ function cargarExcelAvisos(){
       const clavesLote = new Set();
       filas.forEach(f => {
         const cargo   = _col(f, ['cargo','puesto','titulo']);
-        const empresa = _col(f, ['empresa','mandante','compania','compañia']);
+        const empresa = _col(f, ['empresa','empresa / mandante','mandante','compania','compañia']);
         if(!cargo || !empresa){ saltados++; return; }
         // ── Detección de duplicados en 2 niveles ──
         const idFila = _col(f,['id solicitud','id','id de solicitud','requisition id','folio','id puesto','id de puesto']).trim().toLowerCase();
@@ -1960,7 +1965,7 @@ function cargarExcelAvisos(){
         const grupoRaw = _col(f, ['grupo','grupo ocupacional']);
         const grupo = ['mantenedores','operadores','supervisores','profesionales'].includes(_norm(grupoRaw))
           ? (grupoRaw.charAt(0).toUpperCase()+grupoRaw.slice(1).toLowerCase()) : 'Mantenedores';
-        const link = _col(f, ['link','postular','postulacion','url','enlace']);
+        const link = _col(f, ['link','link del portal oficial','postular','postulacion','url','enlace']);
         if(link && esAgregador(link)){ agregadores++; return; }   // fuera de la lista blanca
         // Datos de MERCADO (análisis posterior): se guardan pero no se publican en el canal
         const mercado = {};
@@ -1984,12 +1989,12 @@ function cargarExcelAvisos(){
         DB.avisos.push({
           id: Date.now() + Math.floor(Math.random()*1000) + creados,
           cargo: sanitiza(cargo), empresa: sanitiza(empresa),
-          region: _col(f,['region']), ciudad: _col(f,['ciudad','faena','lugar']), lugar:'',
+          region: _col(f,['region']), ciudad: _col(f, ['ciudad','ciudad / faena','faena','lugar']), lugar:'',
           turno: _col(f,['turno'])||'—', contrato: _col(f,['contrato'])||'—',
           grupo: grupo,
           perfil: grupo==='Operadores'?'Operador de Equipos Móviles':(grupo==='Supervisores'?'Supervisor de Mantenimiento':(grupo==='Profesionales'?'Profesional de Mantenimiento':'Mantenedor Mecánico')),
           experiencia: _col(f,['experiencia'])||'—', educacion:'—', certs:[],
-          req: sanitiza(_col(f,['requisitos','req','requisito'])),
+          req: sanitiza(_col(f, ['requisitos','req','requisito'])),
           postula: link ? (/^https?:\/\//i.test(link) ? ('Postular en el portal del titular: '+link) : link) : '—',
           plan:'Captación web', estado:'pendiente',
           idSolicitud: _col(f,['id solicitud','id','id de solicitud','requisition id','folio','id puesto','id de puesto']),
@@ -2058,8 +2063,12 @@ function agregarCaptado(){
     return;
   }
   window.__forzarCaptado = false;
+  // ID de solicitud: el folio del portal si se ingresó; si no, uno propio M-XXXX
+  let idSol = g('cap-idsol').trim();
+  if(!idSol){ DB.contadorManual = (DB.contadorManual||0) + 1; idSol = 'M-' + String(DB.contadorManual).padStart(4,'0'); }
   const nuevo = {
     id: Date.now(),
+    idSolicitud: idSol,
     cargo: sanitiza(cargo), empresa: sanitiza(empresa),
     region: g('cap-region'), ciudad: g('cap-ciudad'), lugar:'',
     turno: g('cap-turno') || '—', contrato: '—',
@@ -2069,11 +2078,12 @@ function agregarCaptado(){
     postula: postula ? ('Postular en el portal del titular: '+postula) : '—',
     plan:'Captación web', estado:'pendiente',
     fechaCreacion:new Date(), fechaAprobacion:null, badge:'gold',
-    verEmpresa:true, verFaena:true, fuente:'Captación manual · panel admin'
+    verEmpresa:true, verFaena:true, fuente:'Captación manual · panel admin',
+    mercado: (g('cap-fcierre') ? { fcierre: sanitiza(g('cap-fcierre')).slice(0,20) } : undefined)
   };
   DB.avisos.push(nuevo);
   guardarDatos();
-  ['cap-cargo','cap-empresa','cap-region','cap-ciudad','cap-turno','cap-req','cap-postula'].forEach(id=>{const e=document.getElementById(id); if(e)e.value='';});
+  ['cap-cargo','cap-empresa','cap-region','cap-ciudad','cap-turno','cap-fcierre','cap-req','cap-postula','cap-idsol'].forEach(id=>{const e=document.getElementById(id); if(e)e.value='';});
   document.getElementById('cap-grupo').value='';
   msg.style.color='var(--green)'; msg.textContent='✓ Aviso agregado a la cola de captación.';
   if(CAP_ACTIVO) ejecutarCaptacion();
@@ -2135,6 +2145,8 @@ function textoCanal(a){
   if(a.experiencia && a.experiencia!=='—') L.push('⏳ Experiencia: ' + a.experiencia);
   if(a.req) L.push('\n📋 *Requisitos:*\n' + a.req);
   if(certs) L.push(certs);
+  // Fecha de cierre para postular (si el aviso la trae en los datos de mercado)
+  if(a.mercado && a.mercado.fcierre) L.push('\n🗓️ *Postula hasta:* ' + a.mercado.fcierre);
   // Link de origen / cómo postular (destacado y clicable)
   if(a.postula){
     let dato = a.postula.replace(/^Postular en (el portal del titular|el portal oficial de [^:]+): /,'').trim();
@@ -2153,7 +2165,9 @@ function textoCanal(a){
         L.push('🔗 Fuente oficial: ' + marca);
       } catch(e){}
     } else {
-      L.push('\n➡️ *Cómo postular:* ' + dato);
+      // Aviso sin link web (solo traía teléfono/correo): NO se expone ese dato de contacto.
+      // Se invita a postular por el portal oficial de la empresa (opción B).
+      L.push('\n➡️ *Postula a través del portal oficial de la empresa.*');
     }
   }
   L.push('\n━━━━━━━━━━━━━━');
