@@ -948,7 +948,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.14.3</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.14.7</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1558,7 +1558,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.14.3';
+const APP_VERSION = '3.14.7';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1569,6 +1569,10 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.14.7', fecha:'11-08-2026', cambios:['Plataforma Rankmi (ATS de Komatsu Cummins) agregada a los destinos del acortador — URL real confirmada vía inteligencia de competencia']},
+  { v:'3.14.6', fecha:'11-08-2026', cambios:['Lista blanca afinada con inteligencia de competencia: URLs confirmadas (SQM=trabajaensqm.com, Finning=empleos.finning.com, FLS=fls.com) y 3 ingenierías nuevas (Ausenco, Bechtel, Worley) agregadas a la lista de destinos del acortador /ir']},
+  { v:'3.14.5', fecha:'11-08-2026', cambios:['Identidad visual del canal: la cabecera del aviso cambia del rombo azul 🔷 al rombo dorado 🔶 (color de marca MANTEWORK) — diferenciación deliberada frente al competidor «Reclutamiento Minero», que usa el rombo azul en todos sus mensajes']},
+  { v:'3.14.4', fecha:'10-08-2026', cambios:['Corrección de coherencia con la lista blanca: los portales de MARCA BLANCA (finning.trabajando.cl, komatsu.trabajando.cl) ya no se bloquean — son el portal oficial del titular; solo el marketplace genérico de Trabajando sigue bloqueado como agregador','La lista de destinos del acortador /ir se amplió a los ~55 dominios de la lista blanca (mandantes, contratistas/OEM y plataformas de reclutamiento Aira/SuccessFactors/Workday) — los avisos legítimos redirigen directo, el anti-phishing se mantiene']},
   { v:'3.14.3', fecha:'09-08-2026', cambios:['Nombres de los 9 campos de publicación unificados entre la carga por Excel, el formulario manual y el prompt del agente (Empresa / mandante, Región, Ciudad / faena, Grupo ocupacional, Link del portal oficial…)','El formulario manual ahora tiene campo ID solicitud opcional: si lo dejas vacío, MANTEWORK asigna un ID propio M-XXXX; si pegas el folio del portal, usa ese']},
   { v:'3.14.2', fecha:'09-08-2026', cambios:['El formulario de captación manual ahora tiene campo «Fecha de cierre» (opcional) — así la línea «Postula hasta:» del canal funciona tanto para avisos cargados por Excel como manualmente']},
   { v:'3.14.1', fecha:'09-08-2026', cambios:['El aviso del canal ahora muestra «🗓️ Postula hasta: (fecha)» cuando el aviso trae fecha de cierre','«Postula aquí» siempre lleva al link del portal oficial: los avisos que solo traían teléfono o correo ya no exponen ese dato — invitan a postular por el portal oficial de la empresa (nunca se publica contacto de personas)']},
@@ -2035,10 +2039,20 @@ function descargarPlantillaExcel(){
 
 // Portales AGREGADORES comerciales — fuera de la lista blanca (solo se capta de portales del titular).
 // Captar de estos infringe sus términos de uso y expone a reclamos de competencia desleal.
-const AGREGADORES_BLOQUEADOS = ['laborum.','trabajando.','indeed.','computrabajo','chiletrabajos','bumeran.','zonajobs','getonbrd','linkedin.','glassdoor'];
+const AGREGADORES_BLOQUEADOS = ['laborum.','indeed.','computrabajo','chiletrabajos','bumeran.','zonajobs','getonbrd','linkedin.','glassdoor'];
 function esAgregador(url){
   const u = String(url||'').toLowerCase();
-  return AGREGADORES_BLOQUEADOS.some(d => u.includes(d));
+  if(AGREGADORES_BLOQUEADOS.some(d => u.includes(d))) return true;
+  // trabajando.cl: el marketplace genérico se bloquea, pero los portales de MARCA BLANCA
+  // de empresas (finning.trabajando.cl, komatsu.trabajando.cl) son el portal OFICIAL del titular.
+  try {
+    const h = new URL(u.startsWith('http')? u : 'https://'+u).hostname;
+    if(/(^|\.)trabajando\.(cl|com)$/.test(h)){
+      const sub = h.replace(/\.?trabajando\.(cl|com)$/,'').replace(/^www$/,'');
+      return sub === '';   // sin subdominio de empresa = marketplace = bloqueado
+    }
+  } catch(e){ if(u.includes('trabajando.')) return true; }
+  return false;
 }
 
 function agregarCaptado(){
@@ -2132,7 +2146,7 @@ function textoCanal(a){
   const certs = (a.certs && a.certs.length) ? '\n✅ ' + a.certs.join('  •  ') : '';
   const L = [];
   L.push('━━━━━━━━━━━━━━');
-  L.push('🔷 Empleo Técnico Minero');
+  L.push('🔶 Empleo Técnico Minero');
   L.push('✔️ Aviso validado · ' + mnt);
   L.push('━━━━━━━━━━━━━━');
   L.push('');
