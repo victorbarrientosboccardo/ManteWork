@@ -948,7 +948,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.14.7</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.14.9</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1232,9 +1232,9 @@ footer{background:var(--navy);margin-top:80px}
       
       <div style="border:1px solid rgba(46,125,91,.35);border-radius:11px;padding:16px 18px;margin-bottom:18px;background:#F4FBF7">
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--navy);margin-bottom:4px">📄 Cargar avisos desde Excel</div>
-        <div style="font-size:12px;color:#6B7280;margin-bottom:12px">Sube un archivo Excel con varios avisos y se agregan todos de una vez a la cola de captación. Usa la plantilla de <b>24 columnas</b>: las 9 de publicación (<b>Cargo, Empresa, Region, Ciudad, Turno, Grupo, Requisitos, Link, ID solicitud</b>) son las que se publican; las 15 de mercado (renta, título, inglés, faena, equipos…) son opcionales y quedan guardadas para análisis.</div>
+        <div style="font-size:12px;color:#6B7280;margin-bottom:12px">Sube uno o varios archivos Excel (p. ej. las 4 tandas juntas) y se agregan todos de una vez a la cola de captación. Usa la plantilla de <b>24 columnas</b>: las 9 de publicación (<b>Cargo, Empresa, Region, Ciudad, Turno, Grupo, Requisitos, Link, ID solicitud</b>) son las que se publican; las 15 de mercado (renta, título, inglés, faena, equipos…) son opcionales y quedan guardadas para análisis.</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-          <input type="file" id="cap-excel" accept=".xlsx,.xls,.csv" style="font-size:12.5px" onchange="cargarExcelAvisos()">
+          <input type="file" id="cap-excel" accept=".xlsx,.xls,.csv" multiple style="font-size:12.5px" onchange="cargarVariosExcel()">
           <button class="btn btn-ghost" style="font-size:12px;padding:6px 12px" onclick="descargarPlantillaExcel()">⬇ Descargar plantilla</button>
         </div>
         <div id="cap-excel-msg" style="font-size:12.5px;margin-top:10px"></div>
@@ -1558,7 +1558,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.14.7';
+const APP_VERSION = '3.14.9';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1569,6 +1569,8 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.14.9', fecha:'11-08-2026', cambios:['La carga por Excel ahora acepta VARIOS archivos a la vez: selecciona los 4 Excel de tanda (TANDA_1 a TANDA_4) y se procesan en cola, uno tras otro, con un resumen acumulado del total de avisos, repetidos y descartados. El anti-duplicados junta todo sin repetir']},
+  { v:'3.14.8', fecha:'11-08-2026', cambios:['Corrección de «Fuente oficial» en el aviso del canal: antes derivaba el nombre del dominio del link, lo que mostraba el proveedor del software de reclutamiento (ej. «Cdohr» para ENAMI, «Rankmi», «Trabajando») en vez de la empresa. Ahora usa el nombre real de la empresa del aviso; se oculta si el aviso es confidencial']},
   { v:'3.14.7', fecha:'11-08-2026', cambios:['Plataforma Rankmi (ATS de Komatsu Cummins) agregada a los destinos del acortador — URL real confirmada vía inteligencia de competencia']},
   { v:'3.14.6', fecha:'11-08-2026', cambios:['Lista blanca afinada con inteligencia de competencia: URLs confirmadas (SQM=trabajaensqm.com, Finning=empleos.finning.com, FLS=fls.com) y 3 ingenierías nuevas (Ausenco, Bechtel, Worley) agregadas a la lista de destinos del acortador /ir']},
   { v:'3.14.5', fecha:'11-08-2026', cambios:['Identidad visual del canal: la cabecera del aviso cambia del rombo azul 🔷 al rombo dorado 🔶 (color de marca MANTEWORK) — diferenciación deliberada frente al competidor «Reclutamiento Minero», que usa el rombo azul en todos sus mensajes']},
@@ -1932,11 +1934,11 @@ function _col(fila, nombres){
   }
   return '';
 }
-function cargarExcelAvisos(){
+function cargarExcelAvisos(fileArg, onDone, acum){
   const inp = document.getElementById('cap-excel');
   const msg = document.getElementById('cap-excel-msg');
-  const file = inp.files && inp.files[0];
-  if(!file){ return; }
+  const file = fileArg || (inp.files && inp.files[0]);
+  if(!file){ if(onDone) onDone(); return; }
   if(typeof XLSX === 'undefined'){ msg.style.color='var(--red)'; msg.textContent='⚠ No se pudo cargar el lector de Excel. Revisa tu conexión e intenta de nuevo.'; return; }
   msg.style.color='#6B7280'; msg.textContent='Leyendo archivo…';
   const reader = new FileReader();
@@ -2010,18 +2012,38 @@ function cargarExcelAvisos(){
       });
       guardarDatos();
       msg.style.color='var(--green)';
-      msg.innerHTML = '✓ <strong>'+creados+'</strong> avisos cargados a la cola'
-        + (repetidos? ' · <span style=\"color:#8A6D1F\">'+repetidos+' repetidos saltados</span>':'')
-        + (agregadores? ' · <span style=\"color:var(--red)\">'+agregadores+' descartados por venir de portales agregadores (Laborum, Indeed u otros — fuera de la lista blanca)</span>':'')
-        + (saltados? ' · '+saltados+' filas incompletas saltadas':'');
+      if(acum){ acum.creados+=creados; acum.repetidos+=repetidos; acum.agregadores+=agregadores; acum.saltados+=saltados; acum.archivos+=1; }
+      const cr = acum? acum.creados: creados, rp = acum? acum.repetidos: repetidos, ag = acum? acum.agregadores: agregadores, sa = acum? acum.saltados: saltados;
+      const pref = acum? ('✓ <strong>'+cr+'</strong> avisos de '+acum.archivos+' archivo(s)'): ('✓ <strong>'+cr+'</strong> avisos cargados a la cola');
+      msg.innerHTML = pref
+        + (rp? ' · <span style=\"color:#8A6D1F\">'+rp+' repetidos saltados</span>':'')
+        + (ag? ' · <span style=\"color:var(--red)\">'+ag+' descartados por agregadores</span>':'')
+        + (sa? ' · '+sa+' filas incompletas saltadas':'');
+      if(onDone) setTimeout(onDone, 80);
       inp.value='';
       if(CAP_ACTIVO) ejecutarCaptacion();
       if(typeof renderAdmin==='function') renderAdmin();
     }catch(err){
       msg.style.color='var(--red)'; msg.textContent='⚠ No se pudo leer el archivo. Verifica que sea un Excel con las columnas correctas.';
+      if(onDone) setTimeout(onDone, 80);
     }
   };
   reader.readAsArrayBuffer(file);
+}
+
+// Procesa varios Excel en cola, uno tras otro, acumulando el resumen (una tanda por archivo).
+function cargarVariosExcel(){
+  const inp = document.getElementById('cap-excel');
+  const files = inp.files ? Array.from(inp.files) : [];
+  if(!files.length) return;
+  const acum = {creados:0, repetidos:0, agregadores:0, saltados:0, archivos:0};
+  let i = 0;
+  const paso = () => {
+    if(i >= files.length){ inp.value=''; renderAdmin(); renderPublico(); return; }
+    const f = files[i++];
+    cargarExcelAvisos(f, paso, acum);
+  };
+  paso();
 }
 function descargarPlantillaExcel(){
   if(typeof XLSX === 'undefined'){ toast('⚠ Lector de Excel no disponible'); return; }
@@ -2169,15 +2191,14 @@ function textoCanal(a){
       // Usa el enlace corto propio si existe (cuenta clics y redirige al portal)
       const linkPostulacion = a.linkCorto && /^https?:\/\//i.test(a.linkCorto) ? a.linkCorto : dato;
       L.push('\n➡️ *Postula aquí:* ' + linkPostulacion);
-      try {
-        const host = dato.replace(/^https?:\/\//i,'').split('/')[0].replace(/^www\./,'');
-        // Nombre del portal SIN punto — así WhatsApp nunca lo detecta como link,
-        // ni aunque no tenga http:// (reconoce cualquier patrón "palabra.tld").
-        const labels = host.split('.').filter(Boolean);
-        let marca = labels.length>=2 ? labels[labels.length-2] : host;
-        marca = marca.charAt(0).toUpperCase() + marca.slice(1);
-        L.push('🔗 Fuente oficial: ' + marca);
-      } catch(e){}
+      // «Fuente oficial» = el nombre de la EMPRESA del aviso (dato confiable), NO el dominio del link:
+      // muchos titulares usan plataformas de reclutamiento tercerizadas (cdohr, hiringroom, rankmi,
+      // trabajando…) cuyo dominio NO es el nombre de la empresa. Se limpian los puntos para que
+      // WhatsApp no lo convierta en enlace clicable.
+      if(a.empresa && !/confidencial/i.test(a.empresa)){
+        const marca = String(a.empresa).replace(/\./g,' ').replace(/\s+/g,' ').trim();
+        if(marca) L.push('🔗 Fuente oficial: ' + marca);
+      }
     } else {
       // Aviso sin link web (solo traía teléfono/correo): NO se expone ese dato de contacto.
       // Se invita a postular por el portal oficial de la empresa (opción B).
