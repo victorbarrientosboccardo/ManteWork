@@ -948,7 +948,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.15.3</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.15.4</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1293,7 +1293,7 @@ footer{background:var(--navy);margin-top:80px}
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button class="ab ab-ok" style="font-size:12px;padding:7px 13px" onclick="descargarRespaldo()">⬇ Descargar respaldo</button>
           <label class="ab ab-v" style="font-size:12px;padding:7px 13px;cursor:pointer">⬆ Restaurar<input type="file" accept=".json" style="display:none" onchange="restaurarRespaldo(this)"></label>
-          <button class="ab ab-no" style="font-size:12px;padding:7px 13px" onclick="borrarDatosLocales()">Restablecer demo</button>
+
         </div>
       </div>
       <div class="ap-sec" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
@@ -1560,7 +1560,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.15.3';
+const APP_VERSION = '3.15.4';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1571,6 +1571,7 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.15.4', fecha:'11-08-2026', cambios:['Se eliminó el botón «Restablecer demo» de la sección Datos y respaldos: quedó obsoleto y su nombre era engañoso (los datos hoy viven en la nube Supabase, así que borrar el navegador no «restablece a demo»). La sección conserva los dos botones útiles: Descargar respaldo y Restaurar']},
   { v:'3.15.3', fecha:'11-08-2026', cambios:['Reloj en vivo (cuenta regresiva HH:MM:SS) en el aviso de ventana de publicación del panel: antes de las 09:00 cuenta cuánto falta para abrir la ventana; dentro de la ventana cuenta cuánto queda hasta las 11:00. Es un recordatorio visual — la publicación sigue siendo manual']},
   { v:'3.15.2', fecha:'11-08-2026', cambios:['La caja de «Difusión del canal» del panel se compactó: título y descripción en una sola línea, menos altura y padding — ocupa mucho menos espacio dejando el enlace y el botón de copiar a mano']},
   { v:'3.15.1', fecha:'11-08-2026', cambios:['Botón «ojito» 👁 para ver/ocultar la contraseña al escribirla, en el login y en el cambio de clave — evita errores de tipeo']},
