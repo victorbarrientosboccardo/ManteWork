@@ -401,7 +401,7 @@ footer{background:var(--navy);margin-top:80px}
     <div class="wrap">
       <div class="ey">Validadas y aprobadas · Solo estas llegan al canal</div>
       <h2 class="st">Ofertas activas</h2>
-      <p class="ss">Estos avisos superaron los tres filtros del portal: formulario completo, pago confirmado y validación técnica.</p>
+      <p class="ss">Estos avisos superaron los tres filtros del portal: Contacto previo, formulario completo y validación técnica.</p>
       <div class="aviso-list" id="lista-publica"></div>
       <div id="no-avisos" style="text-align:center;padding:40px;color:var(--sub);display:none">
         <p style="font-size:16px">No hay ofertas activas en este momento.</p>
@@ -429,7 +429,7 @@ footer{background:var(--navy);margin-top:80px}
       <div class="policy">
         <div>
           <div class="pq">El sitio valida.<br>El canal distribuye.</div>
-          <p>Este sitio es el portal de validación del canal. Cada aviso pasa por formulario, revisión y validación antes de llegar al canal de WhatsApp. Por eso los técnicos confían en lo que reciben.</p>
+          <p>Este sitio es el portal de validación del canal. Cada aviso pasa por formulario, verificación y validación antes de llegar al canal de WhatsApp. Por eso los técnicos confían en lo que reciben.</p>
         </div>
         <div class="prules">
           <div class="pr"><div class="hdot"></div>Toda oferta es revisada y aprobada antes de publicarse</div>
@@ -948,7 +948,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.14.9</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.15.3</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -973,7 +973,7 @@ footer{background:var(--navy);margin-top:80px}
         <div id="login-hint" style="background:var(--navy2);color:var(--gold-l);font-size:13.5px;padding:11px 14px;border-radius:8px;margin-bottom:14px;display:none;border-left:3px solid var(--gold)"></div>
         <div class="merr" id="login-err">Usuario o contraseña incorrectos</div>
         <div class="fgroup"><label class="fl">Usuario / Email</label><input class="fi" id="l_user" placeholder="usuario@empresa.cl"></div>
-        <div class="fgroup"><label class="fl">Contraseña</label><div class="fhint">Debe contener letras y números</div><input class="fi" type="password" id="l_pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+        <div class="fgroup"><label class="fl">Contraseña</label><div class="fhint">Debe contener letras y números</div><div class="pass-wrap" style="position:relative"><input class="fi" type="password" id="l_pass" placeholder="••••••••" style="padding-right:42px" onkeydown="if(event.key==='Enter')doLogin()"><button type="button" class="pass-eye" onclick="toggleClave('l_pass',this)" aria-label="Mostrar contraseña" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:17px;padding:2px;line-height:1">👁</button></div></div>
         <button class="btn btn-gold btn-full" onclick="doLogin()">Ingresar</button>
         <p style="font-size:12.5px;color:var(--sub);margin-top:14px;text-align:center">¿No tienes acceso? Contáctanos por WhatsApp para que el administrador active tu cuenta.</p>
       </div>
@@ -1033,16 +1033,16 @@ footer{background:var(--navy);margin-top:80px}
       <div class="msuc" id="clave-ok">Contraseña actualizada correctamente</div>
       <div class="fgroup">
         <label class="fl">Contraseña actual <span class="freq">*</span></label>
-        <input class="fi" type="password" id="cl_actual" placeholder="Tu contraseña actual">
+        <div class="pass-wrap" style="position:relative"><input class="fi" type="password" id="cl_actual" placeholder="Tu contraseña actual" style="padding-right:42px"><button type="button" class="pass-eye" onclick="toggleClave('cl_actual',this)" aria-label="Mostrar contraseña" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:17px;padding:2px;line-height:1">👁</button></div>
       </div>
       <div class="fgroup">
         <label class="fl">Nueva contraseña <span class="freq">*</span></label>
         <div class="fhint">Mínimo 8 caracteres, con letras y números</div>
-        <input class="fi" type="password" id="cl_nueva" placeholder="Nueva contraseña">
+        <div class="pass-wrap" style="position:relative"><input class="fi" type="password" id="cl_nueva" placeholder="Nueva contraseña" style="padding-right:42px"><button type="button" class="pass-eye" onclick="toggleClave('cl_nueva',this)" aria-label="Mostrar contraseña" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:17px;padding:2px;line-height:1">👁</button></div>
       </div>
       <div class="fgroup">
         <label class="fl">Confirmar nueva contraseña <span class="freq">*</span></label>
-        <input class="fi" type="password" id="cl_conf" placeholder="Repite la nueva contraseña" onkeydown="if(event.key==='Enter')guardarMiClave()">
+        <div class="pass-wrap" style="position:relative"><input class="fi" type="password" id="cl_conf" placeholder="Repite la nueva contraseña" style="padding-right:42px" onkeydown="if(event.key==='Enter')guardarMiClave()"><button type="button" class="pass-eye" onclick="toggleClave('cl_conf',this)" aria-label="Mostrar contraseña" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:17px;padding:2px;line-height:1">👁</button></div>
       </div>
       <label class="fch" style="margin-bottom:18px"><input type="checkbox" id="cl_ver" onchange="toggleVerClaves(this)"> Mostrar contraseñas</label>
       <div style="display:flex;gap:10px">
@@ -1178,12 +1178,14 @@ footer{background:var(--navy);margin-top:80px}
         </div>
       </div>
       
-      <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:11px;padding:15px 17px;margin-bottom:20px">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px">📢 Difusión del canal</div>
-        <div style="font-size:12px;color:#6B7280;margin-bottom:11px">Para invitar gente al canal, usa tu enlace propio <b>mantework.com/ir/?c=canal</b>. Sus clics se cuentan solos y aparecen en «🔗 Clics en los avisos» más abajo, junto a los demás.</div>
+      <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:9px;padding:9px 12px;margin-bottom:14px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--navy)">📢 Difusión del canal</span>
+          <span style="font-size:11px;color:#8A7A55">— enlace propio para invitar; sus clics se miden solos</span>
+        </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-          <input class="ft" readonly value="https://www.mantework.com/ir/?c=canal" style="flex:1;min-width:200px;background:#fff;color:#6B7280" onclick="this.select()">
-          <button class="btn btn-ghost" style="font-size:12px;padding:8px 14px" onclick="copiarDifusion()">📋 Copiar link</button>
+          <input class="ft" readonly value="https://www.mantework.com/ir/?c=canal" style="flex:1;min-width:180px;background:#fff;color:#6B7280;padding:6px 10px;font-size:12.5px" onclick="this.select()">
+          <button class="btn btn-ghost" style="font-size:12px;padding:6px 12px;white-space:nowrap" onclick="copiarDifusion()">📋 Copiar</button>
         </div>
         <div id="dif-msg" style="font-size:11.5px;margin-top:7px;color:#6B7280"></div>
       </div>
@@ -1558,7 +1560,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.14.9';
+const APP_VERSION = '3.15.3';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1569,6 +1571,10 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.15.3', fecha:'11-08-2026', cambios:['Reloj en vivo (cuenta regresiva HH:MM:SS) en el aviso de ventana de publicación del panel: antes de las 09:00 cuenta cuánto falta para abrir la ventana; dentro de la ventana cuenta cuánto queda hasta las 11:00. Es un recordatorio visual — la publicación sigue siendo manual']},
+  { v:'3.15.2', fecha:'11-08-2026', cambios:['La caja de «Difusión del canal» del panel se compactó: título y descripción en una sola línea, menos altura y padding — ocupa mucho menos espacio dejando el enlace y el botón de copiar a mano']},
+  { v:'3.15.1', fecha:'11-08-2026', cambios:['Botón «ojito» 👁 para ver/ocultar la contraseña al escribirla, en el login y en el cambio de clave — evita errores de tipeo']},
+  { v:'3.15.0', fecha:'11-08-2026', cambios:['Textos del portal público afinados: los «tres filtros» ahora son «Contacto previo, formulario completo y validación técnica»; y «revisión» pasó a «verificación» en la descripción del portal de validación','En las ofertas de la portada, el público ya no ve los «días de vigencia» internos (dato del administrador): ahora ve «📅 Postula hasta: fecha · Cierra en N días» basado en la fecha de cierre real del aviso. Si el aviso no trae fecha de cierre, no se muestra plazo']},
   { v:'3.14.9', fecha:'11-08-2026', cambios:['La carga por Excel ahora acepta VARIOS archivos a la vez: selecciona los 4 Excel de tanda (TANDA_1 a TANDA_4) y se procesan en cola, uno tras otro, con un resumen acumulado del total de avisos, repetidos y descartados. El anti-duplicados junta todo sin repetir']},
   { v:'3.14.8', fecha:'11-08-2026', cambios:['Corrección de «Fuente oficial» en el aviso del canal: antes derivaba el nombre del dominio del link, lo que mostraba el proveedor del software de reclutamiento (ej. «Cdohr» para ENAMI, «Rankmi», «Trabajando») en vez de la empresa. Ahora usa el nombre real de la empresa del aviso; se oculta si el aviso es confidencial']},
   { v:'3.14.7', fecha:'11-08-2026', cambios:['Plataforma Rankmi (ATS de Komatsu Cummins) agregada a los destinos del acortador — URL real confirmada vía inteligencia de competencia']},
@@ -2559,6 +2565,14 @@ function switchTab(t){
   if(tab) tab.classList.add('act');
   const panel = document.getElementById('tab-'+t);
   if(panel) panel.classList.add('act');
+}
+
+// Muestra/oculta el contenido de un campo de contraseña (ojito 👁).
+function toggleClave(inputId, btn){
+  const inp = document.getElementById(inputId);
+  if(!inp) return;
+  if(inp.type === 'password'){ inp.type = 'text'; btn.textContent = '🙈'; btn.setAttribute('aria-label','Ocultar contraseña'); }
+  else { inp.type = 'password'; btn.textContent = '👁'; btn.setAttribute('aria-label','Mostrar contraseña'); }
 }
 
 function doLogin(){
@@ -3628,11 +3642,35 @@ function renderPublico(){
       <div class="av-right">
         <span class="av-check">✓ Aviso validado</span>
         <span class="av-time">${haceStr}</span>
-        ${dias!==null?`<span class="av-dias ${diasClass(dias)}">${diasLabel(dias)}</span>`:''}
+        ${_plazoPostular(a)}
         ${_btnPostular(a)}
       </div>
     </div>`;
   }).join('');
+}
+
+// Plazo de postulación para el PÚBLICO: se basa en la fecha de cierre del aviso (mercado.fcierre),
+// no en la vigencia interna de 30 días. Muestra «Postula hasta: fecha» y los días que faltan.
+function _plazoPostular(a){
+  const fc = a.mercado && a.mercado.fcierre ? String(a.mercado.fcierre).trim() : '';
+  if(!fc) return '';
+  const d = _diasHastaFecha(fc);
+  if(d === null) return `<span class="av-dias dias-ok">📅 Postula hasta: ${esc(fc)}</span>`;
+  if(d < 0)  return '';  // ya cerró: no mostrar plazo vencido al público
+  const cls = d>10?'dias-ok':d>3?'dias-warn':'dias-red';
+  const txt = d===0?'Cierra hoy':d===1?'Cierra mañana':`Cierra en ${d} días`;
+  return `<span class="av-dias ${cls}">📅 ${esc(fc)} · ${txt}</span>`;
+}
+// Convierte una fecha DD-MM-AAAA o DD/MM/AAAA a días desde hoy (o null si no parsea).
+function _diasHastaFecha(s){
+  const m = String(s).match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
+  if(!m) return null;
+  let [_, dd, mm, yy] = m;
+  yy = yy.length===2 ? '20'+yy : yy;
+  const f = new Date(+yy, +mm-1, +dd);
+  if(isNaN(f.getTime())) return null;
+  const hoy = new Date(); hoy.setHours(0,0,0,0);
+  return Math.round((f - hoy)/(1000*3600*24));
 }
 
 // Botón de postulación pública: siempre a través del enlace propio (mide clics).
@@ -3651,6 +3689,31 @@ function _btnPostular(a){
 // ══════════════════════════════════════════════
 // RENDER ADMIN
 // ══════════════════════════════════════════════
+// Reloj en vivo del banner de re-publicación: cuenta regresiva al inicio (09:00) o cierre (11:00)
+// de la ventana comprometida. Solo un recordatorio visual — la publicación es manual.
+let _repubTimer = null;
+function _tickRepub(){
+  const el = document.getElementById('repub-clock');
+  if(!el){ if(_repubTimer){ clearInterval(_repubTimer); _repubTimer=null; } return; }
+  const now = new Date();
+  const h = now.getHours(), dia = now.getDay();
+  const habil = dia>=1 && dia<=5;
+  let objetivo = null;
+  if(habil && h<9){ objetivo = new Date(now); objetivo.setHours(9,0,0,0); }        // antes: cuenta a las 09:00
+  else if(habil && h>=9 && h<11){ objetivo = new Date(now); objetivo.setHours(11,0,0,0); } // ventana: cuenta a las 11:00
+  if(!objetivo){ el.textContent='--:--:--'; return; }
+  let s = Math.max(0, Math.floor((objetivo - now)/1000));
+  const hh = String(Math.floor(s/3600)).padStart(2,'0');
+  const mm = String(Math.floor((s%3600)/60)).padStart(2,'0');
+  const ss = String(s%60).padStart(2,'0');
+  el.textContent = `${hh}:${mm}:${ss}`;
+}
+function iniciarRelojRepub(){
+  if(_repubTimer) clearInterval(_repubTimer);
+  _tickRepub();
+  _repubTimer = setInterval(_tickRepub, 1000);
+}
+
 function renderAdmin(){
   const pend  = DB.avisos.filter(a=>a.estado==='pendiente');
   const activ = DB.avisos.filter(a=>a.estado==='activo');
@@ -3687,14 +3750,12 @@ function renderAdmin(){
         titulo='Fin de semana — sin publicaciones';
         texto=`Tienes <strong>${nP} ${nP===1?'aviso pendiente':'avisos pendientes'}</strong>. La próxima ventana de publicación es el lunes entre 09:00 y 11:00 hrs.`;
       } else if(antes){
-        const faltan = (9-h)*60 - m;
         color='var(--warn)'; icono='⏰';
-        titulo=`Faltan ${Math.floor(faltan/60)}h ${faltan%60}min para la ventana de publicación`;
-        texto=`Tienes <strong>${nP} ${nP===1?'aviso pendiente':'avisos pendientes'}</strong> de revisión. Revísalos antes de las 09:00 para publicarlos hoy.`;
+        titulo=`Faltan <span id="repub-clock">--:--:--</span> para tu ventana de publicación`;
+        texto=`Tienes <strong>${nP} ${nP===1?'aviso pendiente':'avisos pendientes'}</strong> de revisión. Revísalos antes de las 09:00 para publicarlos hoy. <span style="color:#9CA3AF">(Recuerda: tú publicas manualmente; el reloj es un recordatorio de tu horario comprometido.)</span>`;
       } else if(enVentana){
-        const restan = (11-h)*60 - m;
         color='var(--red)'; icono='🔴';
-        titulo=`VENTANA ACTIVA — quedan ${Math.floor(restan/60)}h ${restan%60}min`;
+        titulo=`VENTANA ACTIVA — quedan <span id="repub-clock">--:--:--</span>`;
         texto=`Estás dentro del horario comprometido (09:00–11:00). Tienes <strong>${nP} ${nP===1?'aviso pendiente':'avisos pendientes'}</strong>. Apruébalos y publícalos ahora en el canal.`;
       } else {
         color='var(--sub)'; icono='🌙';
@@ -3706,6 +3767,7 @@ function renderAdmin(){
       ah.style.borderLeft = `4px solid ${color}`;
       ah.innerHTML = `<div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:${color};margin-bottom:6px">${icono} ${titulo}</div>
         <div style="font-size:13.5px;color:var(--sub);line-height:1.6">${texto}</div>`;
+      iniciarRelojRepub();
     }
   }
 
