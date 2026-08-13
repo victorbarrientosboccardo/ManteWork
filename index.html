@@ -954,7 +954,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.15.7</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.16.0</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1187,7 +1187,7 @@ footer{background:var(--navy);margin-top:80px}
       <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:9px;padding:9px 12px;margin-bottom:14px">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--navy)">📢 Difusión del canal</span>
-          <span style="font-size:11px;color:#8A7A55">— enlace propio para invitar; sus clics se miden solos</span>
+          <span style="font-size:12px;color:#0D1B2A;font-weight:600">https://www.mantework.com/ir/?c=canal</span>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
           <input class="ft" readonly value="https://www.mantework.com/ir/?c=canal" style="flex:1;min-width:180px;background:#fff;color:#6B7280;padding:6px 10px;font-size:12.5px" onclick="this.select()">
@@ -1299,7 +1299,7 @@ footer{background:var(--navy);margin-top:80px}
             <div style="font-weight:700;color:var(--navy);font-size:13.5px;margin-bottom:2px">Brochure de Planes</div>
             <div style="font-size:11.5px;color:var(--sub);margin-bottom:10px">Los 3 planes + cortesía de bienvenida. Para cotizar y cerrar.</div>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <a class="ab ab-ok" style="font-size:12px;padding:7px 13px;text-decoration:none" href="docs/brochure-planes.pdf" download>⬇ Descargar</a>
+              <a class="ab ab-ok" style="font-size:12px;padding:7px 13px;text-decoration:none" href="brochure-planes.pdf" download>⬇ Descargar</a>
               <button class="ab ab-v" style="font-size:12px;padding:7px 13px" onclick="enviarBrochure('planes')">📲 Enviar por WhatsApp</button>
             </div>
           </div>
@@ -1307,7 +1307,7 @@ footer{background:var(--navy);margin-top:80px}
             <div style="font-weight:700;color:var(--navy);font-size:13.5px;margin-bottom:2px">Brochure de Empresa</div>
             <div style="font-size:11.5px;color:var(--sub);margin-bottom:10px">Institucional, sin precios. Para presentar la marca y generar confianza.</div>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <a class="ab ab-ok" style="font-size:12px;padding:7px 13px;text-decoration:none" href="docs/brochure-empresa.pdf" download>⬇ Descargar</a>
+              <a class="ab ab-ok" style="font-size:12px;padding:7px 13px;text-decoration:none" href="brochure-empresa.pdf" download>⬇ Descargar</a>
               <button class="ab ab-v" style="font-size:12px;padding:7px 13px" onclick="enviarBrochure('empresa')">📲 Enviar por WhatsApp</button>
             </div>
           </div>
@@ -1360,7 +1360,7 @@ footer{background:var(--navy);margin-top:80px}
         </div>
         <div class="fr2">
           <div class="fgroup"><label class="fl">Razón social <span class="freq">*</span></label><input class="fi" id="e_empresa" placeholder="Minera Los Andes S.A."></div>
-          <div class="fgroup"><label class="fl">RUT de la empresa <span class="freq">*</span></label><input class="fi" id="e_rut" placeholder="76.123.456-0"></div>
+          <div class="fgroup"><label class="fl">RUT de la empresa <span class="freq">*</span></label><input class="fi" id="e_rut" placeholder="76.123.456-0" onblur="chequearRutEnrol()"><div id="e_rut_alerta" style="display:none;font-size:12px;color:var(--red);margin-top:4px;font-weight:600"></div></div>
         </div>
         <div class="fgroup"><label class="fl">Tipo de empresa <span class="freq">*</span></label><select class="fs" id="e_tipo"><option value="">Seleccionar…</option><option>Minera</option><option>Empresa de Servicio</option></select></div>
         <div class="fr2">
@@ -1372,10 +1372,7 @@ footer{background:var(--navy);margin-top:80px}
           ⓘ Este será el <strong>contacto principal</strong> de la empresa. Después de crear la cuenta podrás agregar hasta <strong>2 usuarios más</strong> desde la pestaña "Clientes enrolados".
         </div>
         <div class="fgroup"><label class="fl">Contraseña temporal <span class="freq">*</span></label><div class="fhint">Mínimo 8 caracteres con letras y números — se envía a la empresa por WhatsApp</div><input class="fi" id="e_pass" placeholder="Ej: Emp2026!"></div>
-        <div class="fgroup"><label class="fl">Plan contratado</label><select class="fs" id="e_plan" onchange="syncPlanGratuito()"><option value="">Seleccionar plan…</option><option>Plan Gratuito</option><option>Plan Básico</option><option>Plan Estándar</option><option>Plan Premium</option><option>Pack Empresa</option></select></div>
-        <div style="background:var(--green-bg);border:1px solid var(--green-l);border-radius:8px;padding:14px 18px;margin-bottom:18px">
-          <label class="fch" style="margin-bottom:0"><input type="checkbox" id="e_demo"> <span><strong>Cuenta sin cobro de aviso — 45 días</strong><br><span style="font-size:12.5px;color:var(--sub)">La empresa publica avisos reales en el canal sin costo durante 45 días. Al vencer el período, publicar nuevos avisos requiere contratar un plan — el cobro siempre se realiza con la aceptación expresa de la empresa, nunca de forma automática.</span></span></label>
-          <div id="demo-hint" style="display:none;font-size:12px;color:var(--green);font-weight:600;margin-top:8px;padding-left:26px">El Plan Gratuito siempre incluye el período de 45 días sin cobro.</div>
+        <div class="fgroup"><label class="fl">Plan contratado</label><select class="fs" id="e_plan"><option value="">Seleccionar plan…</option><option>Plan Estándar</option><option>Plan Premium</option><option>Pack Empresa</option></select></div>
         </div>
         <div id="enrol-err" class="merr">Completar todos los campos obligatorios y verificar que la contraseña tenga letras y números.</div>
         <div id="enrol-ok" class="msuc">Empresa enrolada correctamente. Credenciales listas para enviar por WhatsApp.</div>
@@ -1588,7 +1585,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.15.7';
+const APP_VERSION = '3.16.0';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1599,6 +1596,9 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.16.0', fecha:'12-08-2026', cambios:['Nueva empresa en la lista blanca: Nova Andino Litio (litio, Salar de Atacama, joint venture Codelco-SQM). Portal oficial trabajaen.novandino.com agregado al acortador y al prompt de captura; dominio espejo trabajaen.sqmlitio.com también autorizado']},
+  { v:'3.15.9', fecha:'12-08-2026', cambios:['Difusión del canal: el enlace propio se muestra ahora al lado del título','Enrolar empresa: se quitó el recuadro de «cuenta sin cobro 45 días» y el selector de planes muestra solo los 3 de venta (Estándar/Premium/Pack) — la cortesía se ofrece por teléfono, no como plan','Enrolar empresa: verificación inmediata de RUT duplicado al salir del campo (avisa temprano, no al final)','Reloj de cuenta regresiva también en el estado «ventana cerrada» (cuenta hasta la próxima apertura hábil 09:00, saltando fines de semana)','Nuevo botón «Eliminar» en avisos pendientes y activos. En activos, la confirmación aclara que se elimina del registro del sitio y recuerda borrar el mensaje manualmente en WhatsApp (no se puede remoto)']},
+  { v:'3.15.8', fecha:'12-08-2026', cambios:['Los brochures del panel admin ahora se sirven desde la raíz del sitio (brochure-planes.pdf, brochure-empresa.pdf) en vez de una subcarpeta, coincidiendo con la estructura del repositorio']},
   { v:'3.15.7', fecha:'12-08-2026', cambios:['En el portal de la empresa cliente, la sección de publicar aviso ahora ofrece también CARGA MASIVA por Excel: las empresas con muchas vacantes pueden descargar la plantilla y subir varias de golpe, en vez de una por una. Por seguridad, los avisos cargados se asignan automáticamente a la empresa del cliente logueado y entran como pendientes de validación. El formulario de a uno sigue disponible para publicar pocas']},
   { v:'3.15.6', fecha:'12-08-2026', cambios:['Sección «Material comercial» en el panel admin (solo administrador): descarga directa de los brochures de Planes y de Empresa, y botón «Enviar por WhatsApp» que abre un mensaje con el enlace de descarga listo para mandar al cliente. Los PDFs se sirven desde /docs del sitio']},
   { v:'3.15.5', fecha:'11-08-2026', cambios:['Simplificación de la oferta comercial: la vitrina pública de planes pasó de 5 a 3 (Estándar $50.000, Premium $100.000, Pack Empresa $350.000) — menos opciones, decisión más clara. Se retiraron de la vista el Gratuito y el Básico','Se agregó la línea de «Cortesía de bienvenida»: primeros 4 avisos sin costo para probar el canal (ofrecidos en la conversación por WhatsApp), con invitación a conocer las promociones. El brochure comercial se alineó a los mismos 3 planes']},
@@ -2449,8 +2449,8 @@ function cargarDatos(){
 function enviarBrochure(tipo){
   const base = (location.origin && location.origin.startsWith('http')) ? location.origin : 'https://www.mantework.com';
   const url = tipo==='planes'
-    ? base + '/docs/brochure-planes.pdf'
-    : base + '/docs/brochure-empresa.pdf';
+    ? base + '/brochure-planes.pdf'
+    : base + '/brochure-empresa.pdf';
   const nombre = tipo==='planes' ? 'nuestros planes de publicación' : 'MANTEWORK';
   const msg = 'Hola 👋 Te comparto información sobre ' + nombre + ' — el portal de validación del empleo técnico minero:\n\n' + url + '\n\nCualquier duda, quedo atento.';
   window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
@@ -3789,6 +3789,17 @@ function _tickRepub(){
   let objetivo = null;
   if(habil && h<9){ objetivo = new Date(now); objetivo.setHours(9,0,0,0); }        // antes: cuenta a las 09:00
   else if(habil && h>=9 && h<11){ objetivo = new Date(now); objetivo.setHours(11,0,0,0); } // ventana: cuenta a las 11:00
+  else {
+    // cerrado (tarde de día hábil, o fin de semana): cuenta hasta la PRÓXIMA apertura hábil 09:00
+    objetivo = new Date(now); objetivo.setHours(9,0,0,0);
+    do { objetivo.setDate(objetivo.getDate()+1); } while(objetivo.getDay()===0 || objetivo.getDay()===6);
+    // si es día hábil y aún no dieron las 9... ya cubierto arriba; aquí siempre saltamos al siguiente hábil
+    // excepto si hoy es hábil y son <9 (cubierto). Para tarde hábil, el siguiente hábil es correcto salvo que mañana sea hábil.
+    // Ajuste: si hoy hábil y h>=11, la próxima apertura puede ser mañana (si mañana es hábil).
+    let manana = new Date(now); manana.setDate(manana.getDate()+1); manana.setHours(9,0,0,0);
+    if(manana.getDay()>=1 && manana.getDay()<=5) objetivo = manana;
+    else { let d=new Date(manana); while(d.getDay()===0||d.getDay()===6){ d.setDate(d.getDate()+1); } objetivo=d; }
+  }
   if(!objetivo){ el.textContent='--:--:--'; return; }
   let s = Math.max(0, Math.floor((objetivo - now)/1000));
   const hh = String(Math.floor(s/3600)).padStart(2,'0');
@@ -3847,8 +3858,8 @@ function renderAdmin(){
         texto=`Estás dentro del horario comprometido (09:00–11:00). Tienes <strong>${nP} ${nP===1?'aviso pendiente':'avisos pendientes'}</strong>. Apruébalos y publícalos ahora en el canal.`;
       } else {
         color='var(--sub)'; icono='🌙';
-        titulo='Ventana de publicación cerrada por hoy';
-        texto=`Tienes <strong>${nP} ${nP===1?'aviso pendiente':'avisos pendientes'}</strong>. Si los apruebas ahora, se publican mañana entre 09:00 y 11:00 hrs.`;
+        titulo=`Ventana cerrada — próxima apertura en <span id="repub-clock">--:--:--</span>`;
+        texto=`Tienes <strong>${nP} ${nP===1?'aviso pendiente':'avisos pendientes'}</strong>. Si los apruebas ahora, se publican en la próxima ventana (09:00–11:00 hrs).`;
       }
       ah.style.background = color==='var(--red)'?'var(--red-bg)':color==='var(--warn)'?'var(--warn-bg)':'#EDEDF0';
       ah.style.border = `1.5px solid ${color==='var(--red)'?'#F0B0B0':color==='var(--warn)'?'#F0C070':'var(--line)'}`;
@@ -3900,6 +3911,7 @@ function renderAdmin(){
         <button class="ab ab-v" onclick="editarAviso(${a.id})">✎ Editar</button>
         <button class="ab ab-ok" onclick="aprobar(${a.id})">Aprobar →</button>
         <button class="ab ab-warn" onclick="pedirAclaracion(${a.id})">Aclarar información</button>
+        <button class="ab ab-no" onclick="eliminarAviso(${a.id},'pendiente')">🗑 Eliminar</button>
       </div>
     </div>`).join('');}
 
@@ -3917,6 +3929,7 @@ function renderAdmin(){
         <button class="ab ab-ok" onclick="copiarParaCanal(${a.id})">📋 Copiar para el canal</button>
         <button class="ab ab-v" onclick="editarAviso(${a.id})">✎ Editar publicado</button>
         <button class="ab ab-no" onclick="marcarVencido(${a.id})">Cerrar aviso</button>
+        <button class="ab ab-no" onclick="eliminarAviso(${a.id},'activo')">🗑 Eliminar</button>
       </div>
     </div>`;}).join('');}
 
@@ -4186,6 +4199,25 @@ function cambiarClave(id){
 // ══════════════════════════════════════════════
 // ENROLAR EMPRESA (OPCIÓN B)
 // ══════════════════════════════════════════════
+// Verifica de inmediato (al salir del campo RUT) si ya existe una empresa activa con ese RUT,
+// para avisar temprano en vez de al final del formulario.
+function chequearRutEnrol(){
+  const rutInp = document.getElementById('e_rut');
+  const alerta = document.getElementById('e_rut_alerta');
+  if(!rutInp || !alerta) return;
+  const rut = rutInp.value.trim();
+  if(!rut){ alerta.style.display='none'; return; }
+  if(!validaRut(rut)){ alerta.style.display='block'; alerta.textContent='⚠ El RUT no es válido (formato: 76.123.456-7).'; return; }
+  const existe = CLIENTES.some(c => c.activo && c.rut && limpiaRut(c.rut)===limpiaRut(rut));
+  if(existe){
+    const emp = CLIENTES.find(c => c.activo && c.rut && limpiaRut(c.rut)===limpiaRut(rut));
+    alerta.style.display='block';
+    alerta.textContent='⚠ Ya existe una empresa activa con ese RUT' + (emp && emp.empresa ? ' («'+emp.empresa+'»)' : '') + '. No es necesario volver a enrolarla.';
+  } else {
+    alerta.style.display='none';
+  }
+}
+
 function enrolarEmpresa(){
   const emp=sanitiza(document.getElementById('e_empresa').value);
   const rut=document.getElementById('e_rut').value.trim();
@@ -4208,7 +4240,7 @@ function enrolarEmpresa(){
   if(!/[a-zA-Z]/.test(pass)||!/[0-9]/.test(pass)){err.textContent='La contraseña debe contener letras y números.';err.classList.add('show');return;}
   if(CLIENTES.some(c=>c.activo && ((c.usuarios||[]).some(u=>u.email.toLowerCase()===email.toLowerCase()) || c.email===email))){err.textContent='Ya existe una cuenta activa con ese email.';err.classList.add('show');return;}
 
-  const esCuentaDemo = document.getElementById('e_demo').checked || plan === 'Plan Gratuito';
+  const _chkDemo = document.getElementById('e_demo'); const esCuentaDemo = (_chkDemo ? _chkDemo.checked : false) || plan === 'Plan Gratuito';
   const nueva={id:Date.now(),empresa:emp,rut:formateaRut(rut),tipo,nombre:nom,email,pass,wsp:formateaFono(wsp),plan:esCuentaDemo?'Plan Gratuito':plan,activo:true,sinCobro:esCuentaDemo,fechaEnrol:new Date(),
     usuarios:[{ nombre:nom, email, pass, wsp, cargo:'Contacto principal' }]};
   CLIENTES.push(nueva);
@@ -4226,8 +4258,7 @@ function enrolarEmpresa(){
 
   // Limpiar campos
   ['e_empresa','e_rut','e_nombre','e_wsp','e_email','e_pass'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('e_demo').checked=false;
-  document.getElementById('e_demo').disabled=false;
+  const _ed=document.getElementById('e_demo'); if(_ed){ _ed.checked=false; _ed.disabled=false; }
   const dh=document.getElementById('demo-hint'); if(dh) dh.style.display='none';
   document.getElementById('e_plan').value='';
   document.getElementById('e_tipo').value='';
@@ -4303,6 +4334,29 @@ function detectarDiscriminacion(aviso){
   ];
   reglas.forEach(([re, motivo])=>{ if(re.test(texto) && !hallazgos.includes(motivo)) hallazgos.push(motivo); });
   return hallazgos;
+}
+
+// Elimina un aviso del sistema. Para PENDIENTES: quita el aviso que aún no se publicó.
+// Para ACTIVOS (g): la eliminación se refiere a QUITARLO DEL CANAL / del registro del sitio —
+// el mensaje que ya se envió a WhatsApp no se puede borrar de forma remota; el administrador debe
+// borrarlo manualmente en la app de WhatsApp. Aquí se elimina su registro y deja de contar como activo.
+function eliminarAviso(id, tipo){
+  const a = DB.avisos.find(x => x.id === id);
+  if(!a){ toast('Aviso no encontrado.'); return; }
+  let msg;
+  if(tipo === 'activo'){
+    msg = 'Vas a ELIMINAR este aviso ACTIVO:\n\n« ' + (a.cargo||'') + ' » — ' + (a.empresa||'') + '\n\n'
+        + 'Esto lo quita del registro del sitio y deja de contar como activo en el canal.\n\n'
+        + 'IMPORTANTE: el mensaje que ya se publicó en WhatsApp NO se borra solo — debes eliminarlo tú manualmente en la app de WhatsApp.\n\n¿Continuar?';
+  } else {
+    msg = 'Vas a ELIMINAR este aviso PENDIENTE:\n\n« ' + (a.cargo||'') + ' » — ' + (a.empresa||'') + '\n\nSe quitará de la cola de revisión y no se publicará. ¿Continuar?';
+  }
+  if(!confirm(msg)) return;
+  DB.avisos = DB.avisos.filter(x => x.id !== id);
+  guardarDatos();
+  if(typeof sincronizarNube === 'function') sincronizarNube();
+  renderAdmin(); renderPublico();
+  toast(tipo==='activo' ? '🗑 Aviso eliminado del registro. Recuerda borrarlo también en WhatsApp.' : '🗑 Aviso pendiente eliminado.');
 }
 
 function aprobar(id){
