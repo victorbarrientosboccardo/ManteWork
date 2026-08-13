@@ -954,7 +954,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.16.5</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.16.7</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1585,7 +1585,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.16.5';
+const APP_VERSION = '3.16.7';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1596,6 +1596,8 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.16.7', fecha:'13-08-2026', cambios:['Detector de duplicados resistente a variantes de género: «Jefa(e)», «Jefe(a)», «Jefe/a», «Operador/a» y «Operadora(or)» ahora producen la misma huella de comparación (se eliminan los sufijos de género y las vocales antes de comparar), por lo que el sistema detecta como similar un aviso repetido aunque el cargo esté escrito con distinta variante. Cargos realmente distintos (Eléctrico vs Electrónico, Supervisor vs Superintendente) siguen diferenciándose. Mejora nacida de un caso real: la misma vacante de Los Pelambres publicada dos veces con «Jefa(e)» y «Jefe(a)»']},
+  { v:'3.16.6', fecha:'13-08-2026', cambios:['Validación de duplicados también en el formulario de publicación del cliente (asistente de 4 pasos): antes de enviar, el sistema revisa si el aviso ya existe. Si es EXACTO (mismo aviso dentro de 30 días) lo bloquea indicando su estado actual; si es SIMILAR (misma empresa y cargo, distinta faena) pide confirmación. Con esto, TODAS las vías de ingreso de avisos (Excel admin, Excel cliente, captación web y formulario del cliente) controlan repetidos']},
   { v:'3.16.5', fecha:'12-08-2026', cambios:['Capa 2 de control de vigencia: al subir el Excel, el sitio ahora descarta automáticamente los avisos vencidos o por vencer (fecha de cierre igual o anterior a hoy, o que cierra mañana), igual que ya hacía con los duplicados. Los avisos sin fecha de cierre se cargan normal (habitual en Codelco/BHP). El resumen de carga reporta cuántos se descartaron por vencidos. Complementa el filtro que ya hacía el prompt en la captura: doble protección para no publicar ofertas muertas']},
   { v:'3.16.4', fecha:'12-08-2026', cambios:['Estructura de captura ampliada de 24 a 30 columnas tras validar con 4 avisos reales (Nova Andino, BHP Escondida, Codelco Gabriela Mistral y Ministro Hales). Nuevas columnas de mercado: Nivel/Seniority, Licencia de conducir, Postgrado/estudios deseables, Duración del contrato, Enfoque de inclusión y Número de vacantes. La columna «ID solicitud» se renombró a «ID proceso / solicitud». El Nivel/Seniority ademas se publica en el canal (útil para el postulante); las otras 5 quedan internas para inteligencia de mercado']},
   { v:'3.16.3', fecha:'12-08-2026', cambios:['La línea de plazo de postulación ahora SIEMPRE se muestra, en el canal y en el sitio: si el aviso trae fecha de cierre, se muestra la fecha y los días restantes; si no la trae, se indica «Verificar en el portal oficial». Así el público nunca queda sin saber hasta cuándo postular']},
@@ -1877,9 +1879,17 @@ function renderStats(){
 // Nivel 3: huella de un aviso para detectar duplicados
 function huellaAviso(empresa, cargo, ciudad, link){
   const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');
+  // Esqueleto anti-variantes de género: quita los sufijos «(a)», «(e)», «(or)», «/a», «/ora», etc.
+  // y luego las vocales — así «Jefa(e)», «Jefe(a)» y «Jefe/a» producen la MISMA huella similar,
+  // pero cargos realmente distintos (Eléctrico vs Electrónico, Supervisor vs Superintendente) siguen difiriendo.
+  const esq = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/\((?:a|o|e|as|os|es|or|ora|ores|oras)\)/g,'')
+    .replace(/\/(?:a|o|e|as|os|es|or|ora)\b/g,'')
+    .replace(/[^a-z0-9]/g,'')
+    .replace(/[aeiou]/g,'');
   return {
     exacta: norm(link) || (norm(empresa)+norm(cargo)+norm(ciudad)),
-    similar: norm(empresa)+'|'+norm(cargo)
+    similar: esq(empresa)+'|'+esq(cargo)
   };
 }
 // Revisa si un aviso ya existe. Devuelve {tipo:'exacto'|'similar'|'nuevo', ref}
@@ -4723,6 +4733,24 @@ async function wGo(d){
           resetW(); wStep=0; wRender(); go('misavisos');
           toast(`✓ Aviso ${_nro} corregido y reenviado a validación`);
           return;
+        }
+      }
+      // ── Validación de duplicados (misma lógica que la captación web) ──
+      // Exacto (mismo aviso dentro de 30 días) → bloquear; Similar (misma empresa+cargo) → avisar y confirmar.
+      {
+        const _cargoW = sanitiza(document.getElementById('f_cargo').value);
+        const _empW = clienteActual() ? clienteActual().empresa : sanitiza((document.getElementById('f_empresa')||{}).value||'');
+        const _ciuW = (document.getElementById('f_ciudad')||{}).value||'';
+        const _lnkW = sanitiza((document.getElementById('f_postula')||{}).value||'');
+        const dup = revisarDuplicado(_empW, _cargoW, _ciuW, _lnkW);
+        if(dup.tipo === 'exacto'){
+          const est = dup.ref.estado==='activo' ? 'ya está ACTIVO en el canal' : (dup.ref.estado==='pendiente' ? 'ya está PENDIENTE de validación' : 'ya existe en el registro');
+          toast('⚠ Este aviso '+est+' (enviado hace '+dup.dias+' día'+(dup.dias===1?'':'s')+'). No es necesario enviarlo de nuevo.');
+          return;
+        }
+        if(dup.tipo === 'similar'){
+          const ok = confirm('Ya existe un aviso de «'+_cargoW+'» para tu empresa'+(dup.dias!==null?' (hace '+dup.dias+' días)':'')+'.\n\n¿Es una vacante DISTINTA (otra faena, otro turno) y quieres publicarla igual?');
+          if(!ok) return;
         }
       }
       const n={id:Date.now(),cargo:sanitiza(document.getElementById('f_cargo').value),empresa:(clienteActual()?clienteActual().empresa:sanitiza(document.getElementById('f_empresa').value))||SESSION.empresa||'Empresa',lugar:'',ciudad:document.getElementById('f_ciudad').value,region:document.getElementById('f_region').value,turno:document.getElementById('f_turno').value,contrato:document.getElementById('f_contrato').value,req:sanitiza(document.getElementById('f_req').value),grupo:document.getElementById('f_grupo').value,perfil:document.getElementById('f_perfil').value,experiencia:document.getElementById('f_experiencia').value,educacion:document.getElementById('f_educacion').value,certs:certsSeleccionadas(),postula:sanitiza(document.getElementById('f_postula').value),plan:(clienteActual()?clienteActual().plan:'Gratuito'),estado:'pendiente',fechaCreacion:new Date(),fechaAprobacion:null,badge:'blue',verEmpresa:document.getElementById('f_ver_empresa').checked,verFaena:document.getElementById('f_ver_faena').checked,sinCobro:esDemo(),publicadoPor:SESSION.nombreUsuario||SESSION.user};
