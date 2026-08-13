@@ -325,6 +325,7 @@ footer{background:var(--navy);margin-top:80px}
 /* OPCION A — INACTIVA (preparada para futura activación) */
 /* .solicitud-form { display:block } — descomentar al activar Opción A */
 .solicitud-form{display:none!important} /* OPCION A INACTIVA */
+.planes-grid.planes-3{grid-template-columns:repeat(3,1fr);max-width:760px;margin-left:auto;margin-right:auto}
 </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
@@ -715,13 +716,8 @@ footer{background:var(--navy);margin-top:80px}
       <div class="ey">Para empresas y contratistas</div>
       <h2 class="st">Planes de publicación</h2>
       <p class="ss">Cada plan incluye los tres filtros del portal y 30 días de vigencia. Sin contratos anuales.</p>
-      <div class="planes-grid">
-        <div class="plan" style="border:2px solid var(--green)"><div class="plan-tag" style="background:var(--green);color:#fff">Primeros 45 días</div><h3>Plan Gratuito</h3><div class="p-new" style="margin-top:10px">$0 <span>CLP</span></div><div class="p-dur">1 aviso · vigencia 30 días</div><ul><li>1 publicación en canal y grupos</li><li>Validación técnica incluida</li><li>Contacto directo empresa–candidato</li><li>Confirmación por email y WhatsApp</li></ul><button class="btn btn-green btn-full" onclick="toast('Escríbenos al +56 9 6594 5170 para activar tu período gratuito')">Solicitar acceso</button></div>
-        <div class="plan"><h3>Plan Básico</h3><div class="p-new">$15.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">1 aviso · vigencia 30 días</div><ul><li>1 publicación en canal y grupos</li><li>Validación técnica incluida</li><li>Contacto directo empresa–candidato</li><li>Confirmación por email y WhatsApp</li></ul><button class="btn btn-ghost btn-full" onclick="irContacto()">Contratar por WhatsApp</button></div>
-        <div class="plan feat"><div class="plan-tag">Más elegido</div><h3>Plan Estándar</h3><div class="p-new">$50.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">4 avisos · vigencia 30 días</div><ul><li>4 publicaciones programadas</li><li>Aviso destacado en el canal</li><li>Validación técnica incluida</li><li>Alerta temprana a candidatos</li><li>Alerta de vencimiento con descuento</li></ul><button class="btn btn-gold btn-full" onclick="irContacto()">Contratar por WhatsApp</button></div>
-        <div class="plan"><h3>Plan Premium</h3><div class="p-new">$100.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">10 avisos · vigencia 30 días</div><ul><li>10 publicaciones programadas</li><li>Fijado al tope del canal</li><li>Máxima visibilidad en el canal</li><li>Validación técnica incluida</li><li>Alerta de vencimiento con descuento</li></ul><button class="btn btn-ghost btn-full" onclick="irContacto()">Contratar por WhatsApp</button></div>
-        <div class="plan"><h3>Pack Empresa</h3><div class="p-new" style="margin-top:10px">$350.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">Avisos ilimitados · vigencia 30 días</div><ul><li>Avisos sin límite durante el mes</li><li>Logo de la empresa en cada aviso</li><li>Difusión en todos los grupos</li><li>Atención directa y prioritaria</li></ul><button class="btn btn-ghost btn-full" onclick="toast('Escríbenos por WhatsApp para activar el Pack Empresa')">Consultar</button></div>
-      </div>
+      <div class="planes-grid planes-3"><div class="plan feat"><div class="plan-tag">Más elegido</div><h3>Plan Estándar</h3><div class="p-new">$50.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">4 avisos · vigencia 30 días</div><ul><li>4 publicaciones programadas</li><li>Aviso destacado en el canal</li><li>Validación técnica incluida</li><li>Alerta temprana a candidatos</li><li>Alerta de vencimiento con descuento</li></ul><button class="btn btn-gold btn-full" onclick="irContacto()">Contratar por WhatsApp</button></div><div class="plan"><h3>Plan Premium</h3><div class="p-new">$100.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">10 avisos · vigencia 30 días</div><ul><li>10 publicaciones programadas</li><li>Fijado al tope del canal</li><li>Máxima visibilidad en el canal</li><li>Validación técnica incluida</li><li>Alerta de vencimiento con descuento</li></ul><button class="btn btn-ghost btn-full" onclick="irContacto()">Contratar por WhatsApp</button></div><div class="plan"><h3>Pack Empresa</h3><div class="p-new" style="margin-top:10px">$350.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">Avisos ilimitados · vigencia 30 días</div><ul><li>Avisos sin límite durante el mes</li><li>Logo de la empresa en cada aviso</li><li>Difusión en todos los grupos</li><li>Atención directa y prioritaria</li></ul><button class="btn btn-ghost btn-full" onclick="toast('Escríbenos por WhatsApp para activar el Pack Empresa')">Consultar</button></div></div>
+      <div style="background:#FBF5E6;border:1.5px solid var(--gold);border-radius:9px;padding:11px 16px;margin:14px auto 0;max-width:620px;font-size:12.5px;color:var(--navy);line-height:1.55;text-align:center">🎁 <b>Cortesía de bienvenida:</b> si es tu primera vez, escríbenos — publicamos tus primeros <b>4 avisos sin costo</b> para que conozcas el canal antes de contratar. <b>Contáctanos para conocer nuestras promociones.</b></div>
       
       <div style="background:var(--navy);border-radius:var(--r2);padding:18px 24px;margin-top:16px;display:flex;align-items:flex-start;gap:12px">
         <span style="font-size:20px;flex-shrink:0">🕐</span>
@@ -765,6 +761,16 @@ footer{background:var(--navy);margin-top:80px}
       <div class="wiz">
         <div class="wh"><h3>Publicar aviso en el canal</h3><p>Formulario → pago → validación técnica → publicación en WhatsApp · Objetivo: menos de 24 horas hábiles</p></div>
         <div id="banner-correccion" style="display:none;background:var(--gold-bg);border:1px solid rgba(196,160,74,.4);border-radius:10px;padding:13px 17px;margin-bottom:16px;font-size:13.5px;color:#6B5417;line-height:1.6"></div>
+        <div id="cli-bulk-box" style="background:var(--gold-bg);border:1px solid rgba(196,160,74,.4);border-radius:10px;padding:13px 17px;margin-bottom:16px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <div style="font-size:13px;color:#6B5417;line-height:1.5">📊 <b>¿Tienes muchas vacantes?</b> Si vas a publicar varias, cárgalas todas juntas con nuestra plantilla Excel en vez de una por una.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn btn-ghost" style="font-size:12px;padding:7px 13px;white-space:nowrap" onclick="descargarPlantillaCliente()">⬇ Plantilla Excel</button>
+              <label class="btn btn-gold" style="font-size:12px;padding:7px 13px;cursor:pointer;white-space:nowrap">📤 Cargar Excel<input type="file" accept=".xlsx,.xls,.csv" multiple style="display:none" onchange="cargarExcelCliente(this)"></label>
+            </div>
+          </div>
+          <div id="cli-bulk-msg" style="font-size:12px;margin-top:9px;display:none"></div>
+        </div>
         <div class="wsteps"><div class="ws now" id="ws0">1 · Tu empresa</div><div class="ws" id="ws1">2 · Cargo</div><div class="ws" id="ws2">3 · Plan</div><div class="ws" id="ws3">4 · Revisar y enviar</div></div>
         <div class="wp act" id="wp0">
           <div class="fr2"><div class="fgroup"><label class="fl">Razón social <span class="freq">*</span></label><input class="fi" id="f_empresa" placeholder="Empresa Minera S.A."></div><div class="fgroup"><label class="fl">RUT empresa <span class="freq">*</span></label><input class="fi" id="f_rut" placeholder="12.345.678-9"></div></div>
@@ -948,7 +954,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.15.4</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.15.7</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1285,6 +1291,28 @@ footer{background:var(--navy);margin-top:80px}
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--warn);margin-bottom:8px">⏰ Avisos por vencer — oportunidad de renovación</div>
         <div id="lista-vencen" style="font-size:13.5px;color:#6B4500;line-height:1.8"></div>
       </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:22px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:3px">📄 Material comercial</div>
+        <div style="font-size:12.5px;color:var(--sub);margin-bottom:13px">Brochures listos para descargar y enviar a las empresas. El botón de WhatsApp abre un mensaje con el enlace de descarga.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="border:1px solid var(--line);border-radius:9px;padding:12px 14px">
+            <div style="font-weight:700;color:var(--navy);font-size:13.5px;margin-bottom:2px">Brochure de Planes</div>
+            <div style="font-size:11.5px;color:var(--sub);margin-bottom:10px">Los 3 planes + cortesía de bienvenida. Para cotizar y cerrar.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <a class="ab ab-ok" style="font-size:12px;padding:7px 13px;text-decoration:none" href="docs/brochure-planes.pdf" download>⬇ Descargar</a>
+              <button class="ab ab-v" style="font-size:12px;padding:7px 13px" onclick="enviarBrochure('planes')">📲 Enviar por WhatsApp</button>
+            </div>
+          </div>
+          <div style="border:1px solid var(--line);border-radius:9px;padding:12px 14px">
+            <div style="font-weight:700;color:var(--navy);font-size:13.5px;margin-bottom:2px">Brochure de Empresa</div>
+            <div style="font-size:11.5px;color:var(--sub);margin-bottom:10px">Institucional, sin precios. Para presentar la marca y generar confianza.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <a class="ab ab-ok" style="font-size:12px;padding:7px 13px;text-decoration:none" href="docs/brochure-empresa.pdf" download>⬇ Descargar</a>
+              <button class="ab ab-v" style="font-size:12px;padding:7px 13px" onclick="enviarBrochure('empresa')">📲 Enviar por WhatsApp</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
         <div>
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--navy)">💾 Datos y respaldos</div>
@@ -1560,7 +1588,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.15.4';
+const APP_VERSION = '3.15.7';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1571,6 +1599,9 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.15.7', fecha:'12-08-2026', cambios:['En el portal de la empresa cliente, la sección de publicar aviso ahora ofrece también CARGA MASIVA por Excel: las empresas con muchas vacantes pueden descargar la plantilla y subir varias de golpe, en vez de una por una. Por seguridad, los avisos cargados se asignan automáticamente a la empresa del cliente logueado y entran como pendientes de validación. El formulario de a uno sigue disponible para publicar pocas']},
+  { v:'3.15.6', fecha:'12-08-2026', cambios:['Sección «Material comercial» en el panel admin (solo administrador): descarga directa de los brochures de Planes y de Empresa, y botón «Enviar por WhatsApp» que abre un mensaje con el enlace de descarga listo para mandar al cliente. Los PDFs se sirven desde /docs del sitio']},
+  { v:'3.15.5', fecha:'11-08-2026', cambios:['Simplificación de la oferta comercial: la vitrina pública de planes pasó de 5 a 3 (Estándar $50.000, Premium $100.000, Pack Empresa $350.000) — menos opciones, decisión más clara. Se retiraron de la vista el Gratuito y el Básico','Se agregó la línea de «Cortesía de bienvenida»: primeros 4 avisos sin costo para probar el canal (ofrecidos en la conversación por WhatsApp), con invitación a conocer las promociones. El brochure comercial se alineó a los mismos 3 planes']},
   { v:'3.15.4', fecha:'11-08-2026', cambios:['Se eliminó el botón «Restablecer demo» de la sección Datos y respaldos: quedó obsoleto y su nombre era engañoso (los datos hoy viven en la nube Supabase, así que borrar el navegador no «restablece a demo»). La sección conserva los dos botones útiles: Descargar respaldo y Restaurar']},
   { v:'3.15.3', fecha:'11-08-2026', cambios:['Reloj en vivo (cuenta regresiva HH:MM:SS) en el aviso de ventana de publicación del panel: antes de las 09:00 cuenta cuánto falta para abrir la ventana; dentro de la ventana cuenta cuánto queda hasta las 11:00. Es un recordatorio visual — la publicación sigue siendo manual']},
   { v:'3.15.2', fecha:'11-08-2026', cambios:['La caja de «Difusión del canal» del panel se compactó: título y descripción en una sola línea, menos altura y padding — ocupa mucho menos espacio dejando el enlace y el botón de copiar a mano']},
@@ -2001,7 +2032,8 @@ function cargarExcelAvisos(fileArg, onDone, acum){
         ].forEach(([k,noms])=>{ const v=_col(f,noms); if(v) mercado[k]=sanitiza(v).slice(0,300); });
         DB.avisos.push({
           id: Date.now() + Math.floor(Math.random()*1000) + creados,
-          cargo: sanitiza(cargo), empresa: sanitiza(empresa),
+          cargo: sanitiza(cargo), empresa: (window._bulkClienteEmpresa ? window._bulkClienteEmpresa : sanitiza(empresa)),
+          empresaId: (window._bulkClienteId || null),
           region: _col(f,['region']), ciudad: _col(f, ['ciudad','ciudad / faena','faena','lugar']), lugar:'',
           turno: _col(f,['turno'])||'—', contrato: _col(f,['contrato'])||'—',
           grupo: grupo,
@@ -2012,7 +2044,7 @@ function cargarExcelAvisos(fileArg, onDone, acum){
           plan:'Captación web', estado:'pendiente',
           idSolicitud: _col(f,['id solicitud','id','id de solicitud','requisition id','folio','id puesto','id de puesto']),
           fechaCreacion:new Date(), fechaAprobacion:null, badge:'gold',
-          verEmpresa:true, verFaena:true, fuente:'Carga Excel',
+          verEmpresa:true, verFaena:true, fuente:(window._bulkClienteEmpresa ? 'Excel cliente' : 'Carga Excel'),
           mercado: Object.keys(mercado).length ? mercado : undefined
         });
         creados++;
@@ -2411,6 +2443,61 @@ function cargarDatos(){
     CLIENTES.length = 0; pack.clientes.forEach(c => CLIENTES.push(c));
     return true;
   } catch(e) { return false; }
+}
+
+// Abre WhatsApp con un mensaje que incluye el enlace de descarga del brochure elegido.
+function enviarBrochure(tipo){
+  const base = (location.origin && location.origin.startsWith('http')) ? location.origin : 'https://www.mantework.com';
+  const url = tipo==='planes'
+    ? base + '/docs/brochure-planes.pdf'
+    : base + '/docs/brochure-empresa.pdf';
+  const nombre = tipo==='planes' ? 'nuestros planes de publicación' : 'MANTEWORK';
+  const msg = 'Hola 👋 Te comparto información sobre ' + nombre + ' — el portal de validación del empleo técnico minero:\n\n' + url + '\n\nCualquier duda, quedo atento.';
+  window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+}
+
+// Carga masiva de avisos para la EMPRESA CLIENTE logueada (opción para publicar muchas vacantes de golpe).
+// Reutiliza el lector de Excel del sistema; asigna automáticamente los datos de la empresa del cliente
+// y respeta el límite de avisos de su plan.
+function descargarPlantillaCliente(){
+  // Misma plantilla que usa el administrador (9 columnas de publicación + 15 de mercado opcionales).
+  if(typeof descargarPlantillaExcel === 'function'){ descargarPlantillaExcel(); return; }
+  toast('La plantilla no está disponible en este momento.');
+}
+function cargarExcelCliente(input){
+  if(!SESSION || SESSION.rol !== 'cliente'){ toast('Inicia sesión con tu cuenta de empresa.'); return; }
+  const msg = document.getElementById('cli-bulk-msg');
+  msg.style.display = 'block'; msg.style.color = '#6B7280';
+  msg.textContent = 'Procesando…';
+  // Delegamos al lector existente, marcando que el origen es el cliente para que los avisos
+  // queden asociados a su empresa y entren como pendientes de su cuenta.
+  window._bulkClienteEmpresa = SESSION.empresa;
+  window._bulkClienteId = SESSION.empresaId;
+  if(typeof cargarVariosExcel === 'function'){
+    // cargarVariosExcel usa el input con id cap-excel; adaptamos para el input del cliente:
+    _cargarExcelClienteCola(Array.from(input.files || []));
+  } else {
+    msg.textContent = 'No se pudo cargar el lector de Excel.';
+  }
+}
+function _cargarExcelClienteCola(files){
+  const msg = document.getElementById('cli-bulk-msg');
+  if(!files.length){ return; }
+  const acum = {creados:0, repetidos:0, agregadores:0, saltados:0, archivos:0};
+  let i = 0;
+  const paso = () => {
+    if(i >= files.length){
+      window._bulkClienteEmpresa = null; window._bulkClienteId = null;
+      msg.style.color = 'var(--green)';
+      msg.innerHTML = '✓ <b>'+acum.creados+'</b> aviso(s) cargado(s) a tu cuenta, pendientes de validación.'
+        + (acum.repetidos? ' · '+acum.repetidos+' repetidos':'')
+        + (acum.agregadores? ' · <span style="color:var(--red)">'+acum.agregadores+' con link de portal agregador (no permitido)</span>':'');
+      setTimeout(()=>{ renderPublico(); if(typeof renderAdmin==='function') renderAdmin(); }, 100);
+      return;
+    }
+    cargarExcelAvisos(files[i++], paso, acum);
+  };
+  paso();
 }
 
 function descargarRespaldo(){
