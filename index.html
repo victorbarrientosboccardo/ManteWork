@@ -954,7 +954,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.16.4</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.16.5</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1585,7 +1585,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.16.4';
+const APP_VERSION = '3.16.5';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1596,6 +1596,7 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.16.5', fecha:'12-08-2026', cambios:['Capa 2 de control de vigencia: al subir el Excel, el sitio ahora descarta automáticamente los avisos vencidos o por vencer (fecha de cierre igual o anterior a hoy, o que cierra mañana), igual que ya hacía con los duplicados. Los avisos sin fecha de cierre se cargan normal (habitual en Codelco/BHP). El resumen de carga reporta cuántos se descartaron por vencidos. Complementa el filtro que ya hacía el prompt en la captura: doble protección para no publicar ofertas muertas']},
   { v:'3.16.4', fecha:'12-08-2026', cambios:['Estructura de captura ampliada de 24 a 30 columnas tras validar con 4 avisos reales (Nova Andino, BHP Escondida, Codelco Gabriela Mistral y Ministro Hales). Nuevas columnas de mercado: Nivel/Seniority, Licencia de conducir, Postgrado/estudios deseables, Duración del contrato, Enfoque de inclusión y Número de vacantes. La columna «ID solicitud» se renombró a «ID proceso / solicitud». El Nivel/Seniority ademas se publica en el canal (útil para el postulante); las otras 5 quedan internas para inteligencia de mercado']},
   { v:'3.16.3', fecha:'12-08-2026', cambios:['La línea de plazo de postulación ahora SIEMPRE se muestra, en el canal y en el sitio: si el aviso trae fecha de cierre, se muestra la fecha y los días restantes; si no la trae, se indica «Verificar en el portal oficial». Así el público nunca queda sin saber hasta cuándo postular']},
   { v:'3.16.2', fecha:'12-08-2026', cambios:['Privacidad y trazabilidad: las ofertas del sitio web ya no muestran teléfono ni correo de contacto directo. Si el aviso no tiene enlace de postulación, se indica «Postula por el portal oficial» en vez de exponer datos de contacto. Solo se publica el link (para trazabilidad de clics), nunca el contacto personal — coherente con lo que ya hacía el mensaje del canal']},
@@ -1990,7 +1991,7 @@ function cargarExcelAvisos(fileArg, onDone, acum){
       const hoja = wb.Sheets[wb.SheetNames[0]];
       const filas = XLSX.utils.sheet_to_json(hoja, {defval:''});
       if(!filas.length){ msg.style.color='var(--red)'; msg.textContent='⚠ El archivo no tiene filas de datos.'; return; }
-      let creados=0, saltados=0, repetidos=0, agregadores=0;
+      let creados=0, saltados=0, repetidos=0, agregadores=0, vencidos=0;
       // Índices para detectar duplicados contra lo ya existente en el sistema
       const idsExistentes = new Set(DB.avisos.map(a => (a.idSolicitud||'').trim().toLowerCase()).filter(Boolean));
       const clavesExistentes = new Set(DB.avisos.map(a => (_norm(a.cargo)+'|'+_norm(a.empresa))));
@@ -2010,6 +2011,13 @@ function cargarExcelAvisos(fileArg, onDone, acum){
         if(!idFila && (clavesExistentes.has(claveFila) || clavesLote.has(claveFila))){ repetidos++; return; }
         if(idFila) idsLote.add(idFila);
         clavesLote.add(claveFila);
+        // ── CAPA 2: descartar avisos vencidos o por vencer (≤1 día) ──
+        // Solo aplica si el aviso TRAE fecha de cierre. Los sin fecha se cargan normal.
+        const _fcierreCarga = _col(f, ['fecha cierre','fecha de cierre','cierre']);
+        if(_fcierreCarga){
+          const _dias = _diasHastaFecha(_fcierreCarga);
+          if(_dias !== null && _dias <= 1){ vencidos++; return; }  // vencido, cierra hoy o mañana
+        }
         const grupoRaw = _col(f, ['grupo','grupo ocupacional']);
         const grupo = ['mantenedores','operadores','supervisores','profesionales'].includes(_norm(grupoRaw))
           ? (grupoRaw.charAt(0).toUpperCase()+grupoRaw.slice(1).toLowerCase()) : 'Mantenedores';
@@ -2061,12 +2069,13 @@ function cargarExcelAvisos(fileArg, onDone, acum){
       });
       guardarDatos();
       msg.style.color='var(--green)';
-      if(acum){ acum.creados+=creados; acum.repetidos+=repetidos; acum.agregadores+=agregadores; acum.saltados+=saltados; acum.archivos+=1; }
-      const cr = acum? acum.creados: creados, rp = acum? acum.repetidos: repetidos, ag = acum? acum.agregadores: agregadores, sa = acum? acum.saltados: saltados;
+      if(acum){ acum.creados+=creados; acum.repetidos+=repetidos; acum.agregadores+=agregadores; acum.saltados+=saltados; acum.vencidos=(acum.vencidos||0)+vencidos; acum.archivos+=1; }
+      const cr = acum? acum.creados: creados, rp = acum? acum.repetidos: repetidos, ag = acum? acum.agregadores: agregadores, sa = acum? acum.saltados: saltados, ve = acum? acum.vencidos: vencidos;
       const pref = acum? ('✓ <strong>'+cr+'</strong> avisos de '+acum.archivos+' archivo(s)'): ('✓ <strong>'+cr+'</strong> avisos cargados a la cola');
       msg.innerHTML = pref
         + (rp? ' · <span style=\"color:#8A6D1F\">'+rp+' repetidos saltados</span>':'')
         + (ag? ' · <span style=\"color:var(--red)\">'+ag+' descartados por agregadores</span>':'')
+        + (ve? ' · <span style="color:#8A6D1F">'+ve+' vencidos/por vencer descartados</span>':'')
         + (sa? ' · '+sa+' filas incompletas saltadas':'');
       if(onDone) setTimeout(onDone, 80);
       inp.value='';
@@ -2085,7 +2094,7 @@ function cargarVariosExcel(){
   const inp = document.getElementById('cap-excel');
   const files = inp.files ? Array.from(inp.files) : [];
   if(!files.length) return;
-  const acum = {creados:0, repetidos:0, agregadores:0, saltados:0, archivos:0};
+  const acum = {creados:0, repetidos:0, agregadores:0, saltados:0, vencidos:0, archivos:0};
   let i = 0;
   const paso = () => {
     if(i >= files.length){ inp.value=''; renderAdmin(); renderPublico(); return; }
@@ -2502,7 +2511,7 @@ function cargarExcelCliente(input){
 function _cargarExcelClienteCola(files){
   const msg = document.getElementById('cli-bulk-msg');
   if(!files.length){ return; }
-  const acum = {creados:0, repetidos:0, agregadores:0, saltados:0, archivos:0};
+  const acum = {creados:0, repetidos:0, agregadores:0, saltados:0, vencidos:0, archivos:0};
   let i = 0;
   const paso = () => {
     if(i >= files.length){
