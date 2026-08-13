@@ -954,7 +954,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.16.0</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.16.4</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1585,7 +1585,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.16.0';
+const APP_VERSION = '3.16.4';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1596,6 +1596,10 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.16.4', fecha:'12-08-2026', cambios:['Estructura de captura ampliada de 24 a 30 columnas tras validar con 4 avisos reales (Nova Andino, BHP Escondida, Codelco Gabriela Mistral y Ministro Hales). Nuevas columnas de mercado: Nivel/Seniority, Licencia de conducir, Postgrado/estudios deseables, Duración del contrato, Enfoque de inclusión y Número de vacantes. La columna «ID solicitud» se renombró a «ID proceso / solicitud». El Nivel/Seniority ademas se publica en el canal (útil para el postulante); las otras 5 quedan internas para inteligencia de mercado']},
+  { v:'3.16.3', fecha:'12-08-2026', cambios:['La línea de plazo de postulación ahora SIEMPRE se muestra, en el canal y en el sitio: si el aviso trae fecha de cierre, se muestra la fecha y los días restantes; si no la trae, se indica «Verificar en el portal oficial». Así el público nunca queda sin saber hasta cuándo postular']},
+  { v:'3.16.2', fecha:'12-08-2026', cambios:['Privacidad y trazabilidad: las ofertas del sitio web ya no muestran teléfono ni correo de contacto directo. Si el aviso no tiene enlace de postulación, se indica «Postula por el portal oficial» en vez de exponer datos de contacto. Solo se publica el link (para trazabilidad de clics), nunca el contacto personal — coherente con lo que ya hacía el mensaje del canal']},
+  { v:'3.16.1', fecha:'12-08-2026', cambios:['Aviso del canal: la «Fuente oficial» ahora incluye la faena/proyecto entre paréntesis cuando el aviso la trae (ej. «Lundin Mining (Caserones)»), identificando la operación concreta','Las certificaciones dejaron de mostrarse con ✅ (que parecía un requisito ya cumplido/marcado); ahora se listan como «🎖️ Certificaciones: …» para que no se confundan con una casilla marcada']},
   { v:'3.16.0', fecha:'12-08-2026', cambios:['Nueva empresa en la lista blanca: Nova Andino Litio (litio, Salar de Atacama, joint venture Codelco-SQM). Portal oficial trabajaen.novandino.com agregado al acortador y al prompt de captura; dominio espejo trabajaen.sqmlitio.com también autorizado']},
   { v:'3.15.9', fecha:'12-08-2026', cambios:['Difusión del canal: el enlace propio se muestra ahora al lado del título','Enrolar empresa: se quitó el recuadro de «cuenta sin cobro 45 días» y el selector de planes muestra solo los 3 de venta (Estándar/Premium/Pack) — la cortesía se ofrece por teléfono, no como plan','Enrolar empresa: verificación inmediata de RUT duplicado al salir del campo (avisa temprano, no al final)','Reloj de cuenta regresiva también en el estado «ventana cerrada» (cuenta hasta la próxima apertura hábil 09:00, saltando fines de semana)','Nuevo botón «Eliminar» en avisos pendientes y activos. En activos, la confirmación aclara que se elimina del registro del sitio y recuerda borrar el mensaje manualmente en WhatsApp (no se puede remoto)']},
   { v:'3.15.8', fecha:'12-08-2026', cambios:['Los brochures del panel admin ahora se sirven desde la raíz del sitio (brochure-planes.pdf, brochure-empresa.pdf) en vez de una subcarpeta, coincidiendo con la estructura del repositorio']},
@@ -2027,6 +2031,12 @@ function cargarExcelAvisos(fileArg, onDone, acum){
          ['empleador',['tipo de empleador','empleador']],
          ['faena',['faena o proyecto','faena','proyecto']],
          ['equipos',['equipos y software','equipos','software']],
+         ['nivel',['nivel / seniority','nivel','seniority','nivel/seniority']],
+         ['licencia',['licencia de conducir','licencia']],
+         ['postgrado',['postgrado / estudios deseables','postgrado','estudios deseables','deseables']],
+         ['duracion',['duracion del contrato','duracion','duracion contrato']],
+         ['inclusion',['enfoque de inclusion','inclusion']],
+         ['vacantes',['numero de vacantes','vacantes','n vacantes']],
          ['commodity',['commodity']],
          ['obs',['observaciones de mercado','observaciones']]
         ].forEach(([k,noms])=>{ const v=_col(f,noms); if(v) mercado[k]=sanitiza(v).slice(0,300); });
@@ -2204,7 +2214,7 @@ function textoCanal(a){
   const ubi = a.verFaena===false ? (a.region||'') : [a.ciudad||a.lugar, a.region].filter(Boolean).join(', ');
   const emoji = EMOJI_GRUPO[a.grupo] || '📋';
   const mnt = 'MNT-2026-' + String(a.id).slice(-3).padStart(3,'0');
-  const certs = (a.certs && a.certs.length) ? '\n✅ ' + a.certs.join('  •  ') : '';
+  const certs = (a.certs && a.certs.length) ? '\n🎖️ *Certificaciones:* ' + a.certs.join('  •  ') : '';
   const L = [];
   L.push('━━━━━━━━━━━━━━');
   L.push('🔶 Empleo Técnico Minero');
@@ -2212,6 +2222,8 @@ function textoCanal(a){
   L.push('━━━━━━━━━━━━━━');
   L.push('');
   L.push(emoji + ' *' + (a.cargo||'') + '*');
+  // Nivel/seniority del cargo (si el aviso lo trae): ayuda al postulante a ubicar la vacante
+  if(a.mercado && a.mercado.nivel) L.push('🏷️ Nivel: ' + a.mercado.nivel);
   L.push('');
   L.push('🏢 ' + emp);
   if(ubi) L.push('📍 ' + ubi);
@@ -2220,8 +2232,9 @@ function textoCanal(a){
   if(a.experiencia && a.experiencia!=='—') L.push('⏳ Experiencia: ' + a.experiencia);
   if(a.req) L.push('\n📋 *Requisitos:*\n' + a.req);
   if(certs) L.push(certs);
-  // Fecha de cierre para postular (si el aviso la trae en los datos de mercado)
-  if(a.mercado && a.mercado.fcierre) L.push('\n🗓️ *Postula hasta:* ' + a.mercado.fcierre);
+  // Fecha de cierre para postular: SIEMPRE se muestra. Si el aviso no la trae, se invita a verificar en el portal.
+  const _fc = (a.mercado && a.mercado.fcierre) ? String(a.mercado.fcierre).trim() : '';
+  L.push('\n🗓️ *Postula hasta:* ' + (_fc || 'Verificar en el portal oficial'));
   // Link de origen / cómo postular (destacado y clicable)
   if(a.postula){
     let dato = a.postula.replace(/^Postular en (el portal del titular|el portal oficial de [^:]+): /,'').trim();
@@ -2235,7 +2248,13 @@ function textoCanal(a){
       // trabajando…) cuyo dominio NO es el nombre de la empresa. Se limpian los puntos para que
       // WhatsApp no lo convierta en enlace clicable.
       if(a.empresa && !/confidencial/i.test(a.empresa)){
-        const marca = String(a.empresa).replace(/\./g,' ').replace(/\s+/g,' ').trim();
+        let marca = String(a.empresa).replace(/\./g,' ').replace(/\s+/g,' ').trim();
+        // Si el aviso tiene faena/proyecto (mercado.faena) distinta de la ciudad, se agrega entre paréntesis:
+        // ej. «Lundin Mining (Caserones)». Ayuda a identificar la operación concreta.
+        const faena = (a.mercado && a.mercado.faena) ? String(a.mercado.faena).replace(/\./g,' ').trim() : '';
+        if(faena && faena.toLowerCase() !== String(a.ciudad||'').toLowerCase() && !marca.toLowerCase().includes(faena.toLowerCase())){
+          marca += ' (' + faena + ')';
+        }
         if(marca) L.push('🔗 Fuente oficial: ' + marca);
       }
     } else {
@@ -3741,10 +3760,11 @@ function renderPublico(){
 // no en la vigencia interna de 30 días. Muestra «Postula hasta: fecha» y los días que faltan.
 function _plazoPostular(a){
   const fc = a.mercado && a.mercado.fcierre ? String(a.mercado.fcierre).trim() : '';
-  if(!fc) return '';
+  // Sin fecha de cierre: siempre mostrar algo, invitando a verificar en el portal.
+  if(!fc) return `<span class="av-dias dias-ok">📅 Verificar en el portal</span>`;
   const d = _diasHastaFecha(fc);
   if(d === null) return `<span class="av-dias dias-ok">📅 Postula hasta: ${esc(fc)}</span>`;
-  if(d < 0)  return '';  // ya cerró: no mostrar plazo vencido al público
+  if(d < 0)  return `<span class="av-dias dias-ok">📅 Verificar en el portal</span>`;  // ya cerró: no mostrar fecha vencida
   const cls = d>10?'dias-ok':d>3?'dias-warn':'dias-red';
   const txt = d===0?'Cierra hoy':d===1?'Cierra mañana':`Cierra en ${d} días`;
   return `<span class="av-dias ${cls}">📅 ${esc(fc)} · ${txt}</span>`;
@@ -3766,12 +3786,15 @@ function _btnPostular(a){
   if(a.linkCorto && /^https?:\/\//i.test(a.linkCorto)){
     return `<a href="${esc(a.linkCorto)}" target="_blank" rel="noopener" class="btn btn-gold btn-sm" style="margin-top:6px">Postular →</a>`;
   }
-  // Aviso sin URL (contacto por teléfono/correo): mostrar el dato sin link
+  // Aviso sin enlace corto pero con link directo del portal: usar ese link (mantiene trazabilidad por URL)
   if(a.postula){
     const dato = a.postula.replace(/^Postular en (el portal del titular|el portal oficial de [^:]+): /,'').trim();
-    if(!/^https?:\/\//i.test(dato)) return `<span class="av-time" style="font-weight:600">📞 ${esc(dato)}</span>`;
+    if(/^https?:\/\//i.test(dato)){
+      return `<a href="${esc(dato)}" target="_blank" rel="noopener" class="btn btn-gold btn-sm" style="margin-top:6px">Postular →</a>`;
+    }
   }
-  return '';
+  // NUNCA exponer teléfono ni correo de contacto directo: sin link, se invita a postular por el portal oficial.
+  return `<span class="av-time" style="font-weight:600;color:#8A6D1F">Postula por el portal oficial</span>`;
 }
 
 // ══════════════════════════════════════════════
