@@ -954,7 +954,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.16.7</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.16.8</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1585,7 +1585,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.16.7';
+const APP_VERSION = '3.16.8';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1596,6 +1596,7 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.16.8', fecha:'13-08-2026', cambios:['Detección de duplicados UNIFICADA: la carga por Excel ahora usa la misma huella robusta que el resto del sistema (ignora puntuación, sufijos de género y vocales), en vez de su comparación propia que conservaba la puntuación. Con esto, «Codelco (División Ministro Hales)» y «Codelco – División Ministro Hales» se reconocen como la misma empresa y el aviso repetido se salta. Mejora nacida del segundo caso real: la misma vacante de Ministro Hales publicada dos veces con la empresa escrita con paréntesis y con guión']},
   { v:'3.16.7', fecha:'13-08-2026', cambios:['Detector de duplicados resistente a variantes de género: «Jefa(e)», «Jefe(a)», «Jefe/a», «Operador/a» y «Operadora(or)» ahora producen la misma huella de comparación (se eliminan los sufijos de género y las vocales antes de comparar), por lo que el sistema detecta como similar un aviso repetido aunque el cargo esté escrito con distinta variante. Cargos realmente distintos (Eléctrico vs Electrónico, Supervisor vs Superintendente) siguen diferenciándose. Mejora nacida de un caso real: la misma vacante de Los Pelambres publicada dos veces con «Jefa(e)» y «Jefe(a)»']},
   { v:'3.16.6', fecha:'13-08-2026', cambios:['Validación de duplicados también en el formulario de publicación del cliente (asistente de 4 pasos): antes de enviar, el sistema revisa si el aviso ya existe. Si es EXACTO (mismo aviso dentro de 30 días) lo bloquea indicando su estado actual; si es SIMILAR (misma empresa y cargo, distinta faena) pide confirmación. Con esto, TODAS las vías de ingreso de avisos (Excel admin, Excel cliente, captación web y formulario del cliente) controlan repetidos']},
   { v:'3.16.5', fecha:'12-08-2026', cambios:['Capa 2 de control de vigencia: al subir el Excel, el sitio ahora descarta automáticamente los avisos vencidos o por vencer (fecha de cierre igual o anterior a hoy, o que cierra mañana), igual que ya hacía con los duplicados. Los avisos sin fecha de cierre se cargan normal (habitual en Codelco/BHP). El resumen de carga reporta cuántos se descartaron por vencidos. Complementa el filtro que ya hacía el prompt en la captura: doble protección para no publicar ofertas muertas']},
@@ -2004,7 +2005,9 @@ function cargarExcelAvisos(fileArg, onDone, acum){
       let creados=0, saltados=0, repetidos=0, agregadores=0, vencidos=0;
       // Índices para detectar duplicados contra lo ya existente en el sistema
       const idsExistentes = new Set(DB.avisos.map(a => (a.idSolicitud||'').trim().toLowerCase()).filter(Boolean));
-      const clavesExistentes = new Set(DB.avisos.map(a => (_norm(a.cargo)+'|'+_norm(a.empresa))));
+      // Clave robusta unificada: misma huella anti-variantes que usa el resto del sistema
+      // (ignora puntuación, sufijos de género y vocales — «Codelco (División X)» = «Codelco – División X»)
+      const clavesExistentes = new Set(DB.avisos.map(a => huellaAviso(a.empresa, a.cargo, '', '').similar));
       // También contra los cargados en este mismo archivo (evita duplicados dentro del Excel)
       const idsLote = new Set();
       const clavesLote = new Set();
@@ -2014,7 +2017,7 @@ function cargarExcelAvisos(fileArg, onDone, acum){
         if(!cargo || !empresa){ saltados++; return; }
         // ── Detección de duplicados en 2 niveles ──
         const idFila = _col(f,['id solicitud','id','id de solicitud','requisition id','folio','id puesto','id de puesto']).trim().toLowerCase();
-        const claveFila = _norm(cargo)+'|'+_norm(empresa);
+        const claveFila = huellaAviso(empresa, cargo, '', '').similar;
         // Nivel 1: por ID de solicitud (confiable)
         if(idFila && (idsExistentes.has(idFila) || idsLote.has(idFila))){ repetidos++; return; }
         // Nivel 2: por cargo + empresa (respaldo para avisos sin ID)
