@@ -404,7 +404,6 @@ footer{background:var(--navy);margin-top:80px}
       <h2 class="st">Ofertas activas</h2>
       <p class="ss">Estos avisos superaron los tres filtros del portal: Contacto previo, formulario completo y validación técnica.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px">
-        <input id="fp-q" type="text" name="mw-busqueda-x" autocomplete="new-password" class="ft" placeholder="🔍 Buscar cargo o empresa…" style="flex:2;min-width:180px;padding:9px 12px;font-size:13.5px" oninput="renderPublico()">
         <select id="fp-region" class="ft" style="flex:1;min-width:130px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Toda región</option></select>
         <select id="fp-grupo" class="ft" style="flex:1;min-width:130px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Todo grupo</option><option>Mantenedores</option><option>Operadores</option><option>Supervisores</option><option>Profesionales</option></select>
         <select id="fp-nivel" class="ft" style="flex:1;min-width:120px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Todo nivel</option></select>
@@ -1460,7 +1459,7 @@ footer{background:var(--navy);margin-top:80px}
         <div id="bloque-lote" style="display:none;align-items:center;gap:10px;text-transform:none;letter-spacing:normal">
           <div class="ap-sec" id="sec-pend">Avisos pendientes de validación</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;width:100%;margin-bottom:8px">
-          <input id="adm-q" type="text" name="mw-busqueda-y" autocomplete="new-password" class="ft" placeholder="🔍 Buscar cargo, empresa o N° MNT…" style="flex:2;min-width:170px;padding:8px 11px;font-size:12.5px" oninput="renderAdmin()">
+          <div id="adm-q-wrap" style="flex:2;min-width:170px;"></div>
           <select id="adm-emp" class="ft" style="flex:1;min-width:150px;padding:8px 10px;font-size:12.5px" onchange="renderAdmin()"><option value="">Todas las empresas</option></select>
         </div>
         <label class="fch" style="margin:0;font-size:13px"><input type="checkbox" id="chk-todos" onchange="marcarTodos(this)"> Seleccionar todos</label>
@@ -1727,7 +1726,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.6';
+const APP_VERSION = '3.18.8';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1738,6 +1737,8 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.18.8', fecha:'20-08-2026', cambios:['Eliminado el buscador de texto del sitio público — Chrome autorrellenaba ese campo con credenciales guardadas mostrando el portal vacío. El público filtra por región, grupo y nivel únicamente. El buscador de texto queda solo en el panel admin donde no hay riesgo de autorrelleno.']},
+  { v:'3.18.7', fecha:'20-08-2026', cambios:['Eliminación definitiva del autorrelleno de Chrome: los buscadores (público y admin) ya no existen como elementos HTML — se crean dinámicamente por JavaScript después de que Chrome termina su ciclo de autorrelleno. Chrome nunca autorrellena inputs creados dinámicamente. Solución a prueba de cualquier versión de Chrome.']},
   { v:'3.18.6', fecha:'20-08-2026', cambios:['Corrección definitiva del autorrelleno de Chrome en buscadores público y admin: tipo cambiado a text con autocomplete=new-password (truco de gestor de contraseñas que Chrome siempre respeta) + MutationObserver permanente + pulso de limpieza 5s — triple capa, imposible de eludir']},
   { v:'3.18.5', fecha:'19-08-2026', cambios:['Bloqueo definitivo del autorrelleno de Chrome en el buscador (Chrome ignora autocomplete=off cuando cree que un campo es de usuario): el buscador nace de solo lectura y se activa al tocarlo — Chrome no rellena campos readonly — más un vigilante que borra cualquier texto inyectado sin teclear en los primeros segundos']},
   { v:'3.18.4', fecha:'19-08-2026', cambios:['Corrección del «sitio vacío» fantasma: Chrome auto-rellenaba el buscador público con el nombre de usuario guardado («admin»), filtrando todos los avisos y mostrando «No hay ofertas activas». Los buscadores ahora bloquean el autorrelleno (type search, autocomplete off) y el campo público se limpia al iniciar. Los avisos nunca estuvieron perdidos']},
@@ -4268,7 +4269,7 @@ function renderPublico(){
     e.value=cur;};
   _pobla('fp-region', activos.map(a=>a.region));
   _pobla('fp-nivel', activos.map(a=>a.mercado&&a.mercado.nivel));
-  const q=_v('fp-q').toLowerCase(), fr=_v('fp-region'), fg=_v('fp-grupo'), fn=_v('fp-nivel');
+  const q='';
   if(q) activos = activos.filter(a=>((a.cargo||'')+' '+(a.empresa||'')+' '+(a.ciudad||'')).toLowerCase().includes(q));
   if(fr) activos = activos.filter(a=>a.region===fr);
   if(fg) activos = activos.filter(a=>a.grupo===fg);
@@ -5369,23 +5370,24 @@ let tT;
 function toast(m){const t=document.getElementById('toast-el');t.textContent=m;t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),3200);}
 
 // INIT
-/* Antirelleno Chrome v3.18.6 — MutationObserver + pulso 5s */
-{ const _ids=['fp-q','adm-q'];
-  _ids.forEach(id=>{
-    const el=document.getElementById(id);
-    if(!el) return;
-    el.value='';
-    let _typed=false;
-    el.addEventListener('keydown',()=>{ _typed=true; });
-    el.addEventListener('focus',()=>{ _typed=false; });
-    const obs=new MutationObserver(()=>{ if(!_typed && el.value){ el.value=''; if(id==='fp-q') renderPublico(); }});
-    obs.observe(el,{attributes:true,attributeFilter:['value']});
-    let t=0; const iv=setInterval(()=>{
-      if(!_typed && el.value){ el.value=''; if(id==='fp-q') renderPublico(); }
-      if(++t>=10) clearInterval(iv);
-    },500);
-  });
-}
+/* Antirelleno Chrome v3.18.7 — inputs creados dinámicamente, Chrome nunca autorrellena estos */
+(function(){
+  function crearBuscador(wrapId, placeholder, clases, estilos, onInputFn){
+    const wrap=document.getElementById(wrapId);
+    if(!wrap) return null;
+    const inp=document.createElement('input');
+    inp.setAttribute('type','text');
+    inp.id=wrapId.replace('-wrap','');
+    inp.setAttribute('autocomplete','off');
+    inp.setAttribute('placeholder',placeholder);
+    inp.className=clases;
+    inp.style.cssText=estilos;
+    inp.addEventListener('input', onInputFn);
+    wrap.appendChild(inp);
+    return inp;
+  }
+  window._admq = crearBuscador('adm-q-wrap','🔍 Buscar cargo, empresa o N° MNT…','ft','width:100%;padding:8px 11px;font-size:12.5px;box-sizing:border-box', renderAdmin);
+})();
 renderPublico(); pingVisita();
 updateNav();
 
