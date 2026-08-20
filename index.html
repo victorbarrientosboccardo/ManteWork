@@ -403,6 +403,12 @@ footer{background:var(--navy);margin-top:80px}
       <div class="ey">Validadas y aprobadas · Solo estas llegan al canal</div>
       <h2 class="st">Ofertas activas</h2>
       <p class="ss">Estos avisos superaron los tres filtros del portal: Contacto previo, formulario completo y validación técnica.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px">
+        <input id="fp-q" class="ft" placeholder="🔍 Buscar cargo o empresa…" style="flex:2;min-width:180px;padding:9px 12px;font-size:13.5px" oninput="renderPublico()">
+        <select id="fp-region" class="ft" style="flex:1;min-width:130px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Toda región</option></select>
+        <select id="fp-grupo" class="ft" style="flex:1;min-width:130px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Todo grupo</option><option>Mantenedores</option><option>Operadores</option><option>Supervisores</option><option>Profesionales</option></select>
+        <select id="fp-nivel" class="ft" style="flex:1;min-width:120px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Todo nivel</option></select>
+      </div>
       <div class="aviso-list" id="lista-publica"></div>
       <div id="no-avisos" style="text-align:center;padding:40px;color:var(--sub);display:none">
         <p style="font-size:16px">No hay ofertas activas en este momento.</p>
@@ -954,7 +960,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.17.6</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.18.0</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1452,16 +1458,21 @@ footer{background:var(--navy);margin-top:80px}
         <span>Pendientes de revisión</span>
         <span style="font-size:11px;font-weight:400;letter-spacing:normal;text-transform:none;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:4px 12px" title="El rechazo libera automáticamente el cupo del plan de la empresa">ⓘ Sin pago en plazo → rechazar (libera cupo)</span>
         <div id="bloque-lote" style="display:none;align-items:center;gap:10px;text-transform:none;letter-spacing:normal">
-          <label class="fch" style="margin:0;font-size:13px"><input type="checkbox" id="chk-todos" onchange="marcarTodos(this)"> Seleccionar todos</label>
-        <button class="btn btn-ghost" style="font-size:11.5px;padding:5px 10px" onclick="document.querySelectorAll('.selcanal').forEach(c=>{const a=DB.avisos.find(x=>x.id===+c.dataset.id); c.checked=!!(a&&!a.publicadoCanal);}); actualizarBoletinBtn();">☑ Solo los que faltan por publicar</button>
+          <div class="ap-sec" id="sec-pend">Avisos pendientes de validación</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;width:100%;margin-bottom:8px">
+          <input id="adm-q" class="ft" placeholder="🔍 Buscar cargo, empresa o N° MNT…" style="flex:2;min-width:170px;padding:8px 11px;font-size:12.5px" oninput="renderAdmin()">
+          <select id="adm-emp" class="ft" style="flex:1;min-width:150px;padding:8px 10px;font-size:12.5px" onchange="renderAdmin()"><option value="">Todas las empresas</option></select>
+        </div>
+        <label class="fch" style="margin:0;font-size:13px"><input type="checkbox" id="chk-todos" onchange="marcarTodos(this)"> Seleccionar todos</label>
           <button class="ab ab-ok" id="btn-lote" onclick="aprobarLote()">Aprobación para publicar en sitio web (0)</button>
         </div>
       </div>
       <div id="pend-list"></div>
       <div id="pend-vacio" style="display:none;color:var(--sub);font-size:14px;padding:10px 0">No hay avisos pendientes.</div>
-      <div class="ap-sec">Avisos activos en el canal</div>
+      <div class="ap-sec" id="sec-activos">Avisos activos en el canal</div>
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 10px">
         <label style="font-size:12.5px;color:#374151;display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox" id="selcanal-todos" onchange="document.querySelectorAll('.selcanal').forEach(c=>c.checked=this.checked); actualizarBoletinBtn();"> Seleccionar todos</label>
+        <button class="btn btn-ghost" style="font-size:11.5px;padding:5px 10px" onclick="document.querySelectorAll('.selcanal').forEach(c=>{const a=DB.avisos.find(x=>x.id===+c.dataset.id); c.checked=!!(a&&!a.publicadoCanal);}); actualizarBoletinBtn();">☑ Solo los que faltan por publicar</button>
         <button class="btn btn-gold" style="font-size:12.5px;padding:7px 14px" onclick="boletinCanal()" id="btn-boletin">📋 Copiar boletín para el canal (0)</button>
         <span style="font-size:10.5px;color:#9CA3AF">Agrupa los seleccionados en bloques de 8 por mensaje — pegas 1 bloque por mensaje en el canal, no aviso por aviso.</span>
       </div>
@@ -1716,7 +1727,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.17.6';
+const APP_VERSION = '3.18.0';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1727,6 +1738,7 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.18.0', fecha:'19-08-2026', cambios:['Usabilidad del sitio público: buscador de texto y filtros por región, grupo y nivel sobre la lista de ofertas; orden por más recientes primero; distintivo NUEVO en avisos de menos de 48 horas; y botón «📤 Compartir» en cada aviso que abre WhatsApp con el texto y el link medido (cada reenvío sigue contando clics)','Cliente: en «Mis avisos», cada aviso activo ahora muestra sus clics de postulación (🔥 N clics) leídos de la nube — el valor de MANTEWORK visible sin pedirlo','Panel admin: buscador por cargo/empresa/N° MNT y filtro por empresa sobre las listas de pendientes y activos; los encabezados de sección muestran el conteo (ej. «Avisos pendientes de validación (12)»)']},
   { v:'3.17.6', fecha:'19-08-2026', cambios:['Claridad en el panel: el botón «Aprobar seleccionados» ahora se llama «Aprobación para publicar en sitio web», reflejando exactamente lo que hace — al aprobar, el aviso se publica de inmediato en mantework.com; la publicación en el canal de WhatsApp es el paso siguiente (boletín), con su propia trazabilidad 📣/⏳']},
   { v:'3.17.5', fecha:'19-08-2026', cambios:['Trazabilidad de publicación en el canal: al copiar un bloque del boletín, sus avisos quedan marcados permanentemente «📣 Publicado en canal» (con fecha, se guarda en la nube); los que faltan muestran «⏳ Falta publicar en canal». Nuevo selector «Solo los que faltan por publicar» para armar el boletín sin repetir jamás un aviso ya enviado. Así siempre se sabe qué bloques ya están en el canal, incluso días después o desde otro dispositivo']},
   { v:'3.17.4', fecha:'19-08-2026', cambios:['Publicación en lote al canal: casillas de selección en los avisos activos (con «Seleccionar todos») y botón «Copiar boletín para el canal» que agrupa los seleccionados en mensajes de 8 avisos en formato compacto (cargo, nivel, empresa, ubicación, plazo y link medido), con encabezado «N VACANTES TÉCNICAS VALIDADAS (PARTE X de Y)» y pie de difusión. 89 avisos pasan de 89 pegadas a ~11: un bloque por mensaje. La publicación sigue siendo manual porque WhatsApp no ofrece API para Canales — este es el mínimo de fricción posible']},
@@ -2677,6 +2689,14 @@ function boletinCanal(){
   panel.scrollIntoView({behavior:'smooth',block:'center'});
 }
 
+// Compartir un aviso puntual por WhatsApp (con el link medido — cada reenvío sigue contando clics)
+function compartirAviso(id){
+  const a=DB.avisos.find(x=>x.id===id); if(!a) return;
+  const ubi=[a.ciudad||a.lugar,a.region].filter(Boolean).join(', ');
+  const t='🔶 *'+(a.cargo||'')+'*\n🏢 '+(a.verEmpresa===false?'Empresa del sector minero':(a.empresa||''))+(ubi?'\n📍 '+ubi:'')+'\n➡️ Postula: '+(a.linkCorto||a.postula||'')+'\n\n_Aviso validado MANTEWORK · Más ofertas:_ https://www.mantework.com/ir/?c=canal';
+  window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');
+}
+
 function textoCanal(a){
   const emp = a.verEmpresa===false ? 'Empresa del sector minero' : (a.empresa||'Empresa del sector minero');
   const ubi = a.verFaena===false ? (a.region||'') : [a.ciudad||a.lugar, a.region].filter(Boolean).join(', ');
@@ -3450,7 +3470,14 @@ function renderCuota(targetId){
     </div>`:''}`;
 }
 
-function renderMisAvisos(){
+async function _clicsMisAvisos(){
+  if(!nubeActiva()) return;
+  try{ const filas=await _sb('GET','mantework_links?select=aviso_id,clics&limit=500')||[];
+    const m={}; filas.forEach(f=>{ if(f.aviso_id) m[f.aviso_id]=(m[f.aviso_id]||0)+(f.clics||0); });
+    document.querySelectorAll('[id^="mc-"]').forEach(el=>{ const id=+el.id.slice(3); el.textContent='🔥 '+(m[id]||0)+' clics'; });
+  }catch(e){ document.querySelectorAll('[id^="mc-"]').forEach(el=>{ el.textContent=''; }); }
+}
+function renderMisAvisos(){ setTimeout(_clicsMisAvisos, 60);
   const c = clienteActual();
   const list = document.getElementById('mis-avisos-list');
   const vacio = document.getElementById('mis-avisos-vacio');
@@ -3480,7 +3507,7 @@ function renderMisAvisos(){
     const d = a.fechaAprobacion ? diasRest(a.fechaAprobacion) : null;
     return `<div class="aviso" style="border-left-color:${a.estado==='activo'?'var(--green)':a.estado==='pendiente'?'var(--gold)':'var(--line)'}">
       <div class="av-left">
-        <div class="av-num">${a.estado==='pendiente'?'Sin número asignado':nroSeg(a.id)}${a.sinCobro?' · <span style="color:var(--green)">🎁 PLAN GRATUITO</span>':''}</div>
+        <div class="av-num">${a.estado==='pendiente'?'Sin número asignado':nroSeg(a.id)}${a.estado==='activo'?` · <span id="mc-${a.id}" style="color:var(--gold);font-weight:700">🔥 … clics</span>`:''}${a.sinCobro?' · <span style="color:var(--green)">🎁 PLAN GRATUITO</span>':''}</div>
         <div class="av-cargo">${esc(a.cargo)}</div>
         <div class="av-emp">${[a.lugar,a.ciudad,a.region].filter(Boolean).join(' · ')} · ${esc(a.turno)} · ${esc(a.contrato)}</div>
         ${a.publicadoPor?`<div style="font-size:12px;color:#9AA5B8;margin-top:3px">Publicado por ${a.publicadoPor}</div>`:''}
@@ -4215,7 +4242,22 @@ function renderPublico(){
   const lista = document.getElementById('lista-publica');
   const vacio = document.getElementById('no-avisos');
   // Vigentes: activos cuya fecha de cierre NO haya pasado (los vencidos se ocultan solos del sitio)
-  const activos = DB.avisos.filter(a=>a.estado==='activo' && !_postulacionCerrada(a));
+  let activos = DB.avisos.filter(a=>a.estado==='activo' && !_postulacionCerrada(a));
+  // Filtros públicos (búsqueda, región, grupo, nivel) + poblar selects sin perder la selección
+  const _v=id=>{const e=document.getElementById(id);return e?e.value:'';};
+  const _pobla=(id,vals)=>{const e=document.getElementById(id); if(!e) return; const cur=e.value;
+    while(e.options.length>1) e.remove(1);
+    [...new Set(vals.filter(Boolean))].sort().forEach(v=>{const o=document.createElement('option');o.textContent=v;e.appendChild(o);});
+    e.value=cur;};
+  _pobla('fp-region', activos.map(a=>a.region));
+  _pobla('fp-nivel', activos.map(a=>a.mercado&&a.mercado.nivel));
+  const q=_v('fp-q').toLowerCase(), fr=_v('fp-region'), fg=_v('fp-grupo'), fn=_v('fp-nivel');
+  if(q) activos = activos.filter(a=>((a.cargo||'')+' '+(a.empresa||'')+' '+(a.ciudad||'')).toLowerCase().includes(q));
+  if(fr) activos = activos.filter(a=>a.region===fr);
+  if(fg) activos = activos.filter(a=>a.grupo===fg);
+  if(fn) activos = activos.filter(a=>a.mercado&&a.mercado.nivel===fn);
+  // Orden: más recientes primero
+  activos.sort((a,b)=>(b.fechaAprobacion||0)-(a.fechaAprobacion||0));
   if(!activos.length){ lista.innerHTML=''; vacio.style.display='block'; return; }
   vacio.style.display='none';
   lista.innerHTML = activos.map(a=>{
@@ -4228,7 +4270,7 @@ function renderPublico(){
     const ubiTxt = esc(vFae ? ([a.lugar,a.ciudad].filter(Boolean).join(', ')||a.region) : a.region);
     return `<div class="aviso">
       <div class="av-left">
-        <div class="av-num">${nroSeg(a.id)} · Aviso validado MANTEWORK</div>
+        <div class="av-num">${nroSeg(a.id)} · Aviso validado MANTEWORK${(a.fechaAprobacion && (Date.now()-a.fechaAprobacion.getTime())<48*36e5)?' · <span style="background:var(--green);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:100px">NUEVO</span>':''} <button onclick="compartirAviso(${a.id})" title="Compartir por WhatsApp" style="float:right;background:none;border:1px solid var(--line);border-radius:8px;padding:3px 10px;font-size:12px;cursor:pointer;color:var(--navy)">📤 Compartir</button></div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap">
           <div class="av-cargo">${esc(a.cargo)}</div>
           ${(!vEmp||!vFae)?'<span class="badge bg-pend">🔒 Confidencial</span>':''}
@@ -4342,8 +4384,19 @@ function iniciarRelojRepub(){
 }
 
 function renderAdmin(){
-  const pend  = DB.avisos.filter(a=>a.estado==='pendiente');
-  const activ = DB.avisos.filter(a=>a.estado==='activo');
+  const _aq=(document.getElementById('adm-q')||{}).value||'';
+  const _ae=(document.getElementById('adm-emp')||{}).value||'';
+  const _pasa=a=>{ const t=((a.cargo||'')+' '+(a.empresa||'')+' '+nroSeg(a.id)).toLowerCase();
+    return (!_aq || t.includes(_aq.toLowerCase())) && (!_ae || a.empresa===_ae); };
+  const pend  = DB.avisos.filter(a=>a.estado==='pendiente' && _pasa(a));
+  const activ = DB.avisos.filter(a=>a.estado==='activo' && _pasa(a));
+  // poblar filtro de empresas conservando selección
+  { const e=document.getElementById('adm-emp');
+    if(e){ const cur=e.value; while(e.options.length>1) e.remove(1);
+      [...new Set(DB.avisos.map(a=>a.empresa).filter(Boolean))].sort().forEach(v=>{const o=document.createElement('option');o.textContent=v;e.appendChild(o);});
+      e.value=cur; } }
+  { const sp=document.getElementById('sec-pend'); if(sp) sp.textContent='Avisos pendientes de validación ('+pend.length+')';
+    const sa=document.getElementById('sec-activos'); if(sa) sa.textContent='Avisos activos en el canal ('+activ.length+')'; }
   const hist  = DB.avisos.filter(a=>a.estado==='rechazado'||a.estado==='vencido'||a.estado==='aclaracion');
   const total = DB.aprobados+DB.rechazados;
 
