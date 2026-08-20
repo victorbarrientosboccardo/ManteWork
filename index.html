@@ -5370,7 +5370,7 @@ let tT;
 function toast(m){const t=document.getElementById('toast-el');t.textContent=m;t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),3200);}
 
 // INIT
-/* Antirelleno Chrome v3.18.8 — inputs creados dinámicamente, Chrome nunca autorrellena estos */
+/* Antirelleno Chrome v3.18.7 — inputs creados dinámicamente, Chrome nunca autorrellena estos */
 (function(){
   function crearBuscador(wrapId, placeholder, clases, estilos, onInputFn){
     const wrap=document.getElementById(wrapId);
