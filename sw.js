@@ -1,4 +1,4 @@
-// MANTEWORK Service Worker · v2.0.0
+// MANTEWORK Service Worker · v3.18.8
 // Al publicar una versión nueva, cambiar el número de CACHE
 const CACHE = 'mantework-v3.18.8';
 const ASSETS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
