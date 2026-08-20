@@ -954,7 +954,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.16.8</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.17.6</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1182,6 +1182,130 @@ footer{background:var(--navy);margin-top:80px}
           <div id="st-empresas" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">0</div>
           <div style="font-size:11px;color:#6B7280">Empresas distintas</div>
         </div>
+        <div style="background:var(--navy);color:#fff;border-radius:11px;padding:14px 16px">
+          <div id="st-clics-total" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--gold)">—</div>
+          <div style="font-size:11px;color:#9FB3C8">🔥 Clics totales en avisos</div>
+        </div>
+        <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:11px;padding:14px 16px">
+          <div id="st-clics-canal" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:#8A6D1F">—</div>
+          <div style="font-size:11px;color:#6B5417">📣 Clics de difusión (canal)</div>
+        </div>
+        <div style="background:#EFF4FB;border:1px solid #D7E3F4;border-radius:11px;padding:14px 16px">
+          <div id="st-visitas" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:#2E5A9E">—</div>
+          <div style="font-size:11px;color:#4A6FA5">👥 Visitas al sitio (7 días)</div>
+        </div>
+        <div style="background:#F3F0FA;border:1px solid #DDD5F0;border-radius:11px;padding:14px 16px">
+          <div id="st-valida" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:#7C6BAE">—</div>
+          <div style="font-size:11px;color:#7C6BAE">⏱️ Horas promedio de validación</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🔥 Avisos con más clics</div>
+          <div id="st-topclics" style="font-size:12px;color:#6B7280">Cargando…</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📈 Clics por día (últimos 14 días)</div>
+          <div id="st-serie" style="font-size:12px;color:#6B7280">Cargando…</div>
+          <div style="font-size:10px;color:#9CA3AF;margin-top:6px">El registro diario se toma cada vez que abres este panel — abre las estadísticas al menos una vez al día para una serie completa.</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🏷️ Niveles más demandados</div>
+          <div id="st-niveles" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📍 Regiones con más avisos</div>
+          <div id="st-regiones" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+      </div>
+
+      <!-- ═══ FILA 3 DE TARJETAS ═══ -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
+        <div style="background:#fff;border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div id="st-clics-prom" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">—</div>
+          <div style="font-size:11px;color:#6B7280">🎯 Clics promedio por aviso</div>
+        </div>
+        <div style="background:#fff;border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div id="st-renta-pct" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">—</div>
+          <div style="font-size:11px;color:#6B7280">💰 % de avisos con renta publicada</div>
+        </div>
+        <div style="background:#fff;border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div id="st-ventana" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">—</div>
+          <div style="font-size:11px;color:#6B7280">🪟 Días típicos para postular</div>
+        </div>
+        <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:11px;padding:14px 16px">
+          <div id="st-dif7" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:#8A6D1F">—</div>
+          <div style="font-size:11px;color:#6B5417">🚀 Difusión: clics últimos 7 días</div>
+        </div>
+      </div>
+
+      <!-- ═══ REPORTE POR EMPRESA (retención) ═══ -->
+      <div style="border:2px solid var(--gold);border-radius:11px;padding:14px 16px;margin-bottom:16px;background:#FFFDF7">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy)">🏆 Reporte por empresa</div>
+          <select id="rep-emp" class="ft" style="max-width:280px;padding:6px 10px;font-size:12.5px" onchange="renderReporteEmpresa()"><option value="">— Elige una empresa —</option></select>
+          <button class="btn btn-ghost" style="font-size:12px;padding:6px 12px" onclick="copiarReporteEmpresa()">📋 Copiar reporte para WhatsApp</button>
+        </div>
+        <div id="rep-emp-body" style="font-size:12.5px;color:#374151">Elige una empresa para generar su reporte de resultados (avisos, clics y mejor aviso) — la herramienta para mostrar valor al cliente y renovar.</div>
+      </div>
+
+      <!-- ═══ PANELES DE ANÁLISIS ═══ -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📦 Rendimiento por plan</div>
+          <div id="st-planes" style="font-size:12px;color:#6B7280">Cargando…</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🧲 Rendimiento por fuente de captura</div>
+          <div id="st-fuentes" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🕘 Mejor horario de publicación</div>
+          <div id="st-horario" style="font-size:12px;color:#6B7280">Cargando…</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🔻 Embudo de estados</div>
+          <div id="st-embudo" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">⏰ Vencimientos próximos (≤5 días)</div>
+          <div id="st-vencen" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📆 Velocidad de validación por semana</div>
+          <div id="st-velsem" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🎖️ Certificaciones más exigidas</div>
+          <div id="st-certs" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🔄 Turnos más comunes</div>
+          <div id="st-turnos" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">⛏️ Gran vs Mediana minería</div>
+          <div id="st-granmed" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🏗️ Mandante / Contratista / OEM</div>
+          <div id="st-emptipo" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🛠️ Equipos y software más pedidos</div>
+          <div id="st-equipos" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🤝 Menciones de inclusión</div>
+          <div id="st-inclusion" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+      </div>
+      <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px;margin-bottom:16px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🚀 Vida útil del aviso (clics según días desde publicación)</div>
+        <div id="st-vida" style="font-size:12px;color:#6B7280">Cargando…</div>
       </div>
       
       <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:9px;padding:9px 12px;margin-bottom:14px">
@@ -1329,12 +1453,19 @@ footer{background:var(--navy);margin-top:80px}
         <span style="font-size:11px;font-weight:400;letter-spacing:normal;text-transform:none;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:4px 12px" title="El rechazo libera automáticamente el cupo del plan de la empresa">ⓘ Sin pago en plazo → rechazar (libera cupo)</span>
         <div id="bloque-lote" style="display:none;align-items:center;gap:10px;text-transform:none;letter-spacing:normal">
           <label class="fch" style="margin:0;font-size:13px"><input type="checkbox" id="chk-todos" onchange="marcarTodos(this)"> Seleccionar todos</label>
-          <button class="ab ab-ok" id="btn-lote" onclick="aprobarLote()">Aprobar seleccionados (0)</button>
+        <button class="btn btn-ghost" style="font-size:11.5px;padding:5px 10px" onclick="document.querySelectorAll('.selcanal').forEach(c=>{const a=DB.avisos.find(x=>x.id===+c.dataset.id); c.checked=!!(a&&!a.publicadoCanal);}); actualizarBoletinBtn();">☑ Solo los que faltan por publicar</button>
+          <button class="ab ab-ok" id="btn-lote" onclick="aprobarLote()">Aprobación para publicar en sitio web (0)</button>
         </div>
       </div>
       <div id="pend-list"></div>
       <div id="pend-vacio" style="display:none;color:var(--sub);font-size:14px;padding:10px 0">No hay avisos pendientes.</div>
       <div class="ap-sec">Avisos activos en el canal</div>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 10px">
+        <label style="font-size:12.5px;color:#374151;display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox" id="selcanal-todos" onchange="document.querySelectorAll('.selcanal').forEach(c=>c.checked=this.checked); actualizarBoletinBtn();"> Seleccionar todos</label>
+        <button class="btn btn-gold" style="font-size:12.5px;padding:7px 14px" onclick="boletinCanal()" id="btn-boletin">📋 Copiar boletín para el canal (0)</button>
+        <span style="font-size:10.5px;color:#9CA3AF">Agrupa los seleccionados en bloques de 8 por mensaje — pegas 1 bloque por mensaje en el canal, no aviso por aviso.</span>
+      </div>
+      <div id="boletin-bloques" style="display:none;background:#FFFDF7;border:2px solid var(--gold);border-radius:10px;padding:10px 14px;margin-bottom:10px"></div>
       <div id="activos-list"></div>
       <div id="activos-vacio" style="display:none;color:var(--sub);font-size:14px;padding:10px 0">No hay avisos activos.</div>
       <div class="ap-sec">Histórico</div>
@@ -1585,7 +1716,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.16.8';
+const APP_VERSION = '3.17.6';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1596,6 +1727,14 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.17.6', fecha:'19-08-2026', cambios:['Claridad en el panel: el botón «Aprobar seleccionados» ahora se llama «Aprobación para publicar en sitio web», reflejando exactamente lo que hace — al aprobar, el aviso se publica de inmediato en mantework.com; la publicación en el canal de WhatsApp es el paso siguiente (boletín), con su propia trazabilidad 📣/⏳']},
+  { v:'3.17.5', fecha:'19-08-2026', cambios:['Trazabilidad de publicación en el canal: al copiar un bloque del boletín, sus avisos quedan marcados permanentemente «📣 Publicado en canal» (con fecha, se guarda en la nube); los que faltan muestran «⏳ Falta publicar en canal». Nuevo selector «Solo los que faltan por publicar» para armar el boletín sin repetir jamás un aviso ya enviado. Así siempre se sabe qué bloques ya están en el canal, incluso días después o desde otro dispositivo']},
+  { v:'3.17.4', fecha:'19-08-2026', cambios:['Publicación en lote al canal: casillas de selección en los avisos activos (con «Seleccionar todos») y botón «Copiar boletín para el canal» que agrupa los seleccionados en mensajes de 8 avisos en formato compacto (cargo, nivel, empresa, ubicación, plazo y link medido), con encabezado «N VACANTES TÉCNICAS VALIDADAS (PARTE X de Y)» y pie de difusión. 89 avisos pasan de 89 pegadas a ~11: un bloque por mensaje. La publicación sigue siendo manual porque WhatsApp no ofrece API para Canales — este es el mínimo de fricción posible']},
+  { v:'3.17.3', fecha:'19-08-2026', cambios:['PROTECCIÓN ANTI-PÉRDIDA DE DATOS tras el incidente de los 89 avisos: (1) si la copia local es MÁS NUEVA que la nube (por ejemplo porque Supabase estuvo pausado y las escrituras fallaron), el sistema ya NO sobrescribe lo local — al revés, sube lo local a la nube; (2) cuando un guardado a la nube falla, aparece un banner rojo persistente «TUS CAMBIOS NO SE ESTÁN GUARDANDO EN LA NUBE» con la instrucción de descargar respaldo, en vez de fallar en silencio; (3) cada guardado local registra su fecha/hora para poder comparar. La causa raíz del incidente: la nube pausada rechazó las escrituras sin aviso visible y al día siguiente el estado antiguo de la nube pisó el trabajo local']},
+  { v:'3.17.2', fecha:'19-08-2026', cambios:['CORRECCIÓN URGENTE de lectura de fechas: las fechas de cierre en formato ISO (2026-09-15) se malinterpretaban como día-mes-año 2015, con lo que la caducidad automática ocultaba del sitio avisos perfectamente vigentes y la carga de Excel podía descartarlos como «vencidos». Ahora se detecta el formato ISO primero y ambos formatos (15-09-2026 y 2026-09-15) se leen correctamente. Los avisos ocultados por este error reaparecen solos al actualizar']},
+  { v:'3.17.1', fecha:'19-08-2026', cambios:['Estadísticas completas — panel comercial: REPORTE POR EMPRESA con selector, métricas del cliente (avisos, activos, clics, promedio, mejor aviso) y botón «Copiar reporte para WhatsApp» listo para enviar al cliente (la herramienta de retención del plan de ataque). Nuevas tarjetas: clics promedio por aviso, % de avisos con renta publicada, días típicos para postular y clics de difusión de los últimos 7 días','Estadísticas de mercado: certificaciones más exigidas, turnos más comunes, Gran vs Mediana minería, Mandante/Contratista/OEM, equipos y software más pedidos, y menciones de inclusión — el activo de datos vendible','Estadísticas operativas: rendimiento por plan y por fuente de captura, mejor horario de publicación (responde con datos si conviene segmentar horarios), embudo de estados con tasa de aprobación, vencimientos próximos (≤5 días) y velocidad de validación por semana','Análisis de VIDA ÚTIL del aviso: distribución de clics según días desde la publicación (define cuándo republicar). Requiere ejecutar supabase_clics_diarios.sql una vez — extiende registrar_clic para guardar cada clic por día, sin romper nada de lo existente']},
+  { v:'3.17.0', fecha:'19-08-2026', cambios:['Tablero de estadísticas ampliado en el panel de administración: 8 tarjetas con indicadores (avisos totales, del mes, activos, empresas distintas, clics totales en avisos, clics de difusión del canal, visitas al sitio de los últimos 7 días y horas promedio de validación) más 4 paneles nuevos: Avisos con más clics (top 5), Clics por día (gráfico de barras de los últimos 14 días construido con fotos diarias del contador), Niveles más demandados y Regiones con más avisos','Nuevo registro de visitas al sitio: cada visita suma 1 al contador diario en la nube (una por sesión de navegador, sin datos personales). Requiere ejecutar supabase_visitas.sql una vez en el SQL Editor — mientras no se ejecute, la tarjeta muestra un guión y el resto del tablero funciona normal']},
+  { v:'3.16.9', fecha:'19-08-2026', cambios:['Caducidad automática en el sitio: cuando la fecha de cierre de postulación de un aviso ya pasó, el sitio deja de mostrarlo automáticamente (antes seguía visible disfrazado de «Verificar en el portal»). Los avisos que cierran HOY siguen visibles (aún se puede postular), y los SIN fecha (habitual en Codelco/BHP) nunca se ocultan solos','En el panel admin, los avisos activos cuya postulación cerró muestran la etiqueta roja «⏰ POSTULACIÓN CERRADA» recordando cerrarlos y borrar el mensaje en WhatsApp (el texto ya enviado al canal no se puede quitar remoto)']},
   { v:'3.16.8', fecha:'13-08-2026', cambios:['Detección de duplicados UNIFICADA: la carga por Excel ahora usa la misma huella robusta que el resto del sistema (ignora puntuación, sufijos de género y vocales), en vez de su comparación propia que conservaba la puntuación. Con esto, «Codelco (División Ministro Hales)» y «Codelco – División Ministro Hales» se reconocen como la misma empresa y el aviso repetido se salta. Mejora nacida del segundo caso real: la misma vacante de Ministro Hales publicada dos veces con la empresa escrita con paréntesis y con guión']},
   { v:'3.16.7', fecha:'13-08-2026', cambios:['Detector de duplicados resistente a variantes de género: «Jefa(e)», «Jefe(a)», «Jefe/a», «Operador/a» y «Operadora(or)» ahora producen la misma huella de comparación (se eliminan los sufijos de género y las vocales antes de comparar), por lo que el sistema detecta como similar un aviso repetido aunque el cargo esté escrito con distinta variante. Cargos realmente distintos (Eléctrico vs Electrónico, Supervisor vs Superintendente) siguen diferenciándose. Mejora nacida de un caso real: la misma vacante de Los Pelambres publicada dos veces con «Jefa(e)» y «Jefe(a)»']},
   { v:'3.16.6', fecha:'13-08-2026', cambios:['Validación de duplicados también en el formulario de publicación del cliente (asistente de 4 pasos): antes de enviar, el sistema revisa si el aviso ya existe. Si es EXACTO (mismo aviso dentro de 30 días) lo bloquea indicando su estado actual; si es SIMILAR (misma empresa y cargo, distinta faena) pide confirmación. Con esto, TODAS las vías de ingreso de avisos (Excel admin, Excel cliente, captación web y formulario del cliente) controlan repetidos']},
@@ -1866,6 +2005,109 @@ function renderStats(){
     return '<div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid #F0F0F0"><span>'+esc(e[0])+'</span><strong>'+e[1]+'</strong></div>';
   }).join('') || '<div style="color:#6B7280;font-size:12px">Sin datos aún</div>';
 
+  // ── Niveles más demandados (de mercado.nivel) ──
+  const niveles = {};
+  pub.forEach(a => { const n=(a.mercado&&a.mercado.nivel)||''; if(n) niveles[n]=(niveles[n]||0)+1; });
+  const nEl = document.getElementById('st-niveles');
+  if(nEl){ const ent=Object.entries(niveles).sort((x,y)=>y[1]-x[1]).slice(0,6);
+    nEl.innerHTML = ent.length ? ent.map(e=>'<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #F0F0F0"><span>'+esc(e[0])+'</span><strong>'+e[1]+'</strong></div>').join('') : 'Sin datos aún (los avisos con Nivel/Seniority alimentan este ranking)'; }
+
+  // ── Regiones con más avisos ──
+  const regs = {};
+  pub.forEach(a => { if(a.region) regs[a.region]=(regs[a.region]||0)+1; });
+  const rEl = document.getElementById('st-regiones');
+  if(rEl){ const ent=Object.entries(regs).sort((x,y)=>y[1]-x[1]).slice(0,6);
+    rEl.innerHTML = ent.length ? ent.map(e=>'<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #F0F0F0"><span>'+esc(e[0])+'</span><strong>'+e[1]+'</strong></div>').join('') : 'Sin datos aún'; }
+
+  // ── Horas promedio de validación (creación → aprobación) ──
+  const conAmbas = pub.filter(a=>a.fechaCreacion && a.fechaAprobacion);
+  const vEl = document.getElementById('st-valida');
+  if(vEl && conAmbas.length){
+    const proms = conAmbas.map(a=>(new Date(a.fechaAprobacion)-new Date(a.fechaCreacion))/36e5).filter(h=>h>=0);
+    if(proms.length) vEl.textContent = (proms.reduce((s,h)=>s+h,0)/proms.length).toFixed(1);
+  }
+
+  // ── Ranking simple reutilizable ──
+  const _rank = (obj, lim) => { const e=Object.entries(obj).sort((x,y)=>y[1]-x[1]).slice(0,lim||6);
+    return e.length ? e.map(p=>'<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #F0F0F0"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(p[0])+'</span><strong>'+p[1]+'</strong></div>').join('') : ''; };
+  const _setHTML=(id,h,vacio)=>{const e=document.getElementById(id); if(e) e.innerHTML=h||vacio||'Sin datos aún';};
+
+  // 💰 % de avisos con renta publicada
+  const conRenta = pub.filter(a=>a.mercado&&a.mercado.renta).length;
+  if(pub.length) set('st-renta-pct', Math.round(100*conRenta/pub.length)+'%');
+
+  // 🪟 Días típicos para postular (aprobación → fecha de cierre, cuando existe)
+  const ventanas = pub.filter(a=>a.mercado&&a.mercado.fcierre&&a.fechaAprobacion)
+    .map(a=>{const d=_diasHastaFecha(a.mercado.fcierre); const desde=Math.floor((new Date(a.mercado&&a.fechaAprobacion?a.fechaAprobacion:0)-0)/1);
+      const dd=(new Date(String(a.mercado.fcierre).split(/[\/\-]/).reverse().join('-'))-new Date(a.fechaAprobacion))/(864e5); return dd;})
+    .filter(d=>d>=0&&d<120);
+  if(ventanas.length) set('st-ventana', Math.round(ventanas.reduce((s,d)=>s+d,0)/ventanas.length));
+
+  // 🎖️ Certificaciones más exigidas
+  const certs={}; pub.forEach(a=>(a.certs||[]).forEach(c=>{certs[c]=(certs[c]||0)+1;}));
+  _setHTML('st-certs', _rank(certs,8));
+
+  // 🔄 Turnos más comunes
+  const turnos={}; pub.forEach(a=>{ if(a.turno) turnos[a.turno]=(turnos[a.turno]||0)+1; });
+  _setHTML('st-turnos', _rank(turnos,6));
+
+  // ⛏️ Gran vs Mediana minería (de mercado.empleador)
+  const gm={}; pub.forEach(a=>{ const e=(a.mercado&&a.mercado.empleador)||'';
+    if(/gran miner/i.test(e)) gm['Gran Minería']=(gm['Gran Minería']||0)+1;
+    else if(/mediana miner/i.test(e)) gm['Mediana Minería']=(gm['Mediana Minería']||0)+1; });
+  _setHTML('st-granmed', _rank(gm,3), 'Sin datos aún — se alimenta de «Tipo de empleador» con categoría Gran/Mediana');
+
+  // 🏗️ Mandante / Contratista / OEM
+  const et={}; pub.forEach(a=>{ const e=(a.mercado&&a.mercado.empleador)||'';
+    if(/mandante/i.test(e)) et['Mandante']=(et['Mandante']||0)+1;
+    else if(/contratista/i.test(e)) et['Contratista']=(et['Contratista']||0)+1;
+    else if(/oem|proveedor/i.test(e)) et['OEM / Proveedor']=(et['OEM / Proveedor']||0)+1;
+    else if(/consultora/i.test(e)) et['Consultora']=(et['Consultora']||0)+1; });
+  _setHTML('st-emptipo', _rank(et,4));
+
+  // 🛠️ Equipos y software más pedidos
+  const eq={}; pub.forEach(a=>{ const s=(a.mercado&&a.mercado.equipos)||'';
+    s.split(/[;,·]/).map(x=>x.trim()).filter(x=>x.length>1).forEach(x=>{eq[x]=(eq[x]||0)+1;}); });
+  _setHTML('st-equipos', _rank(eq,8));
+
+  // 🤝 Menciones de inclusión
+  const inc={}; let incN=0; pub.forEach(a=>{ const s=(a.mercado&&a.mercado.inclusion)||''; if(s){ incN++; inc[s.slice(0,50)]=(inc[s.slice(0,50)]||0)+1; } });
+  const incPct = pub.length? Math.round(100*incN/pub.length) : 0;
+  _setHTML('st-inclusion', (incN? '<div style="margin-bottom:6px"><strong>'+incPct+'%</strong> de los avisos mencionan inclusión</div>'+_rank(inc,4) : ''), 'Ningún aviso menciona inclusión aún');
+
+  // 🧲 Rendimiento por fuente (conteo local; los clics se agregan al llegar la nube)
+  const fu={}; pub.forEach(a=>{ if(a.fuente) fu[a.fuente]=(fu[a.fuente]||0)+1; });
+  _setHTML('st-fuentes', _rank(fu,8), 'Sin capturas web aún — se alimenta del campo «fuente» de la captación');
+
+  // 🔻 Embudo de estados
+  const est={pendiente:0,activo:0,vencido:0}; DB.avisos.forEach(a=>{ if(est[a.estado]!==undefined) est[a.estado]++; });
+  const totE = DB.avisos.length; const aprobados = est.activo+est.vencido;
+  _setHTML('st-embudo', totE? ('<div style="display:flex;justify-content:space-between;padding:4px 0"><span>Ingresados (total)</span><strong>'+totE+'</strong></div>'+
+    '<div style="display:flex;justify-content:space-between;padding:4px 0"><span>Pendientes de validación</span><strong>'+est.pendiente+'</strong></div>'+
+    '<div style="display:flex;justify-content:space-between;padding:4px 0"><span>Activos</span><strong style="color:var(--green)">'+est.activo+'</strong></div>'+
+    '<div style="display:flex;justify-content:space-between;padding:4px 0"><span>Cerrados/vencidos</span><strong>'+est.vencido+'</strong></div>'+
+    '<div style="display:flex;justify-content:space-between;padding:6px 0;border-top:1px solid #E5E7EB;margin-top:4px"><span><b>Tasa de aprobación histórica</b></span><strong style="color:var(--gold)">'+Math.round(100*aprobados/totE)+'%</strong></div>'):'');
+
+  // ⏰ Vencimientos próximos (activos que cierran en ≤5 días)
+  const prox = activos.map(a=>({a, d:(a.mercado&&a.mercado.fcierre)?_diasHastaFecha(a.mercado.fcierre):null}))
+    .filter(x=>x.d!==null && x.d>=0 && x.d<=5).sort((x,y)=>x.d-y.d);
+  _setHTML('st-vencen', prox.map(x=>'<div style="display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px solid #F0F0F0"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(x.a.cargo)+' · '+esc(x.a.empresa)+'</span><strong style="color:'+(x.d<=1?'var(--red)':'#8A6D1F')+'">'+(x.d===0?'HOY':x.d+' d')+'</strong></div>').join(''), 'Ningún aviso activo vence en los próximos 5 días ✓');
+
+  // 📆 Velocidad de validación por semana (últimas 6 semanas con datos)
+  const porSem={};
+  conAmbas.forEach(a=>{ const f=new Date(a.fechaAprobacion); const lun=new Date(f); lun.setDate(f.getDate()-((f.getDay()+6)%7)); const k=lun.toISOString().slice(0,10);
+    const h=(new Date(a.fechaAprobacion)-new Date(a.fechaCreacion))/36e5; if(h>=0){ (porSem[k]=porSem[k]||[]).push(h); } });
+  const sems=Object.keys(porSem).sort().slice(-6);
+  _setHTML('st-velsem', sems.map(k=>{ const arr=porSem[k]; const prom=(arr.reduce((s,h)=>s+h,0)/arr.length).toFixed(1);
+    return '<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #F0F0F0"><span>Semana del '+k.slice(8,10)+'-'+k.slice(5,7)+'</span><strong>'+prom+' h <span style="color:#9CA3AF;font-weight:400">('+arr.length+' avisos)</span></strong></div>'; }).join(''));
+
+  // 🏆 Poblar el selector del reporte por empresa
+  const sel=document.getElementById('rep-emp');
+  if(sel && sel.options.length<=1){ [...new Set(pub.map(a=>a.empresa).filter(Boolean))].sort().forEach(e=>{ const o=document.createElement('option'); o.value=e; o.textContent=e; sel.appendChild(o); }); }
+
+  // ── Métricas de la nube: clics, top avisos, serie diaria, visitas ──
+  cargarStatsNube();
+
   // Registro histórico (ordenado por fecha desc)
   const hEl = document.getElementById('st-historico');
   const ordenado = pub.slice().sort((x,y)=> new Date(y.fechaAprobacion) - new Date(x.fechaAprobacion));
@@ -1920,6 +2162,157 @@ function revisarDuplicado(empresa, cargo, ciudad, link){
 
 
 
+
+// Mapa global aviso_id → clics (lo llena cargarStatsNube)
+let STATS_CLICS = {};
+
+// ── Reporte por empresa: la herramienta de retención ──
+function _datosReporteEmpresa(emp){
+  const avs = DB.avisos.filter(a=>a.empresa===emp && a.fechaAprobacion);
+  const activos = avs.filter(a=>a.estado==='activo').length;
+  const conClics = avs.map(a=>({a, c:STATS_CLICS[a.id]||0}));
+  const totC = conClics.reduce((s,x)=>s+x.c,0);
+  const top = conClics.slice().sort((x,y)=>y.c-x.c)[0];
+  return { avs, activos, totC, prom: avs.length? (totC/avs.length) : 0, top };
+}
+function renderReporteEmpresa(){
+  const emp=document.getElementById('rep-emp').value;
+  const el=document.getElementById('rep-emp-body');
+  if(!emp){ el.innerHTML='Elige una empresa para generar su reporte.'; return; }
+  const d=_datosReporteEmpresa(emp);
+  el.innerHTML = '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px">'+
+    '<div><div style="font-size:22px;font-weight:800;color:var(--navy)">'+d.avs.length+'</div><div style="font-size:10.5px;color:#6B7280">Avisos publicados</div></div>'+
+    '<div><div style="font-size:22px;font-weight:800;color:var(--green)">'+d.activos+'</div><div style="font-size:10.5px;color:#6B7280">Activos ahora</div></div>'+
+    '<div><div style="font-size:22px;font-weight:800;color:var(--gold)">'+d.totC+'</div><div style="font-size:10.5px;color:#6B7280">Clics de postulación</div></div>'+
+    '<div><div style="font-size:22px;font-weight:800;color:var(--navy)">'+d.prom.toFixed(1)+'</div><div style="font-size:10.5px;color:#6B7280">Clics promedio/aviso</div></div></div>'+
+    (d.top && d.top.c>0 ? '<div style="font-size:12px">⭐ <b>Mejor aviso:</b> '+esc(d.top.a.cargo)+' — <b style="color:var(--gold)">'+d.top.c+' clics</b></div>' : '<div style="font-size:12px;color:#9CA3AF">Aún sin clics registrados (o la nube no está activa).</div>');
+}
+function copiarReporteEmpresa(){
+  const emp=document.getElementById('rep-emp').value;
+  if(!emp){ toast('Primero elige una empresa'); return; }
+  const d=_datosReporteEmpresa(emp);
+  const mes=new Date().toLocaleDateString('es-CL',{month:'long',year:'numeric'});
+  const t='📊 *REPORTE MANTEWORK — '+emp+'*\n_'+mes.charAt(0).toUpperCase()+mes.slice(1)+'_\n\n'+
+    '📋 Avisos publicados: *'+d.avs.length+'*\n'+
+    '🟢 Activos en el canal: *'+d.activos+'*\n'+
+    '🔥 Clics de postulación recibidos: *'+d.totC+'*\n'+
+    '🎯 Promedio por aviso: *'+d.prom.toFixed(1)+' clics*\n'+
+    (d.top&&d.top.c>0? '⭐ Mejor aviso: '+d.top.a.cargo+' ('+d.top.c+' clics)\n' : '')+
+    '\nCada clic es un técnico del rubro que abrió tu proceso de postulación.\n_MANTEWORK · El portal de validación del empleo técnico minero_\nwww.mantework.com';
+  navigator.clipboard.writeText(t).then(()=>toast('✓ Reporte copiado — pégalo en WhatsApp del cliente')).catch(()=>{ prompt('Copia el reporte:', t); });
+}
+
+// ── Estadísticas avanzadas desde la nube: clics totales, top avisos, serie diaria y visitas ──
+async function cargarStatsNube(){
+  const set=(id,v)=>{const e=document.getElementById(id); if(e) e.textContent=v;};
+  if(!nubeActiva()){ set('st-clics-total','—'); set('st-visitas','—'); return; }
+  try{
+    const filas = await _sb('GET','mantework_links?select=codigo,cargo,clics,aviso_id&order=clics.desc&limit=500') || [];
+    const canal = filas.filter(f=>f.codigo==='canal').reduce((s,f)=>s+(f.clics||0),0);
+    const avisosL = filas.filter(f=>f.codigo!=='canal');
+    const total = avisosL.reduce((s,f)=>s+(f.clics||0),0);
+    set('st-clics-total', total);
+    set('st-clics-canal', canal);
+    // Mapa aviso_id → clics (para reporte por empresa, planes, horario)
+    STATS_CLICS = {}; avisosL.forEach(f=>{ if(f.aviso_id) STATS_CLICS[f.aviso_id]=(STATS_CLICS[f.aviso_id]||0)+(f.clics||0); });
+    // 🎯 Clics promedio por aviso
+    if(avisosL.length) set('st-clics-prom', (total/avisosL.length).toFixed(1));
+    // 🚀 Difusión: snapshot diario del canal y suma de los últimos 7 días
+    const hoyD = new Date().toISOString().slice(0,10);
+    DB.statsSnapCanal = DB.statsSnapCanal || {};
+    if(DB.statsSnapCanal[hoyD]===undefined || canal>DB.statsSnapCanal[hoyD]){ DB.statsSnapCanal[hoyD]=canal; guardar(); }
+    { const ds=Object.keys(DB.statsSnapCanal).sort(); let d7=0;
+      const corte=new Date(); corte.setDate(corte.getDate()-7);
+      let prevV=null; ds.forEach(k=>{ const v=DB.statsSnapCanal[k];
+        if(prevV!==null && new Date(k)>=corte) d7+=Math.max(0,v-prevV); prevV=v; });
+      set('st-dif7', ds.length>1? '+'+d7 : '—'); }
+    // 📦 Rendimiento por plan (avisos y clics promedio)
+    { const pp={}; DB.avisos.filter(a=>a.fechaAprobacion).forEach(a=>{ const p=a.plan||'—';
+        pp[p]=pp[p]||{n:0,c:0}; pp[p].n++; pp[p].c+=STATS_CLICS[a.id]||0; });
+      const pEl=document.getElementById('st-planes');
+      if(pEl){ const ent=Object.entries(pp).sort((x,y)=>y[1].n-x[1].n);
+        pEl.innerHTML = ent.length? ent.map(([p,v])=>'<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #F0F0F0"><span>'+esc(p)+'</span><strong>'+v.n+' avisos · '+(v.n?(v.c/v.n).toFixed(1):0)+' clics/aviso</strong></div>').join('') : 'Sin datos aún'; } }
+    // 🕘 Mejor horario de publicación (hora de aprobación vs clics promedio)
+    { const hh={}; DB.avisos.filter(a=>a.fechaAprobacion && STATS_CLICS[a.id]!==undefined).forEach(a=>{
+        const h=new Date(a.fechaAprobacion).getHours(); hh[h]=hh[h]||{n:0,c:0}; hh[h].n++; hh[h].c+=STATS_CLICS[a.id]; });
+      const hEl=document.getElementById('st-horario'); const ent=Object.entries(hh).map(([h,v])=>({h:+h, prom:v.c/v.n, n:v.n})).filter(x=>x.n>=1).sort((x,y)=>y.prom-x.prom);
+      if(hEl) hEl.innerHTML = ent.length>=3 ? ent.slice(0,5).map((x,i)=>'<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #F0F0F0"><span>'+(i+1)+'. Publicados a las '+String(x.h).padStart(2,'0')+':00</span><strong>'+x.prom.toFixed(1)+' clics/aviso <span style="color:#9CA3AF;font-weight:400">('+x.n+')</span></strong></div>').join('')+'<div style="font-size:10px;color:#9CA3AF;margin-top:6px">Con pocos avisos la señal es débil — decide con al menos 30 avisos con clics.</div>' : 'Aún pocos avisos con clics para detectar patrón horario (mínimo 3 horas distintas).'; }
+    // Refrescar el reporte por empresa si hay una seleccionada
+    if(document.getElementById('rep-emp') && document.getElementById('rep-emp').value) renderReporteEmpresa();
+    // Top 5 avisos con más clics
+    const tEl=document.getElementById('st-topclics');
+    if(tEl){ const top=avisosL.filter(f=>(f.clics||0)>0).slice(0,5);
+      tEl.innerHTML = top.length ? top.map((f,i)=>'<div style="display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px solid #F0F0F0"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+(i+1)+'. '+esc(f.cargo||f.codigo)+'</span><strong style="color:var(--gold)">'+f.clics+'</strong></div>').join('') : 'Aún no hay clics registrados en avisos.'; }
+    // Snapshot diario del total (para la serie): se guarda una foto por día al abrir el panel
+    const hoy = new Date().toISOString().slice(0,10);
+    DB.statsSnap = DB.statsSnap || {};
+    if(DB.statsSnap[hoy] === undefined || (total+canal) > DB.statsSnap[hoy]){ DB.statsSnap[hoy] = total + canal; guardar(); }
+    // Serie: delta entre snapshots consecutivos, últimos 14 días
+    const sEl=document.getElementById('st-serie');
+    if(sEl){
+      const dias=[]; for(let i=13;i>=0;i--){ const d=new Date(); d.setDate(d.getDate()-i); dias.push(d.toISOString().slice(0,10)); }
+      const conSnap = dias.map(d=>({d, v:DB.statsSnap[d]}));
+      // delta del día = snapshot del día - snapshot anterior más cercano
+      let prev=null; const deltas=conSnap.map(x=>{ let dl=null; if(x.v!==undefined){ if(prev!==null) dl=Math.max(0,x.v-prev); prev=x.v; } return {d:x.d, delta:dl}; });
+      const conDato = deltas.filter(x=>x.delta!==null);
+      if(!conDato.length){ sEl.innerHTML='La serie comienza a construirse desde hoy — vuelve mañana para ver la primera barra.'; }
+      else{
+        const mx=Math.max(1,...conDato.map(x=>x.delta));
+        sEl.innerHTML = '<div style="display:flex;align-items:flex-end;gap:3px;height:74px">'+deltas.map(x=>{
+          const dia=x.d.slice(8,10);
+          if(x.delta===null) return '<div style="flex:1;text-align:center"><div style="height:60px"></div><div style="font-size:8.5px;color:#C9CED6">'+dia+'</div></div>';
+          const h=Math.max(3,Math.round(58*x.delta/mx));
+          return '<div style="flex:1;text-align:center" title="'+x.d+': '+x.delta+' clics"><div style="font-size:9px;color:#6B7280">'+(x.delta||'')+'</div><div style="background:var(--gold);border-radius:3px 3px 0 0;height:'+h+'px;margin:0 1px"></div><div style="font-size:8.5px;color:#9CA3AF">'+dia+'</div></div>';
+        }).join('')+'</div>';
+      }
+    }
+  }catch(e){ set('st-clics-total','—'); }
+  // 🚀 Vida útil del aviso — requiere mantework_clics_dia (supabase_clics_diarios.sql)
+  try{
+    const [dias, links] = await Promise.all([
+      _sb('GET','mantework_clics_dia?select=codigo,dia,clics&limit=3000'),
+      _sb('GET','mantework_links?select=codigo,creado&limit=500')
+    ]);
+    const vEl2=document.getElementById('st-vida');
+    if(vEl2){
+      const creadoPor={}; (links||[]).forEach(l=>{ creadoPor[l.codigo]=l.creado? l.creado.slice(0,10):null; });
+      const edad={}; let totV=0;
+      (dias||[]).forEach(r=>{ const c0=creadoPor[r.codigo]; if(!c0 || r.codigo==='canal') return;
+        const e=Math.round((new Date(r.dia)-new Date(c0))/864e5); if(e<0) return;
+        const b=e>=7? '7+ días' : 'Día '+(e+1); edad[b]=(edad[b]||0)+r.clics; totV+=r.clics; });
+      const orden=['Día 1','Día 2','Día 3','Día 4','Día 5','Día 6','Día 7','7+ días'];
+      const conD=orden.filter(k=>edad[k]);
+      if(!totV){ vEl2.innerHTML='La distribución se construye con los clics nuevos desde que actives supabase_clics_diarios.sql — vuelve en unos días.'; }
+      else{
+        const mx=Math.max(...conD.map(k=>edad[k]));
+        vEl2.innerHTML='<div style="display:flex;align-items:flex-end;gap:6px;height:80px">'+conD.map(k=>{
+          const pct=Math.round(100*edad[k]/totV); const h=Math.max(4,Math.round(60*edad[k]/mx));
+          return '<div style="flex:1;text-align:center"><div style="font-size:9.5px;color:#6B7280">'+pct+'%</div><div style="background:var(--navy);border-radius:3px 3px 0 0;height:'+h+'px;margin:0 4px"></div><div style="font-size:9px;color:#9CA3AF">'+k+'</div></div>';
+        }).join('')+'</div><div style="font-size:10px;color:#9CA3AF;margin-top:6px">% de los clics según cuántos días llevaba publicado el aviso — define cuándo conviene republicar.</div>';
+      }
+    }
+  }catch(e){ const vEl2=document.getElementById('st-vida'); if(vEl2) vEl2.innerHTML='Para activar este análisis, ejecuta <b>supabase_clics_diarios.sql</b> en el SQL Editor de Supabase (una sola vez). Desde entonces cada clic queda registrado por día.'; }
+  // Visitas al sitio (últimos 7 días) — requiere la tabla mantework_visitas (supabase_visitas.sql)
+  try{
+    const vis = await _sb('GET','mantework_visitas?select=dia,visitas&order=dia.desc&limit=7') || [];
+    const v7 = vis.reduce((s,f)=>s+(f.visitas||0),0);
+    set('st-visitas', v7);
+    const card=document.getElementById('st-visitas'); if(card) card.title='Suma de los últimos 7 días con registro';
+  }catch(e){
+    const card=document.getElementById('st-visitas');
+    if(card){ card.textContent='—'; card.title='Para activar: ejecuta supabase_visitas.sql en el SQL Editor de Supabase'; }
+  }
+}
+
+// Registrar una visita al sitio (una por sesión de navegador; silencioso si la tabla no existe)
+function pingVisita(){
+  try{
+    if(sessionStorage.getItem('mw_visita')) return;
+    sessionStorage.setItem('mw_visita','1');
+    if(!nubeActiva()) return;
+    _sb('POST','rpc/registrar_visita',{}).catch(()=>{});
+  }catch(e){}
+}
 
 // Cargar y mostrar los clics de los enlaces propios
 async function cargarClics(){
@@ -2231,6 +2624,59 @@ function descartarCaptado(id){
 
 // Genera el texto del aviso para pegar en el canal de WhatsApp (formato final)
 const EMOJI_GRUPO = { 'Mantenedores':'🔧', 'Operadores':'🚛', 'Supervisores':'👷', 'Profesionales':'🎓' };
+// ── BOLETÍN DEL CANAL: varios avisos por mensaje (bloques de 8) ──
+function actualizarBoletinBtn(){
+  const n=document.querySelectorAll('.selcanal:checked').length;
+  const b=document.getElementById('btn-boletin'); if(b) b.textContent='📋 Copiar boletín para el canal ('+n+')';
+}
+function copiarBloqueBoletin(ix){
+  const B=window._BOLETIN; if(!B) return;
+  const fin=()=>{
+    const ahora=new Date().toISOString();
+    B.ids[ix].forEach(id=>{ const a=DB.avisos.find(x=>x.id===id); if(a) a.publicadoCanal=ahora; });
+    guardar();
+    const btn=document.getElementById('bb-'+ix);
+    if(btn){ btn.textContent='✓ Bloque '+(ix+1)+' copiado y marcado'; btn.style.background='#E8F3EC'; }
+    toast('Bloque '+(ix+1)+' de '+B.textos.length+' copiado — pégalo en el canal (avisos marcados 📣)');
+  };
+  navigator.clipboard.writeText(B.textos[ix]).then(fin).catch(()=>{ prompt('Copia el bloque:', B.textos[ix]); fin(); });
+}
+
+function _entradaBoletin(a){
+  const emp = a.verEmpresa===false ? 'Empresa del sector minero' : (a.empresa||'');
+  const ubi = a.verFaena===false ? (a.region||'') : [a.ciudad||a.lugar, a.region].filter(Boolean).join(', ');
+  const emoji = EMOJI_GRUPO[a.grupo] || '📋';
+  const fc = a.mercado && a.mercado.fcierre ? a.mercado.fcierre : '';
+  const L = [emoji+' *'+(a.cargo||'')+'*'];
+  if(a.mercado && a.mercado.nivel) L.push('🏷️ '+a.mercado.nivel);
+  L.push('🏢 '+emp);
+  if(ubi) L.push('📍 '+ubi);
+  L.push('🗓️ Postula hasta: '+(fc||'ver portal oficial'));
+  L.push('➡️ '+(a.linkCorto||a.postula||''));
+  return L.join('\n');
+}
+function boletinCanal(){
+  const ids=[...document.querySelectorAll('.selcanal:checked')].map(c=>+c.dataset.id);
+  if(!ids.length){ toast('Marca al menos un aviso activo'); return; }
+  const avs = DB.avisos.filter(a=>ids.includes(a.id));
+  const TAM=8; const bloques=[];
+  for(let i=0;i<avs.length;i+=TAM) bloques.push(avs.slice(i,i+TAM));
+  const fecha=new Date().toLocaleDateString('es-CL',{day:'2-digit',month:'2-digit',year:'numeric'});
+  const textos=bloques.map((b,ix)=>{
+    const parte=bloques.length>1?' (PARTE '+(ix+1)+' de '+bloques.length+')':'';
+    return '━━━━━━━━━━━━━━\n🔶 *'+b.length+' VACANTES TÉCNICAS VALIDADAS'+parte+'* · '+fecha+'\n✔️ Cada aviso pasó la validación MANTEWORK\n━━━━━━━━━━━━━━\n\n'+
+      b.map(_entradaBoletin).join('\n\n')+
+      '\n\n━━━━━━━━━━━━━━\n📲 _Comparte este canal:_ https://www.mantework.com/ir/?c=canal';
+  });
+  const panel=document.getElementById('boletin-bloques');
+  window._BOLETIN = { textos, ids: bloques.map(b=>b.map(a=>a.id)) };
+  panel.style.display='block';
+  panel.innerHTML='<div style="font-weight:800;font-size:13px;color:var(--navy);margin-bottom:6px">Boletín listo: '+avs.length+' avisos en '+textos.length+' mensaje(s). Copia y pega cada bloque en el canal, en orden:</div>'+
+    textos.map((t,ix)=>'<button class="btn btn-ghost" id="bb-'+ix+'" style="font-size:12px;padding:6px 12px;margin:3px 6px 3px 0" onclick="copiarBloqueBoletin('+ix+')">📋 Copiar bloque '+(ix+1)+' ('+bloques[ix].length+' avisos)</button>').join('')+
+    '<div style="font-size:10.5px;color:#9CA3AF;margin-top:4px">Al copiar un bloque, sus avisos quedan marcados «📣 Publicado en canal» — así sabrás siempre qué falta.</div>';
+  panel.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
 function textoCanal(a){
   const emp = a.verEmpresa===false ? 'Empresa del sector minero' : (a.empresa||'Empresa del sector minero');
   const ubi = a.verFaena===false ? (a.region||'') : [a.ciudad||a.lugar, a.region].filter(Boolean).join(', ');
@@ -2341,6 +2787,17 @@ async function cargarDesdeNube(){
         if(DB.avisos.length || CLIENTES.length) guardarEnNube();
         return false;
       }
+      // GUARDIA ANTI-PÉRDIDA (v3.17.3): si la copia local es MÁS NUEVA que la nube
+      // (ej. la nube estuvo pausada y las escrituras fallaron), NO sobrescribir lo local —
+      // al revés: subir lo local a la nube. Evita perder trabajo como los 89 avisos del 18-08.
+      try{
+        const localTs = localStorage.getItem('mw_guardado_local');
+        if(pack.guardado && localTs && new Date(localTs) > new Date(pack.guardado) && (DB.avisos.length || CLIENTES.length)){
+          console.warn('Local más nuevo que la nube (' + localTs + ' > ' + pack.guardado + '): subiendo lo local.');
+          guardarEnNube();
+          return true;
+        }
+      }catch(e){}
       pack.avisos.forEach(a => CAMPOS_FECHA_AVISO.forEach(k => { if(a[k]) a[k] = new Date(a[k]); }));
       pack.clientes.forEach(c => CAMPOS_FECHA_CLI.forEach(k => { if(c[k]) c[k] = new Date(c[k]); }));
       DB.avisos = pack.avisos;
@@ -2364,9 +2821,19 @@ async function guardarEnNube(){
       // Escritura vía función con secreto (endurecimiento v3.1.0): la anon key
       // por sí sola ya no puede sobrescribir la tabla.
       await _sb('POST', 'rpc/guardar_pack', { p_secret: WRITE_SECRET, p_pack: pack });
-      _indicadorNube(true);
-    } catch(e){ _indicadorNube(false); }
+      _indicadorNube(true); _bannerNube(false);
+    } catch(e){ _indicadorNube(false); _bannerNube(true); }
   }, 800);
+}
+
+// Banner persistente de alerta: los cambios NO están llegando a la nube
+function _bannerNube(on){
+  let b=document.getElementById('nube-banner');
+  if(!b){ b=document.createElement('div'); b.id='nube-banner';
+    b.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--red);color:#fff;font-size:13px;font-weight:700;text-align:center;padding:9px 14px;display:none;box-shadow:0 -2px 10px rgba(0,0,0,.25)';
+    b.textContent='⚠ TUS CAMBIOS NO SE ESTÁN GUARDANDO EN LA NUBE — no cierres este navegador: ve a Panel → Datos y respaldos → Descargar respaldo, y revisa que Supabase esté activo.';
+    document.body.appendChild(b); }
+  b.style.display = on ? 'block' : 'none';
 }
 
 // Antes de agregar un aviso nuevo, refresca desde la nube para no pisar
@@ -2414,7 +2881,7 @@ const CAMPOS_FECHA_CLI   = ['fechaEnrol','fechaActivacion','fechaUltimoRecordato
 function guardarDatos(){
   try {
     const pack = { avisos: DB.avisos, clientes: CLIENTES, guardado: new Date().toISOString(), version: APP_VERSION };
-    localStorage.setItem(STORE_KEY, JSON.stringify(pack));
+    localStorage.setItem(STORE_KEY, JSON.stringify(pack)); localStorage.setItem('mw_guardado_local', new Date().toISOString());
   } catch(e) { /* almacenamiento no disponible — modo memoria */ }
   guardarEnNube();
 }
@@ -3747,7 +4214,8 @@ function renderPublico(){
   guardarDatos();
   const lista = document.getElementById('lista-publica');
   const vacio = document.getElementById('no-avisos');
-  const activos = DB.avisos.filter(a=>a.estado==='activo');
+  // Vigentes: activos cuya fecha de cierre NO haya pasado (los vencidos se ocultan solos del sitio)
+  const activos = DB.avisos.filter(a=>a.estado==='activo' && !_postulacionCerrada(a));
   if(!activos.length){ lista.innerHTML=''; vacio.style.display='block'; return; }
   vacio.style.display='none';
   lista.innerHTML = activos.map(a=>{
@@ -3780,6 +4248,14 @@ function renderPublico(){
 
 // Plazo de postulación para el PÚBLICO: se basa en la fecha de cierre del aviso (mercado.fcierre),
 // no en la vigencia interna de 30 días. Muestra «Postula hasta: fecha» y los días que faltan.
+// ¿La fecha de cierre de postulación ya pasó? (los sin fecha NUNCA se consideran cerrados)
+function _postulacionCerrada(a){
+  const fc = a.mercado && a.mercado.fcierre ? String(a.mercado.fcierre).trim() : '';
+  if(!fc) return false;
+  const d = _diasHastaFecha(fc);
+  return d !== null && d < 0;
+}
+
 function _plazoPostular(a){
   const fc = a.mercado && a.mercado.fcierre ? String(a.mercado.fcierre).trim() : '';
   // Sin fecha de cierre: siempre mostrar algo, invitando a verificar en el portal.
@@ -3793,9 +4269,16 @@ function _plazoPostular(a){
 }
 // Convierte una fecha DD-MM-AAAA o DD/MM/AAAA a días desde hoy (o null si no parsea).
 function _diasHastaFecha(s){
-  const m = String(s).match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
-  if(!m) return null;
-  let [_, dd, mm, yy] = m;
+  // Primero formato ISO (2026-09-15) — si no se detecta primero, «2026-09-15»
+  // se leería mal como 26-09-2015 y el aviso aparecería vencido hace años.
+  let dd, mm, yy;
+  const iso = String(s).match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+  if(iso){ yy=iso[1]; mm=iso[2]; dd=iso[3]; }
+  else {
+    const m = String(s).match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
+    if(!m) return null;
+    dd=m[1]; mm=m[2]; yy=m[3];
+  }
   yy = yy.length===2 ? '20'+yy : yy;
   const f = new Date(+yy, +mm-1, +dd);
   if(isNaN(f.getTime())) return null;
@@ -3967,7 +4450,7 @@ function renderAdmin(){
     const cli=CLIENTES.find(c=>c.empresa===a.empresa);
     const esGratuito = a.plan==='Gratuito' || (cli && cli.sinCobro);
     return`<div class="arow arow-activo" id="ar-${a.id}">
-      <div class="arow-info"><div class="arow-cargo">${esc(a.cargo)}${esGratuito?` <span style="background:#7C6BAE;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="Publicado durante el período de prueba gratuita — visible solo para el administrador">GRATUITO</span>`:''}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${a.fuente?` · <span style="color:#2E7D5B;font-weight:600">🌐 ${a.fuente}</span>`:''}${a.nReenvios?` · <span style="color:#7C6BAE;font-weight:600">↺ Reenviado ${a.nReenvios}×</span>`:''}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
+      <div class="arow-info"><div class="arow-cargo"><input type="checkbox" class="selcanal" data-id="${a.id}" onchange="actualizarBoletinBtn()" style="margin-right:7px;vertical-align:-1px">${esc(a.cargo)}${_postulacionCerrada(a)?` <span style="background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="La fecha de cierre de postulación ya pasó — el sitio dejó de mostrarlo automáticamente. Ciérralo (o elimínalo) y recuerda borrar el mensaje en WhatsApp.">⏰ POSTULACIÓN CERRADA</span>`:''}${esGratuito?` <span style="background:#7C6BAE;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="Publicado durante el período de prueba gratuita — visible solo para el administrador">GRATUITO</span>`:''}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${a.fuente?` · <span style="color:#2E7D5B;font-weight:600">🌐 ${a.fuente}</span>`:''}${a.nReenvios?` · <span style="color:#7C6BAE;font-weight:600">↺ Reenviado ${a.nReenvios}×</span>`:''}${a.publicadoCanal?` · <span style="color:#2E7D5B;font-weight:700" title="Copiado al boletín el ${new Date(a.publicadoCanal).toLocaleDateString('es-CL')}">📣 Publicado en canal</span>`:` · <span style="color:#B8860B;font-weight:600">⏳ Falta publicar en canal</span>`}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
       <span class="badge bg-green">Activo</span>
       ${d!==null?`<span class="arow-dias ${diasClass(d)}">${diasLabel(d)}</span>`:''}
       <div class="arow-acts">
@@ -4324,7 +4807,7 @@ function contarLote(){
   const n = document.querySelectorAll('.chk-aviso:checked').length;
   const btn = document.getElementById('btn-lote');
   if(btn){
-    btn.textContent = `Aprobar seleccionados (${n})`;
+    btn.textContent = `Aprobación para publicar en sitio web (${n})`;
     btn.style.opacity = n>0 ? '1' : '.45';
     btn.style.pointerEvents = n>0 ? 'auto' : 'none';
   }
@@ -4815,7 +5298,7 @@ let tT;
 function toast(m){const t=document.getElementById('toast-el');t.textContent=m;t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),3200);}
 
 // INIT
-renderPublico();
+renderPublico(); pingVisita();
 updateNav();
 
 sincronizarGrupos();
