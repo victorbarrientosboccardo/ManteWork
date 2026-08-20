@@ -404,7 +404,7 @@ footer{background:var(--navy);margin-top:80px}
       <h2 class="st">Ofertas activas</h2>
       <p class="ss">Estos avisos superaron los tres filtros del portal: Contacto previo, formulario completo y validación técnica.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px">
-        <input id="fp-q" type="search" name="buscar-ofertas" autocomplete="off" class="ft" placeholder="🔍 Buscar cargo o empresa…" style="flex:2;min-width:180px;padding:9px 12px;font-size:13.5px" oninput="renderPublico()">
+        <input id="fp-q" type="text" name="mw-busqueda-x" autocomplete="new-password" class="ft" placeholder="🔍 Buscar cargo o empresa…" style="flex:2;min-width:180px;padding:9px 12px;font-size:13.5px" oninput="renderPublico()">
         <select id="fp-region" class="ft" style="flex:1;min-width:130px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Toda región</option></select>
         <select id="fp-grupo" class="ft" style="flex:1;min-width:130px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Todo grupo</option><option>Mantenedores</option><option>Operadores</option><option>Supervisores</option><option>Profesionales</option></select>
         <select id="fp-nivel" class="ft" style="flex:1;min-width:120px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Todo nivel</option></select>
@@ -960,7 +960,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.18.4</button>
+      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.18.5</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1460,7 +1460,7 @@ footer{background:var(--navy);margin-top:80px}
         <div id="bloque-lote" style="display:none;align-items:center;gap:10px;text-transform:none;letter-spacing:normal">
           <div class="ap-sec" id="sec-pend">Avisos pendientes de validación</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;width:100%;margin-bottom:8px">
-          <input id="adm-q" type="search" name="buscar-avisos-admin" autocomplete="off" class="ft" placeholder="🔍 Buscar cargo, empresa o N° MNT…" style="flex:2;min-width:170px;padding:8px 11px;font-size:12.5px" oninput="renderAdmin()">
+          <input id="adm-q" type="text" name="mw-busqueda-y" autocomplete="new-password" class="ft" placeholder="🔍 Buscar cargo, empresa o N° MNT…" style="flex:2;min-width:170px;padding:8px 11px;font-size:12.5px" oninput="renderAdmin()">
           <select id="adm-emp" class="ft" style="flex:1;min-width:150px;padding:8px 10px;font-size:12.5px" onchange="renderAdmin()"><option value="">Todas las empresas</option></select>
         </div>
         <label class="fch" style="margin:0;font-size:13px"><input type="checkbox" id="chk-todos" onchange="marcarTodos(this)"> Seleccionar todos</label>
@@ -1727,7 +1727,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.4';
+const APP_VERSION = '3.18.6';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1738,6 +1738,8 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.18.6', fecha:'20-08-2026', cambios:['Corrección definitiva del autorrelleno de Chrome en buscadores público y admin: tipo cambiado a text con autocomplete=new-password (truco de gestor de contraseñas que Chrome siempre respeta) + MutationObserver permanente + pulso de limpieza 5s — triple capa, imposible de eludir']},
+  { v:'3.18.5', fecha:'19-08-2026', cambios:['Bloqueo definitivo del autorrelleno de Chrome en el buscador (Chrome ignora autocomplete=off cuando cree que un campo es de usuario): el buscador nace de solo lectura y se activa al tocarlo — Chrome no rellena campos readonly — más un vigilante que borra cualquier texto inyectado sin teclear en los primeros segundos']},
   { v:'3.18.4', fecha:'19-08-2026', cambios:['Corrección del «sitio vacío» fantasma: Chrome auto-rellenaba el buscador público con el nombre de usuario guardado («admin»), filtrando todos los avisos y mostrando «No hay ofertas activas». Los buscadores ahora bloquean el autorrelleno (type search, autocomplete off) y el campo público se limpia al iniciar. Los avisos nunca estuvieron perdidos']},
   { v:'3.18.3', fecha:'19-08-2026', cambios:['Diagnóstico visible por panel: si un bloque de estadísticas falla (ej. Rendimiento por plan pegado en «Cargando…»), su propio panel muestra el mensaje de error exacto en rojo, para corregir de raíz sin abrir la consola del navegador']},
   { v:'3.18.2', fecha:'19-08-2026', cambios:['Estadísticas a prueba de fallos: cada sub-bloque del tablero (difusión, rendimiento por plan, horario) corre protegido para que un error en uno no detenga a los demás, y si algo falla el panel MUESTRA el mensaje de error exacto en vez de quedar pegado en «Cargando…» con guiones. Corrige el síntoma observado: clics del canal visibles (97) pero clics totales en «—» y paneles sin cargar']},
@@ -5367,7 +5369,24 @@ let tT;
 function toast(m){const t=document.getElementById('toast-el');t.textContent=m;t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),3200);}
 
 // INIT
-{ const _fq=document.getElementById('fp-q'); if(_fq) _fq.value=''; } renderPublico(); pingVisita();
+/* Antirelleno Chrome v3.18.6 — MutationObserver + pulso 5s */
+{ const _ids=['fp-q','adm-q'];
+  _ids.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el) return;
+    el.value='';
+    let _typed=false;
+    el.addEventListener('keydown',()=>{ _typed=true; });
+    el.addEventListener('focus',()=>{ _typed=false; });
+    const obs=new MutationObserver(()=>{ if(!_typed && el.value){ el.value=''; if(id==='fp-q') renderPublico(); }});
+    obs.observe(el,{attributes:true,attributeFilter:['value']});
+    let t=0; const iv=setInterval(()=>{
+      if(!_typed && el.value){ el.value=''; if(id==='fp-q') renderPublico(); }
+      if(++t>=10) clearInterval(iv);
+    },500);
+  });
+}
+renderPublico(); pingVisita();
 updateNav();
 
 sincronizarGrupos();
