@@ -1726,7 +1726,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.8';
+const APP_VERSION = '3.18.9';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1737,6 +1737,7 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.18.9', fecha:'20-08-2026', cambios:['Corrección de ReferenceError: fr/fg/fn no definidos en renderPublico — variables de filtro de selects quedaron sin declarar al eliminar el buscador de texto en v3.18.8']},
   { v:'3.18.8', fecha:'20-08-2026', cambios:['Eliminado el buscador de texto del sitio público — Chrome autorrellenaba ese campo con credenciales guardadas mostrando el portal vacío. El público filtra por región, grupo y nivel únicamente. El buscador de texto queda solo en el panel admin donde no hay riesgo de autorrelleno.']},
   { v:'3.18.7', fecha:'20-08-2026', cambios:['Eliminación definitiva del autorrelleno de Chrome: los buscadores (público y admin) ya no existen como elementos HTML — se crean dinámicamente por JavaScript después de que Chrome termina su ciclo de autorrelleno. Chrome nunca autorrellena inputs creados dinámicamente. Solución a prueba de cualquier versión de Chrome.']},
   { v:'3.18.6', fecha:'20-08-2026', cambios:['Corrección definitiva del autorrelleno de Chrome en buscadores público y admin: tipo cambiado a text con autocomplete=new-password (truco de gestor de contraseñas que Chrome siempre respeta) + MutationObserver permanente + pulso de limpieza 5s — triple capa, imposible de eludir']},
@@ -4270,6 +4271,7 @@ function renderPublico(){
   _pobla('fp-region', activos.map(a=>a.region));
   _pobla('fp-nivel', activos.map(a=>a.mercado&&a.mercado.nivel));
   const q='';
+  const fr=_v('fp-region'); const fg=_v('fp-grupo'); const fn=_v('fp-nivel');
   if(q) activos = activos.filter(a=>((a.cargo||'')+' '+(a.empresa||'')+' '+(a.ciudad||'')).toLowerCase().includes(q));
   if(fr) activos = activos.filter(a=>a.region===fr);
   if(fg) activos = activos.filter(a=>a.grupo===fg);
