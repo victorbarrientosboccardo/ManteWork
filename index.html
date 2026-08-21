@@ -1442,6 +1442,12 @@ footer{background:var(--navy);margin-top:80px}
           </div>
         </div>
       </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:22px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:3px">🔍 Exportar lista MNT para Prompt de Búsqueda</div>
+        <div style="font-size:12.5px;color:var(--sub);margin-bottom:13px">Genera la lista de avisos activos para pegar al agente de búsqueda — así no captura avisos que ya están en MANTEWORK.</div>
+        <button class="btn btn-gold" style="font-size:12.5px;padding:7px 16px" onclick="exportarListaMNT()">📋 Exportar lista MNT para Prompt de Búsqueda</button>
+        <span id="exportar-mnt-ok" style="font-size:12px;color:var(--green);margin-left:12px;display:none">✓ ¡Copiado! Pega la lista al inicio del prompt antes de correr el agente.</span>
+      </div>
       <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
         <div>
           <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--navy)">💾 Datos y respaldos</div>
@@ -1726,7 +1732,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.9';
+const APP_VERSION = '3.18.10';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1737,6 +1743,7 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.18.10', fecha:'20-08-2026', cambios:['Botón «Exportar lista MNT para Prompt de Búsqueda» en el panel admin: genera en un clic la lista de todos los avisos activos en formato texto listo para pegar al agente de búsqueda — así el agente sabe qué ya está cargado y no lo captura de nuevo']},
   { v:'3.18.9', fecha:'20-08-2026', cambios:['Corrección de ReferenceError: fr/fg/fn no definidos en renderPublico — variables de filtro de selects quedaron sin declarar al eliminar el buscador de texto en v3.18.8']},
   { v:'3.18.8', fecha:'20-08-2026', cambios:['Eliminado el buscador de texto del sitio público — Chrome autorrellenaba ese campo con credenciales guardadas mostrando el portal vacío. El público filtra por región, grupo y nivel únicamente. El buscador de texto queda solo en el panel admin donde no hay riesgo de autorrelleno.']},
   { v:'3.18.7', fecha:'20-08-2026', cambios:['Eliminación definitiva del autorrelleno de Chrome: los buscadores (público y admin) ya no existen como elementos HTML — se crean dinámicamente por JavaScript después de que Chrome termina su ciclo de autorrelleno. Chrome nunca autorrellena inputs creados dinámicamente. Solución a prueba de cualquier versión de Chrome.']},
@@ -2990,6 +2997,26 @@ function cargarDatos(){
     CLIENTES.length = 0; pack.clientes.forEach(c => CLIENTES.push(c));
     return true;
   } catch(e) { return false; }
+}
+
+// Exporta lista de avisos activos para pegar al agente de búsqueda
+function exportarListaMNT(){
+  const activos = DB.avisos.filter(a => a.estado === 'activo' && !_postulacionCerrada(a));
+  if(!activos.length){ alert('No hay avisos activos para exportar.'); return; }
+  const fecha = new Date().toLocaleDateString('es-CL',{day:'2-digit',month:'2-digit',year:'numeric'});
+  let txt = `AVISOS YA CARGADOS EN MANTEWORK AL ${fecha} — NO los captures aunque los encuentres en los portales:\n`;
+  txt += `Si encuentras un aviso que coincide con alguno de esta lista (mismo cargo + misma empresa + misma faena), márcalo como "ya capturado" y no lo incluyas en la tabla.\n\n`;
+  activos
+    .sort((a,b)=>(a.idMnt||'').localeCompare(b.idMnt||''))
+    .forEach(a=>{
+      const cierre = a.fechaCierre ? ` · Cierre: ${a.fechaCierre}` : '';
+      txt += `• ${a.idMnt||'—'} · ${esc(a.cargo||'—')} · ${esc(a.empresa||'—')}${a.ciudad?' · '+esc(a.ciudad):''}${cierre}\n`;
+    });
+  txt += `\nTotal: ${activos.length} avisos activos.`;
+  navigator.clipboard.writeText(txt).then(()=>{
+    const ok = document.getElementById('exportar-mnt-ok');
+    if(ok){ ok.style.display='inline'; setTimeout(()=>ok.style.display='none', 5000); }
+  }).catch(()=>{ alert(txt); });
 }
 
 // Abre WhatsApp con un mensaje que incluye el enlace de descarga del brochure elegido.
