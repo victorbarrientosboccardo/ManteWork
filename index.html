@@ -959,7 +959,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v3.18.5</button>
+      <button id="btn-ver-version" onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v…</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1732,7 +1732,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.10';
+const APP_VERSION = '3.18.11';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1743,6 +1743,7 @@ function esc(s){
 }
 
 const VERSIONES = [
+  { v:'3.18.11', fecha:'22-08-2026', cambios:['Botón de versión ahora muestra siempre la versión real: el texto se inyecta dinámicamente desde APP_VERSION al cargar la página — antes estaba hardcodeado en el HTML y quedaba desfasado con cada actualización']},
   { v:'3.18.10', fecha:'20-08-2026', cambios:['Botón «Exportar lista MNT para Prompt de Búsqueda» en el panel admin: genera en un clic la lista de todos los avisos activos en formato texto listo para pegar al agente de búsqueda — así el agente sabe qué ya está cargado y no lo captura de nuevo']},
   { v:'3.18.9', fecha:'20-08-2026', cambios:['Corrección de ReferenceError: fr/fg/fn no definidos en renderPublico — variables de filtro de selects quedaron sin declarar al eliminar el buscador de texto en v3.18.8']},
   { v:'3.18.8', fecha:'20-08-2026', cambios:['Eliminado el buscador de texto del sitio público — Chrome autorrellenaba ese campo con credenciales guardadas mostrando el portal vacío. El público filtra por región, grupo y nivel únicamente. El buscador de texto queda solo en el panel admin donde no hay riesgo de autorrelleno.']},
@@ -5418,6 +5419,7 @@ function toast(m){const t=document.getElementById('toast-el');t.textContent=m;t.
   window._admq = crearBuscador('adm-q-wrap','🔍 Buscar cargo, empresa o N° MNT…','ft','width:100%;padding:8px 11px;font-size:12.5px;box-sizing:border-box', renderAdmin);
 })();
 renderPublico(); pingVisita();
+(function(){ var b=document.getElementById('btn-ver-version'); if(b) b.textContent='v'+APP_VERSION; })();
 updateNav();
 
 sincronizarGrupos();
