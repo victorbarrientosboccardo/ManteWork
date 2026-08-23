@@ -263,9 +263,9 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .arow{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px 22px;display:flex;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:wrap;transition:.3s}
 .arow-pend{background:#FFFBF0;border:1.5px solid #F0D080;border-left:4px solid var(--gold)}
 .arow-activo{background:#F0FAF4;border:1.5px solid var(--green-l);border-left:4px solid var(--green)}
-.arow-info{flex:1;min-width:220px}
-.arow-cargo{font-weight:700;font-size:15px;color:var(--navy)}
-.arow-det{font-size:13px;color:var(--sub);margin-top:2px}
+.arow-info{flex:1;min-width:220px;overflow:hidden}
+.arow-cargo{font-weight:700;font-size:15px;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.arow-det{font-size:13px;color:var(--sub);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .arow-dias{font-size:12px;font-weight:700;padding:3px 10px;border-radius:100px;white-space:nowrap}
 .arow-acts{display:flex;gap:8px;flex-wrap:wrap}
 .ab{font-size:12.5px;font-weight:700;padding:8px 14px;border-radius:7px;border:none;cursor:pointer;transition:.15s}
@@ -1741,7 +1741,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.17';
+const APP_VERSION = '3.18.19';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1753,6 +1753,8 @@ function esc(s){
 
 const VERSIONES = [
   { v:'3.18.11', fecha:'22-08-2026', cambios:['Botón de versión ahora muestra siempre la versión real: el texto se inyecta dinámicamente desde APP_VERSION al cargar la página — antes estaba hardcodeado en el HTML y quedaba desfasado con cada actualización']},
+  { v:'3.18.19', fecha:'23-08-2026', cambios:['Panel admin: nombre del cargo y línea de metadata de cada aviso activo ahora se muestran en una sola línea con ellipsis (…) si el texto es largo — elimina el quiebre de línea que partía el cargo y la metadata en múltiples filas'] },
+  { v:'3.18.18', fecha:'23-08-2026', cambios:['Panel admin: fecha y hora de publicación del aviso ahora forzada a zona horaria de Chile (America/Santiago) — independiente del dispositivo o país desde donde se acceda al panel'] },
   { v:'3.18.17', fecha:'23-08-2026', cambios:['Panel admin: al costado del cargo en cada aviso activo se muestra la fecha y hora exacta de publicación en el sitio web (día, fecha, hora, minuto y segundo) — visible solo para el administrador, en gris discreto'] },
   { v:'3.18.16', fecha:'23-08-2026', cambios:['Banner post-aprobación: al aprobar un lote, aparece un aviso verde «✅ N avisos aprobados en Página Web» con un botón directo «📋 Copiar boletín para WhatsApp (N)» — un solo clic adicional desde aprobar hasta tener el boletín listo, sin bajar a buscar el botón. El banner se oculta automáticamente al generar el boletín'] },
   { v:'3.18.15', fecha:'23-08-2026', cambios:['Flujo de publicación en canal — 3 mejoras sistémicas: (1) Filtro «Solo los que faltan por publicar en canal» activo por defecto al abrir el panel — solo se ven los avisos nuevos sin necesidad de hacer clic; (2) KPI nuevo «Sin publicar en canal» con alerta naranja cuando hay avisos pendientes de enviar al canal; (3) Flujo guiado post-aprobación — al aprobar un lote, los avisos recién aprobados quedan pre-seleccionados automáticamente en el boletín, listos para copiar y pegar en WhatsApp sin pasos extra'] },
@@ -4586,7 +4588,7 @@ function renderAdmin(){
     const cli=CLIENTES.find(c=>c.empresa===a.empresa);
     const esGratuito = a.plan==='Gratuito' || (cli && cli.sinCobro);
     const _fpub = a.fechaAprobacion ? new Date(a.fechaAprobacion) : null;
-    const _fpubStr = _fpub ? _fpub.toLocaleDateString('es-CL',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'})+' '+_fpub.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) : '—';
+    const _fpubStr = _fpub ? _fpub.toLocaleDateString('es-CL',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric',timeZone:'America/Santiago'})+' '+_fpub.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'America/Santiago'}) : '—';
     return`<div class="arow arow-activo fila-activo" id="ar-${a.id}" data-id="${a.id}">
       <div class="arow-info"><div class="arow-cargo"><input type="checkbox" class="selcanal" data-id="${a.id}" onchange="actualizarBoletinBtn()" style="margin-right:7px;vertical-align:-1px">${esc(a.cargo)} <span style="font-size:10px;font-weight:400;color:#9CA3AF;letter-spacing:0;vertical-align:1px" title="Publicado en sitio web">${_fpubStr}</span>${_postulacionCerrada(a)?` <span style="background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="La fecha de cierre de postulación ya pasó — el sitio dejó de mostrarlo automáticamente. Ciérralo (o elimínalo) y recuerda borrar el mensaje en WhatsApp.">⏰ POSTULACIÓN CERRADA</span>`:''}${esGratuito?` <span style="background:#7C6BAE;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="Publicado durante el período de prueba gratuita — visible solo para el administrador">GRATUITO</span>`:''}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${a.fuente?` · <span style="color:#2E7D5B;font-weight:600">🌐 ${a.fuente}</span>`:''}${a.nReenvios?` · <span style="color:#7C6BAE;font-weight:600">↺ Reenviado ${a.nReenvios}×</span>`:''}${a.publicadoCanal?` · <span style="color:#2E7D5B;font-weight:700" title="Copiado al boletín el ${new Date(a.publicadoCanal).toLocaleDateString('es-CL')}">📣 Publicado en canal</span>`:` · <span style="color:#B8860B;font-weight:600">⏳ Falta publicar en canal</span>`}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
       <span class="badge bg-green">Activo</span>
