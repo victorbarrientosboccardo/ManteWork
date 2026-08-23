@@ -263,7 +263,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .arow{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px 22px;display:flex;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:wrap;transition:.3s}
 .arow-pend{background:#FFFBF0;border:1.5px solid #F0D080;border-left:4px solid var(--gold)}
 .arow-activo{background:#F0FAF4;border:1.5px solid var(--green-l);border-left:4px solid var(--green)}
-.arow-info{flex:1;min-width:220px;overflow:hidden}
+.arow-info{flex:1;min-width:400px;overflow:hidden}
 .arow-cargo{font-weight:700;font-size:15px;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .arow-det{font-size:13px;color:var(--sub);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .arow-dias{font-size:12px;font-weight:700;padding:3px 10px;border-radius:100px;white-space:nowrap}
@@ -1741,7 +1741,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.19';
+const APP_VERSION = '3.18.20';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1753,6 +1753,7 @@ function esc(s){
 
 const VERSIONES = [
   { v:'3.18.11', fecha:'22-08-2026', cambios:['Botón de versión ahora muestra siempre la versión real: el texto se inyecta dinámicamente desde APP_VERSION al cargar la página — antes estaba hardcodeado en el HTML y quedaba desfasado con cada actualización']},
+  { v:'3.18.20', fecha:'23-08-2026', cambios:['Panel admin: aumentado ancho mínimo de la columna de info del aviso activo — cargo y metadata quedan ahora en una sola línea cada uno sin partirse'] },
   { v:'3.18.19', fecha:'23-08-2026', cambios:['Panel admin: nombre del cargo y línea de metadata de cada aviso activo ahora se muestran en una sola línea con ellipsis (…) si el texto es largo — elimina el quiebre de línea que partía el cargo y la metadata en múltiples filas'] },
   { v:'3.18.18', fecha:'23-08-2026', cambios:['Panel admin: fecha y hora de publicación del aviso ahora forzada a zona horaria de Chile (America/Santiago) — independiente del dispositivo o país desde donde se acceda al panel'] },
   { v:'3.18.17', fecha:'23-08-2026', cambios:['Panel admin: al costado del cargo en cada aviso activo se muestra la fecha y hora exacta de publicación en el sitio web (día, fecha, hora, minuto y segundo) — visible solo para el administrador, en gris discreto'] },
