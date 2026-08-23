@@ -1163,7 +1163,7 @@ footer{background:var(--navy);margin-top:80px}
       <button class="ap-tab" onclick="apTab('clientes',this)">Clientes enrolados</button>
       <button class="ap-tab" onclick="apTab('enrolar',this)">Enrolar nueva empresa</button>
       <button class="ap-tab" onclick="apTab('captacion',this)">🔎 Captación web</button>
-      <button class="ap-tab" onclick="apTab('stats',this);renderStats()">📊 Estadísticas</button>
+      <button class="ap-tab" onclick="apTab('stats',this);renderStats()">📊 Analítica de Datos</button>
     </div>
 
     
@@ -1405,9 +1405,10 @@ footer{background:var(--navy);margin-top:80px}
     <!-- TAB AVISOS -->
     <div class="ap-panel act" id="ap-avisos">
       <div class="kpi-grid">
-        <div class="kpi"><div class="kpi-n warn" id="kpi-pend">0</div><div class="kpi-l">Pendientes de revisión</div></div>
+        <div class="kpi"><div class="kpi-n warn" id="kpi-pend">0</div><div class="kpi-l">Revisar para publicar</div></div>
         <div class="kpi"><div class="kpi-n" id="kpi-sincobro">0</div><div class="kpi-l">En período sin cobro</div></div>
-        <div class="kpi"><div class="kpi-n ok" id="kpi-activos">0</div><div class="kpi-l">Avisos activos</div></div>
+        <div class="kpi"><div class="kpi-n ok" id="kpi-activos">0</div><div class="kpi-l">Avisos activos en Página Web</div></div>
+        <div class="kpi"><div class="kpi-n" id="kpi-sincanal">0</div><div class="kpi-l">Sin publicar en canal</div></div>
         <div class="kpi"><div class="kpi-n" id="kpi-cli">0</div><div class="kpi-l">Empresas enroladas</div></div>
         <div class="kpi"><div class="kpi-n" id="kpi-vencen">0</div><div class="kpi-l">Vencen en 3 días o menos</div></div>
       </div>
@@ -1460,10 +1461,10 @@ footer{background:var(--navy);margin-top:80px}
         </div>
       </div>
       <div class="ap-sec" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
-        <span>Pendientes de revisión</span>
+        <span>Revisar para publicar en Página Web</span>
         <span style="font-size:11px;font-weight:400;letter-spacing:normal;text-transform:none;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:4px 12px" title="El rechazo libera automáticamente el cupo del plan de la empresa">ⓘ Sin pago en plazo → rechazar (libera cupo)</span>
         <div id="bloque-lote" style="display:none;align-items:center;gap:10px;text-transform:none;letter-spacing:normal">
-          <div class="ap-sec" id="sec-pend">Avisos pendientes de validación</div>
+          <div class="ap-sec" id="sec-pend">Revisar para publicar en Página Web</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;width:100%;margin-bottom:8px">
           <div id="adm-q-wrap" style="flex:2;min-width:170px;"></div>
           <select id="adm-emp" class="ft" style="flex:1;min-width:150px;padding:8px 10px;font-size:12.5px" onchange="renderAdmin()"><option value="">Todas las empresas</option></select>
@@ -1474,12 +1475,20 @@ footer{background:var(--navy);margin-top:80px}
       </div>
       <div id="pend-list"></div>
       <div id="pend-vacio" style="display:none;color:var(--sub);font-size:14px;padding:10px 0">No hay avisos pendientes.</div>
-      <div class="ap-sec" id="sec-activos">Avisos activos en el canal</div>
+      <div class="ap-sec" id="sec-activos">Avisos activos en Página Web</div>
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 10px">
         <label style="font-size:12.5px;color:#374151;display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox" id="selcanal-todos" onchange="document.querySelectorAll('.selcanal').forEach(c=>c.checked=this.checked); actualizarBoletinBtn();"> Seleccionar todos</label>
-        <button class="btn btn-ghost" style="font-size:11.5px;padding:5px 10px" onclick="document.querySelectorAll('.selcanal').forEach(c=>{const a=DB.avisos.find(x=>x.id===+c.dataset.id); c.checked=!!(a&&!a.publicadoCanal);}); actualizarBoletinBtn();">☑ Solo los que faltan por publicar</button>
+        <label style="font-size:12.5px;color:#2E7D5B;display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600"><input type="checkbox" id="filtro-sincanal" checked onchange="aplicarFiltroCanal()"> ☑ Solo los que faltan por publicar en canal</label>
         <button class="btn btn-gold" style="font-size:12.5px;padding:7px 14px" onclick="boletinCanal()" id="btn-boletin">📋 Copiar boletín para el canal (0)</button>
         <span style="font-size:10.5px;color:#9CA3AF">Agrupa los seleccionados en bloques de 8 por mensaje — pegas 1 bloque por mensaje en el canal, no aviso por aviso.</span>
+      </div>
+      <!-- BANNER POST-APROBACIÓN -->
+      <div id="banner-aprobados" style="display:none;background:#E8F3EC;border:2px solid var(--green);border-radius:12px;padding:14px 18px;margin-bottom:14px;display:none;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+        <div>
+          <div style="font-weight:700;color:#1A5C2E;font-size:15px" id="banner-aprobados-titulo">✅ Avisos aprobados en Página Web</div>
+          <div style="font-size:12.5px;color:#2E7D5B;margin-top:3px">Están pre-seleccionados abajo. Revisa y copia el boletín cuando quieras.</div>
+        </div>
+        <button class="btn btn-gold" style="font-size:13px;padding:9px 18px;font-weight:700" id="banner-btn-boletin" onclick="boletinCanal()">📋 Copiar boletín para WhatsApp (<span id="banner-n-sel">0</span>)</button>
       </div>
       <div id="boletin-bloques" style="display:none;background:#FFFDF7;border:2px solid var(--gold);border-radius:10px;padding:10px 14px;margin-bottom:10px"></div>
       <div id="activos-list"></div>
@@ -1732,7 +1741,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.11';
+const APP_VERSION = '3.18.17';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1744,6 +1753,12 @@ function esc(s){
 
 const VERSIONES = [
   { v:'3.18.11', fecha:'22-08-2026', cambios:['Botón de versión ahora muestra siempre la versión real: el texto se inyecta dinámicamente desde APP_VERSION al cargar la página — antes estaba hardcodeado en el HTML y quedaba desfasado con cada actualización']},
+  { v:'3.18.17', fecha:'23-08-2026', cambios:['Panel admin: al costado del cargo en cada aviso activo se muestra la fecha y hora exacta de publicación en el sitio web (día, fecha, hora, minuto y segundo) — visible solo para el administrador, en gris discreto'] },
+  { v:'3.18.16', fecha:'23-08-2026', cambios:['Banner post-aprobación: al aprobar un lote, aparece un aviso verde «✅ N avisos aprobados en Página Web» con un botón directo «📋 Copiar boletín para WhatsApp (N)» — un solo clic adicional desde aprobar hasta tener el boletín listo, sin bajar a buscar el botón. El banner se oculta automáticamente al generar el boletín'] },
+  { v:'3.18.15', fecha:'23-08-2026', cambios:['Flujo de publicación en canal — 3 mejoras sistémicas: (1) Filtro «Solo los que faltan por publicar en canal» activo por defecto al abrir el panel — solo se ven los avisos nuevos sin necesidad de hacer clic; (2) KPI nuevo «Sin publicar en canal» con alerta naranja cuando hay avisos pendientes de enviar al canal; (3) Flujo guiado post-aprobación — al aprobar un lote, los avisos recién aprobados quedan pre-seleccionados automáticamente en el boletín, listos para copiar y pegar en WhatsApp sin pasos extra'] },
+  { v:'3.18.14', fecha:'23-08-2026', cambios:['Panel admin: «Pendientes de revisión» renombrado a «Revisar para publicar en Página Web»; «Avisos activos en el canal» renombrado a «Avisos activos en Página Web» — aplica en KPI, encabezados de sección y conteos dinámicos'] },
+  { v:'3.18.13', fecha:'23-08-2026', cambios:['Panel admin: pestaña «Estadísticas» renombrada a «Analítica de Datos»'] },
+  { v:'3.18.12', fecha:'23-08-2026', cambios:['Panel admin: KPI «Avisos activos» renombrado a «Avisos activos en Página Web» para mayor claridad'] },
   { v:'3.18.10', fecha:'20-08-2026', cambios:['Botón «Exportar lista MNT para Prompt de Búsqueda» en el panel admin: genera en un clic la lista de todos los avisos activos en formato texto listo para pegar al agente de búsqueda — así el agente sabe qué ya está cargado y no lo captura de nuevo']},
   { v:'3.18.9', fecha:'20-08-2026', cambios:['Corrección de ReferenceError: fr/fg/fn no definidos en renderPublico — variables de filtro de selects quedaron sin declarar al eliminar el buscador de texto en v3.18.8']},
   { v:'3.18.8', fecha:'20-08-2026', cambios:['Eliminado el buscador de texto del sitio público — Chrome autorrellenaba ese campo con credenciales guardadas mostrando el portal vacío. El público filtra por región, grupo y nivel únicamente. El buscador de texto queda solo en el panel admin donde no hay riesgo de autorrelleno.']},
@@ -2664,9 +2679,23 @@ function descartarCaptado(id){
 // Genera el texto del aviso para pegar en el canal de WhatsApp (formato final)
 const EMOJI_GRUPO = { 'Mantenedores':'🔧', 'Operadores':'🚛', 'Supervisores':'👷', 'Profesionales':'🎓' };
 // ── BOLETÍN DEL CANAL: varios avisos por mensaje (bloques de 8) ──
+// NIVEL 1 — Filtro visual "Solo los que faltan por publicar en canal"
+function aplicarFiltroCanal(){
+  const activo = (document.getElementById('filtro-sincanal')||{}).checked;
+  document.querySelectorAll('.fila-activo').forEach(row=>{
+    const id = +row.dataset.id;
+    const a = DB.avisos.find(x=>x.id===id);
+    if(!a) return;
+    row.style.display = (activo && a.publicadoCanal) ? 'none' : '';
+  });
+  actualizarBoletinBtn();
+}
+
 function actualizarBoletinBtn(){
   const n=document.querySelectorAll('.selcanal:checked').length;
   const b=document.getElementById('btn-boletin'); if(b) b.textContent='📋 Copiar boletín para el canal ('+n+')';
+  // sincronizar contador en el banner post-aprobación
+  const bn=document.getElementById('banner-n-sel'); if(bn) bn.textContent=n;
 }
 function copiarBloqueBoletin(ix){
   const B=window._BOLETIN; if(!B) return;
@@ -2714,6 +2743,8 @@ function boletinCanal(){
     textos.map((t,ix)=>'<button class="btn btn-ghost" id="bb-'+ix+'" style="font-size:12px;padding:6px 12px;margin:3px 6px 3px 0" onclick="copiarBloqueBoletin('+ix+')">📋 Copiar bloque '+(ix+1)+' ('+bloques[ix].length+' avisos)</button>').join('')+
     '<div style="font-size:10.5px;color:#9CA3AF;margin-top:4px">Al copiar un bloque, sus avisos quedan marcados «📣 Publicado en canal» — así sabrás siempre qué falta.</div>';
   panel.scrollIntoView({behavior:'smooth',block:'center'});
+  // ocultar banner post-aprobación — el boletín ya está listo
+  const banner=document.getElementById('banner-aprobados'); if(banner) banner.style.display='none';
 }
 
 // Compartir un aviso puntual por WhatsApp (con el link medido — cada reenvío sigue contando clics)
@@ -4443,13 +4474,17 @@ function renderAdmin(){
     if(e){ const cur=e.value; while(e.options.length>1) e.remove(1);
       [...new Set(DB.avisos.map(a=>a.empresa).filter(Boolean))].sort().forEach(v=>{const o=document.createElement('option');o.textContent=v;e.appendChild(o);});
       e.value=cur; } }
-  { const sp=document.getElementById('sec-pend'); if(sp) sp.textContent='Avisos pendientes de validación ('+pend.length+')';
-    const sa=document.getElementById('sec-activos'); if(sa) sa.textContent='Avisos activos en el canal ('+activ.length+')'; }
+  { const sp=document.getElementById('sec-pend'); if(sp) sp.textContent='Revisar para publicar en Página Web ('+pend.length+')';
+    const sa=document.getElementById('sec-activos'); if(sa) sa.textContent='Avisos activos en Página Web ('+activ.length+')'; }
   const hist  = DB.avisos.filter(a=>a.estado==='rechazado'||a.estado==='vencido'||a.estado==='aclaracion');
   const total = DB.aprobados+DB.rechazados;
 
   document.getElementById('kpi-activos').textContent=activ.length;
   document.getElementById('kpi-pend').textContent=pend.length;
+  // NIVEL 2 — KPI "Sin publicar en canal"
+  const sinCanal = activ.filter(a=>!a.publicadoCanal);
+  const elSC2=document.getElementById('kpi-sincanal');
+  if(elSC2){ elSC2.textContent=sinCanal.length; elSC2.className='kpi-n'+(sinCanal.length>0?' warn':''); }
   document.getElementById('kpi-cli').textContent=CLIENTES.filter(c=>c.activo).length;
   const nSinCobro=CLIENTES.filter(c=>c.activo&&c.sinCobro).length;
   const elSC=document.getElementById('kpi-sincobro');
@@ -4550,8 +4585,10 @@ function renderAdmin(){
     al.innerHTML=activ.map(a=>{const d=diasRest(a.fechaAprobacion);
     const cli=CLIENTES.find(c=>c.empresa===a.empresa);
     const esGratuito = a.plan==='Gratuito' || (cli && cli.sinCobro);
-    return`<div class="arow arow-activo" id="ar-${a.id}">
-      <div class="arow-info"><div class="arow-cargo"><input type="checkbox" class="selcanal" data-id="${a.id}" onchange="actualizarBoletinBtn()" style="margin-right:7px;vertical-align:-1px">${esc(a.cargo)}${_postulacionCerrada(a)?` <span style="background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="La fecha de cierre de postulación ya pasó — el sitio dejó de mostrarlo automáticamente. Ciérralo (o elimínalo) y recuerda borrar el mensaje en WhatsApp.">⏰ POSTULACIÓN CERRADA</span>`:''}${esGratuito?` <span style="background:#7C6BAE;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="Publicado durante el período de prueba gratuita — visible solo para el administrador">GRATUITO</span>`:''}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${a.fuente?` · <span style="color:#2E7D5B;font-weight:600">🌐 ${a.fuente}</span>`:''}${a.nReenvios?` · <span style="color:#7C6BAE;font-weight:600">↺ Reenviado ${a.nReenvios}×</span>`:''}${a.publicadoCanal?` · <span style="color:#2E7D5B;font-weight:700" title="Copiado al boletín el ${new Date(a.publicadoCanal).toLocaleDateString('es-CL')}">📣 Publicado en canal</span>`:` · <span style="color:#B8860B;font-weight:600">⏳ Falta publicar en canal</span>`}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
+    const _fpub = a.fechaAprobacion ? new Date(a.fechaAprobacion) : null;
+    const _fpubStr = _fpub ? _fpub.toLocaleDateString('es-CL',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'})+' '+_fpub.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit',second:'2-digit'}) : '—';
+    return`<div class="arow arow-activo fila-activo" id="ar-${a.id}" data-id="${a.id}">
+      <div class="arow-info"><div class="arow-cargo"><input type="checkbox" class="selcanal" data-id="${a.id}" onchange="actualizarBoletinBtn()" style="margin-right:7px;vertical-align:-1px">${esc(a.cargo)} <span style="font-size:10px;font-weight:400;color:#9CA3AF;letter-spacing:0;vertical-align:1px" title="Publicado en sitio web">${_fpubStr}</span>${_postulacionCerrada(a)?` <span style="background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="La fecha de cierre de postulación ya pasó — el sitio dejó de mostrarlo automáticamente. Ciérralo (o elimínalo) y recuerda borrar el mensaje en WhatsApp.">⏰ POSTULACIÓN CERRADA</span>`:''}${esGratuito?` <span style="background:#7C6BAE;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="Publicado durante el período de prueba gratuita — visible solo para el administrador">GRATUITO</span>`:''}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${a.fuente?` · <span style="color:#2E7D5B;font-weight:600">🌐 ${a.fuente}</span>`:''}${a.nReenvios?` · <span style="color:#7C6BAE;font-weight:600">↺ Reenviado ${a.nReenvios}×</span>`:''}${a.publicadoCanal?` · <span style="color:#2E7D5B;font-weight:700" title="Copiado al boletín el ${new Date(a.publicadoCanal).toLocaleDateString('es-CL')}">📣 Publicado en canal</span>`:` · <span style="color:#B8860B;font-weight:600">⏳ Falta publicar en canal</span>`}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
       <span class="badge bg-green">Activo</span>
       ${d!==null?`<span class="arow-dias ${diasClass(d)}">${diasLabel(d)}</span>`:''}
       <div class="arow-acts">
@@ -4566,6 +4603,8 @@ function renderAdmin(){
   if(!hist.length){hl.innerHTML='';hv.style.display='block';}
   else{hv.style.display='none';
     hl.innerHTML=hist.map(a=>`<div class="arow"><div class="arow-info"><div class="arow-cargo">${esc(a.cargo)}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · Plan ${a.plan}</div>${a.motivoAclaracion?`<div style="font-size:12.5px;color:var(--warn);margin-top:6px">📝 ${a.motivoAclaracion}</div>`:''}</div><span class="badge ${(a.estado==='aclaracion'||a.estado==='rechazado')?'bg-pend':'bg-pend'}">${(a.estado==='aclaracion'||a.estado==='rechazado')?'Requiere aclaración':'Cerrado'}</span>${(a.estado==='aclaracion'||a.estado==='rechazado')?`<button class="ab ab-v" onclick="reactivarAviso(${a.id})">Devolver a revisión</button>`:''}</div>`).join('');}
+  // NIVEL 1 — aplicar filtro visual automáticamente al renderizar
+  setTimeout(aplicarFiltroCanal, 0);
 }
 
 // ══════════════════════════════════════════════
@@ -4937,7 +4976,27 @@ function aprobarLote(){
   guardarDatos();
   const chkT=document.getElementById('chk-todos'); if(chkT) chkT.checked=false;
   renderAdmin(); renderPublico();
-  toast(`✓ ${ids.length} ${ids.length===1?'aviso aprobado':'avisos aprobados'} — usa «📋 Copiar para el canal» en cada uno para publicarlos`);
+  // NIVEL 3 — flujo guiado: desactivar filtro para ver los recién aprobados y pre-seleccionarlos
+  if(aprobados.length){
+    const filtro = document.getElementById('filtro-sincanal');
+    if(filtro){ filtro.checked = true; }
+    setTimeout(()=>{
+      // pre-seleccionar en el boletín los avisos recién aprobados
+      aprobados.forEach(a=>{
+        const chk = document.querySelector(`.selcanal[data-id="${a.id}"]`);
+        if(chk) chk.checked = true;
+      });
+      actualizarBoletinBtn();
+      // mostrar banner post-aprobación
+      const banner = document.getElementById('banner-aprobados');
+      const titulo = document.getElementById('banner-aprobados-titulo');
+      if(banner){
+        if(titulo) titulo.textContent = `✅ ${aprobados.length} ${aprobados.length===1?'aviso aprobado':'avisos aprobados'} en Página Web`;
+        banner.style.display='flex';
+        banner.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }
+    }, 150);
+  }
 }
 
 
@@ -4998,7 +5057,12 @@ function aprobar(id){
   Promise.all([crearLinkCorto(a), asegurarLinkCanal()]).then(()=>{ guardarDatos(); setTimeout(()=>{ copiarParaCanal(a.id); }, 400); });
   guardarDatos();
   renderAdmin(); renderPublico(); if(SESSION.rol==='cliente') renderMisAvisos();
-  toast('✓ Validado y aprobado');
+  // NIVEL 3 — pre-seleccionar en boletín automáticamente
+  setTimeout(()=>{
+    const chk = document.querySelector(`.selcanal[data-id="${a.id}"]`);
+    if(chk){ chk.checked = true; actualizarBoletinBtn(); }
+  }, 200);
+  toast('✓ Validado y aprobado — pre-seleccionado en el boletín');
 }
 function pedirAclaracion(id){
   const a=DB.avisos.find(x=>x.id===id); if(!a)return;
