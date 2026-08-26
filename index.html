@@ -406,7 +406,7 @@ footer{background:var(--navy);margin-top:80px}
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px">
         <select id="fp-region" class="ft" style="flex:1;min-width:130px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Toda región</option></select>
         <select id="fp-grupo" class="ft" style="flex:1;min-width:130px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Todo grupo</option><option>Mantenedores</option><option>Operadores</option><option>Supervisores</option><option>Profesionales</option></select>
-        <select id="fp-nivel" class="ft" style="flex:1;min-width:120px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Todo nivel</option></select>
+        <select id="fp-empresa" class="ft" style="flex:1;min-width:120px;padding:9px 10px;font-size:13px" onchange="renderPublico()"><option value="">Toda empresa</option></select>
       </div>
       <div class="aviso-list" id="lista-publica"></div>
       <div id="no-avisos" style="text-align:center;padding:40px;color:var(--sub);display:none">
@@ -1312,6 +1312,77 @@ footer{background:var(--navy);margin-top:80px}
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🚀 Vida útil del aviso (clics según días desde publicación)</div>
         <div id="st-vida" style="font-size:12px;color:#6B7280">Cargando…</div>
       </div>
+
+      <!-- ═══ ANÁLISIS DE MERCADO AVANZADO (v3.18.25) ═══ -->
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin:22px 0 4px">📊 Análisis de Mercado Avanzado</div>
+      <div style="font-size:11.5px;color:#9CA3AF;margin-bottom:12px">Base: avisos capturados con datos de mercado. Los análisis dinámicos mejoran a medida que se acumulan semanas de datos.</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🔥 Cargos más demandados</div>
+          <div id="am-cargos" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">⛏️ Faenas con más búsquedas</div>
+          <div id="am-faenas" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🔄 Turnos dominantes por región</div>
+          <div id="am-turnos" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🎖️ Requisitos más exigidos</div>
+          <div id="am-requisitos" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">⚡ Ventana de postulación por grupo</div>
+          <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Días promedio entre publicación y cierre — ventanas cortas sugieren urgencia del empleador</div>
+          <div id="am-rotacion" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">📅 Estacionalidad (avisos por mes)</div>
+          <div id="am-estacional" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">♻️ Reincidencia (republicaciones &lt;90 días)</div>
+          <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Mismo cargo + misma empresa republicado — señal de rotación alta o búsqueda difícil · uso interno</div>
+          <div id="am-reincidencia" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🏢 Clics por empresa (top 8)</div>
+          <div id="am-clicsemp" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🧭 Cobertura de curaduría</div>
+          <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Aprobados vs rechazados — mide la selectividad del filtro MANTEWORK</div>
+          <div id="am-cobertura" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">📡 Radar de expansión (últimos 30 días)</div>
+          <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Faenas con aumento súbito de avisos — señal temprana de proyecto o parada mayor</div>
+          <div id="am-radar" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🚨 Índice de escasez de talento</div>
+          <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Cargos buscados por varias empresas a la vez + republicaciones = escasez medible</div>
+          <div id="am-escasez" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+        <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">📐 Benchmark de requisitos por grupo</div>
+          <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Qué porcentaje de los avisos de cada grupo exige certificación y cuánta experiencia se pide</div>
+          <div id="am-benchmark" style="font-size:12px;color:#6B7280">Sin datos aún</div>
+        </div>
+      </div>
       
       <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:9px;padding:9px 12px;margin-bottom:14px">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -1493,6 +1564,8 @@ footer{background:var(--navy);margin-top:80px}
       <div id="boletin-bloques" style="display:none;background:#FFFDF7;border:2px solid var(--gold);border-radius:10px;padding:10px 14px;margin-bottom:10px"></div>
       <div id="activos-list"></div>
       <div id="activos-vacio" style="display:none;color:var(--sub);font-size:14px;padding:10px 0">No hay avisos activos.</div>
+      <div class="ap-sec" id="sec-cerrados" style="display:none;color:var(--red)">⏰ Postulación cerrada — cerrar o eliminar</div>
+      <div id="cerrados-list"></div>
       <div class="ap-sec">Histórico</div>
       <div id="hist-list"></div>
       <div id="hist-vacio" style="display:none;color:var(--sub);font-size:14px;padding:10px 0">Sin historial aún.</div>
@@ -1741,7 +1814,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.20';
+const APP_VERSION = '3.18.25';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1753,6 +1826,11 @@ function esc(s){
 
 const VERSIONES = [
   { v:'3.18.11', fecha:'22-08-2026', cambios:['Botón de versión ahora muestra siempre la versión real: el texto se inyecta dinámicamente desde APP_VERSION al cargar la página — antes estaba hardcodeado en el HTML y quedaba desfasado con cada actualización']},
+  { v:'3.18.25', fecha:'26-08-2026', cambios:['Analítica de Datos: nueva sección «Análisis de Mercado Avanzado» con 12 paneles — cargos más demandados (normalizado anti-variantes de género), faenas con más búsquedas, turnos dominantes por región, requisitos más exigidos, ventana de postulación por grupo, estacionalidad mensual con barras, reincidencia de republicaciones <90 días, clics por empresa, cobertura de curaduría (tasa de aprobación), radar de expansión de faenas (30 días vs 30 anteriores), índice de escasez de talento (cargos buscados por 2+ empresas simultáneas) y benchmark de requisitos por grupo. Cada panel es independiente y a prueba de fallos; los análisis dinámicos se llenan solos con la acumulación de capturas. Base del futuro Reporte de Mercado trimestral (F.9 del plan)'] },
+  { v:'3.18.24', fecha:'26-08-2026', cambios:['Panel admin: avisos con postulación cerrada ya no se mezclan con los activos — van a una sección propia «⏰ Postulación cerrada — cerrar o eliminar» (fondo rojo, sin checkbox de boletín, solo acciones Cerrar/Eliminar, y recordatorio de borrar el mensaje de WhatsApp si estuvo en canal). Los KPI «Avisos activos en Página Web» y «Sin publicar en canal» ahora cuentan solo avisos realmente postulables. Protección adicional: el boletín excluye avisos cerrados aunque estuvieran seleccionados — imposible enviar al canal un aviso que ya no recibe postulaciones'] },
+  { v:'3.18.23', fecha:'25-08-2026', cambios:['Hashtags discriminantes en la difusión (derivado del análisis competitivo F.6): aviso individual y botón Compartir llevan 3 hashtags (#Región #Grupo #Empresa); cada bloque del boletín lleva 4-6 consolidados (hasta 2 regiones + 2 grupos dominantes + #EmpleoMinería de captación). Generación automática con limpieza de acentos y nombres compuestos («Antofagasta Minerals – Minera Antucoya» → #AntofagastaMinerals). Avisos con empresa confidencial no llevan hashtag de empresa'] },
+  { v:'3.18.22', fecha:'24-08-2026', cambios:['Portal público: filtro «Nivel» eliminado por redundancia con «Grupo» (3 de 4 valores se repetían, confundiendo al usuario) y reemplazado por filtro «Empresa» — el trío final Región · Grupo · Empresa responde las tres preguntas naturales de búsqueda (dónde, qué hago, para quién) y el dropdown de empresas de primer nivel funciona como escaparate de la curaduría MANTEWORK. El dato nivel de mercado sigue disponible en Analítica de Datos'] },
+  { v:'3.18.21', fecha:'23-08-2026', cambios:['Corrección de error crítico en Analítica de Datos: tres llamadas a una función inexistente (guardar en vez de guardarDatos) rompían el panel «Avisos con más clics», detenían el gráfico «Clics por día» y — lo más grave — impedían que el marcado «Publicado en canal» de los bloques del boletín se guardara en la nube'] },
   { v:'3.18.20', fecha:'23-08-2026', cambios:['Panel admin: aumentado ancho mínimo de la columna de info del aviso activo — cargo y metadata quedan ahora en una sola línea cada uno sin partirse'] },
   { v:'3.18.19', fecha:'23-08-2026', cambios:['Panel admin: nombre del cargo y línea de metadata de cada aviso activo ahora se muestran en una sola línea con ellipsis (…) si el texto es largo — elimina el quiebre de línea que partía el cargo y la metadata en múltiples filas'] },
   { v:'3.18.18', fecha:'23-08-2026', cambios:['Panel admin: fecha y hora de publicación del aviso ahora forzada a zona horaria de Chile (America/Santiago) — independiente del dispositivo o país desde donde se acceda al panel'] },
@@ -2163,6 +2241,141 @@ function renderStats(){
     const estado = a.estado==='activo' ? '<span style="color:var(--green);font-size:10px;font-weight:700">● activo</span>' : '<span style="color:#9CA3AF;font-size:10px">cerrado</span>';
     return '<div style="display:flex;justify-content:space-between;gap:10px;font-size:12px;padding:6px 0;border-bottom:1px solid #F0F0F0"><div><strong>'+nroSeg(a.id)+'</strong> '+esc(a.cargo)+' — '+esc(a.empresa)+'</div><div style="white-space:nowrap;color:#6B7280">'+fecha+' '+estado+'</div></div>';
   }).join('') : '<div style="color:#6B7280;font-size:12px;padding:8px">Aún no has publicado avisos. Cuando apruebes el primero, aparecerá aquí.</div>';
+  try{ renderStatsAvanzado(); }catch(e){ console.error("Stats avanzado:", e); }
+}
+
+// ═══ ANÁLISIS DE MERCADO AVANZADO (v3.18.25) — cada bloque a prueba de fallos ═══
+function renderStatsAvanzado(){
+  const pub = DB.avisos.filter(a => a.fechaAprobacion);
+  const setH = (id,html) => { const e=document.getElementById(id); if(e) e.innerHTML=html; };
+  const fila = (k,v) => '<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #F3F4F6"><span>'+k+'</span><strong style="color:var(--navy)">'+v+'</strong></div>';
+  const sinDatos = 'Aún sin datos suficientes — se llenará con la acumulación de capturas.';
+  const _norm = s => String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\((a|e|o|or|ora)\)/g,'').replace(/\/(a|as|es|ora?)\b/g,'').replace(/\s+/g,' ').trim();
+  const _cap = s => s.charAt(0).toUpperCase()+s.slice(1);
+  const topN = (arr, n) => { const m={}; arr.filter(Boolean).forEach(v=>{m[v]=(m[v]||0)+1;}); return Object.entries(m).sort((x,y)=>y[1]-x[1]).slice(0,n); };
+
+  // 1 — Cargos más demandados (normalizado anti-variantes de género)
+  try{
+    const t = topN(pub.map(a=>_cap(_norm(a.cargo))), 8);
+    setH('am-cargos', t.length ? t.map(([k,v])=>fila(esc(k),v)).join('') : sinDatos);
+  }catch(e){ setH('am-cargos','Error: '+e.message); }
+
+  // 2 — Faenas con más búsquedas
+  try{
+    const t = topN(pub.map(a=>(a.mercado&&a.mercado.faena)||''), 8);
+    setH('am-faenas', t.length ? t.map(([k,v])=>fila(esc(k),v)).join('') : sinDatos);
+  }catch(e){ setH('am-faenas','Error: '+e.message); }
+
+  // 3 — Turnos dominantes por región (top 5 regiones, turno más común de cada una)
+  try{
+    const porReg = {};
+    pub.forEach(a=>{ if(!a.region||!a.turno||a.turno==='—') return; porReg[a.region]=porReg[a.region]||{}; porReg[a.region][a.turno]=(porReg[a.region][a.turno]||0)+1; });
+    const filas = Object.entries(porReg)
+      .map(([r,ts])=>({r, total:Object.values(ts).reduce((s,x)=>s+x,0), top:Object.entries(ts).sort((x,y)=>y[1]-x[1])[0]}))
+      .sort((x,y)=>y.total-x.total).slice(0,6)
+      .map(o=>fila(esc(o.r), o.top[0]+' ('+Math.round(100*o.top[1]/o.total)+'%)'));
+    setH('am-turnos', filas.length ? filas.join('') : sinDatos);
+  }catch(e){ setH('am-turnos','Error: '+e.message); }
+
+  // 4 — Requisitos más exigidos (certificaciones + experiencia moda)
+  try{
+    const certs = {};
+    pub.forEach(a=>{ (a.certs||[]).forEach(c=>{ certs[c]=(certs[c]||0)+1; }); });
+    const tc = Object.entries(certs).sort((x,y)=>y[1]-x[1]).slice(0,5);
+    const exps = topN(pub.map(a=>a.experiencia).filter(x=>x&&x!=='—'), 3);
+    let html = tc.map(([k,v])=>fila('🎖️ '+esc(k), v+' avisos')).join('');
+    if(exps.length) html += exps.map(([k,v])=>fila('⏳ Experiencia: '+esc(k), v+' avisos')).join('');
+    setH('am-requisitos', html || sinDatos);
+  }catch(e){ setH('am-requisitos','Error: '+e.message); }
+
+  // 5 — Ventana de postulación por grupo (días publicación→cierre)
+  try{
+    const porGrupo = {};
+    pub.forEach(a=>{
+      const fc = a.mercado && a.mercado.fcierre ? _parseFecha(String(a.mercado.fcierre).trim()) : null;
+      if(!fc || !a.fechaAprobacion) return;
+      const dias = Math.round((fc - new Date(a.fechaAprobacion)) / 86400000);
+      if(dias<0 || dias>120) return;
+      const g = a.grupo||'—'; porGrupo[g]=porGrupo[g]||[]; porGrupo[g].push(dias);
+    });
+    const filas = Object.entries(porGrupo).map(([g,ds])=>fila(esc(g), Math.round(ds.reduce((s,x)=>s+x,0)/ds.length)+' días ('+ds.length+' avisos)'));
+    setH('am-rotacion', filas.length ? filas.join('') : sinDatos+' Requiere avisos con fecha de cierre.');
+  }catch(e){ setH('am-rotacion','Error: '+e.message); }
+
+  // 6 — Estacionalidad (avisos por mes, últimos 6 meses)
+  try{
+    const meses = {};
+    pub.forEach(a=>{ const f=new Date(a.fechaAprobacion); const k=f.getFullYear()+'-'+String(f.getMonth()+1).padStart(2,'0'); meses[k]=(meses[k]||0)+1; });
+    const orden = Object.keys(meses).sort().slice(-6);
+    const max = Math.max(1, ...orden.map(k=>meses[k]));
+    const filas = orden.map(k=>{ const [y,m]=k.split('-'); const nom=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][+m-1]+' '+y;
+      const pct=Math.round(100*meses[k]/max);
+      return '<div style="display:flex;align-items:center;gap:8px;padding:3px 0"><span style="min-width:70px">'+nom+'</span><div style="flex:1;background:#F3F4F6;border-radius:4px;height:14px"><div style="width:'+pct+'%;background:var(--gold);height:14px;border-radius:4px"></div></div><strong style="min-width:28px;text-align:right;color:var(--navy)">'+meses[k]+'</strong></div>'; });
+    setH('am-estacional', filas.length ? filas.join('') : sinDatos);
+  }catch(e){ setH('am-estacional','Error: '+e.message); }
+
+  // 7 — Reincidencia: mismo cargo+empresa republicado <90 días
+  try{
+    const grupos = {};
+    pub.forEach(a=>{ const k=_norm(a.cargo)+'|'+_norm(a.empresa); grupos[k]=grupos[k]||[]; grupos[k].push(a); });
+    const rein = Object.values(grupos).filter(g=>g.length>1).map(g=>{
+      g.sort((x,y)=>new Date(x.fechaAprobacion)-new Date(y.fechaAprobacion));
+      const dias = Math.round((new Date(g[g.length-1].fechaAprobacion)-new Date(g[0].fechaAprobacion))/86400000);
+      return {a:g[0], n:g.length, dias};
+    }).filter(o=>o.dias<=90 && o.dias>0).sort((x,y)=>y.n-x.n).slice(0,6);
+    setH('am-reincidencia', rein.length ? rein.map(o=>fila(esc(_cap(_norm(o.a.cargo)))+' — '+esc(o.a.empresa), o.n+'× en '+o.dias+'d')).join('') : 'Sin republicaciones detectadas — buena señal del mercado o base aún joven.');
+  }catch(e){ setH('am-reincidencia','Error: '+e.message); }
+
+  // 11 — Clics por empresa (top 8)
+  try{
+    const m = {};
+    pub.forEach(a=>{ if(!a.empresa) return; m[a.empresa]=(m[a.empresa]||0)+(+a.clics||0); });
+    const t = Object.entries(m).filter(([k,v])=>v>0).sort((x,y)=>y[1]-x[1]).slice(0,8);
+    setH('am-clicsemp', t.length ? t.map(([k,v])=>fila(esc(k), v+' clics')).join('') : sinDatos+' Requiere clics registrados.');
+  }catch(e){ setH('am-clicsemp','Error: '+e.message); }
+
+  // 10 — Cobertura de curaduría
+  try{
+    const ap = DB.aprobados||0, re = DB.rechazados||0, tot = ap+re;
+    if(tot>0){
+      const pct = Math.round(100*ap/tot);
+      setH('am-cobertura', fila('Avisos aprobados', ap) + fila('Avisos rechazados', re) + fila('Tasa de aprobación', pct+'%') +
+        '<div style="font-size:11px;color:#9CA3AF;margin-top:6px">MANTEWORK publica el '+pct+'% de lo que revisa — el resto no pasó la curaduría.</div>');
+    } else setH('am-cobertura', sinDatos);
+  }catch(e){ setH('am-cobertura','Error: '+e.message); }
+
+  // 13 — Radar de expansión: faenas con aumento en 30 días vs 30 anteriores
+  try{
+    const ahora = Date.now();
+    const en = (a, desde, hasta) => { const t=new Date(a.fechaAprobacion).getTime(); return t>=ahora-desde*86400000 && t<ahora-hasta*86400000; };
+    const f30 = {}, f60 = {};
+    pub.forEach(a=>{ const f=(a.mercado&&a.mercado.faena)||''; if(!f) return;
+      if(en(a,30,0)) f30[f]=(f30[f]||0)+1;
+      else if(en(a,60,30)) f60[f]=(f60[f]||0)+1; });
+    const alzas = Object.keys(f30).map(f=>({f, ahora:f30[f], antes:f60[f]||0, delta:f30[f]-(f60[f]||0)}))
+      .filter(o=>o.delta>0 && o.ahora>=2).sort((x,y)=>y.delta-x.delta).slice(0,6);
+    setH('am-radar', alzas.length ? alzas.map(o=>fila('⛏️ '+esc(o.f), o.antes+' → '+o.ahora+' avisos (+'+o.delta+')')).join('') : 'Sin alzas súbitas en 30 días — mercado estable o base aún joven.');
+  }catch(e){ setH('am-radar','Error: '+e.message); }
+
+  // 12 — Índice de escasez: cargo buscado por 2+ empresas a la vez
+  try{
+    const m = {};
+    DB.avisos.filter(a=>a.estado==='activo').forEach(a=>{ const k=_cap(_norm(a.cargo)); m[k]=m[k]||new Set(); m[k].add(a.empresa); });
+    const esc_ = Object.entries(m).filter(([k,s])=>s.size>=2).sort((x,y)=>y[1].size-x[1].size).slice(0,6);
+    setH('am-escasez', esc_.length ? esc_.map(([k,s])=>fila('🚨 '+esc(k), s.size+' empresas buscando')).join('') : 'Ningún cargo con búsqueda simultánea de 2+ empresas hoy.');
+  }catch(e){ setH('am-escasez','Error: '+e.message); }
+
+  // 14 — Benchmark de requisitos por grupo
+  try{
+    const porG = {};
+    pub.forEach(a=>{ const g=a.grupo||'—'; porG[g]=porG[g]||{n:0, conCert:0, exps:{}};
+      porG[g].n++; if(a.certs && a.certs.length) porG[g].conCert++;
+      if(a.experiencia && a.experiencia!=='—') porG[g].exps[a.experiencia]=(porG[g].exps[a.experiencia]||0)+1; });
+    const filas = Object.entries(porG).filter(([g,o])=>o.n>=3).map(([g,o])=>{
+      const expTop = Object.entries(o.exps).sort((x,y)=>y[1]-x[1])[0];
+      return fila(esc(g), Math.round(100*o.conCert/o.n)+'% exige certificación' + (expTop?' · exp. típica: '+esc(expTop[0]):'')); });
+    setH('am-benchmark', filas.length ? filas.join('') : sinDatos);
+  }catch(e){ setH('am-benchmark','Error: '+e.message); }
 }
 
 // Nivel 3: huella de un aviso para detectar duplicados
@@ -2267,7 +2480,7 @@ async function cargarStatsNube(){
     // 🚀 Difusión: snapshot diario del canal y suma de los últimos 7 días
     const hoyD = new Date().toISOString().slice(0,10);
     DB.statsSnapCanal = DB.statsSnapCanal || {};
-    if(DB.statsSnapCanal[hoyD]===undefined || canal>DB.statsSnapCanal[hoyD]){ DB.statsSnapCanal[hoyD]=canal; guardar(); }
+    if(DB.statsSnapCanal[hoyD]===undefined || canal>DB.statsSnapCanal[hoyD]){ DB.statsSnapCanal[hoyD]=canal; guardarDatos(); }
     { const ds=Object.keys(DB.statsSnapCanal).sort(); let d7=0;
       const corte=new Date(); corte.setDate(corte.getDate()-7);
       let prevV=null; ds.forEach(k=>{ const v=DB.statsSnapCanal[k];
@@ -2298,7 +2511,7 @@ async function cargarStatsNube(){
     // Snapshot diario del total (para la serie): se guarda una foto por día al abrir el panel
     const hoy = new Date().toISOString().slice(0,10);
     DB.statsSnap = DB.statsSnap || {};
-    if(DB.statsSnap[hoy] === undefined || (total+canal) > DB.statsSnap[hoy]){ DB.statsSnap[hoy] = total + canal; guardar(); }
+    if(DB.statsSnap[hoy] === undefined || (total+canal) > DB.statsSnap[hoy]){ DB.statsSnap[hoy] = total + canal; guardarDatos(); }
     // Serie: delta entre snapshots consecutivos, últimos 14 días
     const sEl=document.getElementById('st-serie');
     if(sEl){
@@ -2705,7 +2918,7 @@ function copiarBloqueBoletin(ix){
   const fin=()=>{
     const ahora=new Date().toISOString();
     B.ids[ix].forEach(id=>{ const a=DB.avisos.find(x=>x.id===id); if(a) a.publicadoCanal=ahora; });
-    guardar();
+    guardarDatos();
     const btn=document.getElementById('bb-'+ix);
     if(btn){ btn.textContent='✓ Bloque '+(ix+1)+' copiado y marcado'; btn.style.background='#E8F3EC'; }
     toast('Bloque '+(ix+1)+' de '+B.textos.length+' copiado — pégalo en el canal (avisos marcados 📣)');
@@ -2729,7 +2942,8 @@ function _entradaBoletin(a){
 function boletinCanal(){
   const ids=[...document.querySelectorAll('.selcanal:checked')].map(c=>+c.dataset.id);
   if(!ids.length){ toast('Marca al menos un aviso activo'); return; }
-  const avs = DB.avisos.filter(a=>ids.includes(a.id));
+  const avs = DB.avisos.filter(a=>ids.includes(a.id) && !_postulacionCerrada(a));
+  if(!avs.length){ toast('Los avisos seleccionados tienen la postulación cerrada — no se pueden enviar al canal'); return; }
   const TAM=8; const bloques=[];
   for(let i=0;i<avs.length;i+=TAM) bloques.push(avs.slice(i,i+TAM));
   const fecha=new Date().toLocaleDateString('es-CL',{day:'2-digit',month:'2-digit',year:'numeric'});
@@ -2737,7 +2951,7 @@ function boletinCanal(){
     const parte=bloques.length>1?' (PARTE '+(ix+1)+' de '+bloques.length+')':'';
     return '━━━━━━━━━━━━━━\n🔶 *'+b.length+' VACANTES TÉCNICAS VALIDADAS'+parte+'* · '+fecha+'\n✔️ Cada aviso pasó la validación MANTEWORK\n━━━━━━━━━━━━━━\n\n'+
       b.map(_entradaBoletin).join('\n\n')+
-      '\n\n━━━━━━━━━━━━━━\n📲 _Comparte este canal:_ https://www.mantework.com/ir/?c=canal';
+      '\n\n━━━━━━━━━━━━━━\n📲 _Comparte este canal:_ https://www.mantework.com/ir/?c=canal\n\n'+_hashtagsBoletin(b);
   });
   const panel=document.getElementById('boletin-bloques');
   window._BOLETIN = { textos, ids: bloques.map(b=>b.map(a=>a.id)) };
@@ -2754,8 +2968,36 @@ function boletinCanal(){
 function compartirAviso(id){
   const a=DB.avisos.find(x=>x.id===id); if(!a) return;
   const ubi=[a.ciudad||a.lugar,a.region].filter(Boolean).join(', ');
-  const t='🔶 *'+(a.cargo||'')+'*\n🏢 '+(a.verEmpresa===false?'Empresa del sector minero':(a.empresa||''))+(ubi?'\n📍 '+ubi:'')+'\n➡️ Postula: '+(a.linkCorto||a.postula||'')+'\n\n_Aviso validado MANTEWORK · Más ofertas:_ https://www.mantework.com/ir/?c=canal';
+  const _tg=_hashtagsAviso(a);
+  const t='🔶 *'+(a.cargo||'')+'*\n🏢 '+(a.verEmpresa===false?'Empresa del sector minero':(a.empresa||''))+(ubi?'\n📍 '+ubi:'')+'\n➡️ Postula: '+(a.linkCorto||a.postula||'')+'\n\n_Aviso validado MANTEWORK · Más ofertas:_ https://www.mantework.com/ir/?c=canal'+(_tg?'\n\n'+_tg:'');
   window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');
+}
+
+// ══ HASHTAGS (v3.18.23) — discriminantes: región + grupo + empresa ══
+// Convierte un texto en hashtag válido: toma la parte antes de separadores,
+// quita acentos y caracteres especiales, y aplica CamelCase.
+// "Antofagasta Minerals – Minera Antucoya" → "AntofagastaMinerals"
+// "O'Higgins" → "OHiggins" · "Komatsu Cummins" → "KomatsuCummins"
+function _tagify(s){
+  if(!s) return '';
+  s = String(s).split(/[–(\/]|\s-\s/)[0].trim();
+  const limpio = s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9\s]/g,' ');
+  return limpio.split(/\s+/).filter(Boolean).map(w=>w.charAt(0).toUpperCase()+w.slice(1)).join('');
+}
+// Aviso individual: 3 hashtags discriminantes (#Region #Grupo #Empresa)
+function _hashtagsAviso(a){
+  const tags = [];
+  if(a.region) tags.push('#'+_tagify(a.region));
+  if(a.grupo) tags.push('#'+_tagify(a.grupo));
+  if(a.empresa && a.verEmpresa!==false) tags.push('#'+_tagify(a.empresa));
+  return tags.filter(t=>t.length>2).join(' ');
+}
+// Boletín: hasta 2 regiones + hasta 2 grupos dominantes + 1 de captación = 4-6 max
+function _hashtagsBoletin(avs){
+  const top = (arr)=>{ const m={}; arr.filter(Boolean).forEach(v=>{m[v]=(m[v]||0)+1;}); return Object.entries(m).sort((x,y)=>y[1]-x[1]).map(e=>e[0]); };
+  const regiones = top(avs.map(a=>a.region)).slice(0,2).map(r=>'#'+_tagify(r));
+  const grupos = top(avs.map(a=>a.grupo)).slice(0,2).map(g=>'#'+_tagify(g));
+  return [...regiones, ...grupos, '#EmpleoMinería'].filter(t=>t.length>2).join(' ');
 }
 
 function textoCanal(a){
@@ -2814,6 +3056,8 @@ function textoCanal(a){
   }
   L.push('\n━━━━━━━━━━━━━━');
   L.push('📲 _Comparte este canal con más profesionales:_ https://www.mantework.com/ir/?c=canal');
+  const _tags = _hashtagsAviso(a);
+  if(_tags) L.push('\n' + _tags);
   return L.join('\n');
 }
 function copiarParaCanal(id){
@@ -4331,13 +4575,13 @@ function renderPublico(){
     [...new Set(vals.filter(Boolean))].sort().forEach(v=>{const o=document.createElement('option');o.textContent=v;e.appendChild(o);});
     e.value=cur;};
   _pobla('fp-region', activos.map(a=>a.region));
-  _pobla('fp-nivel', activos.map(a=>a.mercado&&a.mercado.nivel));
+  _pobla('fp-empresa', activos.map(a=>a.empresa));
   const q='';
-  const fr=_v('fp-region'); const fg=_v('fp-grupo'); const fn=_v('fp-nivel');
+  const fr=_v('fp-region'); const fg=_v('fp-grupo'); const fe=_v('fp-empresa');
   if(q) activos = activos.filter(a=>((a.cargo||'')+' '+(a.empresa||'')+' '+(a.ciudad||'')).toLowerCase().includes(q));
   if(fr) activos = activos.filter(a=>a.region===fr);
   if(fg) activos = activos.filter(a=>a.grupo===fg);
-  if(fn) activos = activos.filter(a=>a.mercado&&a.mercado.nivel===fn);
+  if(fe) activos = activos.filter(a=>a.empresa===fe);
   // Orden: más recientes primero
   activos.sort((a,b)=>(b.fechaAprobacion||0)-(a.fechaAprobacion||0));
   if(!activos.length){ lista.innerHTML=''; vacio.style.display='block'; return; }
@@ -4392,6 +4636,21 @@ function _plazoPostular(a){
   return `<span class="av-dias ${cls}">📅 ${esc(fc)} · ${txt}</span>`;
 }
 // Convierte una fecha DD-MM-AAAA o DD/MM/AAAA a días desde hoy (o null si no parsea).
+function _parseFecha(s){
+  // Misma lógica de parseo que _diasHastaFecha, pero devuelve el objeto Date
+  let dd, mm, yy;
+  const iso = String(s).match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+  if(iso){ yy=iso[1]; mm=iso[2]; dd=iso[3]; }
+  else {
+    const m = String(s).match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
+    if(!m) return null;
+    dd=m[1]; mm=m[2]; yy=m[3];
+  }
+  yy = yy.length===2 ? '20'+yy : yy;
+  const f = new Date(+yy, +mm-1, +dd);
+  return isNaN(f.getTime()) ? null : f;
+}
+
 function _diasHastaFecha(s){
   // Primero formato ISO (2026-09-15) — si no se detecta primero, «2026-09-15»
   // se leería mal como 26-09-2015 y el aviso aparecería vencido hace años.
@@ -4471,7 +4730,9 @@ function renderAdmin(){
   const _pasa=a=>{ const t=((a.cargo||'')+' '+(a.empresa||'')+' '+nroSeg(a.id)).toLowerCase();
     return (!_aq || t.includes(_aq.toLowerCase())) && (!_ae || a.empresa===_ae); };
   const pend  = DB.avisos.filter(a=>a.estado==='pendiente' && _pasa(a));
-  const activ = DB.avisos.filter(a=>a.estado==='activo' && _pasa(a));
+  const _todosActivos = DB.avisos.filter(a=>a.estado==='activo' && _pasa(a));
+  const activ = _todosActivos.filter(a=>!_postulacionCerrada(a));
+  const cerrados = _todosActivos.filter(a=>_postulacionCerrada(a));
   // poblar filtro de empresas conservando selección
   { const e=document.getElementById('adm-emp');
     if(e){ const cur=e.value; while(e.options.length>1) e.remove(1);
@@ -4601,6 +4862,24 @@ function renderAdmin(){
         <button class="ab ab-no" onclick="eliminarAviso(${a.id},'activo')">🗑 Eliminar</button>
       </div>
     </div>`;}).join('');}
+
+  // ── Sección: postulación cerrada (separados de los activos; sin checkbox de boletín) ──
+  { const sc=document.getElementById('sec-cerrados'); const cl=document.getElementById('cerrados-list');
+    if(sc && cl){
+      if(!cerrados.length){ sc.style.display='none'; cl.innerHTML=''; }
+      else{
+        sc.style.display='block';
+        sc.textContent='⏰ Postulación cerrada — cerrar o eliminar ('+cerrados.length+')';
+        cl.innerHTML=cerrados.map(a=>{
+          return`<div class="arow" style="background:#FDF2F2;border-left:4px solid var(--red)">
+      <div class="arow-info"><div class="arow-cargo">${esc(a.cargo)} <span style="background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px">⏰ POSTULACIÓN CERRADA</span></div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region}${a.publicadoCanal?` · <span style="color:#B45309;font-weight:700" title="Este aviso fue publicado en el canal — recuerda borrar el mensaje en WhatsApp">📣 Estuvo en canal — borrar mensaje de WhatsApp</span>`:''}</div></div>
+      <div class="arow-acts">
+        <button class="ab ab-no" onclick="marcarVencido(${a.id})">Cerrar aviso</button>
+        <button class="ab ab-no" onclick="eliminarAviso(${a.id},'activo')">🗑 Eliminar</button>
+      </div>
+    </div>`;}).join('');
+      }
+  } }
 
   const hl=document.getElementById('hist-list'); const hv=document.getElementById('hist-vacio');
   if(!hist.length){hl.innerHTML='';hv.style.display='block';}
