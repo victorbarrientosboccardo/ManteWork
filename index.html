@@ -24,23 +24,23 @@
 <meta name="apple-mobile-web-app-title" content="MANTEWORK">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ══ TOKENS ══ */
 :root{
   --navy:#0D1B2A;--navy2:#1A2F45;--navy3:#243F5A;
-  --gold:#C4A04A;--gold-l:#E8D9B0;--gold-bg:#FBF3E2;
-  --ink:#1A1A1A;--sub:#505052;--line:#DDDDE0;
-  --bg:#E8E8E8;--card:#F2F2F2;--white:#FFFFFF;
-  --green:#1A5C38;--green-bg:#EAF6EF;--green-l:#B4DBBF;
+  --gold:#b8975a;--gold-l:#E8D9B0;--gold-bg:#FBF3E2;
+  --ink:#1A1A1A;--sub:#6b6b6b;--line:#DDDDE0;
+  --bg:#f8f6f2;--card:#F2F2F2;--white:#FFFFFF;
+  --green:#2a9d8f;--green-bg:#EAF6EF;--green-l:#B4DBBF;
   --red:#A81E28;--red-bg:#FFF0F0;
   --warn:#805200;--warn-bg:#FFF4E0;
   --r:10px;--r2:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;font-size:16px;line-height:1.65;color:var(--ink);background:var(--bg)}
-h1,h2,h3,h4{font-family:'Barlow Condensed',sans-serif;line-height:1.1}
+body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.65;color:var(--ink);background:var(--bg)}
+h1,h2,h3,h4{font-family:'DM Sans',sans-serif;line-height:1.1}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
 input,select,textarea{font-family:inherit}
@@ -48,11 +48,11 @@ input,select,textarea{font-family:inherit}
 .sec{padding:64px 0}.sec-alt{background:#DEDEDE}
 /* HEX */
 .hex{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:var(--gold);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);flex-shrink:0}
-.hex-i{width:38px;height:38px;background:var(--navy);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;color:var(--gold)}
+.hex-i{width:38px;height:38px;background:var(--navy);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:20px;color:var(--gold)}
 .hdot{width:10px;height:10px;background:var(--gold);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);display:inline-block;flex-shrink:0}
 /* BTNS */
 .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;padding:12px 24px;border-radius:8px;border:none;cursor:pointer;transition:all .15s}
-.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:#D4AF52;transform:translateY(-1px)}
+.btn-gold{background:var(--green);color:#fff}.btn-gold:hover{background:#238a7e;transform:translateY(-1px)}
 .btn-outline{background:transparent;color:var(--gold);border:1.5px solid rgba(196,160,74,.5)}.btn-outline:hover{border-color:var(--gold)}
 .btn-dark{background:var(--navy);color:var(--gold)}.btn-dark:hover{background:var(--navy2)}
 .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#14803F}
@@ -86,7 +86,7 @@ input,select,textarea{font-family:inherit}
 nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px solid var(--gold)}
 .nav-i{max-width:1120px;margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:12px;cursor:pointer}
-.bname{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:.04em}
+.bname{font-family:'DM Sans',sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:.04em}
 .bname b{color:var(--gold)}
 /* Nav niveles — se muestran/ocultan según rol */
 .nav-pub{display:flex;align-items:center;gap:2px}
@@ -133,7 +133,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .stats-in{max-width:1120px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr)}
 .stat{padding:22px 20px;text-align:center;border-right:1px solid rgba(196,160,74,.12)}
 .stat:last-child{border-right:none}
-.sn{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1}
+.sn{font-family:'DM Sans',sans-serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1}
 .sl{font-size:12.5px;color:#6A8AAE;margin-top:4px}
 @media(max-width:700px){.stats-in{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}}
 
@@ -143,7 +143,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .aviso:hover{box-shadow:0 6px 24px rgba(13,27,42,.10);transform:translateY(-2px)}
 .av-left{flex:1;min-width:260px}
 .av-num{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.1em;margin-bottom:6px}
-.av-cargo{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;color:var(--navy)}
+.av-cargo{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:700;color:var(--navy)}
 .av-emp{font-size:14px;color:var(--sub);font-weight:500;margin:4px 0 10px}
 .av-tags{display:flex;gap:14px;flex-wrap:wrap}
 .av-tag{font-size:13px;color:var(--sub)}
@@ -159,13 +159,13 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .step-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 .step-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r2);padding:28px 24px;position:relative;overflow:hidden}
 .step-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
-.step-n{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.12em;margin-bottom:10px}
+.step-n{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.12em;margin-bottom:10px}
 .step-card h3{font-size:22px;color:var(--navy);margin-bottom:8px}
 .step-card p{font-size:14px;color:var(--sub);line-height:1.65}
 .policy{background:var(--navy);border-radius:var(--r2);padding:48px 52px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;overflow:hidden;position:relative}
 .policy::after{content:"";position:absolute;right:-80px;bottom:-80px;width:300px;height:300px;background:var(--navy2);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)}
 .policy>*{position:relative;z-index:1}
-.pq{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:700;color:var(--gold);margin-bottom:14px;line-height:1.1}
+.pq{font-family:'DM Sans',sans-serif;font-size:40px;font-weight:700;color:var(--gold);margin-bottom:14px;line-height:1.1}
 .policy p{color:#B0C8DE;font-size:15px;line-height:1.7}
 .prules{display:flex;flex-direction:column;gap:13px}
 .pr{display:flex;align-items:flex-start;gap:11px;color:#D1D1D6;font-size:15px;line-height:1.6}
@@ -180,7 +180,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .plan-tag{position:absolute;top:-13px;left:22px;background:var(--gold);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px}
 .plan h3{font-size:26px;font-weight:700;color:var(--navy)}
 .p-old{font-size:15px;color:#9AA5B8;text-decoration:line-through;display:block;margin-top:10px}
-.p-new{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:700;color:var(--navy);line-height:1}
+.p-new{font-family:'DM Sans',sans-serif;font-size:40px;font-weight:700;color:var(--navy);line-height:1}
 .p-new span{font-size:16px;font-weight:500;color:var(--sub)}
 .p-promo{display:inline-block;background:var(--green-bg);color:var(--green);font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 10px;border-radius:100px;margin:5px 0 4px}
 .p-dur{font-size:13px;color:var(--sub);margin-bottom:18px}
@@ -214,7 +214,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .pp-d{font-size:13px;color:var(--sub);margin-top:2px}
 .pp-p{text-align:right;flex-shrink:0}
 .pp-old{font-size:12px;color:#9AA5B8;text-decoration:line-through}
-.pp-new{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--navy)}
+.pp-new{font-family:'DM Sans',sans-serif;font-size:22px;font-weight:700;color:var(--navy)}
 .pp-badge{font-size:10px;background:var(--green-bg);color:var(--green);padding:2px 7px;border-radius:100px;font-weight:700}
 .pm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
 .pm{border:1.5px solid var(--line);border-radius:8px;padding:13px;text-align:center;font-size:14px;font-weight:600;color:var(--sub);cursor:pointer;background:#FAFAFA;transition:.15s}
@@ -246,7 +246,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .admin-panel{position:fixed;inset:0;background:var(--bg);z-index:400;overflow-y:auto;display:none}
 .admin-panel.open{display:block}
 .ap-head{background:var(--navy);border-bottom:3px solid var(--gold);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
-.ap-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;color:var(--gold)}
+.ap-title{font-family:'DM Sans',sans-serif;font-size:22px;color:var(--gold)}
 .ap-close{background:none;border:none;color:#7A9AB8;font-size:22px;cursor:pointer}.ap-close:hover{color:#fff}
 .ap-body{max-width:1100px;margin:0 auto;padding:32px 24px}
 .ap-tabs{display:flex;gap:4px;margin-bottom:28px;border-bottom:2px solid var(--line)}
@@ -256,7 +256,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:28px}
 @media(max-width:900px){.kpi-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
 .kpi{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:20px}
-.kpi-n{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:700;color:var(--navy);line-height:1}
+.kpi-n{font-family:'DM Sans',sans-serif;font-size:40px;font-weight:700;color:var(--navy);line-height:1}
 .kpi-n.warn{color:var(--red)}.kpi-n.ok{color:var(--green)}
 .kpi-l{font-size:13px;color:var(--sub);margin-top:4px}
 .ap-sec{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sub);margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
@@ -286,7 +286,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .eskill{font-size:14px;color:var(--sub);display:flex;align-items:flex-start;gap:9px;line-height:1.55}
 .edot{width:7px;height:7px;background:var(--gold);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);flex-shrink:0;margin-top:5px}
 .htrans{background:rgba(255,255,255,.06);border:1px solid rgba(196,160,74,.2);border-radius:10px;padding:16px 18px}
-.ht-t{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--gold);margin-bottom:5px}
+.ht-t{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--gold);margin-bottom:5px}
 .ht-d{font-size:13px;color:#7A9AB8;line-height:1.55}
 
 /* ══ WSP BAND ══ */
@@ -312,7 +312,7 @@ footer{background:var(--navy);margin-top:80px}
 .admin-trigger:hover{opacity:.8;color:var(--gold)}
 .admin-trigger:hover{opacity:.7}
 /* LEGAL */
-.legal-doc h4{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--navy);margin:22px 0 8px}
+.legal-doc h4{font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--navy);margin:22px 0 8px}
 .legal-doc h4:first-child{margin-top:0}
 .legal-doc p{font-size:14px;color:var(--sub);line-height:1.7;margin-bottom:12px}
 .legal-doc strong{color:var(--navy)}
@@ -470,25 +470,25 @@ footer{background:var(--navy);margin-top:80px}
       <div style="background:var(--navy);border-radius:14px;padding:28px 32px;margin-bottom:36px">
         <div style="font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Estudio de Fuerza Laboral de la Gran Minería Chilena · CCM-Eleva</div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:22px">
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:700;color:var(--gold);line-height:1">37.000</div><div style="font-size:12.5px;color:#7A9AB8;margin-top:3px">nuevos trabajadores<br>proyectados al 2034</div></div>
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:700;color:var(--gold);line-height:1">8.876</div><div style="font-size:12.5px;color:#7A9AB8;margin-top:3px">déficit proyectado de<br>mantenedores mecánicos</div></div>
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:700;color:var(--gold);line-height:1">68%</div><div style="font-size:12.5px;color:#7A9AB8;margin-top:3px">del empleo minero es<br>dotación contratista</div></div>
-          <div><div style="font-family:'Barlow Condensed',sans-serif;font-size:34px;font-weight:700;color:var(--gold);line-height:1">173.000</div><div style="font-size:12.5px;color:#7A9AB8;margin-top:3px">trabajadores en la<br>gran minería</div></div>
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:34px;font-weight:700;color:var(--gold);line-height:1">37.000</div><div style="font-size:12.5px;color:#7A9AB8;margin-top:3px">nuevos trabajadores<br>proyectados al 2034</div></div>
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:34px;font-weight:700;color:var(--gold);line-height:1">8.876</div><div style="font-size:12.5px;color:#7A9AB8;margin-top:3px">déficit proyectado de<br>mantenedores mecánicos</div></div>
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:34px;font-weight:700;color:var(--gold);line-height:1">68%</div><div style="font-size:12.5px;color:#7A9AB8;margin-top:3px">del empleo minero es<br>dotación contratista</div></div>
+          <div><div style="font-family:'DM Sans',sans-serif;font-size:34px;font-weight:700;color:var(--gold);line-height:1">173.000</div><div style="font-size:12.5px;color:#7A9AB8;margin-top:3px">trabajadores en la<br>gran minería</div></div>
         </div>
       </div>
 
       <!-- ══ MANTENEDORES ══ -->
       <div style="display:flex;align-items:center;gap:12px;margin:0 0 16px">
         <div class="hdot"></div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:var(--navy)">Mantenedores</h3>
+        <h3 style="font-family:'DM Sans',sans-serif;font-size:26px;font-weight:700;color:var(--navy)">Mantenedores</h3>
         <span class="badge bg-red">Perfil crítico · Mayor brecha del sector</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:38px">
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
           <div style="background:var(--navy);padding:15px 20px;display:flex;align-items:center;justify-content:space-between">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;color:#fff">Mantenedor Mecánico</div>
-            <div style="background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">#1 DÉFICIT</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:21px;font-weight:700;color:#fff">Mantenedor Mecánico</div>
+            <div style="background:var(--gold);color:var(--navy);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">#1 DÉFICIT</div>
           </div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">CAEX Komatsu 930E</span><span class="etag">Palas hidráulicas</span><span class="etag">Molinos SAG</span><span class="etag">Bombas de pulpa</span></div>
@@ -502,7 +502,7 @@ footer{background:var(--navy);margin-top:80px}
         </div>
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
-          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;color:#fff">Mantenedor Eléctrico</div></div>
+          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'DM Sans',sans-serif;font-size:21px;font-weight:700;color:#fff">Mantenedor Eléctrico</div></div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">Subestaciones AT</span><span class="etag">Variadores ABB/Siemens</span><span class="etag">SEC Clase A/B/C</span></div>
             <div style="display:flex;flex-direction:column;gap:7px">
@@ -515,7 +515,7 @@ footer{background:var(--navy);margin-top:80px}
         </div>
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
-          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;color:#fff">Mantenedor Electromecánico</div></div>
+          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'DM Sans',sans-serif;font-size:21px;font-weight:700;color:#fff">Mantenedor Electromecánico</div></div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">Mecatrónica</span><span class="etag">CAN-Bus</span><span class="etag">Equipos autónomos</span></div>
             <div style="display:flex;flex-direction:column;gap:7px">
@@ -528,7 +528,7 @@ footer{background:var(--navy);margin-top:80px}
         </div>
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
-          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;color:#fff">Mantenedor Instrumentista</div></div>
+          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'DM Sans',sans-serif;font-size:21px;font-weight:700;color:#fff">Mantenedor Instrumentista</div></div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">PLC Siemens S7</span><span class="etag">SCADA / DCS</span><span class="etag">HART / Fieldbus</span><span class="etag">P&amp;ID</span></div>
             <div style="display:flex;flex-direction:column;gap:7px">
@@ -544,15 +544,15 @@ footer{background:var(--navy);margin-top:80px}
       <!-- ══ OPERADORES ══ -->
       <div style="display:flex;align-items:center;gap:12px;margin:0 0 16px">
         <div class="hdot"></div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:var(--navy)">Operadores</h3>
+        <h3 style="font-family:'DM Sans',sans-serif;font-size:26px;font-weight:700;color:var(--navy)">Operadores</h3>
         <span class="badge bg-red">Perfil crítico · Alta demanda</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:38px">
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
           <div style="background:var(--navy);padding:15px 20px;display:flex;align-items:center;justify-content:space-between">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;color:#fff">Operador de Equipos Móviles</div>
-            <div style="background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">#2 DÉFICIT</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:21px;font-weight:700;color:#fff">Operador de Equipos Móviles</div>
+            <div style="background:var(--gold);color:var(--navy);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">#2 DÉFICIT</div>
           </div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">CAEX 930E / 793F</span><span class="etag">Palas P&amp;H</span><span class="etag">Cargador frontal</span><span class="etag">Perforadoras</span></div>
@@ -567,8 +567,8 @@ footer{background:var(--navy);margin-top:80px}
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
           <div style="background:var(--navy);padding:15px 20px;display:flex;align-items:center;justify-content:space-between">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;color:#fff">Operador de Equipos Fijos</div>
-            <div style="background:var(--gold);color:var(--navy);font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">#3 DÉFICIT</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:21px;font-weight:700;color:#fff">Operador de Equipos Fijos</div>
+            <div style="background:var(--gold);color:var(--navy);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px">#3 DÉFICIT</div>
           </div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">Molienda SAG</span><span class="etag">Flotación</span><span class="etag">Chancado</span><span class="etag">Espesadores</span></div>
@@ -585,12 +585,12 @@ footer{background:var(--navy);margin-top:80px}
       <!-- ══ SUPERVISORES ══ -->
       <div style="display:flex;align-items:center;gap:12px;margin:0 0 16px">
         <div class="hdot"></div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:var(--navy)">Supervisores</h3>
+        <h3 style="font-family:'DM Sans',sans-serif;font-size:26px;font-weight:700;color:var(--navy)">Supervisores</h3>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:38px">
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
-          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#fff">Supervisor de Extracción</div></div>
+          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:#fff">Supervisor de Extracción</div></div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">Mina rajo</span><span class="etag">Mina subterránea</span><span class="etag">Plan minero</span></div>
             <div style="display:flex;flex-direction:column;gap:7px">
@@ -602,7 +602,7 @@ footer{background:var(--navy);margin-top:80px}
         </div>
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
-          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#fff">Supervisor de Procesamiento</div></div>
+          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:#fff">Supervisor de Procesamiento</div></div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">Concentradora</span><span class="etag">Hidrometalurgia</span><span class="etag">Fundición</span></div>
             <div style="display:flex;flex-direction:column;gap:7px">
@@ -614,7 +614,7 @@ footer{background:var(--navy);margin-top:80px}
         </div>
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
-          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#fff">Supervisor de Mantenimiento</div></div>
+          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:#fff">Supervisor de Mantenimiento</div></div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">SAP PM</span><span class="etag">RCM</span><span class="etag">Paradas de planta</span></div>
             <div style="display:flex;flex-direction:column;gap:7px">
@@ -629,12 +629,12 @@ footer{background:var(--navy);margin-top:80px}
       <!-- ══ PROFESIONALES ══ -->
       <div style="display:flex;align-items:center;gap:12px;margin:0 0 16px">
         <div class="hdot"></div>
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:var(--navy)">Profesionales</h3>
+        <h3 style="font-family:'DM Sans',sans-serif;font-size:26px;font-weight:700;color:var(--navy)">Profesionales</h3>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:38px">
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
-          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#fff">Geología y Exploración</div></div>
+          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:#fff">Geología y Exploración</div></div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">Sondajes</span><span class="etag">Modelo de bloques</span><span class="etag">Leapfrog</span></div>
             <div style="display:flex;flex-direction:column;gap:7px">
@@ -646,7 +646,7 @@ footer{background:var(--navy);margin-top:80px}
         </div>
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
-          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#fff">Profesional de Extracción Mina</div></div>
+          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:#fff">Profesional de Extracción Mina</div></div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">Planificación minera</span><span class="etag">Perforación y tronadura</span><span class="etag">Geomecánica</span></div>
             <div style="display:flex;flex-direction:column;gap:7px">
@@ -658,7 +658,7 @@ footer{background:var(--navy);margin-top:80px}
         </div>
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
-          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#fff">Profesional de Procesamiento</div></div>
+          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:#fff">Profesional de Procesamiento</div></div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">Lixiviación</span><span class="etag">SX-EW</span><span class="etag">Balance metalúrgico</span></div>
             <div style="display:flex;flex-direction:column;gap:7px">
@@ -670,7 +670,7 @@ footer{background:var(--navy);margin-top:80px}
         </div>
 
         <div style="background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden">
-          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#fff">Profesional de Mantenimiento</div></div>
+          <div style="background:var(--navy);padding:15px 20px"><div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:#fff">Profesional de Mantenimiento</div></div>
           <div style="padding:18px 20px">
             <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px"><span class="etag">Confiabilidad RCM</span><span class="etag">Análisis de vibración</span><span class="etag">Termografía</span><span class="etag">ACR</span></div>
             <div style="display:flex;flex-direction:column;gap:7px">
@@ -684,7 +684,7 @@ footer{background:var(--navy);margin-top:80px}
 
       <!-- ══ HABILIDADES TRANSVERSALES ══ -->
       <div style="background:var(--navy);border-radius:14px;padding:36px 40px">
-        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:700;color:var(--gold);margin-bottom:6px">Habilidades que exigen todas las empresas</h3>
+        <h3 style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:700;color:var(--gold);margin-bottom:6px">Habilidades que exigen todas las empresas</h3>
         <p style="color:#AEAEB2;font-size:14px;margin-bottom:24px">Sin estas, el perfil queda incompleto en cualquier faena — sea de extracción, procesamiento o mantenimiento.</p>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
           <div class="htrans"><div class="ht-t">3D vigente</div><div class="ht-d">Obligatorio en toda faena. Control de alcohol y drogas.</div></div>
@@ -727,7 +727,7 @@ footer{background:var(--navy);margin-top:80px}
       <div style="background:var(--navy);border-radius:var(--r2);padding:18px 24px;margin-top:16px;display:flex;align-items:flex-start;gap:12px">
         <span style="font-size:20px;flex-shrink:0">🕐</span>
         <div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--gold);margin-bottom:4px">Horario de publicación en el canal</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;color:var(--gold);margin-bottom:4px">Horario de publicación en el canal</div>
           <div style="font-size:14px;color:#B0C8DE;line-height:1.6">Los avisos aprobados se publicarán en el canal de WhatsApp entre las <strong style="color:#fff">09:00 y 11:00 hrs</strong>, una vez al día, <strong style="color:#fff">de lunes a viernes</strong>. Los avisos aprobados fuera de ese horario se publican al día hábil siguiente.</div>
         </div>
       </div>
@@ -744,7 +744,7 @@ footer{background:var(--navy);margin-top:80px}
       <p class="ss">Estado de todos los avisos publicados por tu empresa. El número MNT es tu referencia para cualquier consulta.</p>
       <div id="cuota-misavisos" style="background:var(--navy);border-radius:var(--r2);padding:22px 28px;margin-bottom:20px"></div>
       <div id="alerta-cliente-vencen" style="display:none;background:var(--warn-bg);border:1.5px solid #F0C070;border-left:4px solid var(--warn);border-radius:10px;padding:16px 20px;margin-bottom:28px">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--warn);margin-bottom:6px">⏰ Tienes avisos por vencer</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--warn);margin-bottom:6px">⏰ Tienes avisos por vencer</div>
         <div id="lista-cliente-vencen" style="font-size:13.5px;color:#6B4500;line-height:1.7"></div>
         <div style="font-size:12.5px;color:var(--sub);margin-top:10px">Contáctanos al +56 9 6594 5170 para renovar antes del vencimiento.</div>
       </div>
@@ -858,7 +858,7 @@ footer{background:var(--navy);margin-top:80px}
           <div class="fgroup"><label class="fl">¿Cómo postular? <span class="freq">*</span></label><input class="fi" id="f_postula" placeholder="WhatsApp o email donde recibirás candidatos"></div>
 
           <div style="background:var(--gold-bg);border:1px solid rgba(196,160,74,.35);border-radius:10px;padding:18px 20px;margin-top:22px">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:5px">Confidencialidad del aviso</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:19px;font-weight:700;color:var(--navy);margin-bottom:5px">Confidencialidad del aviso</div>
             <p style="font-size:13.5px;color:#6B5417;line-height:1.6;margin-bottom:16px">Algunos procesos requieren discreción. Elige qué información se publica en el canal — los candidatos siempre podrán postular al contacto que indicaste.</p>
 
             <label class="fch" style="margin-bottom:12px"><input type="checkbox" id="f_ver_empresa" checked onchange="renderPreview()"> <span><strong>Publicar el nombre de la empresa</strong><br><span style="font-size:12.5px;color:var(--sub)">Si lo desactivas, el aviso dirá "Empresa del sector minero"</span></span></label>
@@ -872,7 +872,7 @@ footer{background:var(--navy);margin-top:80px}
               <div id="plan-asignado-box" style="background:var(--gold-bg);border:1px solid rgba(196,160,74,.35);border-radius:var(--r);padding:16px 18px;margin-bottom:8px">
               <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A6D1F;margin-bottom:6px">Tu plan contratado</div>
               <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-                <div id="plan-asig-nombre" style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--navy)">—</div>
+                <div id="plan-asig-nombre" style="font-family:'DM Sans',sans-serif;font-size:26px;font-weight:800;color:var(--navy)">—</div>
                 <div id="plan-asig-cuota" style="font-size:13px;color:#6B5417"></div>
               </div>
               <div style="font-size:12.5px;color:#6B5417;margin-top:8px;line-height:1.5">El plan se define al contratar con MANTEWORK. Para cambiarlo o renovarlo, <a href="#" onclick="irContacto();return false" style="color:#8A6D1F;font-weight:600;text-decoration:underline">escríbenos por WhatsApp</a>.</div>
@@ -887,7 +887,7 @@ footer{background:var(--navy);margin-top:80px}
         <div class="wp" id="wp3">
           <div class="fgroup">
             <label class="fl">Vista previa — así se verá tu aviso en el canal de WhatsApp</label>
-            <div id="preview-aviso" style="background:var(--navy);border-radius:12px;padding:20px 22px;margin-top:10px;font-size:14.5px;line-height:1.75;color:#fff;font-family:'Inter',sans-serif"></div>
+            <div id="preview-aviso" style="background:var(--navy);border-radius:12px;padding:20px 22px;margin-top:10px;font-size:14.5px;line-height:1.75;color:#fff;font-family:'DM Sans',sans-serif"></div>
             <p style="font-size:12.5px;color:var(--sub);margin-top:10px">ⓘ El número de seguimiento MNT se asigna al aprobar el aviso.</p>
           </div>
           <hr style="border:none;border-top:1px solid var(--line);margin:24px 0">
@@ -899,19 +899,19 @@ footer{background:var(--navy);margin-top:80px}
               <div style="width:44px;height:44px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">🎁</div>
               <div>
                 <div style="font-weight:700;font-size:15px;color:var(--green)">Webpay desactivado — Plan Gratuito</div>
-                <div style="font-size:13.5px;color:#1A5C38;margin-top:6px;line-height:1.65">Tu aviso pasa por el <strong>mismo proceso de validación</strong> que cualquier otro plan y se publica normalmente en el canal. La única diferencia es que <strong>no se cobra</strong> durante tu período gratuito de 45 días.</div>
+                <div style="font-size:13.5px;color:#2a9d8f;margin-top:6px;line-height:1.65">Tu aviso pasa por el <strong>mismo proceso de validación</strong> que cualquier otro plan y se publica normalmente en el canal. La única diferencia es que <strong>no se cobra</strong> durante tu período gratuito de 45 días.</div>
               </div>
             </div>
           </div>
           <div class="fgroup" id="bloque-pago"><label class="fl">Método de pago</label>
             <div style="background:var(--navy);border-radius:10px;padding:20px 22px;display:flex;align-items:flex-start;gap:14px">
               <div style="width:44px;height:44px;background:rgba(196,160,74,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(196,160,74,.3)">
-                <span style="color:var(--gold);font-weight:800;font-size:13px;font-family:'Barlow Condensed',sans-serif">WP</span>
+                <span style="color:var(--gold);font-weight:800;font-size:13px;font-family:'DM Sans',sans-serif">WP</span>
               </div>
               <div>
                 <div style="font-weight:700;font-size:15px;color:var(--gold)">Webpay · Transbank</div>
                 <div style="font-size:13.5px;color:#B0C8DE;margin-top:6px;line-height:1.65"><span id="pago-texto">Una vez enviado el formulario, recibirás las instrucciones de pago por <strong style="color:#fff">WhatsApp</strong> al número que ingresaste. El aviso se activa con el pago confirmado.</span></div>
-                <button type="button" id="btn-webpay" style="display:none;margin-top:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:11px 22px;font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.04em;cursor:pointer" onclick="pagarConWebpay()">Pagar con Webpay →</button>
+                <button type="button" id="btn-webpay" style="display:none;margin-top:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:11px 22px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;letter-spacing:.04em;cursor:pointer" onclick="pagarConWebpay()">Pagar con Webpay →</button>
                  <div id="webpay-hint" style="display:none;font-size:12px;color:#B0C8DE;margin-top:8px">Se abrirá el portal seguro de Transbank. Al confirmarse el pago, tu aviso pasa a validación.</div>
                  <div style="font-size:12px;color:#5A7A9E;margin-top:8px">🔒 Pago procesado de forma segura por Transbank Chile · Invictum SPA</div>
               </div>
@@ -932,7 +932,7 @@ footer{background:var(--navy);margin-top:80px}
 <footer>
   <div class="foot-top">
     <div>
-      <div class="brand"><div class="hex"><div class="hex-i">M</div></div><span class="bname" style="color:#fff">MANTE<b>WORK</b></span></div>
+      <div class="brand"><div class="hex"><div class="hex-i">M</div></div><span class="bname" style="color:#f8f6f2">Mante<b style="color:var(--green)">Work</b></span></div>
       <p class="foot-brand" style="font-size:13.5px;color:#6A8AAE;margin-top:12px;line-height:1.7;max-width:320px">Portal de validación oficial del canal de empleos técnicos mineros de Chile. Solo trabajo técnico minero.</p>
     </div>
     <div>
@@ -959,7 +959,7 @@ footer{background:var(--navy);margin-top:80px}
     <p>© 2026 MANTEWORK · Empleos Minería &amp; Mantenimiento · Chile · Ley 21.719</p>
     <div style="display:flex;align-items:center;gap:14px">
       <button id="btn-instalar" onclick="instalarApp()" style="display:none;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--gold);background:rgba(196,160,74,.1);border:1px solid rgba(196,160,74,.3);border-radius:6px;padding:5px 12px;cursor:pointer">📱 Instalar app</button>
-      <button id="btn-ver-version" onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#C4A04A'" onmouseout="this.style.color='#5A7A9E'">v…</button>
+      <button id="btn-ver-version" onclick="verVersiones()" title="Historial de versiones" style="font-size:11.5px;color:#5A7A9E;background:none;border:none;cursor:pointer;letter-spacing:.04em;transition:.2s;padding:4px 8px" onmouseover="this.style.color='#b8975a'" onmouseout="this.style.color='#5A7A9E'">v…</button>
       <button class="admin-trigger" onclick="openLogin('admin')" title="Administración">⚙</button>
     </div>
   </div>
@@ -1172,57 +1172,57 @@ footer{background:var(--navy);margin-top:80px}
     <div class="ap-panel" id="ap-stats">
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px">
         <div style="background:var(--navy);color:#fff;border-radius:11px;padding:14px 16px">
-          <div id="st-total" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800">0</div>
+          <div id="st-total" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800">0</div>
           <div style="font-size:11px;color:#9FB3C8">Avisos publicados (total)</div>
         </div>
         <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:11px;padding:14px 16px">
-          <div id="st-mes" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:#8A6D1F">0</div>
+          <div id="st-mes" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:#8A6D1F">0</div>
           <div style="font-size:11px;color:#6B5417">Publicados este mes</div>
         </div>
         <div style="background:#E8F5EE;border:1px solid #BFE3CF;border-radius:11px;padding:14px 16px">
-          <div id="st-activos" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:#2E7D5B">0</div>
-          <div style="font-size:11px;color:#2E7D5B">Activos en el canal ahora</div>
+          <div id="st-activos" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:#2a9d8f">0</div>
+          <div style="font-size:11px;color:#2a9d8f">Activos en el canal ahora</div>
         </div>
         <div style="background:#EEF2F7;border:1px solid #D1D9E3;border-radius:11px;padding:14px 16px">
-          <div id="st-empresas" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">0</div>
+          <div id="st-empresas" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">0</div>
           <div style="font-size:11px;color:#6B7280">Empresas distintas</div>
         </div>
         <div style="background:var(--navy);color:#fff;border-radius:11px;padding:14px 16px">
-          <div id="st-clics-total" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--gold)">—</div>
+          <div id="st-clics-total" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:var(--gold)">—</div>
           <div style="font-size:11px;color:#9FB3C8">🔥 Clics totales en avisos</div>
         </div>
         <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:11px;padding:14px 16px">
-          <div id="st-clics-canal" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:#8A6D1F">—</div>
+          <div id="st-clics-canal" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:#8A6D1F">—</div>
           <div style="font-size:11px;color:#6B5417">📣 Clics de difusión (canal)</div>
         </div>
         <div style="background:#EFF4FB;border:1px solid #D7E3F4;border-radius:11px;padding:14px 16px">
-          <div id="st-visitas" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:#2E5A9E">—</div>
+          <div id="st-visitas" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:#2E5A9E">—</div>
           <div style="font-size:11px;color:#4A6FA5">👥 Visitas al sitio (7 días)</div>
         </div>
         <div style="background:#F3F0FA;border:1px solid #DDD5F0;border-radius:11px;padding:14px 16px">
-          <div id="st-valida" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:#7C6BAE">—</div>
+          <div id="st-valida" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:#7C6BAE">—</div>
           <div style="font-size:11px;color:#7C6BAE">⏱️ Horas promedio de validación</div>
         </div>
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🔥 Avisos con más clics</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🔥 Avisos con más clics</div>
           <div id="st-topclics" style="font-size:12px;color:#6B7280">Cargando…</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📈 Clics por día (últimos 14 días)</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📈 Clics por día (últimos 14 días)</div>
           <div id="st-serie" style="font-size:12px;color:#6B7280">Cargando…</div>
           <div style="font-size:10px;color:#9CA3AF;margin-top:6px">El registro diario se toma cada vez que abres este panel — abre las estadísticas al menos una vez al día para una serie completa.</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🏷️ Niveles más demandados</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🏷️ Niveles más demandados</div>
           <div id="st-niveles" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📍 Regiones con más avisos</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📍 Regiones con más avisos</div>
           <div id="st-regiones" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
       </div>
@@ -1230,19 +1230,19 @@ footer{background:var(--navy);margin-top:80px}
       <!-- ═══ FILA 3 DE TARJETAS ═══ -->
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
         <div style="background:#fff;border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div id="st-clics-prom" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">—</div>
+          <div id="st-clics-prom" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">—</div>
           <div style="font-size:11px;color:#6B7280">🎯 Clics promedio por aviso</div>
         </div>
         <div style="background:#fff;border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div id="st-renta-pct" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">—</div>
+          <div id="st-renta-pct" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">—</div>
           <div style="font-size:11px;color:#6B7280">💰 % de avisos con renta publicada</div>
         </div>
         <div style="background:#fff;border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div id="st-ventana" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">—</div>
+          <div id="st-ventana" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:var(--navy)">—</div>
           <div style="font-size:11px;color:#6B7280">🪟 Días típicos para postular</div>
         </div>
         <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:11px;padding:14px 16px">
-          <div id="st-dif7" style="font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:800;color:#8A6D1F">—</div>
+          <div id="st-dif7" style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:800;color:#8A6D1F">—</div>
           <div style="font-size:11px;color:#6B5417">🚀 Difusión: clics últimos 7 días</div>
         </div>
       </div>
@@ -1250,7 +1250,7 @@ footer{background:var(--navy);margin-top:80px}
       <!-- ═══ REPORTE POR EMPRESA (retención) ═══ -->
       <div style="border:2px solid var(--gold);border-radius:11px;padding:14px 16px;margin-bottom:16px;background:#FFFDF7">
         <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy)">🏆 Reporte por empresa</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy)">🏆 Reporte por empresa</div>
           <select id="rep-emp" class="ft" style="max-width:280px;padding:6px 10px;font-size:12.5px" onchange="renderReporteEmpresa()"><option value="">— Elige una empresa —</option></select>
           <button class="btn btn-ghost" style="font-size:12px;padding:6px 12px" onclick="copiarReporteEmpresa()">📋 Copiar reporte para WhatsApp</button>
         </div>
@@ -1260,125 +1260,140 @@ footer{background:var(--navy);margin-top:80px}
       <!-- ═══ PANELES DE ANÁLISIS ═══ -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📦 Rendimiento por plan</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📦 Rendimiento por plan</div>
           <div id="st-planes" style="font-size:12px;color:#6B7280">Cargando…</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🧲 Rendimiento por fuente de captura</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🧲 Rendimiento por fuente de captura</div>
           <div id="st-fuentes" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🕘 Mejor horario de publicación</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🕘 Mejor horario de publicación</div>
           <div id="st-horario" style="font-size:12px;color:#6B7280">Cargando…</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🔻 Embudo de estados</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🔻 Embudo de estados</div>
           <div id="st-embudo" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">⏰ Vencimientos próximos (≤5 días)</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">⏰ Vencimientos próximos (≤5 días)</div>
           <div id="st-vencen" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📆 Velocidad de validación por semana</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">📆 Velocidad de validación por semana</div>
           <div id="st-velsem" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🎖️ Certificaciones más exigidas</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🎖️ Certificaciones más exigidas</div>
           <div id="st-certs" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🔄 Turnos más comunes</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🔄 Turnos más comunes</div>
           <div id="st-turnos" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">⛏️ Gran vs Mediana minería</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">⛏️ Gran vs Mediana minería</div>
           <div id="st-granmed" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🏗️ Mandante / Contratista / OEM</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🏗️ Mandante / Contratista / OEM</div>
           <div id="st-emptipo" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🛠️ Equipos y software más pedidos</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🛠️ Equipos y software más pedidos</div>
           <div id="st-equipos" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🤝 Menciones de inclusión</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🤝 Menciones de inclusión</div>
           <div id="st-inclusion" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
       </div>
       <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px;margin-bottom:16px">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🚀 Vida útil del aviso (clics según días desde publicación)</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px">🚀 Vida útil del aviso (clics según días desde publicación)</div>
         <div id="st-vida" style="font-size:12px;color:#6B7280">Cargando…</div>
       </div>
 
+      <!-- ═══ MÉTRICAS DEL CANAL (registro manual semanal, v3.18.27) ═══ -->
+      <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px;margin-bottom:16px">
+        <div style="font-family:'DM Sans',sans-serif;font-size:16px;font-weight:800;color:var(--navy);margin-bottom:4px">📱 Métricas del canal de WhatsApp</div>
+        <div style="font-size:11px;color:#9CA3AF;margin-bottom:10px">Registro manual semanal — anota cada lunes los seguidores del canal y el promedio de vistas de las publicaciones de la semana (👁 en cada mensaje). El sistema calcula la tendencia.</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:10px">
+          <div><label style="font-size:11px;color:#6B7280;display:block;margin-bottom:3px">Seguidores</label><input type="number" id="mc-seg" min="0" style="width:110px;padding:8px 10px;border:1px solid #D1D5DB;border-radius:8px;font-size:13px"></div>
+          <div><label style="font-size:11px;color:#6B7280;display:block;margin-bottom:3px">Vistas promedio</label><input type="number" id="mc-vis" min="0" style="width:110px;padding:8px 10px;border:1px solid #D1D5DB;border-radius:8px;font-size:13px"></div>
+          <button class="btn btn-gold" style="font-size:12.5px;padding:9px 16px;font-weight:700" onclick="guardarMetricaCanal()">＋ Registrar semana</button>
+        </div>
+        <div id="mc-historial" style="font-size:12px;color:#6B7280">Sin registros aún — parte con los datos de hoy.</div>
+      </div>
+
       <!-- ═══ ANÁLISIS DE MERCADO AVANZADO (v3.18.25) ═══ -->
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin:22px 0 4px">📊 Análisis de Mercado Avanzado</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin:22px 0 4px">
+        <div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:800;color:var(--navy)">📊 Análisis de Mercado Avanzado</div>
+        <button class="btn btn-gold" style="font-size:12.5px;padding:8px 16px;font-weight:700" onclick="generarReporteSemanal()">📄 Generar Reporte Semanal (PDF)</button>
+      </div>
       <div style="font-size:11.5px;color:#9CA3AF;margin-bottom:12px">Base: avisos capturados con datos de mercado. Los análisis dinámicos mejoran a medida que se acumulan semanas de datos.</div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🔥 Cargos más demandados</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🔥 Cargos más demandados</div>
           <div id="am-cargos" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">⛏️ Faenas con más búsquedas</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">⛏️ Faenas con más búsquedas</div>
           <div id="am-faenas" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🔄 Turnos dominantes por región</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🔄 Turnos dominantes por región</div>
           <div id="am-turnos" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🎖️ Requisitos más exigidos</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🎖️ Requisitos más exigidos</div>
           <div id="am-requisitos" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">⚡ Ventana de postulación por grupo</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">⚡ Ventana de postulación por grupo</div>
           <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Días promedio entre publicación y cierre — ventanas cortas sugieren urgencia del empleador</div>
           <div id="am-rotacion" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">📅 Estacionalidad (avisos por mes)</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">📅 Estacionalidad (avisos por mes)</div>
           <div id="am-estacional" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">♻️ Reincidencia (republicaciones &lt;90 días)</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">♻️ Reincidencia (republicaciones &lt;90 días)</div>
           <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Mismo cargo + misma empresa republicado — señal de rotación alta o búsqueda difícil · uso interno</div>
           <div id="am-reincidencia" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🏢 Clics por empresa (top 8)</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🏢 Clics por empresa (top 8)</div>
           <div id="am-clicsemp" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🧭 Cobertura de curaduría</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🧭 Cobertura de curaduría</div>
           <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Aprobados vs rechazados — mide la selectividad del filtro MANTEWORK</div>
           <div id="am-cobertura" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">📡 Radar de expansión (últimos 30 días)</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">📡 Radar de expansión (últimos 30 días)</div>
           <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Faenas con aumento súbito de avisos — señal temprana de proyecto o parada mayor</div>
           <div id="am-radar" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🚨 Índice de escasez de talento</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">🚨 Índice de escasez de talento</div>
           <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Cargos buscados por varias empresas a la vez + republicaciones = escasez medible</div>
           <div id="am-escasez" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
         <div style="border:1px solid #E5E7EB;border-radius:11px;padding:14px 16px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">📐 Benchmark de requisitos por grupo</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">📐 Benchmark de requisitos por grupo</div>
           <div style="font-size:10.5px;color:#9CA3AF;margin-bottom:6px">Qué porcentaje de los avisos de cada grupo exige certificación y cuánta experiencia se pide</div>
           <div id="am-benchmark" style="font-size:12px;color:#6B7280">Sin datos aún</div>
         </div>
@@ -1386,7 +1401,7 @@ footer{background:var(--navy);margin-top:80px}
       
       <div style="background:#F5EEDC;border:1px solid rgba(196,160,74,.3);border-radius:9px;padding:9px 12px;margin-bottom:14px">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-          <span style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:800;color:var(--navy)">📢 Difusión del canal</span>
+          <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:800;color:var(--navy)">📢 Difusión del canal</span>
           <span style="font-size:12px;color:#0D1B2A;font-weight:600">https://www.mantework.com/ir/?c=canal</span>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
@@ -1397,20 +1412,20 @@ footer{background:var(--navy);margin-top:80px}
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px">
         <div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px">Por grupo ocupacional</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px">Por grupo ocupacional</div>
           <div id="st-grupos"></div>
         </div>
         <div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px">Top empresas</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px">Top empresas</div>
           <div id="st-topemp"></div>
         </div>
       </div>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px">Registro histórico de publicaciones</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px">Registro histórico de publicaciones</div>
       <div id="st-historico" style="max-height:280px;overflow-y:auto"></div>
     
       <div style="margin-top:8px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:800;color:var(--navy)">🔗 Clics en los avisos (enlace propio)</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:800;color:var(--navy)">🔗 Clics en los avisos (enlace propio)</div>
           <button class="btn btn-ghost" style="font-size:12px;padding:6px 12px" onclick="cargarClics()">↻ Actualizar clics</button>
         </div>
         <div style="font-size:12px;color:#6B7280;margin-bottom:10px">Cada aviso publicado usa un enlace <b>mantework.com/ir/…</b> que cuenta cuántas personas fueron a postular. Datos desde tu base de datos — sin límite ni costo.</div>
@@ -1424,7 +1439,7 @@ footer{background:var(--navy);margin-top:80px}
       <div style="background:rgba(196,160,74,.08);border:1px solid rgba(196,160,74,.25);border-radius:10px;padding:16px 18px;margin-bottom:18px">
         <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
           <div style="flex:1;min-width:220px">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:var(--navy)">Radar de captación web</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:800;color:var(--navy)">Radar de captación web</div>
             <div style="font-size:12.5px;color:#6B7280;margin-top:3px">Barre las fuentes de la lista blanca (portales del titular) y trae avisos técnicos vigentes como borradores para revisar y publicar.</div>
           </div>
           <div style="display:flex;align-items:center;gap:10px">
@@ -1439,7 +1454,7 @@ footer{background:var(--navy);margin-top:80px}
       
       
       <div style="border:1px solid rgba(46,125,91,.35);border-radius:11px;padding:16px 18px;margin-bottom:18px;background:#F4FBF7">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--navy);margin-bottom:4px">📄 Cargar avisos desde Excel</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:800;color:var(--navy);margin-bottom:4px">📄 Cargar avisos desde Excel</div>
         <div style="font-size:12px;color:#6B7280;margin-bottom:12px">Sube uno o varios archivos Excel (p. ej. las 4 tandas juntas) y se agregan todos de una vez a la cola de captación. Usa la plantilla de <b>24 columnas</b>: las 9 de publicación (<b>Cargo, Empresa, Region, Ciudad, Turno, Grupo, Requisitos, Link, ID solicitud</b>) son las que se publican; las 15 de mercado (renta, título, inglés, faena, equipos…) son opcionales y quedan guardadas para análisis.</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
           <input type="file" id="cap-excel" accept=".xlsx,.xls,.csv" multiple style="font-size:12.5px" onchange="cargarVariosExcel()">
@@ -1449,7 +1464,7 @@ footer{background:var(--navy);margin-top:80px}
       </div>
 
       <div style="border:1px dashed rgba(196,160,74,.5);border-radius:11px;padding:16px 18px;margin-bottom:18px;background:#FBFAF6">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:800;color:var(--navy);margin-bottom:4px">Agregar aviso captado manualmente</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:800;color:var(--navy);margin-bottom:4px">Agregar aviso captado manualmente</div>
         <div style="font-size:12px;color:#6B7280;margin-bottom:14px">Pega los datos de un aviso encontrado en un portal de la lista blanca. Quedará como borrador en la cola para revisar y publicar. La fuente debe ser el portal del titular.</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <div><label class="flbl">Cargo</label><input class="ft" id="cap-cargo" placeholder="Mantenedor Mecánico CAEX"></div>
@@ -1485,15 +1500,15 @@ footer{background:var(--navy);margin-top:80px}
       </div>
       <div id="alerta-horario" style="display:none;border-radius:10px;padding:16px 20px;margin-bottom:16px"></div>
       <div id="alerta-periodos" style="display:none;background:var(--red-bg);border:1.5px solid #F0B0B0;border-left:4px solid var(--red);border-radius:10px;padding:16px 20px;margin-bottom:16px">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--red);margin-bottom:8px">⚠ Períodos sin cobro por vencer</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--red);margin-bottom:8px">⚠ Períodos sin cobro por vencer</div>
         <div id="lista-periodos" style="font-size:13.5px;color:#7A1520;line-height:1.9"></div>
       </div>
       <div id="alerta-vencen" style="display:none;background:var(--warn-bg);border:1.5px solid #F0C070;border-left:4px solid var(--warn);border-radius:10px;padding:16px 20px;margin-bottom:22px">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--warn);margin-bottom:8px">⏰ Avisos por vencer — oportunidad de renovación</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:var(--warn);margin-bottom:8px">⏰ Avisos por vencer — oportunidad de renovación</div>
         <div id="lista-vencen" style="font-size:13.5px;color:#6B4500;line-height:1.8"></div>
       </div>
       <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:22px">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:3px">📄 Material comercial</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:3px">📄 Material comercial</div>
         <div style="font-size:12.5px;color:var(--sub);margin-bottom:13px">Brochures listos para descargar y enviar a las empresas. El botón de WhatsApp abre un mensaje con el enlace de descarga.</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
           <div style="border:1px solid var(--line);border-radius:9px;padding:12px 14px">
@@ -1515,14 +1530,14 @@ footer{background:var(--navy);margin-top:80px}
         </div>
       </div>
       <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:22px">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:3px">🔍 Exportar lista MNT para Prompt de Búsqueda</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:3px">🔍 Exportar lista MNT para Prompt de Búsqueda</div>
         <div style="font-size:12.5px;color:var(--sub);margin-bottom:13px">Genera la lista de avisos activos para pegar al agente de búsqueda — así no captura avisos que ya están en MANTEWORK.</div>
         <button class="btn btn-gold" style="font-size:12.5px;padding:7px 16px" onclick="exportarListaMNT()">📋 Exportar lista MNT para Prompt de Búsqueda</button>
         <span id="exportar-mnt-ok" style="font-size:12px;color:var(--green);margin-left:12px;display:none">✓ ¡Copiado! Pega la lista al inicio del prompt antes de correr el agente.</span>
       </div>
       <div style="background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
         <div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--navy)">💾 Datos y respaldos</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;color:var(--navy)">💾 Datos y respaldos</div>
           <div style="font-size:12.5px;color:var(--sub);margin-top:2px">Tus datos se guardan en la nube (Supabase) y se sincronizan en todos tus dispositivos automáticamente. Descarga un respaldo periódico como copia extra de seguridad. <span id="nube-estado-avisos" style="font-weight:600"></span></div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -1549,15 +1564,15 @@ footer{background:var(--navy);margin-top:80px}
       <div class="ap-sec" id="sec-activos">Avisos activos en Página Web</div>
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 10px">
         <label style="font-size:12.5px;color:#374151;display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox" id="selcanal-todos" onchange="document.querySelectorAll('.selcanal').forEach(c=>c.checked=this.checked); actualizarBoletinBtn();"> Seleccionar todos</label>
-        <label style="font-size:12.5px;color:#2E7D5B;display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600"><input type="checkbox" id="filtro-sincanal" checked onchange="aplicarFiltroCanal()"> ☑ Solo los que faltan por publicar en canal</label>
+        <label style="font-size:12.5px;color:#2a9d8f;display:flex;align-items:center;gap:6px;cursor:pointer;font-weight:600"><input type="checkbox" id="filtro-sincanal" checked onchange="aplicarFiltroCanal()"> ☑ Solo los que faltan por publicar en canal</label>
         <button class="btn btn-gold" style="font-size:12.5px;padding:7px 14px" onclick="boletinCanal()" id="btn-boletin">📋 Copiar boletín para el canal (0)</button>
         <span style="font-size:10.5px;color:#9CA3AF">Agrupa los seleccionados en bloques de 8 por mensaje — pegas 1 bloque por mensaje en el canal, no aviso por aviso.</span>
       </div>
       <!-- BANNER POST-APROBACIÓN -->
       <div id="banner-aprobados" style="display:none;background:#E8F3EC;border:2px solid var(--green);border-radius:12px;padding:14px 18px;margin-bottom:14px;display:none;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
         <div>
-          <div style="font-weight:700;color:#1A5C2E;font-size:15px" id="banner-aprobados-titulo">✅ Avisos aprobados en Página Web</div>
-          <div style="font-size:12.5px;color:#2E7D5B;margin-top:3px">Están pre-seleccionados abajo. Revisa y copia el boletín cuando quieras.</div>
+          <div style="font-weight:700;color:#1f7268;font-size:15px" id="banner-aprobados-titulo">✅ Avisos aprobados en Página Web</div>
+          <div style="font-size:12.5px;color:#2a9d8f;margin-top:3px">Están pre-seleccionados abajo. Revisa y copia el boletín cuando quieras.</div>
         </div>
         <button class="btn btn-gold" style="font-size:13px;padding:9px 18px;font-weight:700" id="banner-btn-boletin" onclick="boletinCanal()">📋 Copiar boletín para WhatsApp (<span id="banner-n-sel">0</span>)</button>
       </div>
@@ -1814,7 +1829,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.25';
+const APP_VERSION = '3.18.29';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1826,6 +1841,10 @@ function esc(s){
 
 const VERSIONES = [
   { v:'3.18.11', fecha:'22-08-2026', cambios:['Botón de versión ahora muestra siempre la versión real: el texto se inyecta dinámicamente desde APP_VERSION al cargar la página — antes estaba hardcodeado en el HTML y quedaba desfasado con cada actualización']},
+  { v:'3.18.29', fecha:'06-09-2026', cambios:['Alineación con el Manual de Normas Gráficas Invictum v2.0: paleta exacta del manual (oro #b8975a, verde acento MANTEWORK #2a9d8f, fondo crema #f8f6f2, gris #6b6b6b); tipografía DM Sans en todo el sitio (reemplaza Barlow Condensed e Inter); wordmark «Mante» crema + «Work» en verde sobre navy; botón primario en verde acento (el oro queda reservado a fondos navy — regla «oro nunca sobre crema»); emojis eliminados de la interfaz pública (tags de la tarjeta del aviso, botón Compartir, badge Confidencial) según la norma «nunca emoji en piezas de marca» — se mantienen solo en los textos destinados a WhatsApp, donde son convención del canal y no pieza gráfica'] },
+  { v:'3.18.28', fecha:'06-09-2026', cambios:['Portal público: filtro de regiones corregido — las variantes de texto que traían las capturas («1ra Reg. Tarapacá», «II Region de Antofagasta», «Tarapacá», etc.) ahora se unifican en un nombre canónico por región, el dropdown queda ordenado geográficamente de norte a sur, y las combinaciones («Atacama / Antofagasta») se agrupan como «Multirregión». La misma normalización se aplica a los hashtags de la difusión (#Tarapaca en vez de #1raRegTarapaca) y el filtro encuentra todos los avisos de la región sin importar cómo venía escrito el texto original'] },
+  { v:'3.18.27', fecha:'26-08-2026', cambios:['Analítica de Datos: nuevo panel «📱 Métricas del canal de WhatsApp» — registro manual semanal de seguidores y vistas promedio (WhatsApp no expone estadísticas agregadas de canales). Muestra historial con flechas de tendencia (▲▼), calcula la tasa de vistas automáticamente y la contextualiza contra el rango sano de 20–40%. Los datos se guardan en la nube junto al resto (Supabase) y viajan en los respaldos'] },
+  { v:'3.18.26', fecha:'26-08-2026', cambios:['Analítica de Datos: nuevo botón «📄 Generar Reporte Semanal (PDF)» — genera desde el propio panel el Reporte de Mercado Laboral Técnico Minero con los datos vivos del sitio: KPIs, hallazgos automáticos, barras de regiones/grupos/empresas/faenas y nota metodológica, en una vista imprimible con la marca MANTEWORK lista para guardar como PDF desde el navegador. Usa los avisos de los últimos 7 días (o el acumulado si la semana tiene pocos). Cero dependencias externas — coherente con la PWA de archivo único'] },
   { v:'3.18.25', fecha:'26-08-2026', cambios:['Analítica de Datos: nueva sección «Análisis de Mercado Avanzado» con 12 paneles — cargos más demandados (normalizado anti-variantes de género), faenas con más búsquedas, turnos dominantes por región, requisitos más exigidos, ventana de postulación por grupo, estacionalidad mensual con barras, reincidencia de republicaciones <90 días, clics por empresa, cobertura de curaduría (tasa de aprobación), radar de expansión de faenas (30 días vs 30 anteriores), índice de escasez de talento (cargos buscados por 2+ empresas simultáneas) y benchmark de requisitos por grupo. Cada panel es independiente y a prueba de fallos; los análisis dinámicos se llenan solos con la acumulación de capturas. Base del futuro Reporte de Mercado trimestral (F.9 del plan)'] },
   { v:'3.18.24', fecha:'26-08-2026', cambios:['Panel admin: avisos con postulación cerrada ya no se mezclan con los activos — van a una sección propia «⏰ Postulación cerrada — cerrar o eliminar» (fondo rojo, sin checkbox de boletín, solo acciones Cerrar/Eliminar, y recordatorio de borrar el mensaje de WhatsApp si estuvo en canal). Los KPI «Avisos activos en Página Web» y «Sin publicar en canal» ahora cuentan solo avisos realmente postulables. Protección adicional: el boletín excluye avisos cerrados aunque estuvieran seleccionados — imposible enviar al canal un aviso que ya no recibe postulaciones'] },
   { v:'3.18.23', fecha:'25-08-2026', cambios:['Hashtags discriminantes en la difusión (derivado del análisis competitivo F.6): aviso individual y botón Compartir llevan 3 hashtags (#Región #Grupo #Empresa); cada bloque del boletín lleva 4-6 consolidados (hasta 2 regiones + 2 grupos dominantes + #EmpleoMinería de captación). Generación automática con limpieza de acentos y nombres compuestos («Antofagasta Minerals – Minera Antucoya» → #AntofagastaMinerals). Avisos con empresa confidencial no llevan hashtag de empresa'] },
@@ -1975,7 +1994,7 @@ function verVersiones(){
   const html = VERSIONES.map((r,i)=>`
     <div style="padding:16px 0;border-bottom:${i<VERSIONES.length-1?'1px solid var(--line)':'none'}">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;color:var(--navy)">v${r.v}</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:19px;font-weight:700;color:var(--navy)">v${r.v}</span>
         ${i===0?'<span class="badge bg-green">Actual</span>':''}
         <span style="font-size:12.5px;color:var(--sub);margin-left:auto">${r.fecha}</span>
       </div>
@@ -2242,6 +2261,111 @@ function renderStats(){
     return '<div style="display:flex;justify-content:space-between;gap:10px;font-size:12px;padding:6px 0;border-bottom:1px solid #F0F0F0"><div><strong>'+nroSeg(a.id)+'</strong> '+esc(a.cargo)+' — '+esc(a.empresa)+'</div><div style="white-space:nowrap;color:#6B7280">'+fecha+' '+estado+'</div></div>';
   }).join('') : '<div style="color:#6B7280;font-size:12px;padding:8px">Aún no has publicado avisos. Cuando apruebes el primero, aparecerá aquí.</div>';
   try{ renderStatsAvanzado(); }catch(e){ console.error("Stats avanzado:", e); }
+  try{ renderMetricasCanal(); }catch(e){ console.error("Métricas canal:", e); }
+}
+
+
+
+// ═══ MÉTRICAS DEL CANAL (v3.18.27) — registro manual semanal con tendencia ═══
+function guardarMetricaCanal(){
+  const seg = +(document.getElementById('mc-seg')||{}).value || 0;
+  const vis = +(document.getElementById('mc-vis')||{}).value || 0;
+  if(!seg && !vis){ toast('Ingresa al menos un valor'); return; }
+  DB.metricasCanal = DB.metricasCanal || [];
+  DB.metricasCanal.push({ fecha: new Date().toISOString(), seguidores: seg, vistas: vis });
+  guardarDatos();
+  document.getElementById('mc-seg').value=''; document.getElementById('mc-vis').value='';
+  renderMetricasCanal();
+  toast('✓ Semana registrada');
+}
+function renderMetricasCanal(){
+  const el = document.getElementById('mc-historial'); if(!el) return;
+  const M = (DB.metricasCanal||[]).slice(-10);
+  if(!M.length){ el.innerHTML = 'Sin registros aún — parte con los datos de hoy.'; return; }
+  const flecha = (act, ant) => ant==null ? '' : (act>ant ? ' <span style="color:var(--green);font-weight:700">▲ +'+(act-ant)+'</span>' : (act<ant ? ' <span style="color:var(--red);font-weight:700">▼ '+(act-ant)+'</span>' : ' <span style="color:#9CA3AF">＝</span>'));
+  let html = '<div style="display:flex;justify-content:space-between;font-weight:700;color:var(--navy);border-bottom:2px solid #E5E7EB;padding:4px 0"><span>Semana</span><span>Seguidores</span><span>Vistas prom.</span><span>Tasa de vistas</span></div>';
+  M.forEach((m,i)=>{
+    const ant = i>0 ? M[i-1] : null;
+    const f = new Date(m.fecha).toLocaleDateString('es-CL',{day:'2-digit',month:'short'});
+    const tasa = m.seguidores>0 ? Math.round(100*m.vistas/m.seguidores)+'%' : '—';
+    html += '<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #F3F4F6"><span>'+f+'</span><span>'+m.seguidores+flecha(m.seguidores, ant&&ant.seguidores)+'</span><span>'+m.vistas+flecha(m.vistas, ant&&ant.vistas)+'</span><strong style="color:var(--navy)">'+tasa+'</strong></div>';
+  });
+  if(M.length>=2){
+    const p=M[0], u=M[M.length-1];
+    const crecSeg = u.seguidores-p.seguidores;
+    html += '<div style="font-size:11px;color:#6B7280;margin-top:8px">📈 En '+M.length+' registros: '+(crecSeg>=0?'+':'')+crecSeg+' seguidores. La tasa sana de vistas en canales de WhatsApp ronda el 20–40%.</div>';
+  }
+  el.innerHTML = html;
+}
+
+// ═══ REPORTE SEMANAL PDF (v3.18.26) — vista imprimible generada desde los datos del panel ═══
+function generarReporteSemanal(){
+  const hoy = new Date();
+  const hace7 = new Date(hoy.getTime() - 7*86400000);
+  // Universo: publicados en los últimos 7 días; si son <10, usar todos los publicados
+  let uni = DB.avisos.filter(a => a.fechaAprobacion && new Date(a.fechaAprobacion) >= hace7);
+  let periodo = 'Semana del ' + hace7.toLocaleDateString('es-CL',{day:'2-digit',month:'2-digit'}) + ' al ' + hoy.toLocaleDateString('es-CL',{day:'2-digit',month:'2-digit',year:'numeric'});
+  if(uni.length < 10){ uni = DB.avisos.filter(a => a.fechaAprobacion); periodo = 'Acumulado al ' + hoy.toLocaleDateString('es-CL',{day:'2-digit',month:'2-digit',year:'numeric'}); }
+  if(!uni.length){ toast('Aún no hay avisos publicados para reportar'); return; }
+
+  const _n = s => String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const normReg = s => { const t=_n(s); if(t.includes('antofagasta'))return 'Antofagasta'; if(t.includes('atacama'))return 'Atacama'; if(t.includes('metropolitana')||t.includes('santiago'))return 'Metropolitana'; if(t.includes('tarapaca'))return 'Tarapacá'; if(t.includes('coquimbo'))return 'Coquimbo'; if(t.includes('higgins'))return "O'Higgins"; if(t.includes('valpara'))return 'Valparaíso'; return s||'—'; };
+  const cuenta = (arr) => { const m={}; arr.filter(Boolean).forEach(v=>{m[v]=(m[v]||0)+1;}); return Object.entries(m).sort((x,y)=>y[1]-x[1]); };
+
+  const regiones = cuenta(uni.map(a=>normReg(a.region)));
+  const grupos = cuenta(uni.map(a=>a.grupo));
+  const empresas = cuenta(uni.map(a=>a.empresa)).slice(0,10);
+  const faenas = cuenta(uni.map(a=>(a.mercado&&a.mercado.faena)||'')).filter(([k])=>k).slice(0,8);
+  const nEmp = new Set(uni.map(a=>a.empresa)).size;
+  const turnoNorm = s => { const t=_n(s); if(t.includes('7x7')||t.includes('7×7'))return '7×7'; if(t.includes('5x2')||t.includes('5×2'))return '5×2'; if(t.includes('4x3')||t.includes('4×3'))return '4×3'; if(t.includes('4x4'))return '4×4'; return null; };
+  const turnos = cuenta(uni.map(a=>turnoNorm(a.turno)));
+  const pctIncl = Math.round(100*uni.filter(a=>a.mercado&&a.mercado.inclusion).length/uni.length);
+
+  const barra = (pares, color) => {
+    const max = Math.max(1, ...pares.map(p=>p[1]));
+    return pares.map(([k,v])=>'<div style="display:flex;align-items:center;gap:8px;margin:4px 0;font-size:11px"><span style="min-width:150px;text-align:right;color:#374151">'+k+'</span><div style="flex:1;background:#F3F4F6;border-radius:3px;height:15px"><div style="width:'+Math.round(100*v/max)+'%;background:'+color+';height:15px;border-radius:3px"></div></div><strong style="min-width:34px;color:#0D1B2A">'+v+'</strong></div>').join('');
+  };
+
+  const h1r = (regiones[0]||['—',0]); const h1pct = Math.round(100*h1r[1]/uni.length);
+  const g1 = (grupos[0]||['—',0]); const g1pct = Math.round(100*g1[1]/uni.length);
+  const e1 = (empresas[0]||['—',0]); const e2 = (empresas[1]||['—',0]);
+  const t1 = (turnos[0]||['—',0]);
+
+  const html = '<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>MANTEWORK — Reporte de Mercado</title><style>'+
+    'body{font-family:Arial,Helvetica,sans-serif;color:#1F2937;margin:0;padding:26px 34px;max-width:820px;margin:auto}'+
+    '.hero{background:#0D1B2A;color:#fff;text-align:center;padding:22px 16px;border-radius:12px}'+
+    '.hero h1{margin:0;font-size:26px;letter-spacing:.04em}.hero .sub{color:#b8975a;font-weight:700;font-size:13px;margin-top:4px}'+
+    '.hero .per{color:#E5E7EB;font-size:11px;margin-top:6px}'+
+    '.kpis{display:flex;gap:10px;margin:14px 0}.kpi{flex:1;background:#F3F4F6;border:1px solid #E5E7EB;border-radius:9px;text-align:center;padding:10px 6px}'+
+    '.kpi .n{font-size:22px;font-weight:800;color:#0D1B2A}.kpi .l{font-size:9.5px;color:#6B7280}'+
+    'h2{font-size:14px;color:#0D1B2A;border-bottom:2px solid #b8975a;padding-bottom:3px;margin:18px 0 8px}'+
+    '.h5{font-size:11.5px;line-height:1.5;margin:5px 0}.h5 b{color:#0D1B2A}'+
+    '.meta{font-size:9px;color:#6B7280;line-height:1.45;margin-top:14px;border-top:1px solid #E5E7EB;padding-top:8px}'+
+    '.pie{font-size:8.5px;color:#9CA3AF;text-align:center;margin-top:12px}'+
+    '@media print{body{padding:10px 16px}.noprint{display:none}}'+
+    '</style></head><body>'+
+    '<div class="hero"><h1>MANTEWORK</h1><div class="sub">REPORTE DE MERCADO LABORAL TÉCNICO MINERO</div><div class="per">'+periodo+' · Chile · mantework.com</div></div>'+
+    '<div class="kpis"><div class="kpi"><div class="n">'+uni.length+'</div><div class="l">avisos validados</div></div>'+
+    '<div class="kpi"><div class="n">'+nEmp+'</div><div class="l">empresas de primer nivel</div></div>'+
+    '<div class="kpi"><div class="n">'+(pctIncl||'—')+(pctIncl?'%':'')+'</div><div class="l">con enfoque de inclusión</div></div></div>'+
+    '<h2>Hallazgos de la semana</h2>'+
+    '<div class="h5"><b>1. '+h1r[0]+' lidera la demanda:</b> '+h1r[1]+' de '+uni.length+' avisos ('+h1pct+'%).</div>'+
+    '<div class="h5"><b>2. Grupo más buscado — '+g1[0]+':</b> '+g1[1]+' avisos ('+g1pct+'%).</div>'+
+    '<div class="h5"><b>3. Empresas más activas:</b> '+e1[0]+' ('+e1[1]+') y '+e2[0]+' ('+e2[1]+').</div>'+
+    (t1[0]!=='—'?'<div class="h5"><b>4. Turno dominante:</b> '+t1[0]+' con '+t1[1]+' avisos.</div>':'')+
+    '<h2>Demanda por región</h2>'+barra(regiones.slice(0,7), '#b8975a')+
+    '<h2>Demanda por grupo ocupacional</h2>'+barra(grupos, '#2a9d8f')+
+    '<h2>Empresas con más avisos</h2>'+barra(empresas, '#0D1B2A')+
+    (faenas.length?'<h2>Faenas con más búsquedas</h2>'+barra(faenas, '#b8975a'):'')+
+    '<div class="meta"><b>Nota metodológica:</b> avisos capturados desde los portales oficiales de las empresas y validados por MANTEWORK. Solo empresas de la Lista Blanca (mandantes, OEM, contratistas de primer nivel y logística de faena) — se excluyen consultoras de ingeniería, empresas de dotación y headhunters. Sin datos personales de postulantes: solo características de los puestos publicados. Deduplicación por cargo + empresa + faena.</div>'+
+    '<div class="pie">MANTEWORK · mantework.com · Prohibida su reproducción sin citar la fuente</div>'+
+    '<div class="noprint" style="text-align:center;margin-top:16px"><button onclick="window.print()" style="background:#b8975a;color:#0D1B2A;border:none;padding:11px 26px;border-radius:9px;font-weight:800;font-size:14px;cursor:pointer">🖨️ Imprimir / Guardar como PDF</button></div>'+
+    '</body></html>';
+
+  const w = window.open('', '_blank');
+  if(!w){ toast('Permite las ventanas emergentes para generar el reporte'); return; }
+  w.document.write(html); w.document.close();
+  setTimeout(()=>{ try{ w.print(); }catch(e){} }, 600);
 }
 
 // ═══ ANÁLISIS DE MERCADO AVANZADO (v3.18.25) — cada bloque a prueba de fallos ═══
@@ -2602,7 +2726,7 @@ async function cargarClics(){
           <div style="font-weight:600;color:var(--navy);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(f.cargo||'(sin título)')}</div>
           <div style="font-size:11px;color:#9CA3AF">mantework.com/ir/?c=${esc(f.codigo)}</div>
         </div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--gold);margin-left:12px">${f.clics||0}</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:800;color:var(--gold);margin-left:12px">${f.clics||0}</div>
       </div>`).join('');
   } catch(e){
     tot.textContent = 'No se pudieron cargar los clics (¿ejecutaste supabase_acortador.sql?).';
@@ -2973,6 +3097,32 @@ function compartirAviso(id){
   window.open('https://wa.me/?text='+encodeURIComponent(t),'_blank');
 }
 
+// ═══ NORMALIZACIÓN CANÓNICA DE REGIONES (v3.18.28) — unifica variantes de texto ═══
+const ORDEN_REGIONES=['Arica y Parinacota','Tarapacá','Antofagasta','Atacama','Coquimbo','Valparaíso','Metropolitana',"O'Higgins",'Maule','Ñuble','Biobío','Araucanía','Los Ríos','Los Lagos','Aysén','Magallanes','Multirregión'];
+function _normRegion(s){
+  if(!s) return null;
+  const t=String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  if(t.includes('arica')||t.includes('parinacota')) return 'Arica y Parinacota';
+  if(t.includes('tarapaca')) return 'Tarapacá';
+  if(t.includes('antofagasta')&&t.includes('atacama')) return 'Multirregión';
+  if(t.includes('antofagasta')) return 'Antofagasta';
+  if(t.includes('atacama')) return 'Atacama';
+  if(t.includes('coquimbo')) return 'Coquimbo';
+  if(t.includes('valpara')) return 'Valparaíso';
+  if(t.includes('metropolitana')||t.includes('santiago')||t.includes(' rm')||t==='rm') return 'Metropolitana';
+  if(t.includes('higgins')) return "O'Higgins";
+  if(t.includes('maule')) return 'Maule';
+  if(t.includes('nuble')) return 'Ñuble';
+  if(t.includes('biobio')||t.includes('bio bio')) return 'Biobío';
+  if(t.includes('araucania')) return 'Araucanía';
+  if(t.includes('los rios')) return 'Los Ríos';
+  if(t.includes('los lagos')) return 'Los Lagos';
+  if(t.includes('aysen')) return 'Aysén';
+  if(t.includes('magallanes')) return 'Magallanes';
+  if(t.includes('multi')||t.includes('varias')||t.includes('nacional')) return 'Multirregión';
+  return String(s).trim();
+}
+
 // ══ HASHTAGS (v3.18.23) — discriminantes: región + grupo + empresa ══
 // Convierte un texto en hashtag válido: toma la parte antes de separadores,
 // quita acentos y caracteres especiales, y aplica CamelCase.
@@ -2987,7 +3137,8 @@ function _tagify(s){
 // Aviso individual: 3 hashtags discriminantes (#Region #Grupo #Empresa)
 function _hashtagsAviso(a){
   const tags = [];
-  if(a.region) tags.push('#'+_tagify(a.region));
+  const _reg = _normRegion(a.region);
+  if(_reg) tags.push('#'+_tagify(_reg));
   if(a.grupo) tags.push('#'+_tagify(a.grupo));
   if(a.empresa && a.verEmpresa!==false) tags.push('#'+_tagify(a.empresa));
   return tags.filter(t=>t.length>2).join(' ');
@@ -2995,7 +3146,7 @@ function _hashtagsAviso(a){
 // Boletín: hasta 2 regiones + hasta 2 grupos dominantes + 1 de captación = 4-6 max
 function _hashtagsBoletin(avs){
   const top = (arr)=>{ const m={}; arr.filter(Boolean).forEach(v=>{m[v]=(m[v]||0)+1;}); return Object.entries(m).sort((x,y)=>y[1]-x[1]).map(e=>e[0]); };
-  const regiones = top(avs.map(a=>a.region)).slice(0,2).map(r=>'#'+_tagify(r));
+  const regiones = top(avs.map(a=>_normRegion(a.region))).slice(0,2).map(r=>'#'+_tagify(r));
   const grupos = top(avs.map(a=>a.grupo)).slice(0,2).map(g=>'#'+_tagify(g));
   return [...regiones, ...grupos, '#EmpleoMinería'].filter(t=>t.length>2).join(' ');
 }
@@ -3126,6 +3277,8 @@ async function cargarDesdeNube(){
       pack.avisos.forEach(a => CAMPOS_FECHA_AVISO.forEach(k => { if(a[k]) a[k] = new Date(a[k]); }));
       pack.clientes.forEach(c => CAMPOS_FECHA_CLI.forEach(k => { if(c[k]) c[k] = new Date(c[k]); }));
       DB.avisos = pack.avisos;
+    DB.metricasCanal = pack.metricasCanal || DB.metricasCanal || [];
+      DB.metricasCanal = pack.metricasCanal || [];
       CLIENTES.length = 0; pack.clientes.forEach(c => CLIENTES.push(c));
       _purgarDemosMarcasReales();
       return true;
@@ -3142,7 +3295,7 @@ async function guardarEnNube(){
   clearTimeout(_syncPendiente);
   _syncPendiente = setTimeout(async () => {
     try {
-      const pack = { avisos: DB.avisos, clientes: CLIENTES, guardado: new Date().toISOString(), version: APP_VERSION };
+      const pack = { avisos: DB.avisos, clientes: CLIENTES, metricasCanal: DB.metricasCanal||[], guardado: new Date().toISOString(), version: APP_VERSION };
       // Escritura vía función con secreto (endurecimiento v3.1.0): la anon key
       // por sí sola ya no puede sobrescribir la tabla.
       await _sb('POST', 'rpc/guardar_pack', { p_secret: WRITE_SECRET, p_pack: pack });
@@ -3205,7 +3358,7 @@ const CAMPOS_FECHA_CLI   = ['fechaEnrol','fechaActivacion','fechaUltimoRecordato
 
 function guardarDatos(){
   try {
-    const pack = { avisos: DB.avisos, clientes: CLIENTES, guardado: new Date().toISOString(), version: APP_VERSION };
+    const pack = { avisos: DB.avisos, clientes: CLIENTES, metricasCanal: DB.metricasCanal||[], guardado: new Date().toISOString(), version: APP_VERSION };
     localStorage.setItem(STORE_KEY, JSON.stringify(pack)); localStorage.setItem('mw_guardado_local', new Date().toISOString());
   } catch(e) { /* almacenamiento no disponible — modo memoria */ }
   guardarEnNube();
@@ -3354,7 +3507,7 @@ function _cargarExcelClienteCola(files){
 }
 
 function descargarRespaldo(){
-  const pack = { avisos: DB.avisos, clientes: CLIENTES, exportado: new Date().toISOString(), version: APP_VERSION };
+  const pack = { avisos: DB.avisos, clientes: CLIENTES, metricasCanal: DB.metricasCanal||[], exportado: new Date().toISOString(), version: APP_VERSION };
   const blob = new Blob([JSON.stringify(pack, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   const f = new Date();
@@ -3715,15 +3868,15 @@ function aplicarModoDemo(){
     banner.style.display='block';
     if(d===0){
       banner.style.background='var(--red-bg)'; banner.style.border='1.5px solid #F0B0B0'; banner.style.borderLeft='4px solid var(--red)';
-      banner.innerHTML = `<div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;color:var(--red);margin-bottom:6px">Tu período gratuito finalizó</div>
+      banner.innerHTML = `<div style="font-family:'DM Sans',sans-serif;font-size:21px;font-weight:700;color:var(--red);margin-bottom:6px">Tu período gratuito finalizó</div>
         <p style="font-size:14px;color:#7A1520;line-height:1.65;margin:0">Los 45 días sin cobro terminaron. Para seguir publicando avisos en el canal, contrata un plan escribiéndonos al <strong>+56 9 6594 5170</strong>.</p>`;
     } else {
       const urgente = d<=7;
       banner.style.background = urgente?'var(--warn-bg)':'var(--green-bg)';
       banner.style.border = urgente?'1.5px solid #F0C070':'1.5px solid var(--green-l)';
       banner.style.borderLeft = urgente?'4px solid var(--warn)':'4px solid var(--green)';
-      banner.innerHTML = `<div style="font-family:'Barlow Condensed',sans-serif;font-size:21px;font-weight:700;color:${urgente?'var(--warn)':'var(--green)'};margin-bottom:6px">${urgente?'⏰':'🎁'} Período gratuito — quedan ${d} ${d===1?'día':'días'}</div>
-        <p style="font-size:14px;color:${urgente?'#6B4500':'#1A5C38'};line-height:1.65;margin:0">Estás en tu período de <strong>45 días sin cobro</strong>. Publica y prueba el canal sin costo. ${urgente?'Cuando termine, deberás contratar un plan para seguir publicando. Escríbenos al <strong>+56 9 6594 5170</strong>.':'Al finalizar, podrás contratar el plan que mejor se ajuste a tu operación.'}</p>`;
+      banner.innerHTML = `<div style="font-family:'DM Sans',sans-serif;font-size:21px;font-weight:700;color:${urgente?'var(--warn)':'var(--green)'};margin-bottom:6px">${urgente?'⏰':'🎁'} Período gratuito — quedan ${d} ${d===1?'día':'días'}</div>
+        <p style="font-size:14px;color:${urgente?'#6B4500':'#2a9d8f'};line-height:1.65;margin:0">Estás en tu período de <strong>45 días sin cobro</strong>. Publica y prueba el canal sin costo. ${urgente?'Cuando termine, deberás contratar un plan para seguir publicando. Escríbenos al <strong>+56 9 6594 5170</strong>.':'Al finalizar, podrás contratar el plan que mejor se ajuste a tu operación.'}</p>`;
     }
   }
 }
@@ -3746,11 +3899,11 @@ function renderCuota(targetId){
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
         <div>
           <div style="font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:${col};margin-bottom:6px">${vencido?'Período gratuito finalizado':'Período sin cobro'}</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:#fff;line-height:1.1">Plan Gratuito</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:26px;font-weight:700;color:#fff;line-height:1.1">Plan Gratuito</div>
           <div style="font-size:13.5px;color:#7A9AB8;margin-top:4px">${esc(c.empresa)} · ${usados} ${usados===1?'aviso publicado':'avisos publicados'}</div>
         </div>
         <div style="text-align:right">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:700;color:${col};line-height:1">${vencido?'0':dias}</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:38px;font-weight:700;color:${col};line-height:1">${vencido?'0':dias}</div>
           <div style="font-size:12.5px;color:#7A9AB8">${vencido?'días restantes':dias===1?'día restante':'días restantes'}</div>
         </div>
       </div>
@@ -3775,11 +3928,11 @@ function renderCuota(targetId){
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
       <div>
         <div style="font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Tu plan activo</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;color:#fff;line-height:1.1">${c.plan||'Sin plan asignado'}</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:26px;font-weight:700;color:#fff;line-height:1.1">${c.plan||'Sin plan asignado'}</div>
         <div style="font-size:13.5px;color:#7A9AB8;margin-top:4px">${esc(c.empresa)}</div>
       </div>
       <div style="text-align:right">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:700;color:${color};line-height:1">${restantes}</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:38px;font-weight:700;color:${color};line-height:1">${restantes}</div>
         <div style="font-size:12.5px;color:#7A9AB8">${ilimitado?'avisos ilimitados':'avisos disponibles'}</div>
       </div>
     </div>
@@ -4520,7 +4673,7 @@ function autocompletarEmpresa(){
   if(wp0 && !document.getElementById('nota-autocompletado')){
     const nota = document.createElement('div');
     nota.id = 'nota-autocompletado';
-    nota.style.cssText = 'background:var(--green-bg);border:1px solid var(--green-l);border-left:3px solid var(--green);border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:13.5px;color:#1A5C38;line-height:1.6';
+    nota.style.cssText = 'background:var(--green-bg);border:1px solid var(--green-l);border-left:3px solid var(--green);border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:13.5px;color:#2a9d8f;line-height:1.6';
     nota.innerHTML = `✓ <strong>Datos cargados desde tu enrolamiento.</strong> Estos campos provienen del registro de ${esc(c.empresa)} y no requieren edición. Si algún dato cambió, escríbenos al +56 9 6594 5170.`;
     wp0.insertBefore(nota, wp0.firstChild);
   }
@@ -4549,7 +4702,7 @@ function renderPreview(){
   el.innerHTML = `
     <div style="color:var(--gold);font-weight:700;font-size:12.5px;letter-spacing:.08em;margin-bottom:10px">🔷 MNT-2026-XXX · Aviso validado MANTEWORK</div>
     <div style="font-weight:700;font-size:16px;margin-bottom:10px">⚙️ ${g('f_cargo')||'[Cargo]'} — ${empTxt}</div>
-    <div style="margin-bottom:5px">📍 ${ubiTxt}</div>
+    <div style="margin-bottom:5px"><b>Ubicación:</b> ${ubiTxt}</div>
     <div style="margin-bottom:5px">🕐 Turno: ${g('f_turno')||'[Turno]'} · Contrato: ${g('f_contrato')||'[Contrato]'}</div>
     <div style="margin-bottom:5px">🎓 ${g('f_educacion')||'[Nivel educacional]'} · ${g('f_experiencia')||'[Experiencia]'}</div>
     <div style="margin-bottom:5px">📋 Requisitos: ${g('f_req')||'[Requisitos]'}</div>
@@ -4570,16 +4723,18 @@ function renderPublico(){
   let activos = DB.avisos.filter(a=>a.estado==='activo' && !_postulacionCerrada(a));
   // Filtros públicos (búsqueda, región, grupo, nivel) + poblar selects sin perder la selección
   const _v=id=>{const e=document.getElementById(id);return e?e.value:'';};
-  const _pobla=(id,vals)=>{const e=document.getElementById(id); if(!e) return; const cur=e.value;
+  const _pobla=(id,vals,orden)=>{const e=document.getElementById(id); if(!e) return; const cur=e.value;
     while(e.options.length>1) e.remove(1);
-    [...new Set(vals.filter(Boolean))].sort().forEach(v=>{const o=document.createElement('option');o.textContent=v;e.appendChild(o);});
+    let lista=[...new Set(vals.filter(Boolean))];
+    lista = orden ? lista.sort((a,b)=>{const ia=orden.indexOf(a), ib=orden.indexOf(b); return (ia<0?99:ia)-(ib<0?99:ib) || a.localeCompare(b);}) : lista.sort();
+    lista.forEach(v=>{const o=document.createElement('option');o.textContent=v;e.appendChild(o);});
     e.value=cur;};
-  _pobla('fp-region', activos.map(a=>a.region));
+  _pobla('fp-region', activos.map(a=>_normRegion(a.region)), ORDEN_REGIONES);
   _pobla('fp-empresa', activos.map(a=>a.empresa));
   const q='';
   const fr=_v('fp-region'); const fg=_v('fp-grupo'); const fe=_v('fp-empresa');
   if(q) activos = activos.filter(a=>((a.cargo||'')+' '+(a.empresa||'')+' '+(a.ciudad||'')).toLowerCase().includes(q));
-  if(fr) activos = activos.filter(a=>a.region===fr);
+  if(fr) activos = activos.filter(a=>_normRegion(a.region)===fr);
   if(fg) activos = activos.filter(a=>a.grupo===fg);
   if(fe) activos = activos.filter(a=>a.empresa===fe);
   // Orden: más recientes primero
@@ -4596,13 +4751,13 @@ function renderPublico(){
     const ubiTxt = esc(vFae ? ([a.lugar,a.ciudad].filter(Boolean).join(', ')||a.region) : a.region);
     return `<div class="aviso">
       <div class="av-left">
-        <div class="av-num">${nroSeg(a.id)} · Aviso validado MANTEWORK${(a.fechaAprobacion && (Date.now()-a.fechaAprobacion.getTime())<48*36e5)?' · <span style="background:var(--green);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:100px">NUEVO</span>':''} <button onclick="compartirAviso(${a.id})" title="Compartir por WhatsApp" style="float:right;background:none;border:1px solid var(--line);border-radius:8px;padding:3px 10px;font-size:12px;cursor:pointer;color:var(--navy)">📤 Compartir</button></div>
+        <div class="av-num">${nroSeg(a.id)} · Aviso validado MANTEWORK${(a.fechaAprobacion && (Date.now()-a.fechaAprobacion.getTime())<48*36e5)?' · <span style="background:var(--green);color:#fff;font-size:10px;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:100px">NUEVO</span>':''} <button onclick="compartirAviso(${a.id})" title="Compartir por WhatsApp" style="float:right;background:none;border:1px solid var(--line);border-radius:8px;padding:3px 10px;font-size:12px;cursor:pointer;color:var(--navy)">Compartir ↗</button></div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap">
           <div class="av-cargo">${esc(a.cargo)}</div>
-          ${(!vEmp||!vFae)?'<span class="badge bg-pend">🔒 Confidencial</span>':''}
+          ${(!vEmp||!vFae)?'<span class="badge bg-pend">Confidencial</span>':''}
         </div>
         <div class="av-emp">${empTxt} · ${ubiTxt}</div>
-        <div class="av-tags"><span class="av-tag">📍 ${a.region}</span><span class="av-tag">🕐 ${esc(a.turno)}</span><span class="av-tag">📋 ${esc(a.contrato)}</span>${a.experiencia?`<span class="av-tag">🎓 ${esc(a.experiencia)}</span>`:''}</div>
+        <div class="av-tags"><span class="av-tag">${_normRegion(a.region)||a.region}</span><span class="av-tag">${esc(a.turno)}</span><span class="av-tag">${esc(a.contrato)}</span>${a.experiencia?`<span class="av-tag">Exp. ${esc(a.experiencia)}</span>`:''}</div>
       </div>
       <div class="av-right">
         <span class="av-check">✓ Aviso validado</span>
@@ -4792,7 +4947,7 @@ function renderAdmin(){
       ah.style.background = color==='var(--red)'?'var(--red-bg)':color==='var(--warn)'?'var(--warn-bg)':'#EDEDF0';
       ah.style.border = `1.5px solid ${color==='var(--red)'?'#F0B0B0':color==='var(--warn)'?'#F0C070':'var(--line)'}`;
       ah.style.borderLeft = `4px solid ${color}`;
-      ah.innerHTML = `<div style="font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:${color};margin-bottom:6px">${icono} ${titulo}</div>
+      ah.innerHTML = `<div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:${color};margin-bottom:6px">${icono} ${titulo}</div>
         <div style="font-size:13.5px;color:var(--sub);line-height:1.6">${texto}</div>`;
       iniciarRelojRepub();
     }
@@ -4833,7 +4988,7 @@ function renderAdmin(){
   else{pv.style.display='none'; const bl=document.getElementById('bloque-lote'); if(bl) bl.style.display='flex';
     pl.innerHTML=pend.map(a=>`<div class="arow arow-pend" id="ar-${a.id}">
       <input type="checkbox" class="chk-aviso" value="${a.id}" onchange="contarLote()" style="accent-color:var(--green);width:18px;height:18px;flex-shrink:0;cursor:pointer">
-      <div class="arow-info"><div class="arow-cargo">${esc(a.cargo)}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${(a.verEmpresa===false||a.verFaena===false)?' · <span style="color:var(--warn);font-weight:600">🔒 Confidencial</span>':''}${a.sinCobro?' · <span style="color:var(--green);font-weight:600">🎁 SIN COBRO</span>':''}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
+      <div class="arow-info"><div class="arow-cargo">${esc(a.cargo)}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${(a.verEmpresa===false||a.verFaena===false)?' · <span style="color:var(--warn);font-weight:600">Confidencial</span>':''}${a.sinCobro?' · <span style="color:var(--green);font-weight:600">🎁 SIN COBRO</span>':''}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
       <span class="pago-ok">${a.sinCobro?'🎁 Plan Gratuito':'✓ Verificado'}</span><span class="badge bg-pend">Pendiente</span>
       <div class="arow-acts">
         <button class="ab ab-v" onclick="editarAviso(${a.id})">✎ Editar</button>
@@ -4852,7 +5007,7 @@ function renderAdmin(){
     const _fpub = a.fechaAprobacion ? new Date(a.fechaAprobacion) : null;
     const _fpubStr = _fpub ? _fpub.toLocaleDateString('es-CL',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric',timeZone:'America/Santiago'})+' '+_fpub.toLocaleTimeString('es-CL',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'America/Santiago'}) : '—';
     return`<div class="arow arow-activo fila-activo" id="ar-${a.id}" data-id="${a.id}">
-      <div class="arow-info"><div class="arow-cargo"><input type="checkbox" class="selcanal" data-id="${a.id}" onchange="actualizarBoletinBtn()" style="margin-right:7px;vertical-align:-1px">${esc(a.cargo)} <span style="font-size:10px;font-weight:400;color:#9CA3AF;letter-spacing:0;vertical-align:1px" title="Publicado en sitio web">${_fpubStr}</span>${_postulacionCerrada(a)?` <span style="background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="La fecha de cierre de postulación ya pasó — el sitio dejó de mostrarlo automáticamente. Ciérralo (o elimínalo) y recuerda borrar el mensaje en WhatsApp.">⏰ POSTULACIÓN CERRADA</span>`:''}${esGratuito?` <span style="background:#7C6BAE;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="Publicado durante el período de prueba gratuita — visible solo para el administrador">GRATUITO</span>`:''}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${a.fuente?` · <span style="color:#2E7D5B;font-weight:600">🌐 ${a.fuente}</span>`:''}${a.nReenvios?` · <span style="color:#7C6BAE;font-weight:600">↺ Reenviado ${a.nReenvios}×</span>`:''}${a.publicadoCanal?` · <span style="color:#2E7D5B;font-weight:700" title="Copiado al boletín el ${new Date(a.publicadoCanal).toLocaleDateString('es-CL')}">📣 Publicado en canal</span>`:` · <span style="color:#B8860B;font-weight:600">⏳ Falta publicar en canal</span>`}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
+      <div class="arow-info"><div class="arow-cargo"><input type="checkbox" class="selcanal" data-id="${a.id}" onchange="actualizarBoletinBtn()" style="margin-right:7px;vertical-align:-1px">${esc(a.cargo)} <span style="font-size:10px;font-weight:400;color:#9CA3AF;letter-spacing:0;vertical-align:1px" title="Publicado en sitio web">${_fpubStr}</span>${_postulacionCerrada(a)?` <span style="background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="La fecha de cierre de postulación ya pasó — el sitio dejó de mostrarlo automáticamente. Ciérralo (o elimínalo) y recuerda borrar el mensaje en WhatsApp.">⏰ POSTULACIÓN CERRADA</span>`:''}${esGratuito?` <span style="background:#7C6BAE;color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:100px;vertical-align:2px" title="Publicado durante el período de prueba gratuita — visible solo para el administrador">GRATUITO</span>`:''}</div><div class="arow-det">${nroSeg(a.id)} · ${esc(a.empresa)} · ${a.region} · Plan ${a.plan}${a.fuente?` · <span style="color:#2a9d8f;font-weight:600">🌐 ${a.fuente}</span>`:''}${a.nReenvios?` · <span style="color:#7C6BAE;font-weight:600">↺ Reenviado ${a.nReenvios}×</span>`:''}${a.publicadoCanal?` · <span style="color:#2a9d8f;font-weight:700" title="Copiado al boletín el ${new Date(a.publicadoCanal).toLocaleDateString('es-CL')}">📣 Publicado en canal</span>`:` · <span style="color:#B8860B;font-weight:600">⏳ Falta publicar en canal</span>`}${a.editadoPorAdmin?` · <span style="color:#1A5C9E;font-weight:600" title="Última edición: ${a.fechaEdicion?a.fechaEdicion.toLocaleString('es-CL'):''}">✎ Editado ${a.nEdiciones}×</span>`:''}</div></div>
       <span class="badge bg-green">Activo</span>
       ${d!==null?`<span class="arow-dias ${diasClass(d)}">${diasLabel(d)}</span>`:''}
       <div class="arow-acts">
