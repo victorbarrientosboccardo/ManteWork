@@ -1542,6 +1542,7 @@ footer{background:var(--navy);margin-top:80px}
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button class="ab ab-ok" style="font-size:12px;padding:7px 13px" onclick="descargarRespaldo()">⬇ Descargar respaldo</button>
+          <button class="ab ab-v" style="font-size:12px;padding:7px 13px" onclick="descargarAvisosJson()" title="Snapshot de los avisos públicos — súbelo al repositorio junto a index.html. Es el respaldo que ve el visitante cuando su red corporativa bloquea la nube.">⬇ avisos.json (respaldo web)</button>
           <label class="ab ab-v" style="font-size:12px;padding:7px 13px;cursor:pointer">⬆ Restaurar<input type="file" accept=".json" style="display:none" onchange="restaurarRespaldo(this)"></label>
 
         </div>
@@ -1829,7 +1830,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.29';
+const APP_VERSION = '3.18.30';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1841,6 +1842,7 @@ function esc(s){
 
 const VERSIONES = [
   { v:'3.18.11', fecha:'22-08-2026', cambios:['Botón de versión ahora muestra siempre la versión real: el texto se inyecta dinámicamente desde APP_VERSION al cargar la página — antes estaba hardcodeado en el HTML y quedaba desfasado con cada actualización']},
+  { v:'3.18.30', fecha:'10-10-2026', cambios:['Corrección estructural: el sitio ahora se ve en redes corporativas y computadores nuevos. Causa del problema: los avisos vivían solo en la nube (Supabase) y muchos proxies de empresa bloquean ese dominio — el visitante nuevo veía el sitio vacío. Solución en tres capas: (1) nuevo snapshot avisos.json publicado en el propio dominio — si la nube no responde, el sitio carga ese respaldo automáticamente (ningún firewall lo bloquea porque viene del mismo sitio); (2) botón «⬇ avisos.json (respaldo web)» en Datos y respaldos para generarlo — se sube al repositorio junto a index.html cada vez que cambian los avisos; (3) detector de navegador antiguo en código ES5: Internet Explorer y navegadores viejos, donde el sitio no puede correr, ahora muestran un aviso claro en vez de una página vacía'] },
   { v:'3.18.29', fecha:'06-09-2026', cambios:['Alineación con el Manual de Normas Gráficas Invictum v2.0: paleta exacta del manual (oro #b8975a, verde acento MANTEWORK #2a9d8f, fondo crema #f8f6f2, gris #6b6b6b); tipografía DM Sans en todo el sitio (reemplaza Barlow Condensed e Inter); wordmark «Mante» crema + «Work» en verde sobre navy; botón primario en verde acento (el oro queda reservado a fondos navy — regla «oro nunca sobre crema»); emojis eliminados de la interfaz pública (tags de la tarjeta del aviso, botón Compartir, badge Confidencial) según la norma «nunca emoji en piezas de marca» — se mantienen solo en los textos destinados a WhatsApp, donde son convención del canal y no pieza gráfica'] },
   { v:'3.18.28', fecha:'06-09-2026', cambios:['Portal público: filtro de regiones corregido — las variantes de texto que traían las capturas («1ra Reg. Tarapacá», «II Region de Antofagasta», «Tarapacá», etc.) ahora se unifican en un nombre canónico por región, el dropdown queda ordenado geográficamente de norte a sur, y las combinaciones («Atacama / Antofagasta») se agrupan como «Multirregión». La misma normalización se aplica a los hashtags de la difusión (#Tarapaca en vez de #1raRegTarapaca) y el filtro encuentra todos los avisos de la región sin importar cómo venía escrito el texto original'] },
   { v:'3.18.27', fecha:'26-08-2026', cambios:['Analítica de Datos: nuevo panel «📱 Métricas del canal de WhatsApp» — registro manual semanal de seguidores y vistas promedio (WhatsApp no expone estadísticas agregadas de canales). Muestra historial con flechas de tendencia (▲▼), calcula la tasa de vistas automáticamente y la contextualiza contra el rango sano de 20–40%. Los datos se guardan en la nube junto al resto (Supabase) y viajan en los respaldos'] },
@@ -3252,6 +3254,45 @@ async function _sb(metodo, ruta, body){
 }
 
 // Carga el estado completo desde la nube
+// ═══ RESPALDO ESTÁTICO DEL SITIO PÚBLICO (v3.18.30) ═══
+// Muchas redes corporativas (proxies de empresas mineras incluidas) bloquean
+// *.supabase.co. Para esos visitantes, el sitio carga un snapshot avisos.json
+// publicado en el MISMO dominio (GitHub Pages) — ese fetch nunca lo bloquea
+// un firewall porque es el propio sitio. Solo lectura: el panel admin sigue
+// necesitando la nube.
+async function _fallbackSnapshot(){
+  if(DB.avisos.length) return false;      // ya hay datos (local o nube) — no hace falta
+  try{
+    const res = await fetch('avisos.json?v=' + Date.now(), {cache:'no-store'});
+    if(!res.ok) return false;
+    const snap = await res.json();
+    if(!snap || !Array.isArray(snap.avisos) || !snap.avisos.length) return false;
+    snap.avisos.forEach(a => CAMPOS_FECHA_AVISO.forEach(k => { if(a[k]) a[k] = new Date(a[k]); }));
+    DB.avisos = snap.avisos;
+    console.info('Catálogo cargado desde avisos.json (snapshot del ' + (snap.generado||'—') + ') — la nube no estaba disponible.');
+    renderPublico();
+    return true;
+  }catch(e){ return false; }
+}
+
+// Genera el snapshot avisos.json para subir al repositorio (solo campos públicos
+// + fecha de cierre para la caducidad automática; sin zona de mercado ni datos internos).
+function descargarAvisosJson(){
+  const pub = DB.avisos.filter(a => a.estado==='activo').map(a => ({
+    id:a.id, cargo:a.cargo, empresa:a.empresa, verEmpresa:a.verEmpresa,
+    region:a.region, ciudad:a.ciudad, lugar:a.lugar, turno:a.turno,
+    contrato:a.contrato, experiencia:a.experiencia, requisitos:a.requisitos,
+    grupo:a.grupo, estado:a.estado, fechaAprobacion:a.fechaAprobacion,
+    linkCorto:a.linkCorto, postula:a.postula, plan:a.plan,
+    mercado: a.mercado && a.mercado.fcierre ? { fcierre:a.mercado.fcierre } : undefined
+  }));
+  const blob = new Blob([JSON.stringify({generado:new Date().toISOString(), version:APP_VERSION, avisos:pub}, null, 1)], {type:'application/json'});
+  const u = URL.createObjectURL(blob);
+  const el = document.createElement('a'); el.href=u; el.download='avisos.json';
+  document.body.appendChild(el); el.click(); el.remove(); URL.revokeObjectURL(u);
+  toast('✓ avisos.json generado ('+pub.length+' avisos) — súbelo al repositorio junto a index.html');
+}
+
 async function cargarDesdeNube(){
   try {
     const filas = await _sb('GET', 'mantework_datos?id=eq.1&select=pack');
@@ -3566,8 +3607,13 @@ if(nubeActiva()){
       renderPublico();
       if(SESSION && SESSION.rol==='admin' && typeof renderAdmin==='function') renderAdmin();
       if(SESSION && SESSION.rol==='empresa' && typeof renderMisAvisos==='function') renderMisAvisos();
+    } else {
+      // Nube inaccesible (red corporativa, firewall, caída): snapshot del mismo dominio
+      _fallbackSnapshot();
     }
-  });
+  }).catch(()=>{ _fallbackSnapshot(); });
+} else {
+  _fallbackSnapshot();
 }
 
 let SESSION = { rol:null, user:null, empresa:null }; // rol: null | 'admin' | 'cliente'
@@ -5924,6 +5970,28 @@ renderPublico(); pingVisita();
 updateNav();
 
 sincronizarGrupos();
+</script>
+<script>
+/* DETECTOR DE NAVEGADOR ANTIGUO (v3.18.30) — escrito en JavaScript antiguo (ES5)
+   a propósito: es el ÚNICO bloque que sí corre en Internet Explorer y navegadores
+   viejos, donde el resto del sitio falla en silencio por sintaxis moderna.
+   Detecta por presencia de funciones que llegaron junto con la sintaxis que usa
+   el sitio (async/await, template literals): si faltan, el visitante ve un aviso
+   claro en vez de una página vacía. */
+(function(){
+  var ok = true;
+  try{
+    if(!window.fetch || !window.Promise || !window.Symbol) ok = false;
+    if(ok && (!String.prototype.normalize || !String.prototype.padStart)) ok = false;
+    if(ok && !Object.entries) ok = false;
+  }catch(e){ ok = false; }
+  if(!ok){
+    var d = document.createElement('div');
+    d.setAttribute('style','position:fixed;top:0;left:0;right:0;z-index:99999;background:#A81E28;color:#ffffff;padding:14px 18px;font-family:Arial,sans-serif;font-size:14px;line-height:1.5;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.3)');
+    d.innerHTML = '<b>Tu navegador es demasiado antiguo y no puede mostrar los avisos de MANTEWORK.</b><br>Abre <b>mantework.com</b> en Google Chrome, Microsoft Edge o Firefox actualizado — o desde el navegador de tu celular.';
+    if(document.body){ document.body.insertBefore(d, document.body.firstChild); }
+  }
+})();
 </script>
 </body>
 </html>
