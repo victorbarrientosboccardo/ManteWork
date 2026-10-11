@@ -1830,7 +1830,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.31';
+const APP_VERSION = '3.18.32';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1842,6 +1842,7 @@ function esc(s){
 
 const VERSIONES = [
   { v:'3.18.11', fecha:'22-08-2026', cambios:['Botón de versión ahora muestra siempre la versión real: el texto se inyecta dinámicamente desde APP_VERSION al cargar la página — antes estaba hardcodeado en el HTML y quedaba desfasado con cada actualización']},
+  { v:'3.18.32', fecha:'11-10-2026', cambios:['CAUSA RAÍZ encontrada y corregida (reproducida en navegador simulado con la nube respondiendo): la guardia anti-pérdida de v3.17.3 se disparaba contra sí misma en cada visitante nuevo — el auto-guardado del render inicial (seed demo) marcaba un timestamp «ahora» que siempre ganaba al de la nube, la nube era rechazada y el visitante quedaba viendo 1 aviso de demostración en vez del catálogo. Presente desde hace semanas en todo computador nuevo; invisible para el administrador porque el sitio lo lleva directo al panel, nunca al home. La guardia ahora solo defiende una copia local que existía ANTES de la carga actual; el caso legítimo que protege (trabajo del admin más nuevo que una nube pausada) sigue intacto'] },
   { v:'3.18.31', fecha:'11-10-2026', cambios:['Corrección del respaldo web (detectada reproduciendo el sitio en un navegador simulado sin acceso a la nube): el visitante nuevo veía solo el aviso de demostración «Minera Prueba SpA» porque el seed demo hacía creer al respaldo que ya había datos y el snapshot nunca se cargaba. Ahora el snapshot reemplaza el demo y solo respeta una copia local REAL del usuario. Blindaje adicional: una copia proveniente del snapshot se marca de solo lectura — jamás puede subirse a la nube por la guardia anti-pérdida, y la marca se limpia sola cuando la nube vuelve a estar disponible'] },
   { v:'3.18.30', fecha:'10-10-2026', cambios:['Corrección estructural: el sitio ahora se ve en redes corporativas y computadores nuevos. Causa del problema: los avisos vivían solo en la nube (Supabase) y muchos proxies de empresa bloquean ese dominio — el visitante nuevo veía el sitio vacío. Solución en tres capas: (1) nuevo snapshot avisos.json publicado en el propio dominio — si la nube no responde, el sitio carga ese respaldo automáticamente (ningún firewall lo bloquea porque viene del mismo sitio); (2) botón «⬇ avisos.json (respaldo web)» en Datos y respaldos para generarlo — se sube al repositorio junto a index.html cada vez que cambian los avisos; (3) detector de navegador antiguo en código ES5: Internet Explorer y navegadores viejos, donde el sitio no puede correr, ahora muestran un aviso claro en vez de una página vacía'] },
   { v:'3.18.29', fecha:'06-09-2026', cambios:['Alineación con el Manual de Normas Gráficas Invictum v2.0: paleta exacta del manual (oro #b8975a, verde acento MANTEWORK #2a9d8f, fondo crema #f8f6f2, gris #6b6b6b); tipografía DM Sans en todo el sitio (reemplaza Barlow Condensed e Inter); wordmark «Mante» crema + «Work» en verde sobre navy; botón primario en verde acento (el oro queda reservado a fondos navy — regla «oro nunca sobre crema»); emojis eliminados de la interfaz pública (tags de la tarjeta del aviso, botón Compartir, badge Confidencial) según la norma «nunca emoji en piezas de marca» — se mantienen solo en los textos destinados a WhatsApp, donde son convención del canal y no pieza gráfica'] },
@@ -3316,7 +3317,12 @@ async function cargarDesdeNube(){
       // al revés: subir lo local a la nube. Evita perder trabajo como los 89 avisos del 18-08.
       try{
         const localTs = localStorage.getItem('mw_guardado_local');
-        if(pack.guardado && localTs && new Date(localTs) > new Date(pack.guardado) && localStorage.getItem('mw_es_snapshot') !== '1' && (DB.avisos.length || CLIENTES.length)){
+        // v3.18.32 — la guardia solo defiende una copia local que EXISTÍA ANTES de esta
+        // carga (window._mwHuboLocal). Sin esto, el auto-guardado del render inicial (con el
+        // seed demo) ponía un timestamp "ahora" que siempre ganaba a la nube: todo visitante
+        // nuevo quedaba viendo 1 aviso demo y la nube era rechazada. Bug presente desde
+        // v3.17.3 — causa real de «no se ve la lista en otros computadores».
+        if(pack.guardado && localTs && window._mwHuboLocal && new Date(localTs) > new Date(pack.guardado) && localStorage.getItem('mw_es_snapshot') !== '1' && (DB.avisos.length || CLIENTES.length)){
           console.warn('Local más nuevo que la nube (' + localTs + ' > ' + pack.guardado + '): subiendo lo local.');
           guardarEnNube();
           return true;
