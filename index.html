@@ -1830,7 +1830,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.32';
+const APP_VERSION = '3.18.33';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1842,6 +1842,7 @@ function esc(s){
 
 const VERSIONES = [
   { v:'3.18.11', fecha:'22-08-2026', cambios:['Botón de versión ahora muestra siempre la versión real: el texto se inyecta dinámicamente desde APP_VERSION al cargar la página — antes estaba hardcodeado en el HTML y quedaba desfasado con cada actualización']},
+  { v:'3.18.33', fecha:'18-10-2026', cambios:['Cierre definitivo del caso «otros computadores muestran el aviso demo»: el fix v3.18.32 era insuficiente porque el auto-guardado de cada render renovaba el sello de tiempo local en cada visita — un navegador contaminado (como Edge tras la semana del bug) volvía a ganarle a la nube eternamente. Tres cambios: (1) el sello de «trabajo local» ahora se escribe solo cuando un usuario LOGUEADO edita — el visitante anónimo nunca lo renueva; (2) el pack local registra si fue guardado con sesión, y solo ese cuenta como copia que la guardia anti-pérdida defiende o que bloquea el snapshot de respaldo; (3) migración desintoxicante automática: al cargar, un pack local sin sesión pierde su sello y la nube vuelve a mandar — todos los navegadores contaminados estas semanas se arreglan solos al recargar, sin acción del visitante. La protección original de v3.17.3 (trabajo del admin vs nube pausada) queda intacta'] },
   { v:'3.18.32', fecha:'11-10-2026', cambios:['CAUSA RAÍZ encontrada y corregida (reproducida en navegador simulado con la nube respondiendo): la guardia anti-pérdida de v3.17.3 se disparaba contra sí misma en cada visitante nuevo — el auto-guardado del render inicial (seed demo) marcaba un timestamp «ahora» que siempre ganaba al de la nube, la nube era rechazada y el visitante quedaba viendo 1 aviso de demostración en vez del catálogo. Presente desde hace semanas en todo computador nuevo; invisible para el administrador porque el sitio lo lleva directo al panel, nunca al home. La guardia ahora solo defiende una copia local que existía ANTES de la carga actual; el caso legítimo que protege (trabajo del admin más nuevo que una nube pausada) sigue intacto'] },
   { v:'3.18.31', fecha:'11-10-2026', cambios:['Corrección del respaldo web (detectada reproduciendo el sitio en un navegador simulado sin acceso a la nube): el visitante nuevo veía solo el aviso de demostración «Minera Prueba SpA» porque el seed demo hacía creer al respaldo que ya había datos y el snapshot nunca se cargaba. Ahora el snapshot reemplaza el demo y solo respeta una copia local REAL del usuario. Blindaje adicional: una copia proveniente del snapshot se marca de solo lectura — jamás puede subirse a la nube por la guardia anti-pérdida, y la marca se limpia sola cuando la nube vuelve a estar disponible'] },
   { v:'3.18.30', fecha:'10-10-2026', cambios:['Corrección estructural: el sitio ahora se ve en redes corporativas y computadores nuevos. Causa del problema: los avisos vivían solo en la nube (Supabase) y muchos proxies de empresa bloquean ese dominio — el visitante nuevo veía el sitio vacío. Solución en tres capas: (1) nuevo snapshot avisos.json publicado en el propio dominio — si la nube no responde, el sitio carga ese respaldo automáticamente (ningún firewall lo bloquea porque viene del mismo sitio); (2) botón «⬇ avisos.json (respaldo web)» en Datos y respaldos para generarlo — se sube al repositorio junto a index.html cada vez que cambian los avisos; (3) detector de navegador antiguo en código ES5: Internet Explorer y navegadores viejos, donde el sitio no puede correr, ahora muestran un aviso claro en vez de una página vacía'] },
@@ -3411,10 +3412,17 @@ const STORE_KEY = 'mantework_datos_v1';
 const CAMPOS_FECHA_AVISO = ['fechaAprobacion','fechaAclaracion','fechaEdicion','fechaCreacion','fechaReenvio'];
 const CAMPOS_FECHA_CLI   = ['fechaEnrol','fechaActivacion','fechaUltimoRecordatorio','fechaPlan'];
 
+function _mwConRol(){ try{ return !!(SESSION && SESSION.rol); }catch(e){ return false; } }
 function guardarDatos(){
   try {
-    const pack = { avisos: DB.avisos, clientes: CLIENTES, metricasCanal: DB.metricasCanal||[], guardado: new Date().toISOString(), version: APP_VERSION };
-    localStorage.setItem(STORE_KEY, JSON.stringify(pack)); localStorage.setItem('mw_guardado_local', new Date().toISOString());
+    const _rol = _mwConRol();
+    const pack = { avisos: DB.avisos, clientes: CLIENTES, metricasCanal: DB.metricasCanal||[], guardado: new Date().toISOString(), version: APP_VERSION, conSesion: _rol || window._mwPackConSesion === true };
+    localStorage.setItem(STORE_KEY, JSON.stringify(pack));
+    // v3.18.33 — el sello de "trabajo local" se escribe SOLO cuando hay un usuario logueado
+    // editando. El auto-guardado de cada render de un visitante anónimo ya NO renueva el
+    // sello: era eso lo que mantenía a los navegadores contaminados ganándole a la nube
+    // en cada visita (causa de «se ve el aviso demo en otros computadores»).
+    if(_rol){ localStorage.setItem('mw_guardado_local', new Date().toISOString()); window._mwPackConSesion = true; }
   } catch(e) { /* almacenamiento no disponible — modo memoria */ }
   guardarEnNube();
 }
@@ -3482,6 +3490,7 @@ function cargarDatos(){
     pack.clientes.forEach(c => CAMPOS_FECHA_CLI.forEach(k => { if(c[k]) c[k] = new Date(c[k]); }));
     DB.avisos = pack.avisos;
     CLIENTES.length = 0; pack.clientes.forEach(c => CLIENTES.push(c));
+    window._mwPackConSesion = !!pack.conSesion;  // v3.18.33: ¿lo guardó un usuario logueado?
     return true;
   } catch(e) { return false; }
 }
@@ -3611,7 +3620,14 @@ function borrarDatosLocales(){
 // Restaurar datos: primero la nube (si está configurada), luego el navegador
 // _mwHuboLocal: true solo si el navegador tenía una copia local guardada por USO REAL
 // (no el seed demo, no un snapshot de respaldo de una visita anterior).
-window._mwHuboLocal = cargarDatos() && localStorage.getItem('mw_es_snapshot') !== '1';
+window._mwHuboLocal = cargarDatos() && window._mwPackConSesion === true && localStorage.getItem('mw_es_snapshot') !== '1';
+// v3.18.33 — MIGRACIÓN DESINTOXICANTE (one-shot por visita): los navegadores que visitaron
+// el sitio entre v3.17.3 y v3.18.32 guardaron el seed demo con un sello de tiempo que le
+// ganaba a la nube para siempre (el auto-guardado de cada render lo renovaba). Si el pack
+// local NO fue guardado por un usuario logueado, ese sello no representa trabajo de nadie:
+// se elimina, y la nube vuelve a mandar. El trabajo real del admin (pack con conSesion)
+// conserva su sello y la protección anti-pérdida de v3.17.3 intacta.
+if(window._mwPackConSesion !== true){ try{ localStorage.removeItem('mw_guardado_local'); }catch(e){} }
 importarCaptacion();
 if(nubeActiva()){
   cargarDesdeNube().then(ok => {
