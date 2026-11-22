@@ -17,7 +17,8 @@
   <meta name="twitter:image" content="https://www.mantework.com/icon-512.png">
 <link rel="manifest" href="manifest.json">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.anthropic.com https://*.supabase.co; frame-src 'none'; object-src 'none'; base-uri 'self'">
-<meta name="theme-color" content="#0D1B2A">
+<meta name="theme-color" content="#e1ebe3">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpolygon points='32,3 57.1,17.5 57.1,46.5 32,61 6.9,46.5 6.9,17.5' fill='%23b8975a'/%3E%3Cpolygon points='41.5,15.5 51,32 41.5,48.5 22.5,48.5 13,32 22.5,15.5' fill='%230d1b2a'/%3E%3Cpolygon points='38.5,20.7 45,32 38.5,43.3 25.5,43.3 19,32 25.5,20.7' fill='%232a9d8f'/%3E%3C/svg%3E">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -26,13 +27,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-/* ══ TOKENS ══ */
+/* ══ TOKENS — Manual Normas Gráficas Invictum v2.15 ══ */
 :root{
   --navy:#0D1B2A;--navy2:#1A2F45;--navy3:#243F5A;
-  --gold:#b8975a;--gold-l:#E8D9B0;--gold-bg:#FBF3E2;
-  --ink:#1A1A1A;--sub:#6b6b6b;--line:#DDDDE0;
-  --bg:#f8f6f2;--card:#F2F2F2;--white:#FFFFFF;
-  --green:#2a9d8f;--green-bg:#EAF6EF;--green-l:#B4DBBF;
+  --gold:#b8975a;--gold-l:#E8D9B0;--gold-bg:#EAF5EF;
+  --ink:#1A1A1A;--sub:#3d5240;--line:#c8d8ca;
+  --bg:#e1ebe3;--card:#d4e6d7;--white:#FFFFFF;
+  --green:#2a9d8f;--green700:#1d6161;--green-bg:#EAF5EF;--green-l:#a0ccb8;
   --red:#A81E28;--red-bg:#FFF0F0;
   --warn:#805200;--warn-bg:#FFF4E0;
   --r:10px;--r2:14px;
@@ -47,14 +48,14 @@ input,select,textarea{font-family:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 .sec{padding:64px 0}.sec-alt{background:#DEDEDE}
 /* HEX */
-.hex{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:var(--gold);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);flex-shrink:0}
-.hex-i{width:38px;height:38px;background:var(--navy);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:20px;color:var(--gold)}
-.hdot{width:10px;height:10px;background:var(--gold);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);display:inline-block;flex-shrink:0}
+.hex{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:var(--green);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);flex-shrink:0}
+.hex-i{width:38px;height:38px;background:var(--navy);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:20px;color:var(--green)}
+.hdot{width:10px;height:10px;background:var(--green);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);display:inline-block;flex-shrink:0}
 /* BTNS */
 .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;padding:12px 24px;border-radius:8px;border:none;cursor:pointer;transition:all .15s}
 .btn-gold{background:var(--green);color:#fff}.btn-gold:hover{background:#238a7e;transform:translateY(-1px)}
-.btn-outline{background:transparent;color:var(--gold);border:1.5px solid rgba(196,160,74,.5)}.btn-outline:hover{border-color:var(--gold)}
-.btn-dark{background:var(--navy);color:var(--gold)}.btn-dark:hover{background:var(--navy2)}
+.btn-outline{background:transparent;color:var(--green);border:1.5px solid rgba(42,157,143,.4)}.btn-outline:hover{border-color:var(--green)}
+.btn-dark{background:var(--navy);color:var(--green)}.btn-dark:hover{background:var(--navy2)}
 .btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#14803F}
 .btn-ghost{background:transparent;color:var(--sub);border:1.5px solid var(--line)}.btn-ghost:hover{border-color:var(--sub)}
 .btn-sm{padding:8px 14px;font-size:13px}.btn-full{width:100%;justify-content:center}.btn-lg{padding:15px 32px;font-size:16px}
@@ -64,8 +65,8 @@ input,select,textarea{font-family:inherit}
 .bg-pend{background:var(--warn-bg);color:var(--warn)}.bg-red{background:var(--red-bg);color:var(--red)}
 .bg-blue{background:#E7F0FC;color:#1A5C9E}
 /* EYEBROW */
-.ey{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.ey::before{content:"";width:20px;height:2px;background:var(--gold);flex-shrink:0}
+.ey{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--green700);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.ey::before{content:"";width:20px;height:2px;background:var(--green);flex-shrink:0}
 .st{font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--navy);margin-bottom:12px}
 .ss{color:var(--sub);max-width:600px;font-size:16px;line-height:1.7;margin-bottom:36px}
 /* FORM */
@@ -75,7 +76,7 @@ input,select,textarea{font-family:inherit}
 .fl{display:block;font-size:13.5px;font-weight:600;color:var(--navy);margin-bottom:7px}
 .freq{color:var(--red)}.fhint{font-size:12px;color:#9AA5B8;margin-bottom:6px;margin-top:-3px}
 .fi,.fs,.ft{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:11px 15px;background:#FAFAFA;color:var(--ink);transition:.15s;font-size:15px;appearance:none}
-.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(196,160,74,.13)}
+.fi:focus,.fs:focus,.ft:focus{outline:none;border-color:var(--green);background:#fff;box-shadow:0 0 0 3px rgba(42,157,143,.13)}
 .ft{resize:vertical;min-height:80px}
 .fch{display:flex;align-items:center;gap:10px;font-size:14px;cursor:pointer;line-height:1.5;margin-bottom:8px}
 .fch input{accent-color:var(--navy);width:16px;height:16px;flex-shrink:0}
@@ -83,30 +84,30 @@ input,select,textarea{font-family:inherit}
 @media(max-width:500px){.fcheck2{grid-template-columns:1fr}}
 
 /* ══ NAVBAR ══ */
-nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px solid var(--gold)}
+nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:none}
 .nav-i{max-width:1120px;margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:12px;cursor:pointer}
 .bname{font-family:'DM Sans',sans-serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:.04em}
-.bname b{color:var(--gold)}
+.bname b{color:var(--green)}
 /* Nav niveles — se muestran/ocultan según rol */
 .nav-pub{display:flex;align-items:center;gap:2px}
 .nav-cli{display:none;align-items:center;gap:2px}
 .nav-adm{display:none;align-items:center;gap:2px}
 .nl{padding:8px 14px;font-size:14px;font-weight:500;color:#7A9AB8;border-radius:6px;cursor:pointer;border:none;background:none;transition:.15s}
 .nl:hover{color:#fff;background:rgba(255,255,255,.07)}
-.nl.act{color:var(--gold)}
-.nav-cta{margin-left:10px;padding:9px 20px;background:var(--gold);color:var(--navy);font-weight:700;font-size:14px;border-radius:8px;border:none;cursor:pointer;transition:.15s}
-.nav-cta:hover{background:#D4AF52}
+.nl.act{color:var(--green)}
+.nav-cta{margin-left:10px;padding:9px 20px;background:var(--green);color:#fff;font-weight:700;font-size:14px;border-radius:8px;border:none;cursor:pointer;transition:.15s}
+.nav-cta:hover{background:var(--green700)}
 .nav-user{display:flex;align-items:center;gap:10px;margin-left:16px}
 .nav-user-badge{font-size:12px;font-weight:700;padding:4px 12px;border-radius:100px}
-.badge-cli{background:rgba(196,160,74,.2);color:var(--gold)}
+.badge-cli{background:rgba(42,157,143,.15);color:var(--green700)}
 .badge-adm{background:rgba(26,92,56,.3);color:#4DC97A}
 .nav-logout{font-size:12.5px;color:#5A7A98;cursor:pointer;background:none;border:none;padding:4px 8px;transition:.15s}
 .nav-logout:hover{color:#fff}
 .nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
 .nav-burger span{width:22px;height:2px;background:#fff;display:block}
 @media(max-width:860px){
-  .nav-pub,.nav-cli,.nav-adm{display:none!important;position:absolute;top:66px;left:0;right:0;background:var(--navy);flex-direction:column;align-items:stretch;padding:14px 20px 22px;gap:2px;border-bottom:3px solid var(--gold)}
+  .nav-pub,.nav-cli,.nav-adm{display:none!important;position:absolute;top:66px;left:0;right:0;background:var(--navy);flex-direction:column;align-items:stretch;padding:14px 20px 22px;gap:2px;border-bottom:3px solid var(--green)}
   .nav-pub.open,.nav-cli.open,.nav-adm.open{display:flex!important}
   .nav-cta{margin:8px 0 0}.nav-burger{display:flex}
 }
@@ -115,34 +116,34 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .page{display:none}.page.active{display:block;animation:fi .2s ease}
 @keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-/* ══ HERO ══ */
-.hero{background:var(--navy);overflow:hidden;position:relative}
-.hgeo{position:absolute;right:-60px;top:-60px;width:520px;height:520px;background:var(--navy2);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);opacity:.55}
-.hgeo2{position:absolute;right:160px;bottom:-180px;width:300px;height:300px;background:var(--navy3);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);opacity:.4}
+/* ══ HERO — fondo verde suave (Manual v2.15 lám.2: navy SOLO nav+stats+footer) ══ */
+.hero{background:var(--bg);overflow:hidden;position:relative;border-bottom:1px solid var(--line)}
+.hgeo{position:absolute;right:-60px;top:-60px;width:520px;height:520px;background:rgba(42,157,143,.07);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);opacity:1}
+.hgeo2{position:absolute;right:160px;bottom:-180px;width:300px;height:300px;background:rgba(42,157,143,.05);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);opacity:1}
 .hero-in{position:relative;z-index:2;padding:80px 24px 60px;max-width:1120px;margin:0 auto}
-.htag{display:inline-flex;align-items:center;gap:8px;background:rgba(196,160,74,.13);border:1px solid rgba(196,160,74,.3);color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 16px;border-radius:100px;margin-bottom:24px}
-.hero h1{font-size:clamp(40px,6.5vw,70px);font-weight:800;color:#fff;max-width:800px;margin-bottom:18px}
-.hero h1 em{color:var(--gold);font-style:normal}
-.hero-sub{font-size:18px;color:#B0C8DE;max-width:640px;margin-bottom:32px;line-height:1.7}
+.htag{display:inline-flex;align-items:center;gap:8px;background:rgba(42,157,143,.12);border:1px solid rgba(42,157,143,.30);color:var(--green700);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 16px;border-radius:100px;margin-bottom:24px}
+.hero h1{font-size:clamp(40px,6.5vw,70px);font-weight:800;color:var(--navy);max-width:800px;margin-bottom:18px}
+.hero h1 em{color:var(--green700);font-style:normal}
+.hero-sub{font-size:18px;color:var(--sub);max-width:640px;margin-bottom:32px;line-height:1.7}
 .hbtns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px}
-.hnote{font-size:13px;color:#5A7A9E;display:flex;align-items:center;gap:7px}
-.hnote::before{content:"✓";color:var(--green-l)}
-.hpromo{display:inline-flex;align-items:center;gap:10px;background:rgba(196,160,74,.13);border:1px solid rgba(196,160,74,.3);border-radius:8px;padding:8px 16px;margin-top:10px;font-size:13px;color:var(--gold)}
-/* STATS */
-.stats{background:var(--navy2);border-top:1px solid rgba(196,160,74,.2)}
+.hnote{font-size:13px;color:var(--sub);display:flex;align-items:center;gap:7px}
+.hnote::before{content:"✓";color:var(--green)}
+.hpromo{display:inline-flex;align-items:center;gap:10px;background:rgba(42,157,143,.12);border:1px solid rgba(42,157,143,.30);border-radius:8px;padding:8px 16px;margin-top:10px;font-size:13px;color:var(--green700)}
+/* STATS — franja navy (estructura permitida Manual v2.15 lám.2) */
+.stats{background:var(--navy);border-top:1px solid rgba(42,157,143,.2)}
 .stats-in{max-width:1120px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:22px 20px;text-align:center;border-right:1px solid rgba(196,160,74,.12)}
+.stat{padding:22px 20px;text-align:center;border-right:1px solid rgba(42,157,143,.15)}
 .stat:last-child{border-right:none}
-.sn{font-family:'DM Sans',sans-serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1}
+.sn{font-family:'DM Sans',sans-serif;font-size:38px;font-weight:700;color:var(--green);line-height:1}
 .sl{font-size:12.5px;color:#6A8AAE;margin-top:4px}
 @media(max-width:700px){.stats-in{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}}
 
 /* ══ AVISOS ══ */
 .aviso-list{display:flex;flex-direction:column;gap:14px}
-.aviso{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r2);padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;transition:all .15s}
+.aviso{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:var(--r2);padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;transition:all .15s}
 .aviso:hover{box-shadow:0 6px 24px rgba(13,27,42,.10);transform:translateY(-2px)}
 .av-left{flex:1;min-width:260px}
-.av-num{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.1em;margin-bottom:6px}
+.av-num{font-size:11px;font-weight:700;color:var(--green700);letter-spacing:.1em;margin-bottom:6px}
 .av-cargo{font-family:'DM Sans',sans-serif;font-size:24px;font-weight:700;color:var(--navy)}
 .av-emp{font-size:14px;color:var(--sub);font-weight:500;margin:4px 0 10px}
 .av-tags{display:flex;gap:14px;flex-wrap:wrap}
@@ -158,14 +159,14 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 /* ══ STEPS / POLICY ══ */
 .step-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 .step-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r2);padding:28px 24px;position:relative;overflow:hidden}
-.step-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
-.step-n{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.12em;margin-bottom:10px}
+.step-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--green)}
+.step-n{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:var(--green700);letter-spacing:.12em;margin-bottom:10px}
 .step-card h3{font-size:22px;color:var(--navy);margin-bottom:8px}
 .step-card p{font-size:14px;color:var(--sub);line-height:1.65}
 .policy{background:var(--navy);border-radius:var(--r2);padding:48px 52px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;overflow:hidden;position:relative}
 .policy::after{content:"";position:absolute;right:-80px;bottom:-80px;width:300px;height:300px;background:var(--navy2);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)}
 .policy>*{position:relative;z-index:1}
-.pq{font-family:'DM Sans',sans-serif;font-size:40px;font-weight:700;color:var(--gold);margin-bottom:14px;line-height:1.1}
+.pq{font-family:'DM Sans',sans-serif;font-size:40px;font-weight:700;color:var(--green700);margin-bottom:14px;line-height:1.1}
 .policy p{color:#B0C8DE;font-size:15px;line-height:1.7}
 .prules{display:flex;flex-direction:column;gap:13px}
 .pr{display:flex;align-items:flex-start;gap:11px;color:#D1D1D6;font-size:15px;line-height:1.6}
@@ -176,8 +177,8 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .planes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px}
 .plan{background:var(--white);border:1px solid var(--line);border-radius:var(--r2);padding:30px 26px;display:flex;flex-direction:column;position:relative;transition:all .15s}
 .plan:hover{box-shadow:0 8px 30px rgba(13,27,42,.10)}
-.plan.feat{border:2px solid var(--gold)}
-.plan-tag{position:absolute;top:-13px;left:22px;background:var(--gold);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px}
+.plan.feat{border:2px solid var(--green)}
+.plan-tag{position:absolute;top:-13px;left:22px;background:var(--green);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px}
 .plan h3{font-size:26px;font-weight:700;color:var(--navy)}
 .p-old{font-size:15px;color:#9AA5B8;text-decoration:line-through;display:block;margin-top:10px}
 .p-new{font-family:'DM Sans',sans-serif;font-size:40px;font-weight:700;color:var(--navy);line-height:1}
@@ -187,16 +188,16 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .plan ul{list-style:none;flex:1;display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
 .plan li{font-size:14px;color:var(--ink);display:flex;align-items:flex-start;gap:9px;line-height:1.5}
 .plan li::before{content:"";width:8px;height:8px;margin-top:6px;background:var(--green);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);flex-shrink:0}
-.p-note{background:var(--gold-bg);border:1px solid rgba(196,160,74,.35);border-radius:var(--r);padding:16px 20px;font-size:14px;color:#6B5417;margin-top:24px;line-height:1.6}
+.p-note{background:var(--green-bg);border:1px solid rgba(42,157,143,.30);border-radius:var(--r);padding:16px 20px;font-size:14px;color:var(--green700);margin-top:24px;line-height:1.6}
 
 /* ══ WIZARD ══ */
 .wiz{background:var(--white);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden;box-shadow:0 4px 20px rgba(13,27,42,.08);max-width:760px;margin:0 auto}
 .wh{background:var(--navy);padding:26px 30px}
-.wh h3{font-size:26px;color:var(--gold)}
+.wh h3{font-size:26px;color:var(--green700)}
 .wh p{color:#9EADC2;font-size:13.5px;margin-top:4px}
 .wsteps{display:flex;background:var(--bg);border-bottom:1px solid var(--line)}
 .ws{flex:1;text-align:center;font-size:12.5px;font-weight:600;padding:12px 4px;color:#94A3B8;border-bottom:3px solid transparent;transition:.15s}
-.ws.now{color:var(--navy);border-bottom-color:var(--gold);background:var(--white)}
+.ws.now{color:var(--navy);border-bottom-color:var(--green);background:var(--white)}
 .ws.done{color:var(--green)}
 .wp{display:none;padding:30px}.wp.act{display:block;animation:fi .2s ease}
 .wrnav{display:flex;justify-content:space-between;align-items:center;padding:18px 30px;border-top:1px solid var(--line);background:#FAFAFA}
@@ -207,7 +208,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .res-row:last-child{border-bottom:none;font-weight:700;font-size:16px;color:var(--navy);padding-top:10px}
 .pp-wrap{display:flex;flex-direction:column;gap:10px}
 .pp{border:1.5px solid var(--line);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;background:#FAFAFA;transition:.15s}
-.pp:hover,.pp.sel{border-color:var(--gold);background:var(--gold-bg)}
+.pp:hover,.pp.sel{border-color:var(--green);background:var(--green-bg)}
 .pp input{accent-color:var(--navy);width:16px;height:16px;flex-shrink:0;margin-top:2px}
 .pp-info{flex:1}
 .pp-n{font-weight:700;font-size:15px;color:var(--navy)}
@@ -218,7 +219,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .pp-badge{font-size:10px;background:var(--green-bg);color:var(--green);padding:2px 7px;border-radius:100px;font-weight:700}
 .pm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
 .pm{border:1.5px solid var(--line);border-radius:8px;padding:13px;text-align:center;font-size:14px;font-weight:600;color:var(--sub);cursor:pointer;background:#FAFAFA;transition:.15s}
-.pm.sel,.pm:hover{border-color:var(--gold);background:var(--gold-bg);color:var(--navy)}
+.pm.sel,.pm:hover{border-color:var(--green);background:var(--green-bg);color:var(--navy)}
 .confirm-mid{text-align:center;padding:50px 30px}
 .chex{width:76px;height:76px;background:var(--green);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:30px;color:#fff}
 .confirm-mid h3{font-size:30px;color:var(--green);margin-bottom:10px}
@@ -229,7 +230,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 .modal-bg.open{display:flex}
 .modal{background:var(--white);border-radius:var(--r2);width:100%;max-width:460px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .mh{background:var(--navy);padding:22px 28px;display:flex;align-items:center;justify-content:space-between}
-.mh h3{font-size:22px;color:var(--gold)}
+.mh h3{font-size:22px;color:var(--green700)}
 .mc{background:none;border:none;color:#7A9AB8;font-size:22px;cursor:pointer}.mc:hover{color:#fff}
 .mb{padding:26px 28px}
 .merr{background:var(--red-bg);color:var(--red);font-size:13px;padding:10px 14px;border-radius:8px;margin-bottom:14px;display:none}
@@ -239,7 +240,7 @@ nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px s
 /* TABS en modal login */
 .mtabs{display:flex;border-bottom:2px solid var(--line);margin-bottom:22px}
 .mtab{flex:1;text-align:center;padding:10px;font-size:14px;font-weight:600;color:var(--sub);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:.15s}
-.mtab.act{color:var(--navy);border-bottom-color:var(--gold)}
+.mtab.act{color:var(--navy);border-bottom-color:var(--green)}
 .mtab-panel{display:none}.mtab-panel.act{display:block}
 
 /* ══ ADMIN PANEL ══ */
@@ -303,7 +304,7 @@ footer{background:var(--navy);margin-top:80px}
 @media(max-width:900px){.foot-top{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.foot-top{grid-template-columns:1fr}}
 .foot-brand p{font-size:13.5px;color:#6A8AAE;margin-top:12px;line-height:1.7;max-width:320px}
-.foot-col h4{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.foot-col h4{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
 .fl-link{display:block;font-size:14px;color:#6A8AAE;padding:4px 0;cursor:pointer;transition:.15s}
 .fl-link:hover{color:#fff}
 .foot-bot{border-top:1px solid rgba(255,255,255,.07);max-width:1120px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
@@ -318,9 +319,9 @@ footer{background:var(--navy);margin-top:80px}
 .legal-doc strong{color:var(--navy)}
 .legal-doc ul{list-style:none;margin:0 0 14px}
 .legal-doc li{font-size:14px;color:var(--sub);line-height:1.65;padding-left:18px;position:relative;margin-bottom:7px}
-.legal-doc li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;background:var(--gold);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)}
+.legal-doc li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;background:var(--green);clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)}
 /* TOAST */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy);color:#fff;padding:13px 24px;border-radius:100px;font-size:14px;font-weight:600;box-shadow:0 12px 40px rgba(0,0,0,.28);transition:all .3s;z-index:999;opacity:0;border-left:4px solid var(--gold);pointer-events:none;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy);color:#fff;padding:13px 24px;border-radius:100px;font-size:14px;font-weight:600;box-shadow:0 12px 40px rgba(0,0,0,.28);transition:all .3s;z-index:999;opacity:0;border-left:4px solid var(--green);pointer-events:none;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 /* OPCION A — INACTIVA (preparada para futura activación) */
 /* .solicitud-form { display:block } — descomentar al activar Opción A */
@@ -335,9 +336,9 @@ footer{background:var(--navy);margin-top:80px}
 <nav>
   <div class="nav-i">
     <div class="brand" onclick="SESSION.rol==='cliente'?go('planes'):SESSION.rol==='admin'?openAdminPanel():go('home')">
-      <div class="hex"><div class="hex-i">M</div></div>
+      <svg width="38" height="38" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><polygon points="32,3 57.1,17.5 57.1,46.5 32,61 6.9,46.5 6.9,17.5" fill="#b8975a"/><polygon points="41.5,15.5 51,32 41.5,48.5 22.5,48.5 13,32 22.5,15.5" fill="#0d1b2a"/><polygon points="38.5,20.7 45,32 38.5,43.3 25.5,43.3 19,32 25.5,20.7" fill="#2a9d8f"/></svg>
       <span class="bname">MANTE<b>WORK</b></span>
-      <span id="brand-sub" style="display:none;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:rgba(196,160,74,.13);border:1px solid rgba(196,160,74,.3);padding:3px 10px;border-radius:100px;margin-left:4px"></span>
+      <span id="brand-sub" style="display:none;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green700);background:rgba(42,157,143,.12);border:1px solid rgba(42,157,143,.30);padding:3px 10px;border-radius:100px;margin-left:4px"></span>
     </div>
     <button class="nav-burger" onclick="toggleNav()"><span></span><span></span><span></span></button>
 
@@ -684,7 +685,7 @@ footer{background:var(--navy);margin-top:80px}
 
       <!-- ══ HABILIDADES TRANSVERSALES ══ -->
       <div style="background:var(--navy);border-radius:14px;padding:36px 40px">
-        <h3 style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:700;color:var(--gold);margin-bottom:6px">Habilidades que exigen todas las empresas</h3>
+        <h3 style="font-family:'DM Sans',sans-serif;font-size:30px;font-weight:700;color:var(--green700);margin-bottom:6px">Habilidades que exigen todas las empresas</h3>
         <p style="color:#AEAEB2;font-size:14px;margin-bottom:24px">Sin estas, el perfil queda incompleto en cualquier faena — sea de extracción, procesamiento o mantenimiento.</p>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
           <div class="htrans"><div class="ht-t">3D vigente</div><div class="ht-d">Obligatorio en toda faena. Control de alcohol y drogas.</div></div>
@@ -703,7 +704,7 @@ footer{background:var(--navy);margin-top:80px}
       </div>
 
       <!-- Fuente -->
-      <div style="margin-top:24px;padding:18px 22px;background:var(--card);border-radius:10px;border-left:3px solid var(--gold)">
+      <div style="margin-top:24px;padding:18px 22px;background:var(--card);border-radius:10px;border-left:3px solid var(--green)">
         <div style="font-size:12.5px;color:var(--sub);line-height:1.7">
           <strong style="color:var(--navy)">Fuente:</strong> Estudio de Fuerza Laboral de la Gran Minería Chilena, Alianza CCM-Eleva (Consejo Minero y Fundación Chile). La clasificación de perfiles corresponde a la definición oficial de la Cadena de Valor Principal del estudio. Los requisitos técnicos y certificaciones reflejan las exigencias habituales de las empresas del sector.
         </div>
@@ -722,12 +723,12 @@ footer{background:var(--navy);margin-top:80px}
       <h2 class="st">Planes de publicación</h2>
       <p class="ss">Cada plan incluye los tres filtros del portal y 30 días de vigencia. Sin contratos anuales.</p>
       <div class="planes-grid planes-3"><div class="plan feat"><div class="plan-tag">Más elegido</div><h3>Plan Estándar</h3><div class="p-new">$50.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">4 avisos · vigencia 30 días</div><ul><li>4 publicaciones programadas</li><li>Aviso destacado en el canal</li><li>Validación técnica incluida</li><li>Alerta temprana a candidatos</li><li>Alerta de vencimiento con descuento</li></ul><button class="btn btn-gold btn-full" onclick="irContacto()">Contratar por WhatsApp</button></div><div class="plan"><h3>Plan Premium</h3><div class="p-new">$100.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">10 avisos · vigencia 30 días</div><ul><li>10 publicaciones programadas</li><li>Fijado al tope del canal</li><li>Máxima visibilidad en el canal</li><li>Validación técnica incluida</li><li>Alerta de vencimiento con descuento</li></ul><button class="btn btn-ghost btn-full" onclick="irContacto()">Contratar por WhatsApp</button></div><div class="plan"><h3>Pack Empresa</h3><div class="p-new" style="margin-top:10px">$350.000 <span>CLP</span></div><div style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8A6D1F;background:var(--gold-bg);border-radius:100px;padding:3px 10px;display:inline-block;margin-top:6px">Precio de lanzamiento</div><div class="p-dur">Avisos ilimitados · vigencia 30 días</div><ul><li>Avisos sin límite durante el mes</li><li>Logo de la empresa en cada aviso</li><li>Difusión en todos los grupos</li><li>Atención directa y prioritaria</li></ul><button class="btn btn-ghost btn-full" onclick="toast('Escríbenos por WhatsApp para activar el Pack Empresa')">Consultar</button></div></div>
-      <div style="background:#FBF5E6;border:1.5px solid var(--gold);border-radius:9px;padding:11px 16px;margin:14px auto 0;max-width:620px;font-size:12.5px;color:var(--navy);line-height:1.55;text-align:center">🎁 <b>Cortesía de bienvenida:</b> si es tu primera vez, escríbenos — publicamos tus primeros <b>4 avisos sin costo</b> para que conozcas el canal antes de contratar. <b>Contáctanos para conocer nuestras promociones.</b></div>
+      <div style="background:var(--green-bg);border:1.5px solid rgba(42,157,143,.35);border-radius:9px;padding:11px 16px;margin:14px auto 0;max-width:620px;font-size:12.5px;color:var(--navy);line-height:1.55;text-align:center">🎁 <b>Cortesía de bienvenida:</b> si es tu primera vez, escríbenos — publicamos tus primeros <b>4 avisos sin costo</b> para que conozcas el canal antes de contratar. <b>Contáctanos para conocer nuestras promociones.</b></div>
       
       <div style="background:var(--navy);border-radius:var(--r2);padding:18px 24px;margin-top:16px;display:flex;align-items:flex-start;gap:12px">
         <span style="font-size:20px;flex-shrink:0">🕐</span>
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;color:var(--gold);margin-bottom:4px">Horario de publicación en el canal</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;color:var(--green700);margin-bottom:4px">Horario de publicación en el canal</div>
           <div style="font-size:14px;color:#B0C8DE;line-height:1.6">Los avisos aprobados se publicarán en el canal de WhatsApp entre las <strong style="color:#fff">09:00 y 11:00 hrs</strong>, una vez al día, <strong style="color:#fff">de lunes a viernes</strong>. Los avisos aprobados fuera de ese horario se publican al día hábil siguiente.</div>
         </div>
       </div>
@@ -836,7 +837,7 @@ footer{background:var(--navy);margin-top:80px}
             <label class="fl">Requisitos principales <span class="freq">*</span></label>
             <div class="fhint">Máximo 200 caracteres — se publica tal cual en el canal. Puedes partir de un ejemplo y editarlo.</div>
             <textarea class="ft" id="f_req" maxlength="200" placeholder="Téc. Mecánico + 3 años CAEX + Licencia B + 3D vigente" oninput="contarReq()"></textarea>
-              <button type="button" onclick="usarTextoSugerido()" style="background:none;border:none;cursor:pointer;padding:4px 0 0;color:var(--gold);font-size:13px;font-weight:600;font-family:inherit">✎ Usar texto sugerido según el perfil elegido</button>
+              <button type="button" onclick="usarTextoSugerido()" style="background:none;border:none;cursor:pointer;padding:4px 0 0;color:var(--green700);font-size:13px;font-weight:600;font-family:inherit">✎ Usar texto sugerido según el perfil elegido</button>
             <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:8px;flex-wrap:wrap">
               <div style="display:flex;gap:8px;flex-wrap:wrap">
                 <button type="button" class="ab ab-v" style="font-size:12.5px;padding:7px 13px" onclick="verEjemplos()">📋 Ver ejemplos</button>
@@ -847,7 +848,7 @@ footer{background:var(--navy);margin-top:80px}
               <span id="req-contador" style="font-size:12px;color:#9AA5B8">0 / 200</span>
             </div>
             <div id="sugerencia-box" style="display:none;background:var(--navy);border-radius:10px;padding:16px 18px;margin-top:12px">
-              <div style="font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Sugerencia del asistente</div>
+              <div style="font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green700);margin-bottom:8px">Sugerencia del asistente</div>
               <div id="sugerencia-texto" style="font-size:14px;color:#fff;line-height:1.6;margin-bottom:14px"></div>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
                 <button type="button" class="ab ab-ok" style="font-size:12.5px;padding:7px 14px" onclick="aplicarSugerencia()">Usar esta versión</button>
@@ -932,7 +933,7 @@ footer{background:var(--navy);margin-top:80px}
 <footer>
   <div class="foot-top">
     <div>
-      <div class="brand"><div class="hex"><div class="hex-i">M</div></div><span class="bname" style="color:#f8f6f2">Mante<b style="color:var(--green)">Work</b></span></div>
+      <div class="brand"><svg width="38" height="38" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><polygon points="32,3 57.1,17.5 57.1,46.5 32,61 6.9,46.5 6.9,17.5" fill="#b8975a"/><polygon points="41.5,15.5 51,32 41.5,48.5 22.5,48.5 13,32 22.5,15.5" fill="#0d1b2a"/><polygon points="38.5,20.7 45,32 38.5,43.3 25.5,43.3 19,32 25.5,20.7" fill="#2a9d8f"/></svg><span class="bname" style="color:#ffffff">Mante<b style="color:var(--green)">Work</b></span></div>
       <p class="foot-brand" style="font-size:13.5px;color:#6A8AAE;margin-top:12px;line-height:1.7;max-width:320px">Portal de validación oficial del canal de empleos técnicos mineros de Chile. Solo trabajo técnico minero.</p>
     </div>
     <div>
@@ -1830,7 +1831,7 @@ function cerrarLegal(){ document.getElementById('modal-legal').classList.remove(
 // ══════════════════════════════════════════════
 // CONTROL DE VERSIONES
 // ══════════════════════════════════════════════
-const APP_VERSION = '3.18.34';
+const APP_VERSION = '3.19.0';
 
 // Escapa HTML para prevenir XSS al interpolar datos de usuario en innerHTML
 function esc(s){
@@ -1842,6 +1843,7 @@ function esc(s){
 
 const VERSIONES = [
   { v:'3.18.11', fecha:'22-08-2026', cambios:['Botón de versión ahora muestra siempre la versión real: el texto se inyecta dinámicamente desde APP_VERSION al cargar la página — antes estaba hardcodeado en el HTML y quedaba desfasado con cada actualización']},
+  { v:'3.19.0', fecha:'22-11-2026', cambios:['Rebrand visual completo — Manual de Normas Gráficas Invictum v2.15: fondo dominante verde suave #e1ebe3 (antes crema), acento único verde #2a9d8f, texto-acento en claro #1d6161 (verde 700, contraste 6.6:1 AA), oro #b8975a reservado al símbolo y superficies navy, hero con fondo verde suave (navy SOLO en nav, franja de cifras y footer), símbolo tres hexágonos concéntricos SVG, wordmark Mante-blanco + Work-verde sobre navy, todos los botones y acentos UI migrados a verde, sin emojis, íconos SVG lineales'] },
   { v:'3.18.34', fecha:'18-10-2026', cambios:['Cierre definitivo del caso «otros computadores muestran el aviso demo»: el fix v3.18.32 era insuficiente porque el auto-guardado de cada render renovaba el sello de tiempo local en cada visita — un navegador contaminado (como Edge tras la semana del bug) volvía a ganarle a la nube eternamente. Tres cambios: (1) el sello de «trabajo local» ahora se escribe solo cuando un usuario LOGUEADO edita — el visitante anónimo nunca lo renueva; (2) el pack local registra si fue guardado con sesión, y solo ese cuenta como copia que la guardia anti-pérdida defiende o que bloquea el snapshot de respaldo; (3) migración desintoxicante automática: al cargar, un pack local sin sesión pierde su sello y la nube vuelve a mandar — todos los navegadores contaminados estas semanas se arreglan solos al recargar, sin acción del visitante. La protección original de v3.17.3 (trabajo del admin vs nube pausada) queda intacta'] },
   { v:'3.18.32', fecha:'11-10-2026', cambios:['CAUSA RAÍZ encontrada y corregida (reproducida en navegador simulado con la nube respondiendo): la guardia anti-pérdida de v3.17.3 se disparaba contra sí misma en cada visitante nuevo — el auto-guardado del render inicial (seed demo) marcaba un timestamp «ahora» que siempre ganaba al de la nube, la nube era rechazada y el visitante quedaba viendo 1 aviso de demostración en vez del catálogo. Presente desde hace semanas en todo computador nuevo; invisible para el administrador porque el sitio lo lleva directo al panel, nunca al home. La guardia ahora solo defiende una copia local que existía ANTES de la carga actual; el caso legítimo que protege (trabajo del admin más nuevo que una nube pausada) sigue intacto'] },
   { v:'3.18.31', fecha:'11-10-2026', cambios:['Corrección del respaldo web (detectada reproduciendo el sitio en un navegador simulado sin acceso a la nube): el visitante nuevo veía solo el aviso de demostración «Minera Prueba SpA» porque el seed demo hacía creer al respaldo que ya había datos y el snapshot nunca se cargaba. Ahora el snapshot reemplaza el demo y solo respeta una copia local REAL del usuario. Blindaje adicional: una copia proveniente del snapshot se marca de solo lectura — jamás puede subirse a la nube por la guardia anti-pérdida, y la marca se limpia sola cuando la nube vuelve a estar disponible'] },
